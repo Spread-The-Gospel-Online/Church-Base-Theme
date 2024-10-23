@@ -1,0 +1,152 @@
+.header {
+	background-color: var(--header-background);
+	color: var(--header-text);
+	z-index: 100;
+}
+
+.header--is-fixed {
+	position: sticky;
+	top: 0;
+}
+
+.header a {
+	color: var(--header-text);
+}
+
+.header a:hover {
+	color: var(--header-text-hover);
+}
+
+.header svg {
+	fill: currentColor;
+}
+
+.header__logo-link {
+	display: block;
+	font-size: 0;
+}
+
+.header__logo {
+	padding: .5rem 0rem;
+	max-height: var(--logo-height);
+	transition: max-height .3s;
+}
+
+.body-scrolled .header__logo {
+	max-height: var(--logo-height-scrolled);
+}
+
+.header__contents,
+.main-menu {
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+	gap: 2rem;
+}
+
+.main-menu {
+	height: 100%;
+	list-style-type: none;
+}
+
+.header__mobile-wrapper {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: -100%;
+	width: 80vw;
+	background: var(--submenu-background);
+	color: black;
+	z-index: 1000;
+	transition: right .3s;
+}
+
+.header__mobile-wrapper.open {
+	right: 0;
+}
+
+.header__mobile-wrapper a {
+	color: var(--submenu-text-color);
+}
+
+.header__mobile-wrapper a:hover {
+	color: var(--submenu-text-color-hover);
+}
+
+.header__close-menu {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 100%;
+	width: 150vw;
+	background: var(--black);
+	opacity: 0.75;
+	display: none;
+}
+
+.header__mobile-wrapper.open .header__close-menu {
+	display: block;
+}
+
+.header__mobile-menu .main-menu {
+	flex-direction: column;
+}
+
+.main-menu > .main-menu__item {
+	position: relative;
+	display: flex;
+	align-items: center;
+	white-space: nowrap;
+}
+
+.main-menu__item-label {
+	width: 100%;
+	display: inline-flex;
+	align-items: center;
+	column-gap: 0.25rem;
+}
+
+.main-menu__item-label a {
+	width: 100%;
+}
+
+.main-menu__item .item-icon {
+	transform: scaleY(1);
+	transition: transform .2s 0.25s;
+}
+
+.main-menu__item:hover .item-icon {
+	transform: scaleY(-1);
+}
+
+.main-menu__sub-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	max-height: 0;
+	overflow: hidden;
+	background: var(--submenu-background);
+	color: var(--submenu-text-color);
+	list-style-type: none;
+	transition: max-height 0s, padding 0s color 0.2s;
+	transition-delay: 0.25s;
+}
+
+.main-menu__sub-menu a:hover {
+	color: var(--submenu-text-color-hover);
+}
+
+.main-menu__sub-menu a {
+	display: inline-block;
+	padding: 0.5rem 2rem;
+	color: inherit;
+}
+
+.main-menu__item:active .main-menu__sub-menu,
+.main-menu__item:focus .main-menu__sub-menu,
+.main-menu__item:focus-within .main-menu__sub-menu,
+.main-menu__item:hover .main-menu__sub-menu {
+	padding: 0.5rem 0;
+	max-height: 100vh;
+}
+

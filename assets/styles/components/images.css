@@ -1,0 +1,26 @@
+.image-wrapper,
+.image {
+	display: block;
+	width: 100%;
+}
+
+.image-wrapper {
+	position: relative;
+	padding-bottom: 60%;
+	height: 0;
+	overflow: hidden;
+}
+
+.image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	object-fit: cover;
+	transform: scale(1.0);
+	transition: transform 0.2s;
+}
+
+.image-trigger:hover .image {
+	transform: scale(1.05);
+}

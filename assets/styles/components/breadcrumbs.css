@@ -1,0 +1,45 @@
+.breadcrumbs {
+	padding: 1rem 0rem;
+	background: var(--breadcrumbs);
+	color: var(--breadcrumbs-text);
+}
+
+.breadcrumbs.breadcrumbs--hero {
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	right: 0;
+	background: var(--breadcrumbs-transparent);
+}
+
+.breadcrumbs a {
+	color: inherit;
+}
+
+.breadcrumbs a:hover {
+	color: var(--breadcrumbs-text-hover);
+}
+
+.breadcrumbs--hero-top {
+	top: 0;
+}
+
+.breadcrumbs--hero-bottom {
+	bottom: 0;
+}
+
+.breadcrumbs__list {
+	display: flex;
+	align-items: center;
+	column-gap: 0.5rem;
+	list-style-type: none;
+}
+
+.breadcrumbs__item {
+	display: flex;
+}
+
+.breadcrumbs__item:not(:first-of-type)::before {
+	content: '/';
+	margin-right: 0.5rem;
+}

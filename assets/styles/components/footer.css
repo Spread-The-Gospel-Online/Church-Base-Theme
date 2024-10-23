@@ -1,0 +1,31 @@
+.footer {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	background: var(--footer-background);
+	color: var(--footer-text);
+}
+
+.footer a {
+	color: inherit;
+}
+
+.footer ul {
+	list-style: none;
+}
+
+.footer-menu {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.footer-menu--desktop {
+	display: none;
+}
+
+.copyright {
+	padding: 0.75rem 0;
+	text-align: center;
+	background: var(--copyright-background);
+	color: var(--copyright-text);
+}

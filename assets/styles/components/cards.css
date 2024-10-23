@@ -1,0 +1,27 @@
+.card__image-wrap {
+	position: relative;
+	overflow: hidden;
+}
+
+.card__image-wrap::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	display: block;
+	background: var(--card-overlay-background);
+	opacity: var(--card-overlay-opacity);
+	transition: opacity .2s;
+}
+
+.card__image {
+	transform: scale(1);
+	transition: transform .2s;
+}
+
+.sermon-card:hover .card__image {
+	transform: scale(1.03);
+}
+
+.sermon-card:hover .card__image-wrap::after {
+	opacity: var(--card-overlay-opacity-hover);
+}

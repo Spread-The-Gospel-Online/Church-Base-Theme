@@ -1,0 +1,20 @@
+* {
+	font-family: var(--font-family-general);
+}
+
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+	font-family: var(--font-family-headings);
+}
+
+.text-large {
+
+}
+
+.text-normal {
+
+}
+
+.text-small {
+	font-size: 0.8rem;
+}

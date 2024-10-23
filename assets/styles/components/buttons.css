@@ -1,0 +1,9 @@
+.button {
+
+}
+
+.button--icon {
+	appearance: none;
+	border: none;
+	background-color: transparent;
+}

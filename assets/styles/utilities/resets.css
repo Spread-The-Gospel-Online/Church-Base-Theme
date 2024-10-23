@@ -1,0 +1,50 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	max-width: 100vw;
+}
+
+body {
+	width: 100%;
+	max-width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+#MainContent {
+	flex-grow: 1;
+}
+
+.skip-to-link {
+	position: fixed;
+	left: -150%;
+	background: white;
+	z-index: 100000000;
+	transition: left .3s;
+}
+
+.skip-to-link:focus,
+.skip-to-link:focus-within,
+.skip-to-link:active {
+	left: 0;
+}
+
+a {
+	color: var(--link);
+	transition: color .2s;
+}
+
+a:hover {
+	color: var(--link-hover);
+}
+
+summary::marker {
+	content: '';
+	display: none;
+}

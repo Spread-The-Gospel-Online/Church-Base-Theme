@@ -1,0 +1,7 @@
+.sermon-archive {
+	margin-top: var(--sermon-archive-margin);
+	margin-bottom: var(--sermon-archive-margin);
+	display: grid;
+	grid-row-gap: var(--sermon-archive-row-gap);
+	grid-column-gap: var(--sermon-archive-col-gap);
+}

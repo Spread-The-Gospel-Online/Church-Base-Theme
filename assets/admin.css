@@ -1,0 +1,9 @@
+.related-post-checkbox {
+	display: inline-flex;
+	gap: .25rem;
+	align-items: center;
+}
+
+.related-post-checkbox input[type] {
+	margin-top: 0;
+}

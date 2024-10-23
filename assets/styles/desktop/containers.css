@@ -1,0 +1,11 @@
+.desktop-only {
+	display: block;
+}
+
+.mobile-only {
+	display: none;
+}
+
+.flexible-grid {
+	grid-template-columns: repeat(var(--number-columns), 1fr);
+}

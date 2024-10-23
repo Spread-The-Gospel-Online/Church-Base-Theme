@@ -1,0 +1,3 @@
+.sermon-archive {
+	grid-template-columns: repeat(var(--sermon-archive-grid-tablet-size), 1fr);
+}

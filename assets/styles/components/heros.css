@@ -1,0 +1,41 @@
+.hero {
+	position: relative;
+	max-width: 100vw;
+	overflow: hidden;
+}
+
+.hero,
+.hero__image {
+	max-height: var(--hero-height);
+	max-width: 100%;
+}
+
+.hero__image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.hero__caption {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hero__caption,
+.hero__caption-overlay {
+	position: absolute;
+	inset: 0;
+}
+
+.hero__content {
+	position: relative;
+	z-index: 1;
+	color: var(--hero-text);
+}
+
+.hero__caption-overlay {
+	background: var(--hero-background);
+	opacity: var(--hero-opacity);
+}

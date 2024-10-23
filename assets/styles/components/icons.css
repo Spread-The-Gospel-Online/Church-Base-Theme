@@ -1,0 +1,9 @@
+.icon {
+	width: 2rem;
+	color: inherit;
+	fill: inherit;
+}
+
+.icon.icon--menu {
+	color: var(--header-text);
+}

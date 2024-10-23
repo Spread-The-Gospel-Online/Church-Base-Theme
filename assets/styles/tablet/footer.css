@@ -1,0 +1,16 @@
+.footer-menu--mobile {
+	display: none;
+}
+
+.footer-menu--desktop {
+	display: flex;
+}
+
+.footer-menu {
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.footer-menu svg {
+	display: none;
+}
