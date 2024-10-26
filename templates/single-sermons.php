@@ -29,7 +29,7 @@ while (have_posts()) {
 
 
 	util_render_snippet('common/hero', array(
-		'desktop_src' => wp_get_attachment_image_src($image_id, 'full', false)[0],
+		'desktop_src' => $image_id ? wp_get_attachment_image_src($image_id, 'full', false)[0] : false,
 		'image_alt' => get_post_meta($image_id, '_wp_attachment_image_alt', true),
 		'caption_classes' => '',
 		'caption' => get_the_title(),
