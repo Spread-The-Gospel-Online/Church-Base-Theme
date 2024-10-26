@@ -22,7 +22,7 @@ add_action( 'add_meta_boxes_sermons', function ( $post ) {
 		'related_pastor',
 		__('Pastor'),
 		function ( $post ) {
-			include WP_PLUGIN_DIR . '/church/admin-panel/sermons/templates/sermon-pastor-meta-box.php';
+			include get_template_directory() . '/admin-panel/sermons/templates/sermon-pastor-meta-box.php';
 		},
 		$post->post_type,
 		'side',
@@ -33,7 +33,7 @@ add_action( 'add_meta_boxes_sermons', function ( $post ) {
 		'related_series',
 		__('Related Sermon Series'),
 		function ( $post ) {
-			include WP_PLUGIN_DIR . '/church/admin-panel/sermons/templates/sermon-series-meta-box.php';
+			include get_template_directory() . '/admin-panel/sermons/templates/sermon-series-meta-box.php';
 		},
 		$post->post_type,
 		'side',

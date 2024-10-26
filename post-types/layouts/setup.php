@@ -38,7 +38,7 @@ add_action( 'add_meta_boxes_layouts', function ( $post ) {
 		'template_types',
 		__('Template Types'),
 		function ( $post ) {
-			include WP_PLUGIN_DIR . '/church/admin-panel/layouts/templates/layout-template-types.php';
+			include get_template_directory() . '/admin-panel/layouts/templates/layout-template-types.php';
 		},
 		$post->post_type,
 		'side',
@@ -49,7 +49,7 @@ add_action( 'add_meta_boxes_layouts', function ( $post ) {
 		'post_types',
 		__('Post Types'),
 		function ( $post ) {
-			include WP_PLUGIN_DIR . '/church/admin-panel/layouts/templates/layout-post-types.php';
+			include get_template_directory() . '/admin-panel/layouts/templates/layout-post-types.php';
 		},
 		$post->post_type,
 		'side',

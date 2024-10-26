@@ -6,7 +6,7 @@ add_action('add_meta_boxes_events', function ($post) {
 		'event_dates',
 		__('Event Date'),
 		function ($post) {
-			include WP_PLUGIN_DIR . '/church/admin-panel/events/templates/event-date-meta-box.php';
+			include get_template_directory() . '/admin-panel/events/templates/event-date-meta-box.php';
 		},
 		$post->post_type,
 		'side',
