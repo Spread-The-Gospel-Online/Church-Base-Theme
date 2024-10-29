@@ -2,7 +2,7 @@
 
 add_action('admin_head', function () {
 	ob_start();
-	include 'assets/styles/utilities/variables.css.php';
+	include get_template_directory() . '/assets/styles/utilities/variables.css.php';
 	$variable_content = ob_get_clean();
 
 	$template_dir = get_template_directory_uri();

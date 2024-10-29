@@ -13,12 +13,12 @@ add_action( 'customize_register', function ($customizer) {
 	$colors = array(
 		array( 'slug' => 'primary', 'label' => 'Primary', 'default' => '#DD6644' ),
 		array( 'slug' => 'primary-hover', 'label' => 'Primary (Hover)', 'default' => '#DD6644' ),
-		array( 'slug' => 'secondary', 'label' => 'Secondary', 'default' => '#66DD44' ),
-		array( 'slug' => 'secondary-hover', 'label' => 'Secondary (Hover)', 'default' => '#66DD44' ),
-		array( 'slug' => 'tertiary', 'label' => 'Tertiary', 'default' => '#66DD44' ),
-		array( 'slug' => 'tertiary-hover', 'label' => 'Tertiary (Hover)', 'default' => '#66DD44' ),
+		array( 'slug' => 'secondary', 'label' => 'Secondary', 'default' => '#2aaa00' ),
+		array( 'slug' => 'secondary-hover', 'label' => 'Secondary (Hover)', 'default' => '#2d8200' ),
+		array( 'slug' => 'tertiary', 'label' => 'Tertiary', 'default' => '#1815d3' ),
+		array( 'slug' => 'tertiary-hover', 'label' => 'Tertiary (Hover)', 'default' => '#0200a3' ),
 		array( 'slug' => 'white', 'label' => 'White', 'default' => '#FFFFFF' ),
-		array( 'slug' => 'off-white', 'label' => 'Off White', 'default' => '#FFDDBC' ),
+		array( 'slug' => 'off-white', 'label' => 'Off White', 'default' => '#EEEEEE' ),
 		array( 'slug' => 'grey-one', 'label' => 'Grey One', 'default' => '#D1D1D1' ),
 		array( 'slug' => 'grey-two', 'label' => 'Grey Two', 'default' => '#AAAAAA' ),
 		array( 'slug' => 'grey-three', 'label' => 'Grey Three', 'default' => '#7F7F7F' ),
@@ -113,6 +113,36 @@ add_action( 'customize_register', function ($customizer) {
 			'id' => 'card_overlay',
 			'default' => '--black',
 			'label' => 'Card Image Overlay'
+		),
+		array(
+			'id' => 'calendar_header_background',
+			'default' => '--secondary',
+			'label' => 'Calendar Header Background',
+			'section' => 'church_events_section'
+		),
+		array(
+			'id' => 'calendar_header_text',
+			'default' => '--white',
+			'label' => 'Calendar Header Background',
+			'section' => 'church_events_section'
+		),
+		array(
+			'id' => 'calendar_outline',
+			'default' => '--black',
+			'label' => 'Calendar Outline',
+			'section' => 'church_events_section'
+		),
+		array(
+			'id' => 'calendar_background_one',
+			'default' => '--white',
+			'label' => 'Calendar Background One',
+			'section' => 'church_events_section'
+		),
+		array(
+			'id' => 'calendar_background_two',
+			'default' => '--off-white',
+			'label' => 'Calendar Background Two',
+			'section' => 'church_events_section'
 		),
 		array(
 			'id' => 'footer_background',

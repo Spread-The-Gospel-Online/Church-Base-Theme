@@ -2,8 +2,8 @@
 
 add_action('init', 'church_check_events_job');
 
-function church_check_events_job () {	
-	$events = get_posts(array(
+function church_get_recurring_events () {
+	return get_posts(array(
 		'meta_query' => array(
 			array(
 				'key' => 'event_recurring'
@@ -12,6 +12,10 @@ function church_check_events_job () {
 		'post_type' => 'events',
 		'posts_per_page' => -1
 	));
+}
+
+function church_check_events_job () {	
+	$events = church_get_recurring_events();
 
 	foreach ($events as $event) {
 		$event_date = get_post_meta($event->ID, 'event_date', true);

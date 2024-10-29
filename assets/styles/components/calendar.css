@@ -5,9 +5,35 @@
 .calendar {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
+	gap: 1px;
 }
 
+.calendar__header {
+	outline: 1px solid var(--calendar-header-background);
+	padding: 0.5rem 0;
+	text-align: center;
+	background: var(--calendar-header-background);
+	color: var(--calendar-header-text);
+}
+
+
 .calendar__day {
+	outline: 1px solid var(--calendar-outline);
 	padding: 0.5rem;
 	height: 15vh;
+	display: flex;
+	flex-direction: column;
+	background: var(--calendar-background-one);
+}
+
+.calendar__day:nth-child(2n + 1) {
+	background: var(--calendar-background-two);
+}
+
+.calendar__date {
+	margin-bottom: auto;
+}
+
+.calendar__event-link {
+	margin-bottom: 0.5rem;
 }

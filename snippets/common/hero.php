@@ -1,3 +1,4 @@
+<?php if (!isset($steps)) { $steps = false; } ?>
 <?php do_action('breadcrumbs_above', $steps); ?>
 
 <figure class="hero">

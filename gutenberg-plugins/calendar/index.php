@@ -22,5 +22,5 @@ add_action('init', function () {
 
 
 function church_display_calendar ($attributes, $content) {
-	return util_render_snippet('events/calendar', array());
+	return util_render_snippet('events/calendar', $attributes);
 }

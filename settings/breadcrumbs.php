@@ -7,6 +7,10 @@ add_action( 'customize_register', function ($customizer) {
 		'capability' => 'edit_theme_options'
 	));
 
+	if (!get_option('display_breadcrumbs')) {
+		update_option('display_breadcrumbs', 'top');
+	}
+
 	// ------- BREADCRUMBS -------
 	$customizer->add_setting('display_breadcrumbs', array(
 		'type' => 'option',

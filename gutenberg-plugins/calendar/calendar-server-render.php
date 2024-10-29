@@ -9,6 +9,10 @@ add_action( 'rest_api_init', function () {
 });
 
 function church_ep_get_calendar ($data) {
-	echo church_display_calendar(array(), false);
+	$data_to_pass = array();
+	if (isset($data['date'])) {
+		$data_to_pass['base_date'] = $data['date'];
+	}
+	echo church_display_calendar($data_to_pass, false);
 	exit();
 }

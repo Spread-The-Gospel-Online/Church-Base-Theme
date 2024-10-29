@@ -4,6 +4,7 @@
 		<script type="module" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/templates/layout.js"></script>
 		<script type="text/javascript" defer>
 			var refTagger = { settings: { bibleVersion: 'ESV' } };
+			window.siteURL = '<?= get_site_url() ?>';
 
 			(function(d, t) {
 				var n=d.querySelector('[nonce]');

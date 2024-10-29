@@ -61,4 +61,9 @@
 	--card-overlay-opacity: 0.<?= get_option('card_overlay_opacity', 50) ?>;
 	--card-overlay-opacity-hover: 0.<?= get_option('card_overlay_opacity_hover', 50) ?>;
 	
+	--calendar-header-background: var(<?= get_option('css_calendar_header_background') ?>);
+	--calendar-header-text: var(<?= get_option('css_calendar_header_text') ?>);
+	--calendar-outline: var(<?= get_option('css_calendar_outline') ?>);
+	--calendar-background-one: var(<?= get_option('css_calendar_background_one') ?>);
+	--calendar-background-two: var(<?= get_option('css_calendar_background_two') ?>);
 }

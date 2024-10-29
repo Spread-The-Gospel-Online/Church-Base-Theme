@@ -7,7 +7,7 @@ while (have_posts()) {
 
 	$post = get_post();
 	$post_id = $post->ID;
-	$image_id = get_post_thumbnail_id();
+	$image = util_get_hero_src($post);
 	
 	add_filter('breadcrumbs_steps', function ($steps) use ($post) {
 		return array(
@@ -17,8 +17,8 @@ while (have_posts()) {
 	});
 
 	util_render_snippet('common/hero', array(
-		'desktop_src' => $image_id ? wp_get_attachment_image_src($image_id, 'full', false)[0] : false,
-		'image_alt' => get_post_meta($image_id, '_wp_attachment_image_alt', true),
+		'desktop_src' => $image['src'],
+		'image_alt' => $image['alt'],
 		'caption_classes' => '',
 		'caption' => get_the_title(),
 		'opacity' => get_post_meta($post_id, 'hero_opacity', true),
