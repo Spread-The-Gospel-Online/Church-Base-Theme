@@ -1,4 +1,9 @@
 (() => {
+  // don't need for widgets
+  if (window.location.href.includes('widgets.php')) {
+    return
+  }
+
   const el = window.wp.element.createElement
   const { Fragment } = window.wp.element
   const { registerPlugin } = window.wp.plugins

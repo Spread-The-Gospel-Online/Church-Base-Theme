@@ -1,5 +1,6 @@
 .card__image-wrap {
 	position: relative;
+	padding-bottom: var(--card-image-aspect-ratio);
 	overflow: hidden;
 }
 

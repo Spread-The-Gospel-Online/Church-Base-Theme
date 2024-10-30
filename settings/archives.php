@@ -98,4 +98,24 @@ add_action( 'customize_register', function ($customizer) {
         ),
 	));
 
+
+	// Card Height
+	$customizer->add_setting('church_archive_sermon_card_height', array(
+		'type' => 'option',
+		'default' => 50,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_archive_sermon_card_height', array(
+		'type' => 'number',
+		'section' => 'church_archive_styles',
+		'label' => 'Sermon Card Apect Ratio (Height)',
+		'validate' => 'numeric',
+        'default'  => 50,
+        'input_attrs' => array(
+            'min' => 10,
+            'max' => 100,
+            'step' => 1,
+        ),
+	));
+
 });

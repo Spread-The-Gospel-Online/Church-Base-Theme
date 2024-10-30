@@ -60,6 +60,7 @@
 	--card-overlay-background: var(<?= get_option('css_card_overlay') ?>);
 	--card-overlay-opacity: 0.<?= get_option('card_overlay_opacity', 50) ?>;
 	--card-overlay-opacity-hover: 0.<?= get_option('card_overlay_opacity_hover', 50) ?>;
+	--card-image-aspect-ratio: <?= get_option('church_archive_sermon_card_height', 50) ?>%;
 	
 	--calendar-header-background: var(<?= get_option('css_calendar_header_background') ?>);
 	--calendar-header-text: var(<?= get_option('css_calendar_header_text') ?>);
