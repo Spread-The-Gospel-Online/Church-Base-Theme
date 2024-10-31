@@ -1,8 +1,6 @@
 <?php
 
 // Theme Supports
-add_theme_support('widgets');
-add_theme_support('widgets-block-editor');
 add_theme_support('post-thumbnails');
 add_theme_support( 'menus' );
 register_nav_menus(array(

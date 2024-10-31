@@ -112,7 +112,32 @@ add_action( 'customize_register', function ($customizer) {
 		array(
 			'id' => 'card_overlay',
 			'default' => '--black',
-			'label' => 'Card Image Overlay'
+			'label' => 'Card Image Overlay',
+			'section' => 'church_archive_styles'
+		),
+		array(
+			'id' => 'card_contents_background',
+			'default' => '--white',
+			'label' => 'Card Content Background',
+			'section' => 'church_archive_styles'
+		),
+		array(
+			'id' => 'card_contents_text',
+			'default' => '--black',
+			'label' => 'Card Content Text Color',
+			'section' => 'church_archive_styles'
+		),
+		array(
+			'id' => 'card_contents_links',
+			'default' => '--primary',
+			'label' => 'Card Content Link Color',
+			'section' => 'church_archive_styles'
+		),
+		array(
+			'id' => 'card_contents_links_hover',
+			'default' => '--primary-hover',
+			'label' => 'Card Content Link Color (Hover)',
+			'section' => 'church_archive_styles'
 		),
 		array(
 			'id' => 'calendar_header_background',

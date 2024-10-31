@@ -26,6 +26,7 @@
       }
 
       const currentMeta = coreEditor.getEditedPostAttribute('meta')
+      if (!currentMeta) { return }
       const [bgColor, setBGColor] = wp.element.useState(currentMeta.hero_background ? currentMeta.hero_background : heroDefaults.heroBGDefault)
       const [textColor, setTextColor] = wp.element.useState(currentMeta.hero_text ? currentMeta.hero_text : heroDefaults.heroTextDefault)
       

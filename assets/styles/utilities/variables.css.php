@@ -1,10 +1,10 @@
 :root {
 	--primary: <?= get_option('css_color_primary'); ?>;
-	--primary-hover: <?= get_option('css_color_primary_hover'); ?>;
+	--primary-hover: <?= get_option('css_color_primary-hover'); ?>;
 	--secondary: <?= get_option('css_color_secondary'); ?>;
-	--secondary-hover: <?= get_option('css_color_secondary_hover'); ?>;
+	--secondary-hover: <?= get_option('css_color_secondary-hover'); ?>;
 	--tertiary: <?= get_option('css_color_tertiary'); ?>;
-	--tertiary-hover: <?= get_option('css_color_tertiary_hover'); ?>;
+	--tertiary-hover: <?= get_option('css_color_tertiary-hover'); ?>;
 
 	--white: <?= get_option('css_color_white'); ?>;
 	--off-white: <?= get_option('css_color_off-white'); ?>;
@@ -61,6 +61,14 @@
 	--card-overlay-opacity: 0.<?= get_option('card_overlay_opacity', 50) ?>;
 	--card-overlay-opacity-hover: 0.<?= get_option('card_overlay_opacity_hover', 50) ?>;
 	--card-image-aspect-ratio: <?= get_option('church_archive_sermon_card_height', 50) ?>%;
+	--card-contents-padding: <?= get_option('card_content_item_padding', 10) ?>px <?= get_option('card_content_item_padding', 10) * 2 ?>px;
+	--card-contents-alignment: flex-start;
+	--card-contents-spacing: <?= get_option('card_content_item_gap', 10) ?>px;
+	--card-contents-background-opacity: 0.<?= get_option('card_background_opacity', 50) ?>;
+	--card-contents-background: var(<?= get_option('css_card_contents_background', '--white') ?>);
+	--card-contents-text: var(<?= get_option('css_card_contents_text', '--black') ?>);
+	--card-contents-links: var(<?= get_option('css_card_contents_links', '--primary') ?>);
+	--card-contents-links-hover: var(<?= get_option('css_card_contents_links_hover', '--primary-hover') ?>);
 	
 	--calendar-header-background: var(<?= get_option('css_calendar_header_background') ?>);
 	--calendar-header-text: var(<?= get_option('css_calendar_header_text') ?>);

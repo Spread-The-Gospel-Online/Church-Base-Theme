@@ -1,3 +1,9 @@
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
 .card__image-wrap {
 	position: relative;
 	padding-bottom: var(--card-image-aspect-ratio);
@@ -19,10 +25,47 @@
 	transition: transform .2s;
 }
 
-.sermon-card:hover .card__image {
+.card__content {
+	position: relative;
+	flex-grow: 1;
+	padding: var(--card-contents-padding);
+	display: flex;
+	flex-direction: column;
+	align-items: var(--card-contents-alignment);
+	gap: var(--card-contents-spacing);
+	color: var(--card-contents-text);
+	z-index: 1;
+}
+
+.card__content--on-top {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.card__content a {
+	color: var(--card-contents-links);
+	transition: color .2s;
+}
+
+.card__content a:hover {
+	color: var(--card-contents-links-hover);
+}
+
+.card__content::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: var(--card-contents-background);
+	opacity: var(--card-contents-background-opacity);
+	z-index: -1;
+}
+
+.card:hover .card__image {
 	transform: scale(1.03);
 }
 
-.sermon-card:hover .card__image-wrap::after {
+.card:hover .card__image-wrap::after {
 	opacity: var(--card-overlay-opacity-hover);
 }

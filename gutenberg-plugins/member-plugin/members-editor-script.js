@@ -16,6 +16,7 @@
     icon: 'admin-users',
     render: function (props) {
       const currentMeta = coreEditor.getEditedPostAttribute('meta')
+      if (!currentMeta) { return }
 
       if (wp.data.select('core/editor').getCurrentPostType() === 'layouts') {
         return;

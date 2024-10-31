@@ -4,6 +4,7 @@
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
+		<link rel="icon" type="image/x-icon" href="<?= get_site_icon_url() ?>">
 
 		<?php do_action('church_meta_stuffs'); ?>
 

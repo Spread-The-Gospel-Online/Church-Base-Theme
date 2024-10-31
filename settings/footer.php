@@ -9,7 +9,7 @@ add_action( 'customize_register', function ($customizer) {
 
 	$customizer->add_setting('copyright_text', array(
 		'type' => 'option',
-		'default' => '',
+		'default' => 'Copyright @ YYYY',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
 	$customizer->add_control('copyright_text', array(

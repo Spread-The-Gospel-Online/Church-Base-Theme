@@ -11,33 +11,15 @@
 
 	$sermon_permalink = get_permalink($sermon->ID);
 
-	$sermon_title = <<<HTML
-		<a href="$sermon_permalink">
-			$sermon->post_title
-		</a>
-	HTML;
-	
-	$sermon_date = util_render_date($sermon->post_date);
+	$sermon_card_options = get_option('church_archive_card_order');
 
-	$sermon_pastor = '';
-	if ($pastor) {
-		$sermon_pastor = <<<HTML
-			<a href="$pastor_permalink">
-				$pastor->post_title
-			</a>
-		HTML;
+	$card_content_classes = 'card__content';
+	if ('on_top' == get_option('card_content_position')) {
+		$card_content_classes .= ' card__content--on-top';
 	}
-
-	ob_start();
-	dynamic_sidebar('sermon_card');
-	$card_layout = ob_get_clean();
-
-	$card_layout = str_replace('[title]', $sermon_title, $card_layout);
-	$card_layout = str_replace('[date]', $sermon_date, $card_layout);
-	$card_layout = str_replace('[pastor]', $sermon_pastor, $card_layout);
 ?>
 
-<article class="card sermon-card">
+<article class="card card--sermon">
 	<a href="<?= $sermon_permalink ?>">
 		<?php util_render_snippet('common/image', array(
 			'wrapper_classes' => 'card__image-wrap',
@@ -47,11 +29,15 @@
 		), false); ?>
 	</a>
 
-	<?= $card_layout ?>
-
-	<?php if ($series) { ?>
-		<a href="<?= get_permalink($series) ?>">
-			<?= $series->post_title ?>
-		</a>
-	<?php } ?>
+	<div class="<?= $card_content_classes ?>">
+		<?php foreach($sermon_card_options as $card_option) { ?>
+			<?= util_render_snippet('sermons/card-options/' . $card_option, array(
+				'sermon_permalink' => $sermon_permalink,
+				'sermon' => $sermon,
+				'pastor_permalink' => $pastor_permalink,
+				'pastor' => $pastor,
+				'series' => $series,
+			)); ?>
+		<?php } ?>
+	</div>
 </article>
