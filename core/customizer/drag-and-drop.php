@@ -6,6 +6,10 @@ if (class_exists('WP_Customize_Control')) {
         //The type of control being rendered
         public $type = 'drag_and_drop';
 
+        public static function validate_drag_and_drop ($input) {
+            return $input;
+        }
+
         //Render the control in the customizer
         public function render_content() { ?>
             <div class="drag-and-drop-control" id="<?= $this->id ?>">

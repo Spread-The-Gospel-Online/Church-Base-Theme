@@ -3,15 +3,11 @@
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Church Site</title>
 		<meta name="description" content="">
 		<link rel="icon" type="image/x-icon" href="<?= get_site_icon_url() ?>">
 
 		<?php do_action('church_meta_stuffs'); ?>
-
-		<!-- <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/assets/logo-giga.ico" sizes="any"> -->
-		<!-- <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/assets/logo-giga.svg" type="image/svg+xml"> -->
-
-		<title>Church Site</title>
 
 		<link rel="stylesheet" type="text/css" href="<?php echo get_site_url(); ?>/wp-includes/css/dist/block-library/style.min.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">

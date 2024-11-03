@@ -24,7 +24,7 @@
 		<?php util_render_snippet('common/image', array(
 			'wrapper_classes' => 'card__image-wrap',
 			'extra_classes' => 'card__image',
-			'src' => $image ? $image : 'https://picsum.photos/350/250',
+			'src' => $image ? $image : get_option('church_sermon_default_image'),
 			'alt' => $alt ? $alt : $sermon->post_title,
 		), false); ?>
 	</a>

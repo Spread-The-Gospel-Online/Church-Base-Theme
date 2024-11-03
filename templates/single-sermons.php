@@ -9,19 +9,24 @@ while (have_posts()) {
 	$post_id = $post->ID;
 	$sermon_content = util_get_actual_content($post->post_content);
 	$image = util_get_hero_src($post);
+	$sermon_cards = get_option('church_sermons_card_order');
 
 
 	$pastor_ID = get_post_meta($post_id, 'sermon_pastor', true);
 	$pastor = $pastor_ID ? get_post($pastor_ID) : false;
-	$series = get_query_var('series');
+	$series_ID = get_post_meta($post_id, 'sermon_series', true);
+	$series = $series_ID ? get_post($series_ID) : false;
+
 	$steps = $series ? array(
 		array('type' => 'sermon-series', 'slug' => false),
-		array('type' => 'sermon-series', 'slug' => $series),
+		array('type' => 'sermon-series', 'slug' => $series->post_name),
 		array('type' => 'sermons', 'slug' => $post->post_name),
 	) : array(
 		array('type' => 'sermons', 'slug' => false),
 		array('type' => 'sermons', 'slug' => $post->post_name),
 	);
+
+
 
 
 	$sermon_snippet = util_render_snippet('sermons/sermon-link', array(
@@ -42,12 +47,26 @@ while (have_posts()) {
 	), false);
 
 	do_action('church_layout_after_header');
+} ?>
 
-	util_render_snippet('sermons/sermon-full-article', array(
-		'sermon_link' => $sermon_snippet,
-		'description' => $sermon_content,
-		'pastor' => $pastor
-	), false);
-}
 
-get_footer();
+<article class="ccontain sermon">
+	<div class="sermon__content-cards">
+		<?php foreach($sermon_cards as $card) { ?>
+			<?= util_render_snippet('sermons/card-options/' . $card, array(
+				'sermon' => $post,
+				'pastor' => $pastor,
+				'pastor_permalink' => get_permalink($pastor->ID),
+				'series' => $series,
+				'audio_link' => get_post_meta($post_id, 'audio_link', true),
+			)); ?>
+		<?php } ?>
+	</div>
+
+	<div class="sermon__content">
+		<?= get_the_content() ?>
+	</div>
+</article>
+
+
+<?php get_footer();

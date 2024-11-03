@@ -50,7 +50,7 @@ add_action( 'save_post_sermons', function ( $post_ID ) {
 	if (array_key_exists($nonce_field_name, $_POST)
 		&& wp_verify_nonce($_POST[$nonce_field_name], 'updating_sermons_meta_fields')) {
 		$pastor_ID = $_POST['pastor_id'];
-		update_post_meta($post_ID, 'sermon_pastor', $pastor_ID);	
+		update_post_meta($post_ID, 'sermon_pastor', $pastor_ID);
 	}
 
 	if (array_key_exists($series_nonce_field_name, $_POST)

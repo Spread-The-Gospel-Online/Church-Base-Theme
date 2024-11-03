@@ -71,9 +71,7 @@ add_action( 'customize_register', function ($customizer) {
 
 	$customizer->add_setting('church_archive_card_order', array(
 		'type' => 'option',
-		'sanitize_callback' => function ($input) {
-			return $input;
-		}
+		'sanitize_callback' => array('Drag_And_Drop_Custom_Control', 'validate_drag_and_drop')
 	));
 	$customizer->add_control(new Drag_And_Drop_Custom_Control( 
 		$customizer, 'church_archive_card_order',
@@ -146,7 +144,7 @@ add_action( 'customize_register', function ($customizer) {
 
 	$customizer->add_setting('card_background_opacity', array(
 		'type' => 'option',
-		'default' => 50,
+		'default' => 0.5,
 		'sanitize_callback' => 'sanitize_text_field',
 	));
 	$customizer->add_control('card_background_opacity', array(
@@ -154,11 +152,11 @@ add_action( 'customize_register', function ($customizer) {
 		'section' => 'church_archive_styles',
 		'label' => 'Sermon Card Content Background Opacity',
 		'validate' => 'numeric',
-        'default'  => 50,
+        'default'  => 0.5,
         'input_attrs' => array(
             'min' => 0,
-            'max' => 100,
-            'step' => 1,
+            'max' => 1,
+            'step' => 0.05,
         ),
 	));
 

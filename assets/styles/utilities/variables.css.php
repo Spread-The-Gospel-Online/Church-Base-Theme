@@ -38,7 +38,7 @@
 	--hero-background: var(<?= get_option('css_hero_background_color') ?>);
 	--hero-opacity: <?= get_option('hero_default_opacity') ?>;
 	--hero-text: var(<?= get_option('css_hero_text_color') ?>);
-	--hero-height: <?= get_option('hero_default_height', '40vh') ?>;
+	--hero-height: <?= get_option('hero_default_height', '40') ?>vh;
 
 	--breadcrumbs: var(<?= get_option('css_breadcrumbs_background'); ?>);
 	--breadcrumbs-transparent: <?= church_get_as_rgba('css_breadcrumbs_background', get_option('breadcrumbs_default_opacity')); ?>;
@@ -64,11 +64,13 @@
 	--card-contents-padding: <?= get_option('card_content_item_padding', 10) ?>px <?= get_option('card_content_item_padding', 10) * 2 ?>px;
 	--card-contents-alignment: flex-start;
 	--card-contents-spacing: <?= get_option('card_content_item_gap', 10) ?>px;
-	--card-contents-background-opacity: 0.<?= get_option('card_background_opacity', 50) ?>;
-	--card-contents-background: var(<?= get_option('css_card_contents_background', '--white') ?>);
+	--card-contents-background: <?= church_get_as_rgba('css_card_contents_background', get_option('card_background_opacity', 50)); ?>;
 	--card-contents-text: var(<?= get_option('css_card_contents_text', '--black') ?>);
 	--card-contents-links: var(<?= get_option('css_card_contents_links', '--primary') ?>);
 	--card-contents-links-hover: var(<?= get_option('css_card_contents_links_hover', '--primary-hover') ?>);
+
+	--sermon-content-item-width: <?= get_option('church_sermon_content_grid_size', 2) ?>;
+	--sermon-content-width: <?= get_option('church_sermon_content_width', 800) ?>px;
 	
 	--calendar-header-background: var(<?= get_option('css_calendar_header_background') ?>);
 	--calendar-header-text: var(<?= get_option('css_calendar_header_text') ?>);

@@ -29,10 +29,10 @@
 	position: relative;
 	flex-grow: 1;
 	padding: var(--card-contents-padding);
-	display: flex;
-	flex-direction: column;
-	align-items: var(--card-contents-alignment);
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 	gap: var(--card-contents-spacing);
+	background: var(--card-contents-background);
 	color: var(--card-contents-text);
 	z-index: 1;
 }
@@ -44,6 +44,10 @@
 	right: 0;
 }
 
+.card__title {
+	grid-column: span 2;
+}
+
 .card__content a {
 	color: var(--card-contents-links);
 	transition: color .2s;
@@ -51,15 +55,6 @@
 
 .card__content a:hover {
 	color: var(--card-contents-links-hover);
-}
-
-.card__content::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background: var(--card-contents-background);
-	opacity: var(--card-contents-background-opacity);
-	z-index: -1;
 }
 
 .card:hover .card__image {

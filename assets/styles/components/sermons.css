@@ -5,3 +5,28 @@
 	grid-row-gap: var(--sermon-archive-row-gap);
 	grid-column-gap: var(--sermon-archive-col-gap);
 }
+
+.sermon {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+
+.sermon__content {
+	margin-top: 3rem;
+}
+
+.sermon__content-cards {
+	margin: auto;
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(var(--sermon-content-item-width), 1fr);
+	width: var(--sermon-content-width);
+}
+
+.sermon__audio-content {
+	grid-column: span var(--sermon-content-item-width);
+}
+
+.sermon__audio-content audio {
+	width: 100%;
+}
