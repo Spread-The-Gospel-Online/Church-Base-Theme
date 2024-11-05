@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/upcoming-events-server-render.php');
+church_util_register_gutenberg_server_callback('/getServerContentsUpcomingEvents', array('numberOfEvents', 'numberOfColumns'), 'church_display_upcoming_events');
 
 // register the block
 add_action('init', function () {

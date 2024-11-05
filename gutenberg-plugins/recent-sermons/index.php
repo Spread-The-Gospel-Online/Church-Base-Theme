@@ -1,12 +1,12 @@
 <?php
 
-require_once(__DIR__ . '/recent-sermons-server-render.php');
+church_util_register_gutenberg_server_callback('/getServerContentsLatestSermons', array('numberSermons', 'numberOfColumns'), 'church_display_recent_sermons');
 
 // register the block
 add_action('init', function () {
 	wp_enqueue_script(
 		'recent-sermons-editor-script',
-		get_template_directory_uri() . '/gutenberg-plugins/recent-sermons/recent-sermons-editor-script.js',
+		get_template_directory_uri() . '/gutenberg-plugins/recent-sermons/recent-sermons-editor-script.js?v=2',
 		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-components'),
 		null,
 		true

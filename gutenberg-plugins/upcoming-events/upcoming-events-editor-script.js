@@ -68,8 +68,8 @@
     edit: function ({ attributes }) {
       setTimeout(() => loadEvents(attributes), 2000)
       return el('div', {
-        'data-get-upcoming-events': attributes.numberOfEvents,
-        'data-columns': attributes.numberOfColumns
+        'data-get-upcoming-events': attributes.numberOfEvents ? attributes.numberOfEvents : 2,
+        'data-columns': attributes.numberOfColumns ? attributes.numberOfColumns : 2
       }, 'loading...')
     },
     save: function () {

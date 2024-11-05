@@ -64,9 +64,9 @@ registerBlockType(blockName, {
     }
   },
   edit: function ({ attributes }) {
-    setTimeout(() => loadSermons(attributes), 2000)
+    setTimeout(() => loadSermons(attributes), 3000)
     return el('div', {
-      'data-get-latest-sermons': attributes.numberOfSermons
+      'data-get-latest-sermons': attributes.numberOfSermons ? attributes.numberOfSermons : 2
     }, 'loading...')
   },
   save: function () {
@@ -77,8 +77,10 @@ registerBlockType(blockName, {
 
 const loadSermons = (attributes) => {
   const sermonWrappers = document.querySelectorAll('[data-get-latest-sermons]')
+  console.log(sermonWrappers)
   
   sermonWrappers.forEach((wrapper) => {
+    console.log(wrapper)
     fetch(`/church/wp-json/church/v1/getServerContentsLatestSermons?numberSermons=${attributes.numberOfSermons}&numberOfColumns=${attributes.numberOfColumns}`)
       .then((blob) => blob.text())
       .then((data) => {

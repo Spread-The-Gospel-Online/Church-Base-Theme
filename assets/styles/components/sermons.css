@@ -12,7 +12,8 @@
 }
 
 .sermon__content {
-	margin-top: 3rem;
+	margin: 3rem auto;
+	max-width: var(--sermon-content-width);
 }
 
 .sermon__content-cards {
@@ -20,7 +21,7 @@
 	display: grid;
 	gap: 1rem;
 	grid-template-columns: repeat(var(--sermon-content-item-width), 1fr);
-	width: var(--sermon-content-width);
+	max-width: var(--sermon-content-width);
 }
 
 .sermon__audio-content {

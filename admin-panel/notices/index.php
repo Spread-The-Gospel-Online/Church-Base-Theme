@@ -1,7 +1,7 @@
 <?php
 
 function church_get_missing_archive_pages () {
-	$types_to_check = array('events', 'sermons', 'sermon-series');
+	$types_to_check = array('events', 'sermons', 'sermon-series', 'staff');
 	return array_filter($types_to_check, function ($type) {
 		$page = get_page_by_path($type);
 		return !$page;
