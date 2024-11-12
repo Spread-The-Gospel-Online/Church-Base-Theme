@@ -1,9 +1,5 @@
 # Church Theme
 
-## TODOs
-
- * create pages with slugs of the custom post types
-
 
 ## Setup
 
