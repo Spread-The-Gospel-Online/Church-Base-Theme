@@ -3,10 +3,12 @@
 
 <figure class="hero">
 	<picture>
-		<img src="<?= $desktop_src ?>"
-		     alt="<?= $image_alt ?>"
-		     class="hero__image"
-		     style="width: 100%; height: <?= isset($img_height) ? $img_height : 'auto' ?>">
+		<?php if ($desktop_src) { ?>
+			<img src="<?= $desktop_src ?>"
+			     alt="<?= $image_alt ?>"
+			     class="hero__image"
+			     style="width: 100%; height: <?= isset($img_height) ? $img_height : 'auto' ?>">
+		<?php } ?>
 	</picture>
 	<figcaption class="hero__caption <?= isset($caption_classes) ? $caption_classes : '' ?>">
 		<?php do_action('breadcrumbs_hero', $steps); ?>

@@ -10,7 +10,7 @@ function church_util_register_gutenberg_server_callback ($endpoint, $attributes,
 					$attributesToPass[$attribute] = $data[$attribute];
 				}
 
-				echo $display_callback($attributes, false);
+				echo $display_callback($attributesToPass, false);
 				exit();
 			},
 			'permission_callback' => '__return_true'

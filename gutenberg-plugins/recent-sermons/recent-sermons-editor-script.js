@@ -77,10 +77,8 @@ registerBlockType(blockName, {
 
 const loadSermons = (attributes) => {
   const sermonWrappers = document.querySelectorAll('[data-get-latest-sermons]')
-  console.log(sermonWrappers)
   
   sermonWrappers.forEach((wrapper) => {
-    console.log(wrapper)
     fetch(`/church/wp-json/church/v1/getServerContentsLatestSermons?numberSermons=${attributes.numberOfSermons}&numberOfColumns=${attributes.numberOfColumns}`)
       .then((blob) => blob.text())
       .then((data) => {

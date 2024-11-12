@@ -10,8 +10,27 @@ if (class_exists('WP_Customize_Control')) {
             return $input;
         }
 
+        public function check_option_exists () {
+            if (false == get_option($this->id, false)) {
+                $values = [];
+                foreach ($this->choices as $choice) {
+                    $values[] = $choice['value'];
+                }
+                $values_to_save = $values;
+                add_option($this->id, $values_to_save);
+            }
+        }
+
         //Render the control in the customizer
-        public function render_content() { ?>
+        public function render_content() { 
+            $this->check_option_exists();
+            $split_options = get_option($this->id);
+            for ($i = 0; $i < count($this->choices); $i++) {
+                $this->choices[$i]['sortIndex'] = array_search($this->choices[$i]['value'], $split_options);
+            }
+            usort($this->choices, function ($a, $b) {
+                return $a['sortIndex'] - $b['sortIndex'];
+            }); ?>
             <div class="drag-and-drop-control" id="<?= $this->id ?>">
                 <h4 class="customize-control-title">
                     <?= esc_html($this->label) ?>
@@ -25,7 +44,7 @@ if (class_exists('WP_Customize_Control')) {
                         </li>
                     <?php } ?>
                 </ul>
-                <input type="hidden" id="_customize-input-<?= $this->id ?>" value="a,b,c" />
+                
                 <script src="<?= get_template_directory_uri() ?>/assets/scripts/templates/drag-and-drop.js"></script>
                 <script type="text/javascript">
                     window.setupDragAndDrops('<?= $this->id ?>')

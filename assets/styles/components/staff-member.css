@@ -1,0 +1,25 @@
+.staff-member {
+	display: grid;
+	grid-row-gap: 1rem;
+	grid-column-gap: 3rem;
+	align-items: center;
+}
+
+.staff-member.staff-member--horizontal {
+	grid-template-columns: var(--staff-image-width) 1fr;
+}
+
+.staff-member--vertical {
+	text-align: center;
+}
+
+.staff-member__image {
+	width: var(--staff-image-width);
+	height: 100%;
+	object-fit: cover;
+}
+
+.staff-member__image.staff-member__image--small {
+	margin: auto;
+	height: var(--staff-image-width);
+}
