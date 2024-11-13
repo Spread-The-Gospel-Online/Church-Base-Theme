@@ -13,4 +13,9 @@
 	} ?>
 </section>
 
+<?= util_render_snippet('common/pagination', array(
+	'extra_classes' => 'sermon-archive__pagination',
+	'post_type' => 'Sermons'
+), false) ?>
+
 <?php get_footer(); ?>
