@@ -25,12 +25,14 @@ if (class_exists('WP_Customize_Control')) {
         public function render_content() { 
             $this->check_option_exists();
             $split_options = get_option($this->id);
-            for ($i = 0; $i < count($this->choices); $i++) {
-                $this->choices[$i]['sortIndex'] = array_search($this->choices[$i]['value'], $split_options);
-            }
-            usort($this->choices, function ($a, $b) {
-                return $a['sortIndex'] - $b['sortIndex'];
-            }); ?>
+            if ($split_options) {
+                for ($i = 0; $i < count($this->choices); $i++) {
+                    $this->choices[$i]['sortIndex'] = array_search($this->choices[$i]['value'], $split_options);
+                }
+                usort($this->choices, function ($a, $b) {
+                    return $a['sortIndex'] - $b['sortIndex'];
+                }); 
+            } ?>
             <div class="drag-and-drop-control" id="<?= $this->id ?>">
                 <h4 class="customize-control-title">
                     <?= esc_html($this->label) ?>
