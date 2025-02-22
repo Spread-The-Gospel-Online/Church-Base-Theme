@@ -8,6 +8,7 @@ while (have_posts()) {
 	$post = get_post();
 	$post_id = $post->ID;
 	$image = util_get_hero_src($post);
+	$event_location = get_post_meta($post->ID, 'event_location', true);
 	
 	add_filter('breadcrumbs_steps', function ($steps) use ($post) {
 		return array(
@@ -35,6 +36,12 @@ while (have_posts()) {
 	), false);
 
 	the_content();
+
+	if (str_contains($event_location, 'google.com/maps/embed')) {
+		util_render_snippet('events/google-map', array(
+			'event_location' => $event_location
+		), false);
+	}
 }
 
 get_footer();

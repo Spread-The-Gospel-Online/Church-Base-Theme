@@ -77,4 +77,9 @@
 	--calendar-outline: var(<?= get_option('css_calendar_outline') ?>);
 	--calendar-background-one: var(<?= get_option('css_calendar_background_one') ?>);
 	--calendar-background-two: var(<?= get_option('css_calendar_background_two') ?>);
+
+	--pagination-link: var(<?= get_option('css_pagination_interactive') ?>);
+	--pagination-link-hover: var(<?= get_option('css_pagination_interactive_hover') ?>);
+	--pagination-link-background: var(<?= get_option('css_pagination_interactive_background') ?>);
+	--pagination-link-active: var(<?= get_option('css_pagination_current') ?>);
 }

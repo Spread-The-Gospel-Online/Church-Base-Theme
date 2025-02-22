@@ -1,10 +1,26 @@
 .pagination {
 	margin-bottom: 4rem;
-}
-
-.pagination .nav-links {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	column-gap: 1rem;
+}
+
+.pagination a {
+	color: var(--pagination-link);
+	background: var(--pagination-link-background);
+	transition: color .2s;
+}
+
+.pagination a:hover {
+	color: var(--pagination-link-hover);
+}
+
+.page-numbers.current {
+	background: var(--pagination-link-background);
+	color: var(--pagination-link-active);
+}
+
+.page-numbers {
+	padding: 0.5rem 0.75rem;
 }

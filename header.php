@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Church Site</title>
+		<title><?= apply_filters('church_get_site_title', get_bloginfo('name')) ?></title>
 		<meta name="description" content="">
 		<link rel="icon" type="image/x-icon" href="<?= get_site_icon_url() ?>">
 

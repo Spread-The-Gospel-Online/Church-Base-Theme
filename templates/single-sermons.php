@@ -27,8 +27,6 @@ while (have_posts()) {
 	);
 
 
-
-
 	$sermon_snippet = util_render_snippet('sermons/sermon-link', array(
 		'link' => get_post_meta($post_id, 'link', true),
 		'audio_link' => get_post_meta($post_id, 'audio_link', true)

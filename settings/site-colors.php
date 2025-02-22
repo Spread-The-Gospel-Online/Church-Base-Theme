@@ -25,7 +25,7 @@ add_action( 'customize_register', function ($customizer) {
 		array( 'slug' => 'grey-four', 'label' => 'Grey Four', 'default' => '#494949' ),
 		array( 'slug' => 'black', 'label' => 'Black', 'default' => '#000000' ),
 		array( 'slug' => 'link', 'label' => 'Links', 'default' => '#0000EE' ),
-		array( 'slug' => 'link_hover', 'label' => 'Links (Hover)', 'default' => '#0000EE' ),
+		array( 'slug' => 'link-hover', 'label' => 'Links (Hover)', 'default' => '#0000EE' ),
 	);
 
 	foreach ($colors as $color) {
@@ -129,13 +129,13 @@ add_action( 'customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'card_contents_links',
-			'default' => '--primary',
+			'default' => '--link',
 			'label' => 'Card Content Link Color',
 			'section' => 'church_archive_styles'
 		),
 		array(
 			'id' => 'card_contents_links_hover',
-			'default' => '--primary-hover',
+			'default' => '--link-hover',
 			'label' => 'Card Content Link Color (Hover)',
 			'section' => 'church_archive_styles'
 		),
@@ -193,7 +193,40 @@ add_action( 'customize_register', function ($customizer) {
 			'label' => 'Copyright Text',
 			'section' => 'church_footer_section'
 		),
+		array(
+			'id' => 'pagination_interactive',
+			'default' => '--primary',
+			'label' => 'Pagination Link Color',
+			'section' => 'church_pagination_styles'
+		),
+		array(
+			'id' => 'pagination_interactive_hover',
+			'default' => '--primary-hover',
+			'label' => 'Pagination Link Color (Hover)',
+			'section' => 'church_pagination_styles'
+		),
+		array(
+			'id' => 'pagination_interactive_background',
+			'default' => '--white',
+			'label' => 'Pagination Link Background',
+			'section' => 'church_pagination_styles'
+		),
+		array(
+			'id' => 'pagination_current',
+			'default' => '--black',
+			'label' => 'Pagination Current Page Color',
+			'section' => 'church_pagination_styles'
+		)
 	);
+
+	/* 
+		array(
+			'id' => '',
+			'default' => '--',
+			'label' => '',
+			'section' => ''
+		)
+	*/
 
 	$color_options = array();
 	foreach ($colors as $color) {
