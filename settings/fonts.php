@@ -8,6 +8,26 @@ add_action( 'customize_register', function ($customizer) {
 		'capability' => 'edit_theme_options'
 	));
 
+	// Set defaults
+	if (!get_option('font_family_one')) {
+		update_option('font_family_one', 'Open+Sans:ital,wght@0,300..800;1,300..800');
+	}
+	if (!get_option('font_family_one_rule')) {
+		update_option('font_family_one_rule', '"Open Sans", sans-serif');
+	}
+	if (!get_option('font_family_two')) {
+		update_option('font_family_two', 'Roboto:ital,wght@0,100..900;1,100..900');
+	}
+	if (!get_option('font_family_two_rule')) {
+		update_option('font_family_two_rule', '"Roboto", sans-serif');
+	}
+	if (!get_option('font_general')) {
+		update_option('font_general', 'font_family_one_rule');
+	}
+	if (!get_option('font_headings')) {
+		update_option('font_headings', 'font_family_two_rule');
+	}
+
 	$font_options = [];
 	$fonts = array(
 		array( 'label' => 'Font Family One', 'id' => 'font_family_one' ),
@@ -26,7 +46,7 @@ add_action( 'customize_register', function ($customizer) {
 			'type' => 'text',
 			'section' => 'church_fonts_section',
 			'label' => $font['label'],
-			'description' => 'Add as a Google Font link'
+			'description' => 'Add family parameter from embed URL (example: "Open+Sans:ital,wght@0,300..800;1,300..800")'
 		));
 
 		$customizer->add_setting($font['id'] . '_rule', array(
@@ -37,13 +57,13 @@ add_action( 'customize_register', function ($customizer) {
 		$customizer->add_control($font['id']. '_rule', array(
 			'type' => 'text',
 			'section' => 'church_fonts_section',
-			'label' => $font['label'] . ' CSS Rule'
+			'label' => $font['label'] . ' CSS Rule',
+			'description' => 'Add CSS rule without semicolon (example: "Open Sans", sans-serif)'
 		));
 
 		$key = $font['id'] . '_rule';
 		$font_options[$key] = $font['label'];
 	}
-
 
 	// SET DEFAULT FONTS FOR ELEMENTS
 	$font_selectors = array(

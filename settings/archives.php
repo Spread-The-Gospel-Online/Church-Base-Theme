@@ -16,7 +16,7 @@ add_action( 'init', function () {
 
 add_action( 'customize_register', function ($customizer) {
 	$customizer->add_section('church_archive_styles', array(
-		'title' => 'Archive Styles',
+		'title' => 'Sermon Archive Styles',
 		'description' => 'Settings for archives grids',
 		'priority' => 120,
 		'capability' => 'edit_theme_options'
@@ -82,6 +82,7 @@ add_action( 'customize_register', function ($customizer) {
             	array('label' => 'Title', 'value' => 'title'),
             	array('label' => 'Date', 'value' => 'date'),
             	array('label' => 'Pastor', 'value' => 'pastor'),
+            	array('label' => 'Do Not Display', 'value' => 'nodisplay'),
             )
         )
     ));
@@ -141,6 +142,22 @@ add_action( 'customize_register', function ($customizer) {
 		'label' => 'Card Content Position',
 	));
 
+	$customizer->add_setting('card_content_text_align', array(
+		'type' => 'option',
+		'default' => 'left',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('card_content_text_align', array(
+		'type' => 'select',
+		'choices' => array(
+			'left' => 'Left',
+			'center' => 'Center',
+			'right' => 'Right'
+		),
+		'section' => 'church_archive_styles',
+		'label' => 'Card Content Text Align',
+	));
+
 
 	$customizer->add_setting('card_background_opacity', array(
 		'type' => 'option',
@@ -150,7 +167,7 @@ add_action( 'customize_register', function ($customizer) {
 	$customizer->add_control('card_background_opacity', array(
 		'type' => 'number',
 		'section' => 'church_archive_styles',
-		'label' => 'Sermon Card Content Background Opacity',
+		'label' => 'Sermon Card Text Content Background Opacity',
 		'validate' => 'numeric',
         'default'  => 0.5,
         'input_attrs' => array(
@@ -164,37 +181,37 @@ add_action( 'customize_register', function ($customizer) {
 	// CARD STYLES
 	$customizer->add_setting('card_overlay_opacity', array(
 		'type' => 'option',
-		'default' => 50,
+		'default'  => 0.5,
 		'sanitize_callback' => 'sanitize_text_field',
 	));
 	$customizer->add_control('card_overlay_opacity', array(
 		'type' => 'number',
 		'section' => 'church_archive_styles',
-		'label' => 'Sermon Card Overlay Opacity',
+		'label' => 'Sermon Card Image Overlay Opacity',
 		'validate' => 'numeric',
-        'default'  => 50,
+        'default'  => 0.5,
         'input_attrs' => array(
             'min' => 0,
-            'max' => 100,
-            'step' => 1,
+            'max' => 1,
+            'step' => 0.05,
         ),
 	));
 
 	$customizer->add_setting('card_overlay_opacity_hover', array(
 		'type' => 'option',
-		'default' => 50,
+		'default' => 0.5,
 		'sanitize_callback' => 'sanitize_text_field',
 	));
 	$customizer->add_control('card_overlay_opacity_hover', array(
 		'type' => 'number',
 		'section' => 'church_archive_styles',
-		'label' => 'Sermon Card Overlay Opacity (Hover)',
+		'label' => 'Sermon Card Image Overlay Opacity (Hover)',
 		'validate' => 'numeric',
-        'default'  => 50,
+        'default'  => 0.5,
         'input_attrs' => array(
             'min' => 0,
-            'max' => 100,
-            'step' => 1,
+            'max' => 1,
+            'step' => 0.05,
         ),
 	));
 

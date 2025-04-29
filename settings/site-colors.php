@@ -63,7 +63,7 @@ add_action( 'customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'submenu_background',
-			'default' => '--white',
+			'default' => '--off-white',
 			'label' => 'Submenu Background',
 			'section' => 'church_header_section'
 		),

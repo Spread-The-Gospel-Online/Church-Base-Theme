@@ -2,7 +2,9 @@
 
 // Theme Supports
 add_theme_support('post-thumbnails');
-add_theme_support( 'menus' );
+add_theme_support('wp-block-styles');
+
+add_theme_support('menus');
 register_nav_menus(array(
 	'primary-menu' => 'Primary Menu',
 	'footer-menu' => 'Footer Menu'

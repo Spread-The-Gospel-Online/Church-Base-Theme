@@ -23,3 +23,25 @@
 .image-trigger:hover .image {
 	transform: scale(1.05);
 }
+
+
+
+.parallax {
+	position: relative;
+	overflow: hidden;
+}
+
+.parallax img {
+	display: block;
+	object-fit: cover;
+}
+
+.parallax--banner img {
+	width: 100% !important;
+}
+
+.parallax img {
+	transform: scale(1.4);
+	transform-origin: center var(--parallax-position);
+	transition: all .1s;
+}

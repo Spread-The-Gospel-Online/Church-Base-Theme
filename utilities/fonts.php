@@ -3,10 +3,14 @@
 function util_get_fonts() {
 	$query_string = [];
 
-	$font_one = get_option('font_family_one');
+	$fonts = array(get_option('font_general'));
+	if (get_option('font_headings') != get_option('font_general')) {
+		$fonts[] = get_option('font_headings');
+	}
 
-	if (isset($font_one) && $font_one != '') {
-		$query_string[] = 'family=' . $font_one;
+	foreach ($fonts as $font) {
+		$font_load_param = str_replace('_rule', '', $font);
+		$query_string[] = 'family=' . get_option($font_load_param);
 	}
 
 	return implode('&', $query_string);

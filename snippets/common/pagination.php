@@ -2,5 +2,5 @@
 	<?= paginate_links(array_merge(array(
 		'prev_text' => 'Newer ' . $post_type,
 		'next_text' => 'Older ' . $post_type
-	), is_array($extra_args) ? $extra_args : array())) ?>
+	), (isset($extra_args) && is_array($extra_args)) ? $extra_args : array())) ?>
 </div>

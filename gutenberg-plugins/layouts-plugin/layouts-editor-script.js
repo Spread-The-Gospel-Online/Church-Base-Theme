@@ -15,7 +15,6 @@
       }
       
       const currentMeta = coreEditor.getEditedPostAttribute('meta')
-      console.log(currentMeta)
       return el(Fragment, {},
         el(PluginSidebarMoreMenuItem, {
           target: 'church-layouts-sidebar'

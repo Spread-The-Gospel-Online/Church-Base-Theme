@@ -32,6 +32,7 @@
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: var(--card-contents-spacing);
+	text-align: var(--card-contents-alignment);
 	background: var(--card-contents-background);
 	color: var(--card-contents-text);
 	z-index: 1;
@@ -44,6 +45,7 @@
 	right: 0;
 }
 
+.card__full-item,
 .card__title {
 	grid-column: span 2;
 }

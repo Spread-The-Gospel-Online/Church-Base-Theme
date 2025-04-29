@@ -8,6 +8,10 @@
 	}
 ?>
 
+<?php if (get_option('enable_hero_parallax') == 'yes') { ?>
+	<script type="module" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/components/parallax.js"></script>
+<?php } ?>
+
 <?php if ($is_fixed == 'yes') { ?>
 	<script type="module" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/components/fixed-header.js"></script>
 	<div data-fixed-header-observer style="width: 100%; height: <?= get_option('church_logo_default_size', 115) ?>px; z-index: -1; background: var(--header-background);"></div>

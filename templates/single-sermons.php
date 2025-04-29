@@ -59,6 +59,16 @@ while (have_posts()) {
 				'audio_link' => get_post_meta($post_id, 'audio_link', true),
 			)); ?>
 		<?php } ?>
+
+		<div class="sermon__download-wrapper">
+			<a href="<?= get_post_meta($post_id, 'audio_link', true) ?>" 
+			   download="<?= $post->post_title ?>" 
+			   aria-title="Download Sermon"
+			   class="sermon__download">
+				<?= util_render_snippet('icons/download', array('classes' => 'sermon__download-icon')) ?>
+				Save
+			</a>
+		</div>
 	</div>
 
 	<div class="sermon__content">

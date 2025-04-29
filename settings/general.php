@@ -49,5 +49,22 @@ add_action( 'customize_register', function ($customizer) {
 
 
 
+	$customizer->add_setting('enable_hero_parallax', array(
+		'type' => 'option',
+		'default' => 'no',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('enable_hero_parallax', array(
+		'type' => 'select',
+		'choices' => array(
+			'yes' => 'Enable Parallax',
+			'no' => 'Disable Parallax',
+		),
+		'section' => 'church_general_section',
+		'label' => 'Image Parallax Effect',
+		'description' => 'Will automatically add parallax effect to hero images'
+	));
+
+
 
 });

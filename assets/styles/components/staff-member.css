@@ -3,17 +3,21 @@
 	grid-row-gap: 1rem;
 	grid-column-gap: 3rem;
 	align-items: center;
+	justify-content: center;
 }
 
 .staff-member.staff-member--horizontal {
 	grid-template-columns: var(--staff-image-width) 1fr;
 }
 
-.staff-member--vertical {
+.staff-member.staff-member--vertical {
+	align-items: flex-start;
 	text-align: center;
 }
 
 .staff-member__image {
+	display: block;
+	margin: auto;
 	width: var(--staff-image-width);
 	height: 100%;
 	object-fit: cover;
@@ -22,4 +26,11 @@
 .staff-member__image.staff-member__image--small {
 	margin: auto;
 	height: var(--staff-image-width);
+}
+
+.staff-member__content {
+	max-width: calc(1.4 * var(--staff-image-width));
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5rem;
 }

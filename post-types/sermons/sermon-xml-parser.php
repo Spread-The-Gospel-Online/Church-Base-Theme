@@ -14,6 +14,7 @@ class Sermon_Proccesser {
 			$slug = sanitize_title($title);
 			$sermon_exists = get_page_by_path($slug, OBJECT, 'sermons');
 			if (!$sermon_exists) {
+				$itunes_info = $sermon->children('itunes', true);
 				$timestamp = strtotime((string) $sermon->pubDate);
 				$enclosure = (array) $sermon->enclosure;
 				$audio_url = $enclosure['@attributes']['url'];
@@ -28,12 +29,18 @@ class Sermon_Proccesser {
 				update_post_meta($sermon_id, 'link', (string) $sermon->link);
 				update_post_meta($sermon_id, 'audio_link', (string) $audio_url);
 				
-				$item_dc = $sermon->children('http://purl.org/dc/elements/1.1/');
-				$pastor_name = $item_dc->creator;
-				if ($pastor_name) {
-					self::save_pastor_to_sermon($sermon_id, $pastor_name);
+				if (property_exists($itunes_info, 'author')) {
+					self::save_pastor_to_sermon($sermon_id, $itunes_info->author);
+				} else {
+					$item_dc = $sermon->children('http://purl.org/dc/elements/1.1/');
+					$pastor_name = $item_dc->creator;
+					if ($pastor_name) {
+						self::save_pastor_to_sermon($sermon_id, $pastor_name);
+					}
 				}
 			}
+
+			break;
 		}
 	}
 

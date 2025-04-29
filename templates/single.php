@@ -4,7 +4,7 @@ get_header();
 
 while (have_posts()) {
 	the_post();
-	the_content();
+	do_blocks(the_content());
 }
 
 get_footer();

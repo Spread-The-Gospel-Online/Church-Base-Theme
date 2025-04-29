@@ -17,6 +17,17 @@
 	if ('on_top' == get_option('card_content_position')) {
 		$card_content_classes .= ' card__content--on-top';
 	}
+
+	$extra_card_item_classes = '';
+	$pastor_index = array_search('pastor', $sermon_card_options);
+	$date_index = array_search('date', $sermon_card_options);
+	error_log(abs($date_index - $pastor_index));
+	error_log($pastor_index);
+	error_log($date_index);
+
+	if (abs($date_index - $pastor_index) > 1) {
+		$extra_card_item_classes = 'card__full-item';
+	}
 ?>
 
 <article class="card card--sermon">
@@ -31,12 +42,14 @@
 
 	<div class="<?= $card_content_classes ?>">
 		<?php foreach($sermon_card_options as $card_option) { ?>
+			<?php if ($card_option == 'nodisplay') { break; } ?>
 			<?= util_render_snippet('sermons/card-options/' . $card_option, array(
 				'sermon_permalink' => $sermon_permalink,
 				'sermon' => $sermon,
 				'pastor_permalink' => $pastor_permalink,
 				'pastor' => $pastor,
 				'series' => $series,
+				'extra_classes' => $extra_card_item_classes
 			)); ?>
 		<?php } ?>
 	</div>

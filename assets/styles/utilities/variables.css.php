@@ -58,11 +58,11 @@
 	--sermon-archive-col-gap: 2rem;
 
 	--card-overlay-background: var(<?= get_option('css_card_overlay') ?>);
-	--card-overlay-opacity: 0.<?= get_option('card_overlay_opacity', 50) ?>;
-	--card-overlay-opacity-hover: 0.<?= get_option('card_overlay_opacity_hover', 50) ?>;
+	--card-overlay-opacity: <?= get_option('card_overlay_opacity', 50) ?>;
+	--card-overlay-opacity-hover: <?= get_option('card_overlay_opacity_hover', 50) ?>;
 	--card-image-aspect-ratio: <?= get_option('church_archive_sermon_card_height', 50) ?>%;
 	--card-contents-padding: <?= get_option('card_content_item_padding', 10) ?>px <?= get_option('card_content_item_padding', 10) * 2 ?>px;
-	--card-contents-alignment: flex-start;
+	--card-contents-alignment: <?= get_option('card_content_text_align', 'left') ?>;
 	--card-contents-spacing: <?= get_option('card_content_item_gap', 10) ?>px;
 	--card-contents-background: <?= church_get_as_rgba('css_card_contents_background', get_option('card_background_opacity', 50)); ?>;
 	--card-contents-text: var(<?= get_option('css_card_contents_text', '--black') ?>);

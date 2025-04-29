@@ -9,7 +9,7 @@ do_action('church_layout_after_header');
 $archive_type = get_queried_object()->name;
 $archive_page = get_page_by_path($archive_type);
 
-if ($archive_page && false) {
+if ($archive_page) {
 	echo util_get_actual_content($archive_page->post_content);
 } else {
 	$staff_ids = get_posts(array(

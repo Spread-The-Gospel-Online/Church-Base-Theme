@@ -1,13 +1,13 @@
 <?php if (!isset($steps)) { $steps = false; } ?>
 <?php do_action('breadcrumbs_above', $steps); ?>
 
-<figure class="hero">
+<figure class="hero parallax">
 	<picture>
 		<?php if ($desktop_src) { ?>
 			<img src="<?= $desktop_src ?>"
 			     alt="<?= $image_alt ?>"
 			     class="hero__image"
-			     style="width: 100%; height: <?= isset($img_height) ? $img_height : 'auto' ?>">
+			     style="--parallax-position: 0%;">
 		<?php } ?>
 	</picture>
 	<figcaption class="hero__caption <?= isset($caption_classes) ? $caption_classes : '' ?>">

@@ -1,0 +1,3 @@
+.tile .image-wrapper {
+	padding-bottom: var(--card-image-aspect-ratio);
+}

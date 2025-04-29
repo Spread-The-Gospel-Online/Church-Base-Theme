@@ -31,3 +31,23 @@
 .sermon__audio-content audio {
 	width: 100%;
 }
+
+.sermon__download-wrapper {
+	grid-column: span var(--sermon-content-item-width);
+	text-align: center;
+}
+
+.sermon__download {
+	border-radius: 100%;
+	height: 7.5rem;
+	width: 7.5rem;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.25rem;
+}
+
+.sermon__download-icon {
+	width: 1.5rem;
+}

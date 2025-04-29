@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> style="margin-top: 0 !important">
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title><?= apply_filters('church_get_site_title', get_bloginfo('name')) ?></title>
 		<meta name="description" content="">
 		<link rel="icon" type="image/x-icon" href="<?= get_site_icon_url() ?>">
+
+		<?php wp_head(); ?>
 
 		<?php do_action('church_meta_stuffs'); ?>
 
@@ -14,10 +16,8 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?<?= util_get_fonts() ?>&display=swap" rel="stylesheet">
 
-		<?php 
-			// if in the customizer load non-compiled styles so variables update (to preview changes before save)
-			// also load non-compiled when user is admin (dev) 
-		?>
+		<?php block_header_area(); ?>
+		
 		<?php if (is_customize_preview() || current_user_can('administrator')) { ?>
 			<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/assets/styles/main.css.php">
 			<style type="text/css">
