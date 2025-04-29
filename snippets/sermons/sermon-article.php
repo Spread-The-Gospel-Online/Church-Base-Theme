@@ -21,12 +21,21 @@
 	$extra_card_item_classes = '';
 	$pastor_index = array_search('pastor', $sermon_card_options);
 	$date_index = array_search('date', $sermon_card_options);
-	error_log(abs($date_index - $pastor_index));
-	error_log($pastor_index);
-	error_log($date_index);
 
 	if (abs($date_index - $pastor_index) > 1) {
 		$extra_card_item_classes = 'card__full-item';
+	}
+
+	if ($image == false) {
+		error_log('image is false');
+		$series_image_id = get_post_thumbnail_id($series);
+		$series_image_src = $series_image_id ? wp_get_attachment_image_src($series_image_id, 'full', false)[0] : false;
+		error_log($series_image_src);
+		if ($series_image_src) {
+			$image = $series_image_src;
+		} else {
+			$image = get_option('church_sermon_default_image');
+		}	
 	}
 ?>
 
@@ -35,7 +44,7 @@
 		<?php util_render_snippet('common/image', array(
 			'wrapper_classes' => 'card__image-wrap',
 			'extra_classes' => 'card__image',
-			'src' => $image ? $image : get_option('church_sermon_default_image'),
+			'src' => $image,
 			'alt' => $alt ? $alt : $sermon->post_title,
 		), false); ?>
 	</a>
