@@ -11,8 +11,8 @@ add_action( 'customize_register', function ($customizer) {
 
 	// ------- BASE COLORS -------
 	$colors = array(
-		array( 'slug' => 'primary', 'label' => 'Primary', 'default' => '#DD6644' ),
-		array( 'slug' => 'primary-hover', 'label' => 'Primary (Hover)', 'default' => '#DD6644' ),
+		array( 'slug' => 'primary', 'label' => 'Primary', 'default' => '#AF0005' ),
+		array( 'slug' => 'primary-hover', 'label' => 'Primary (Hover)', 'default' => '#A00005' ),
 		array( 'slug' => 'secondary', 'label' => 'Secondary', 'default' => '#2aaa00' ),
 		array( 'slug' => 'secondary-hover', 'label' => 'Secondary (Hover)', 'default' => '#2d8200' ),
 		array( 'slug' => 'tertiary', 'label' => 'Tertiary', 'default' => '#1815d3' ),
