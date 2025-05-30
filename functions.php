@@ -19,7 +19,7 @@ require_once( 'admin-panel/index.php' );
 require_once( 'post-types/index.php' );
 
 // set templates
-add_filter( 'template_include', function ( $template ) {
+add_filter( 'template_include', function ($template) {
 	// Set our template prefix
 	$template_prefix = '';
 	$template_prefix = is_singular() ? 'single' : $template_prefix;

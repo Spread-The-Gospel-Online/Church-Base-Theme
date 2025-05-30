@@ -27,10 +27,8 @@
 	}
 
 	if ($image == false) {
-		error_log('image is false');
 		$series_image_id = get_post_thumbnail_id($series);
 		$series_image_src = $series_image_id ? wp_get_attachment_image_src($series_image_id, 'full', false)[0] : false;
-		error_log($series_image_src);
 		if ($series_image_src) {
 			$image = $series_image_src;
 		} else {
