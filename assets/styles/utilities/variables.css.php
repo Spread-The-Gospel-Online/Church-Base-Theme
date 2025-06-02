@@ -15,7 +15,7 @@
 	--black: <?= get_option('css_color_black'); ?>;
 
 	--link: <?= get_option('css_color_link'); ?>;
-	--link-hover: <?= get_option('css_color_link_hover'); ?>;
+	--link-hover: <?= get_option('css_color_link-hover'); ?>;
 
 	--font-family-general: <?= get_option(get_option('font_general')) ?>;
 	--font-family-headings: <?= get_option(get_option('font_headings')) ?>;

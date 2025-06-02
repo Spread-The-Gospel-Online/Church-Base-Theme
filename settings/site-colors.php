@@ -25,7 +25,7 @@ add_action( 'customize_register', function ($customizer) {
 		array( 'slug' => 'grey-four', 'label' => 'Grey Four', 'default' => '#494949' ),
 		array( 'slug' => 'black', 'label' => 'Black', 'default' => '#000000' ),
 		array( 'slug' => 'link', 'label' => 'Links', 'default' => '#0000EE' ),
-		array( 'slug' => 'link-hover', 'label' => 'Links (Hover)', 'default' => '#0000EE' ),
+		array( 'slug' => 'link-hover', 'label' => 'Links (Hover)', 'default' => '#0000CC' ),
 	);
 
 	foreach ($colors as $color) {

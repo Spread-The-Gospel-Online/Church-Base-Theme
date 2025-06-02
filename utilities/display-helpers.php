@@ -32,6 +32,15 @@ function util_get_hero_src ($post) {
 		$image_src = $image_id ? wp_get_attachment_image_src($image_id, 'full', false)[0] : false;
 	}
 
+	// for pages, check for parent image
+	if ($image_src == false && $post->post_type === 'page') {
+		$parent_page = $post->post_parent;
+		if ($parent_page) {
+			$image_id = get_post_thumbnail_id($parent_page);
+			$image_src = $image_id ? wp_get_attachment_image_src($image_id, 'full', false)[0] : false;
+		}
+	}
+
 	return array(
 		'src' => $image_src,
 		'alt' => $image_id ? get_post_meta($image_id, '_wp_attachment_image_alt', true) : $post->post_title
