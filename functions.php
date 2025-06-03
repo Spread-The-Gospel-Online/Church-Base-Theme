@@ -29,6 +29,10 @@ add_filter( 'template_include', function ($template) {
 	$template_to_check = __DIR__ . '/templates/' . $template_prefix . '-' . get_post_type() . '.php';
 	$backup_template = __DIR__ . '/templates/' . $template_prefix . '.php';
 
+	if (is_search()) {
+		$template_to_check = __DIR__ . '/templates/search.php';
+	}
+
 	// set which template we use
 	if (file_exists($template_to_check)) {
 		$template = $template_to_check;

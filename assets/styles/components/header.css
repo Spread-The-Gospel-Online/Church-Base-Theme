@@ -87,6 +87,20 @@
 	display: none;
 }
 
+.header__search-trigger {
+	border: none;
+	display: none;
+	align-items: center;
+	appearance: none;
+	background: transparent;
+	cursor: pointer;
+}
+
+.header__search-trigger-icon {
+	height: 1.5rem;
+	color: var(--header-text);
+}
+
 .header__mobile-wrapper.open .header__close-menu {
 	display: block;
 }
