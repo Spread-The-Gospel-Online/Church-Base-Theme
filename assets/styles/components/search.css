@@ -6,3 +6,27 @@
   padding: 1rem;
   background: var(--white);
 }
+
+.search-results__title {
+  padding: 3rem 0rem 1rem;
+  text-align: center;
+}
+
+.search-form {
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-results__archive {
+  margin-bottom: 3rem;
+}
+
+.search-results__tile {
+
+}
+
+.search-results__image {
+
+}
