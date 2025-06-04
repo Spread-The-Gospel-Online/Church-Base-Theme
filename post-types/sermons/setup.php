@@ -1,6 +1,10 @@
 <?php
 
 add_action( 'init', function () {
+	if (church_missing_type_support('sermons')) {
+		return;
+	}
+
 	register_post_type( 'sermons',
 		// CPT Options
 		array(

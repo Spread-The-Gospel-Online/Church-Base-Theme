@@ -1,6 +1,7 @@
 <?php
 
 require_once('admin-styles.php');
+require_once('admin-utils.php');
 require_once('gatekeeper.php');
 
 require_once('hooks/breadcrumbs.php');
