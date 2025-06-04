@@ -73,6 +73,24 @@ add_action( 'customize_register', function ($customizer) {
         ),
 	));
 
+
+	$customizer->add_setting('header_menu_alignment', array(
+		'type' => 'option',
+		'default' => 'middle',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('header_menu_alignment', array(
+		'type' => 'select',
+		'choices' => array(
+			'left' => 'Left',
+			'middle' => 'Middle',
+			'right' => 'Right'
+		),
+		'section' => 'church_header_section',
+		'label' => 'Header Menu Align',
+	));
+
+
 	$customizer->add_setting('heading_post_content', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
 		$customizer, 'heading_post_content',

@@ -44,12 +44,24 @@
 	display: flex;
 	align-items: stretch;
 	justify-content: space-between;
-	gap: 2rem;
+}
+
+.header__contents {
+	gap: 4rem;
 }
 
 .main-menu {
+	gap: 2rem;
 	height: 100%;
 	list-style-type: none;
+}
+
+.header__main-menu--right {
+	margin-left: auto;
+}
+
+.header__main-menu--left {
+	margin-right: auto;
 }
 
 .header__mobile-wrapper {
