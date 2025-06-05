@@ -5,7 +5,7 @@
     ));
 ?>
 
-<div class="flexible-grid <?= $classes ?>" style="--number-columns: <?= $columns ?>; --staff-image-width: <?= $image_width ?>px;">
+<div class="flex-grid <?= $classes ?>" style="--number-columns: <?= $columns ?>; --staff-image-width: <?= $image_width ?>px;">
     <?php 
         foreach ($staffPosts as $staff) {
             $snippet = $view == 'compact' ? 'compact' : 'expanded';

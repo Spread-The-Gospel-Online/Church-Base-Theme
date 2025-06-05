@@ -2,6 +2,23 @@
 	background-color: var(--header-background);
 	color: var(--header-text);
 	z-index: 100;
+	transition: 0.3s background-color;
+}
+
+body:not(.body-scrolled) .header--transparent {
+	background: transparent;
+}
+
+.header__watcher {
+	background: var(--header-background);
+	width: 100%; 
+	height: var(--logo-height);
+	z-index: -1;
+}
+
+.header__watcher.header__watcher--transparent {
+	position: absolute;
+	background-color: transparent;
 }
 
 .header--is-fixed {

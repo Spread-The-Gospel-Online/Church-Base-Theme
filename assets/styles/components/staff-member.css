@@ -19,7 +19,7 @@
 	display: block;
 	margin: auto;
 	width: var(--staff-image-width);
-	height: 100%;
+	height: var(--staff-image-width);
 	object-fit: cover;
 }
 
