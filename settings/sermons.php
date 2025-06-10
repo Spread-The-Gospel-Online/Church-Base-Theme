@@ -1,5 +1,11 @@
 <?php
 
+add_action('init', function () {
+	if (!get_option('church_sermon_contents_pattern')) {
+    	update_option('church_sermon_contents_pattern', 'false');
+    }
+});
+
 add_action( 'customize_register', function ($customizer) {
 	$customizer->add_section('church_sermon_styles', array(
 		'title' => 'Sermon Page Styles',
@@ -19,6 +25,19 @@ add_action( 'customize_register', function ($customizer) {
 			'section' => 'church_sermon_styles',
 			'settings' => 'church_sermon_default_image',
        )
+    ));
+
+
+    $patterns = church_get_all_patterns_for_customizer();
+	$customizer->add_setting('church_sermon_contents_pattern', array(
+		'type' => 'option',
+		'sanitize_callback' => 'sanitize_text_field'
+	));
+	$customizer->add_control('church_sermon_contents_pattern', array( 
+		'type' => 'select',
+		'choices' => $patterns,
+        'section' => 'church_sermon_styles',
+        'label' => 'Sermon Contents Pattern',
     ));
 
 
@@ -71,14 +90,26 @@ add_action( 'customize_register', function ($customizer) {
             'section' => 'church_sermon_styles',
             'label' => 'Sermon Contents Order',
             'choices' => array(
-            	array('label' => 'Audio', 'value' => 'audio'),
             	array('label' => 'Date', 'value' => 'date'),
             	array('label' => 'Pastor', 'value' => 'pastor'),
             	array('label' => 'Series', 'value' => 'sermon-series'),
-            	array('label' => 'Download', 'value' => 'download'),
             	array('label' => 'Passage', 'value' => 'passage'),
             )
         )
     ));
 
+    $customizer->add_setting('sermon_section_colors', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
+		$customizer, 'sermon_section_colors',
+        array(
+            'label' => 'Sermon Section Colors',
+            'section' => 'church_sermon_styles',
+        )
+    ));
+});
+
+
+add_action('customize_controls_enqueue_scripts', function ($customizer) {
+    church_add_script_conditional('church_archive_card_pattern', 'church_archive_card_order', 'show_on', 'false');
+    
 });

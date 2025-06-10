@@ -23,18 +23,44 @@
   wp.hooks.addFilter('editor.BlockEdit', 'vcgb/fullwidth-custom-control', createHigherOrderComponent((BlockEdit) => {
     return (props) => {
       const { attributes, setAttributes, isSelected } = props;
+      const postType = wp.data.select('core/editor').getCurrentPostType()
+
+      const defaultMarginMobile = (postType === 'wp_block') ? 10 : 30
+      const defaultMarginDesktop = (postType === 'wp_block') ? 20 : 40
       
-      if (!attributes.className || (!attributes.className.includes('full-width') && !attributes.className.includes('ccontain'))) {
-        setAttributes({ 
-          className: `ccontain`
+      // also set all children to be contained if block is a group
+      if (props.name === 'core/group') {
+        wp.data.select('core/block-editor').getBlocksByClientId(props.clientId).forEach((block) => {
+          if (!block.innerBlocks) {
+            return
+          }
+          block.innerBlocks.forEach((innerBlock) => {
+            const innerAttributes = innerBlock.attributes
+            if (!innerBlock.className || (!innerBlock.className.includes('full-width') && !innerBlock.className.includes('ccontain'))) {
+              wp.data.dispatch('core/block-editor').updateBlockAttributes(innerBlock.clientId, { className: 'ccontain' })
+            }
+          })
         })
       }
 
-      const classes = attributes.className ? attributes.className : 'ccontain'
+      if (!attributes.className || (!attributes.className.includes('full-width') && !attributes.className.includes('ccontain'))) {
+        if (postType === 'wp_block') {
+          setAttributes({
+            className: `full-width`
+          })
+        } else {
+          setAttributes({ 
+            className: `ccontain`
+          })
+        }
+      }      
+
+      const defaultClasses = (postType === 'wp_block') ? 'full-width' : 'ccontain'
+      const classes = attributes.className ? attributes.className : defaultClasses
       const haveParents = wp.data.select('core/block-editor').getBlockParents(props.clientId).length > 0
       
       const mobileMarginClasses = classes.split(' ').filter((singleClass) => singleClass.startsWith('mb-'))[0] || false
-      const mobileMargin = mobileMarginClasses ? parseInt(mobileMarginClasses.split('-')[1]) : (haveParents ? 0 : 30)
+      const mobileMargin = mobileMarginClasses ? parseInt(mobileMarginClasses.split('-')[1]) : (haveParents ? 0 : defaultMarginMobile)
       if (!mobileMarginClasses) {
         setAttributes({ 
           className: `${classes} mb-${mobileMargin}`
@@ -42,7 +68,7 @@
       }
       
       const desktopMarginClasses = classes.split(' ').filter((singleClass) => singleClass.startsWith('lg:mb-'))[0] || false
-      const desktopMargin = desktopMarginClasses ? parseInt(desktopMarginClasses.split('-')[1]) : (haveParents ? 0 : 40)
+      const desktopMargin = desktopMarginClasses ? parseInt(desktopMarginClasses.split('-')[1]) : (haveParents ? 0 : defaultMarginDesktop)
       if (!desktopMarginClasses) {
         setAttributes({ 
           className: `${classes} lg:mb-${desktopMargin}`

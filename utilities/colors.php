@@ -31,7 +31,7 @@ function church_get_option_from_var_name ($option_name) {
 }
 
 function church_get_best_contrast_option ($background_option, $color_one_option, $color_two_option) {
-	$background = church_get_option_from_var_name(get_option($background_option));
+	$background = get_option($background_option);
 	$color_one = get_option($color_one_option);
 	$color_two = get_option($color_two_option);
 	$best_contrast = church_get_best_contrast($background, $color_one, $color_two);

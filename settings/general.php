@@ -66,5 +66,67 @@ add_action( 'customize_register', function ($customizer) {
 	));
 
 
+	$customizer->add_setting('general_border_widths', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
+		$customizer, 'general_border_widths',
+        array(
+            'label' => 'Border Widths',
+            'section' => 'church_general_section',
+        )
+    ));
+
+    $customizer->add_setting('church_border_width_small', array(
+		'type' => 'option',
+		'default' => 1,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_border_width_small', array(
+		'type' => 'number',
+		'section' => 'church_general_section',
+		'label' => 'Border Width - Small',
+		'validate' => 'numeric',
+        'default'  => 1,
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 6,
+            'step' => 1,
+        ),
+	));
+
+	$customizer->add_setting('church_border_width_medium', array(
+		'type' => 'option',
+		'default' => 2,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_border_width_medium', array(
+		'type' => 'number',
+		'section' => 'church_general_section',
+		'label' => 'Border Width - Medium',
+		'validate' => 'numeric',
+        'default'  => 2,
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 6,
+            'step' => 1,
+        ),
+	));
+
+	$customizer->add_setting('church_border_width_wide', array(
+		'type' => 'option',
+		'default' => 3,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_border_width_wide', array(
+		'type' => 'number',
+		'section' => 'church_general_section',
+		'label' => 'Border Width - Wide',
+		'validate' => 'numeric',
+        'default'  => 3,
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 6,
+            'step' => 1,
+        ),
+	));
 
 });

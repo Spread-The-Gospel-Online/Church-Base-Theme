@@ -22,3 +22,15 @@
 .desktop-only {
 	display: none;
 }
+
+.is-content-justification-center {
+	justify-content: center;
+}
+
+.is-content-justification-right {
+	justify-content: flex-end;
+}
+
+.is-content-justification-space-between {
+	justify-content: space-between;
+}

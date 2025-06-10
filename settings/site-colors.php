@@ -216,6 +216,30 @@ add_action( 'customize_register', function ($customizer) {
 			'default' => '--black',
 			'label' => 'Pagination Current Page Color',
 			'section' => 'church_pagination_styles'
+		),
+		array(
+			'id' => 'download_bg',
+			'default' => '--grey-one',
+			'label' => 'Sermon Download Background Color',
+			'section' => 'church_sermon_styles'
+		),
+		array(
+			'id' => 'download_bg_hover',
+			'default' => '--grey-one',
+			'label' => 'Sermon Download Background Hover Color',
+			'section' => 'church_sermon_styles'
+		),
+		array(
+			'id' => 'download_text',
+			'default' => '--link',
+			'label' => 'Sermon Download Text Color',
+			'section' => 'church_sermon_styles'
+		),
+		array(
+			'id' => 'download_text_hover',
+			'default' => '--link-hover',
+			'label' => 'Sermon Download Text Hover Color',
+			'section' => 'church_sermon_styles'
 		)
 	);
 

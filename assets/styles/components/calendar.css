@@ -9,7 +9,7 @@
 }
 
 .calendar__header {
-	outline: 1px solid var(--calendar-header-background);
+	outline: var(--calendar-border-width) solid var(--calendar-header-background);
 	padding: 0.5rem 0;
 	text-align: center;
 	background: var(--calendar-header-background);
@@ -18,7 +18,7 @@
 
 
 .calendar__day {
-	outline: 1px solid var(--calendar-outline);
+	outline: var(--calendar-border-width) solid var(--calendar-outline);
 	padding: 0.5rem;
 	height: 15vh;
 	display: flex;
@@ -36,4 +36,12 @@
 
 .calendar__event-link {
 	margin-bottom: 0.5rem;
+}
+
+.calendar-nav {
+	margin-bottom: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
 }

@@ -17,14 +17,14 @@
 ?>
 
 <section class="ccontain" data-calendar-wrapper>
-	<div>
-		<button data-previous-month="<?= date('F Y', $previous_month) ?>">
+	<div class="calendar-nav">
+		<button data-previous-month="<?= date('F Y', $previous_month) ?>" class="calendar-nav__button">
 			<?= date('F', $previous_month) ?>
 		</button>
-		<h2>
+		<h2 class="calendar-nav__current">
 			<?= date('F', $now) ?>
 		</h2>
-		<button data-next-month="<?= date('F Y', $next_month) ?>">
+		<button data-next-month="<?= date('F Y', $next_month) ?>" class="calendar-nav__button">
 			<?= date('F', $next_month) ?>
 		</button>
 	</div>

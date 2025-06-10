@@ -11,12 +11,12 @@ register_nav_menus(array(
 ));
 
 // Theme Lib
-require_once( 'utilities/index.php' );
-require_once( 'gutenberg-plugins/index.php' );
-require_once( 'settings/index.php' );
-require_once( 'core/index.php' );
-require_once( 'admin-panel/index.php' );
-require_once( 'post-types/index.php' );
+require_once('utilities/index.php');
+require_once('core/index.php');
+require_once('gutenberg-plugins/index.php');
+require_once('settings/index.php');
+require_once('admin-panel/index.php');
+require_once('post-types/index.php');
 
 // set templates
 add_filter( 'template_include', function ( $template ) {

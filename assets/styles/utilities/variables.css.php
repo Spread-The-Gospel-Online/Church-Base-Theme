@@ -16,6 +16,7 @@
 
 	--link: <?= get_option('css_color_link'); ?>;
 	--link-hover: <?= get_option('css_color_link_hover'); ?>;
+	--link-on: var(<?= church_get_best_contrast_option('css_color_link', 'css_color_grey-one', 'css_color_grey-four') ?>);
 
 	--font-family-general: <?= get_option(get_option('font_general')) ?>;
 	--font-family-headings: <?= get_option(get_option('font_headings')) ?>;
@@ -50,6 +51,10 @@
 	--copyright-background: var(<?= get_option('css_copyright_background') ?>);
 	--copyright-text: var(<?= get_option('css_copyright_text') ?>);
 
+	--border-width-small: 0px;
+	--border-width-small: <?= get_option('church_border_width_small', 1) ?>px;
+	--border-width-medium: <?= get_option('church_border_width_medium', 2) ?>px;
+	--border-width-wide: <?= get_option('church_border_width_wide', 3) ?>px;
 
 	--sermon-archive-grid-tablet-size: <?= get_option('church_archive_sermon_grid_tablet_size') ?>;
 	--sermon-archive-grid-size: <?= get_option('church_archive_sermon_grid_size') ?>;
@@ -71,12 +76,17 @@
 
 	--sermon-content-item-width: <?= get_option('church_sermon_content_grid_size', 2) ?>;
 	--sermon-content-width: <?= get_option('church_sermon_content_width', 800) ?>px;
+	--sermon-download-background: var(<?= get_option('css_download_bg'); ?>);
+	--sermon-download-background-hover: var(<?= get_option('css_download_bg_hover'); ?>);
+	--sermon-download-text: var(<?= get_option('css_download_text'); ?>);
+	--sermon-download-text-hover: var(<?= get_option('css_download_text_hover'); ?>);
 	
 	--calendar-header-background: var(<?= get_option('css_calendar_header_background') ?>);
 	--calendar-header-text: var(<?= get_option('css_calendar_header_text') ?>);
 	--calendar-outline: var(<?= get_option('css_calendar_outline') ?>);
 	--calendar-background-one: var(<?= get_option('css_calendar_background_one') ?>);
 	--calendar-background-two: var(<?= get_option('css_calendar_background_two') ?>);
+	--calendar-border-width: var(--border-width-<?= get_option('church_calendar_border_width') ?>);
 
 	--pagination-link: var(<?= get_option('css_pagination_interactive') ?>);
 	--pagination-link-hover: var(<?= get_option('css_pagination_interactive_hover') ?>);

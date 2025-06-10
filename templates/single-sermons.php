@@ -9,15 +9,27 @@ while (have_posts()) {
 	$post_id = $post->ID;
 	$sermon_content = util_get_actual_content($post->post_content);
 	$image = util_get_hero_src($post);
+
+	$pattern = false;
+	$pattern_slug = get_option('church_sermon_contents_pattern');
+	$pattern_matches = array();
+	if ($pattern_slug != 'false') {
+		$pattern_matches = get_posts(array(
+			'post_name' => $pattern_slug,
+			'post_type' => 'wp_block',
+			'posts_per_page' => 1
+		));
+	}
+	if ($pattern_matches && count($pattern_matches) > 0 && $pattern_matches[0]->post_name == $pattern_slug) {
+		$pattern = $pattern_matches[0];
+	}
+
 	$sermon_cards = get_option('church_sermons_card_order');
-
-
-	$pastor_ID = get_post_meta($post_id, 'sermon_pastor', true);
-	$pastor = $pastor_ID ? get_post($pastor_ID) : false;
 	$series_ID = get_post_meta($post_id, 'sermon_series', true);
 	$series = $series_ID ? get_post($series_ID) : false;
 
 	$steps = $series ? array(
+		array('type' => 'sermons', 'slug' => false),
 		array('type' => 'sermon-series', 'slug' => false),
 		array('type' => 'sermon-series', 'slug' => $series->post_name),
 		array('type' => 'sermons', 'slug' => $post->post_name),
@@ -26,12 +38,10 @@ while (have_posts()) {
 		array('type' => 'sermons', 'slug' => $post->post_name),
 	);
 
-
 	$sermon_snippet = util_render_snippet('sermons/sermon-link', array(
 		'link' => get_post_meta($post_id, 'link', true),
 		'audio_link' => get_post_meta($post_id, 'audio_link', true)
 	));
-
 
 	util_render_snippet('common/hero', array(
 		'desktop_src' => $image['src'],
@@ -49,30 +59,31 @@ while (have_posts()) {
 
 
 <article class="ccontain sermon">
-	<div class="sermon__content-cards">
-		<?php foreach($sermon_cards as $card) { ?>
-			<?= util_render_snippet('sermons/card-options/' . $card, array(
-				'sermon' => $post,
-				'pastor' => $pastor,
-				'pastor_permalink' => get_permalink($pastor->ID),
-				'series' => $series,
-				'audio_link' => get_post_meta($post_id, 'audio_link', true),
-			)); ?>
-		<?php } ?>
-
-		<div class="sermon__download-wrapper">
-			<a href="<?= get_post_meta($post_id, 'audio_link', true) ?>" 
-			   download="<?= $post->post_title ?>" 
-			   aria-title="Download Sermon"
-			   class="sermon__download">
-				<?= util_render_snippet('icons/download', array('classes' => 'sermon__download-icon')) ?>
-				Save
-			</a>
-		</div>
-	</div>
-
 	<div class="sermon__content">
-		<?= get_the_content() ?>
+		<?php if ($pattern) { ?>
+			<?= util_get_actual_content($pattern->post_content) ?>
+		<?php } else { ?>
+			<?= util_render_snippet('sermons/card-options/audio') ?>
+
+			<div class="sermon__content-cards">
+				<?php foreach($sermon_cards as $card) { ?>
+					<?= util_render_snippet('sermons/card-options/' . $card, array(
+						'sermon' => $post,
+						'series' => $series
+					)); ?>
+				<?php } ?>
+			</div>
+
+			<?= util_render_snippet('sermons/card-options/download') ?>
+		<?php } ?>
+	</div>
+	
+	<div class="sermon__content">
+		<?php 
+			$content = get_the_content();
+			$url = '~(?:(https?)://([^\s<]+)|(www\.[^\s<]+?\.[^\s<]+))(?<![\.,:])~i';
+			echo preg_replace($url, '<a href="$0" target="_blank" title="$0">$0</a>', $content);
+		?>
 	</div>
 </article>
 

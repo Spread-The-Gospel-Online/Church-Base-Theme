@@ -9,11 +9,11 @@ function church_get_missing_archive_pages () {
 }
 
 add_action('admin_notices', function () {
-	$missing_types = church_get_missing_archive_pages();
+	$missing_pages = church_get_missing_archive_pages();
 
-	foreach ($missing_types as $missing_type) {
+	foreach ($missing_pages as $missing_page) {
 		util_render_snippet('admin/missing-page-notice', array(
-			'missing_post_type' => $missing_type
+			'missing_post_type' => $missing_page
 		), false);
 	}
 });

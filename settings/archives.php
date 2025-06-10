@@ -12,6 +12,9 @@ add_action( 'init', function () {
 		update_option('church_archive_sermon_grid_size', 2);
 	}
 
+    if (!get_option('church_archive_card_pattern')) {
+    	update_option('church_archive_card_pattern', 'false');
+    }
 });
 
 add_action( 'customize_register', function ($customizer) {
@@ -69,6 +72,18 @@ add_action( 'customize_register', function ($customizer) {
         )
     ));
 
+	$patterns = church_get_all_patterns_for_customizer();
+	$customizer->add_setting('church_archive_card_pattern', array(
+		'type' => 'option',
+		'sanitize_callback' => 'sanitize_text_field'
+	));
+	$customizer->add_control('church_archive_card_pattern', array( 
+		'type' => 'select',
+		'choices' => $patterns,
+        'section' => 'church_archive_styles',
+        'label' => 'Card Contents Pattern',
+    ));
+
 	$customizer->add_setting('church_archive_card_order', array(
 		'type' => 'option',
 		'sanitize_callback' => array('Drag_And_Drop_Custom_Control', 'validate_drag_and_drop')
@@ -87,8 +102,7 @@ add_action( 'customize_register', function ($customizer) {
         )
     ));
 
-
-	$customizer->add_setting('card_content_item_padding', array(
+    $customizer->add_setting('card_content_item_padding', array(
 		'type' => 'option',
 		'default' => 10,
 		'sanitize_callback' => 'sanitize_text_field',
@@ -236,8 +250,6 @@ add_action( 'customize_register', function ($customizer) {
 	));
 
 
-
-
     $customizer->add_setting('archive_section_colors', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
 		$customizer, 'archive_section_colors',
@@ -246,5 +258,12 @@ add_action( 'customize_register', function ($customizer) {
             'section' => 'church_archive_styles',
         )
     ));
+});
 
+
+add_action('customize_controls_enqueue_scripts', function ($customizer) {
+	// add conditionals for if we're using a pattern for card contents or not
+    church_add_script_conditional('church_archive_card_pattern', 'church_archive_card_order', 'show_on', 'false');
+    church_add_script_conditional('church_archive_card_pattern', 'card_content_text_align', 'show_on', 'false');
+    church_add_script_conditional('church_archive_card_pattern', 'card_content_item_gap', 'show_on', 'false');
 });

@@ -33,6 +33,8 @@
 	align-items: center;
 	column-gap: 0.5rem;
 	list-style-type: none;
+	white-space: nowrap;
+	overflow: auto;
 }
 
 .breadcrumbs__item {

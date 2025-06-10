@@ -59,7 +59,7 @@ add_filter('the_content', function ($content) {
 
 	$desktop_matches[0] = array_unique($desktop_matches[0]);
 	foreach ($desktop_matches[0] as $match) {
-		$class_name = str_replace('"', '', trim($match));
+		$class_name = str_replace(':', '\:', str_replace('"', '', trim($match)));
 		$px_value = explode('-', $class_name);
 		$desktop_classes .= '.' . $class_name . '{margin-bottom: ' . $px_value[1] . 'px;} ';
 	}

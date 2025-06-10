@@ -6,7 +6,6 @@
   const { InspectorAdvancedControls, InspectorControls } = window.wp.blockEditor;
   
   wp.hooks.addFilter('editor.BlockEdit', 'vcgb/parallax-custom-control', createHigherOrderComponent((BlockEdit) => {
-    
     return (props) => {
       if (['wp-block-cover', 'core/image'].includes(props.name)) return el(Fragment, {}, el(BlockEdit, props))
       const { attributes, setAttributes, isSelected } = props;
@@ -20,7 +19,7 @@
               el('input', {
                 id: 'is-parallax',
                 type: 'checkbox',
-                defaultChecked: classes.includes('parallax'),
+                defaultChecked: classes ? classes.includes('parallax') : false,
                 onChange: (event) => {
                   const currentClasses = attributes.className ? attributes.className : ''
                   setAttributes({ className: event.target.checked
@@ -36,7 +35,7 @@
             el('input', {
               id: 'is-parallax-banner',
               type: 'checkbox',
-              defaultChecked: classes.includes('parallax--banner'),
+              defaultChecked: classes ? classes.includes('parallax--banner') : false,
               onChange: (event) => {
                 const currentClasses = attributes.className ? attributes.className : ''
                 setAttributes({ className: event.target.checked

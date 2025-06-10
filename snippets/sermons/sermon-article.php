@@ -13,9 +13,26 @@
 
 	$sermon_card_options = get_option('church_archive_card_order');
 
+	$pattern = false;
+	$pattern_slug = get_option('church_archive_card_pattern');
+	$pattern_matches = array();
+	if ($pattern_slug != 'false') {
+		$pattern_matches = get_posts(array(
+			'post_name' => $pattern_slug,
+			'post_type' => 'wp_block',
+			'posts_per_page' => 1
+		));
+	}
+	if ($pattern_matches && count($pattern_matches) > 0 && $pattern_matches[0]->post_name == $pattern_slug) {
+		$pattern = $pattern_matches[0];
+	}
+
 	$card_content_classes = 'card__content';
 	if ('on_top' == get_option('card_content_position')) {
 		$card_content_classes .= ' card__content--on-top';
+	}
+	if ($pattern) {
+		$card_content_classes .= ' card__content--patterned';
 	}
 
 	$extra_card_item_classes = '';
@@ -27,10 +44,8 @@
 	}
 
 	if ($image == false) {
-		error_log('image is false');
 		$series_image_id = get_post_thumbnail_id($series);
 		$series_image_src = $series_image_id ? wp_get_attachment_image_src($series_image_id, 'full', false)[0] : false;
-		error_log($series_image_src);
 		if ($series_image_src) {
 			$image = $series_image_src;
 		} else {
@@ -49,17 +64,23 @@
 		), false); ?>
 	</a>
 
-	<div class="<?= $card_content_classes ?>">
-		<?php foreach($sermon_card_options as $card_option) { ?>
-			<?php if ($card_option == 'nodisplay') { break; } ?>
-			<?= util_render_snippet('sermons/card-options/' . $card_option, array(
-				'sermon_permalink' => $sermon_permalink,
-				'sermon' => $sermon,
-				'pastor_permalink' => $pastor_permalink,
-				'pastor' => $pastor,
-				'series' => $series,
-				'extra_classes' => $extra_card_item_classes
-			)); ?>
-		<?php } ?>
-	</div>
+	<?php if ($pattern) { ?>
+		<div class="<?= $card_content_classes ?>">
+			<?= util_get_actual_content($pattern->post_content) ?>
+		</div>
+	<?php } else { ?>
+		<div class="<?= $card_content_classes ?>">
+			<?php foreach($sermon_card_options as $card_option) { ?>
+				<?php if ($card_option == 'nodisplay') { break; } ?>
+				<?= util_render_snippet('sermons/card-options/' . $card_option, array(
+					'sermon_permalink' => $sermon_permalink,
+					'sermon' => $sermon,
+					'pastor_permalink' => $pastor_permalink,
+					'pastor' => $pastor,
+					'series' => $series,
+					'extra_classes' => $extra_card_item_classes
+				)); ?>
+			<?php } ?>
+		</div>
+	<?php } ?>
 </article>
