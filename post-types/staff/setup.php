@@ -1,6 +1,10 @@
 <?php
 
 add_action( 'init', function () {
+	if (church_missing_type_support('staff')) {
+		return;
+	}
+
 	register_post_type( 'staff',
 		array(
 			'labels' => array(

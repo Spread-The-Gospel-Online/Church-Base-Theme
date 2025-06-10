@@ -44,12 +44,24 @@
 	display: flex;
 	align-items: stretch;
 	justify-content: space-between;
-	gap: 2rem;
+}
+
+.header__contents {
+	gap: 4rem;
 }
 
 .main-menu {
+	gap: 2rem;
 	height: 100%;
 	list-style-type: none;
+}
+
+.header__main-menu--right {
+	margin-left: auto;
+}
+
+.header__main-menu--left {
+	margin-right: auto;
 }
 
 .header__mobile-wrapper {
@@ -85,6 +97,20 @@
 	background: var(--black);
 	opacity: 0.75;
 	display: none;
+}
+
+.header__search-trigger {
+	border: none;
+	display: none;
+	align-items: center;
+	appearance: none;
+	background: transparent;
+	cursor: pointer;
+}
+
+.header__search-trigger-icon {
+	height: 1.5rem;
+	color: var(--header-text);
 }
 
 .header__mobile-wrapper.open .header__close-menu {

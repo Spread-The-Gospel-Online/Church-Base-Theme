@@ -1,6 +1,10 @@
 <?php
 
 add_action( 'init', function () {
+	if (church_missing_type_support('sermon-series')) {
+		return;
+	}
+
 	register_post_type( 'sermon-series',
 		array(
 			'labels' => array(

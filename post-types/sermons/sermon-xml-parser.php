@@ -39,8 +39,6 @@ class Sermon_Proccesser {
 					}
 				}
 			}
-
-			break;
 		}
 	}
 

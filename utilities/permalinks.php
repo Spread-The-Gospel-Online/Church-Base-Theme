@@ -5,6 +5,9 @@ function church_get_archive_url ($type, $prefix = '/') {
 }
 
 function church_get_single_url ($type, $slug, $prefix = '/') {
+	if ($type == 'page') { 
+		return $prefix . $slug;	
+	}
 	return $prefix . $type . '/' . $slug;
 }
 

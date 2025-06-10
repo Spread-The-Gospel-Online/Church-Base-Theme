@@ -49,6 +49,10 @@
 	display: block;
 }
 
+.card--search .card__content {
+	grid-template-columns: 1fr;
+}
+
 .card__full-item,
 .card__title {
 	grid-column: span 2;

@@ -40,3 +40,9 @@ if (typeof window.watchState === 'undefined') {
     return controller;
   };
 }
+
+if (typeof window.getState === 'undefined') {
+  window.getState = (stateItem) => {
+    return window.state[stateItem]
+  }
+}

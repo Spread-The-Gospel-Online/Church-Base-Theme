@@ -1,6 +1,10 @@
 <?php
 
 add_action('init', function () {
+	if (church_missing_type_support('events')) {
+		return;
+	}
+
 	register_post_type('events',
 		array(
 			'labels' => array(

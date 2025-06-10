@@ -1,0 +1,9 @@
+.page-content__sidebar-list {
+  display: none;
+}
+
+.page-content__sidebar-select {
+  width: 100%;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}

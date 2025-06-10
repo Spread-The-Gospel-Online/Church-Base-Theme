@@ -7,9 +7,9 @@
   
   wp.hooks.addFilter('editor.BlockEdit', 'vcgb/parallax-custom-control', createHigherOrderComponent((BlockEdit) => {
     return (props) => {
-      if (['wp-block-cover', 'core/image'].includes(props.name)) return el(Fragment, {}, el(BlockEdit, props))
+      if (!['wp-block-cover', 'core/image', 'core/cover'].includes(props.name)) return el(Fragment, {}, el(BlockEdit, props))
       const { attributes, setAttributes, isSelected } = props;
-      const classes = attributes.className      
+      const classes = attributes.className ? attributes.className : ''  
 
       return el(Fragment, {},
         el(BlockEdit, { ...props }),

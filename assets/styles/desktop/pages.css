@@ -1,0 +1,24 @@
+.page-content__have-children {
+  display: grid;
+  grid-template-columns: 1fr 20rem;
+  grid-column-gap: 3rem;
+}
+
+.page-content__sidebar {
+  grid-column-start: 2;
+}
+
+.page-content__contents {
+  grid-row-start: 1;
+}
+
+.page-content__sidebar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.page-content__sidebar-select {
+  display: none;
+}

@@ -15,8 +15,8 @@
 	--black: <?= get_option('css_color_black'); ?>;
 
 	--link: <?= get_option('css_color_link'); ?>;
-	--link-hover: <?= get_option('css_color_link_hover'); ?>;
 	--link-on: var(<?= church_get_best_contrast_option('css_color_link', 'css_color_grey-one', 'css_color_grey-four') ?>);
+	--link-hover: <?= get_option('css_color_link-hover'); ?>;
 
 	--font-family-general: <?= get_option(get_option('font_general')) ?>;
 	--font-family-headings: <?= get_option(get_option('font_headings')) ?>;
@@ -63,13 +63,13 @@
 	--sermon-archive-col-gap: 2rem;
 
 	--card-overlay-background: var(<?= get_option('css_card_overlay') ?>);
-	--card-overlay-opacity: <?= get_option('card_overlay_opacity', 50) ?>;
-	--card-overlay-opacity-hover: <?= get_option('card_overlay_opacity_hover', 50) ?>;
+	--card-overlay-opacity: <?= get_option('card_overlay_opacity', 0.50) ?>;
+	--card-overlay-opacity-hover: <?= get_option('card_overlay_opacity_hover', 0.50) ?>;
 	--card-image-aspect-ratio: <?= get_option('church_archive_sermon_card_height', 50) ?>%;
 	--card-contents-padding: <?= get_option('card_content_item_padding', 10) ?>px <?= get_option('card_content_item_padding', 10) * 2 ?>px;
 	--card-contents-alignment: <?= get_option('card_content_text_align', 'left') ?>;
 	--card-contents-spacing: <?= get_option('card_content_item_gap', 10) ?>px;
-	--card-contents-background: <?= church_get_as_rgba('css_card_contents_background', get_option('card_background_opacity', 50)); ?>;
+	--card-contents-background: <?= church_get_as_rgba('css_card_contents_background', get_option('card_background_opacity', .50)); ?>;
 	--card-contents-text: var(<?= get_option('css_card_contents_text', '--black') ?>);
 	--card-contents-links: var(<?= get_option('css_card_contents_links', '--primary') ?>);
 	--card-contents-links-hover: var(<?= get_option('css_card_contents_links_hover', '--primary-hover') ?>);
