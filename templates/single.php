@@ -4,7 +4,9 @@ get_header();
 
 while (have_posts()) {
 	the_post();
-	do_blocks(the_content());
+	util_render_snippet('common/general-content', array(
+		'content' => get_the_content()
+	), false);
 }
 
 get_footer();

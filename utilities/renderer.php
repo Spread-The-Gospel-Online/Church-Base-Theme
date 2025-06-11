@@ -27,3 +27,16 @@ function util_get_actual_content ($post_contents) {
     }
     return apply_filters('the_content', $contents);
 }
+
+// Get the object of a pattern used for a specific option
+// if there is no pattern tied to the setting return false
+function util_get_pattern_object ($pattern_option_name) {
+	$pattern = false;
+	$pattern_slug = get_option($pattern_option_name);
+	
+	if ($pattern_slug != 'false') {
+		$pattern = get_page_by_path($pattern_slug, OBJECT, 'wp_block');
+	}
+
+	return $pattern;
+}

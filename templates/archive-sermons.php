@@ -8,7 +8,7 @@
 	<?php while (have_posts()) {
 		the_post();
 		util_render_snippet('sermons/sermon-article', array(
-			'sermon' => get_post()
+			'sermon' => get_post(),
 		), false);
 	} ?>
 </section>

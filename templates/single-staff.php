@@ -21,22 +21,18 @@ while (have_posts()) {
 		)
 	), false);
 
-	$sermons = util_church_get_sermons_for_staff($post->ID);
-
-	echo '<div class="sermon-archive ccontain">';
-	foreach ($sermons as $sermon) {
-		util_render_snippet('sermons/sermon-article', array(
-			'sermon' => $sermon
+	$pattern = util_get_pattern_object('church_staff_contents_pattern');
+	if ($pattern) {
+		util_render_snippet('common/general-content', array(
+			'content' => util_get_actual_content($pattern->post_content)
 		), false);
 	}
-	echo '</div>';
 
-	$pagination_args = util_church_get_staff_sermon_pagination($post);
-	util_render_snippet('common/pagination', array(
-		'post_type' => 'Sermons',
-		'extra_classes' => '',
-		'extra_args' => $pagination_args
-	), false);
+	if (!church_missing_type_support('sermons')) {
+		util_render_snippet('staff/staff-sermons', array(
+			'post' => $post
+		), false);
+	}
 }
 
 get_footer();

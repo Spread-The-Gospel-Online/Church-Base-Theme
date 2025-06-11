@@ -30,7 +30,6 @@
 	), false);
 
 	do_action('church_layout_after_header');
-
 ?>
 
 <section class="page-content <?= $display_sidebar ? 'page-content__have-children' : '' ?>">
@@ -43,7 +42,9 @@
 	<div class="page-content__contents">
 		<?php while (have_posts()) {
 			the_post();
-			do_blocks(the_content());
+			util_render_snippet('common/general-content', array(
+				'content' => get_the_content()
+			), false);
 		} ?>
 	</div>
 </section>

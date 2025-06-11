@@ -12,6 +12,11 @@
 	max-width: var(--ccontain);
 }
 
+.gbc {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+
 .flexible-grid {
 	display: grid;
 	grid-template-columns: repeat(var(--number-columns-mobile), 1fr);

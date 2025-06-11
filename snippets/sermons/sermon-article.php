@@ -2,30 +2,15 @@
 	$pastor_ID = get_post_meta($sermon->ID, 'sermon_pastor', true);
 	$pastor = $pastor_ID ? get_post($pastor_ID) : false;
 	$pastor_permalink = get_permalink($pastor_ID);
-
+	$sermon_permalink = get_permalink($sermon->ID);
 	$series_ID = get_post_meta($sermon->ID, 'sermon_series', true);
 	$series = $series_ID ? get_post($series_ID) : false;
 
 	$image = get_the_post_thumbnail_url($sermon);
 	$alt = get_post_meta(get_post_thumbnail_id($sermon), '_wp_attachment_image_alt', true);
 
-	$sermon_permalink = get_permalink($sermon->ID);
-
 	$sermon_card_options = get_option('church_archive_card_order');
-
-	$pattern = false;
-	$pattern_slug = get_option('church_archive_card_pattern');
-	$pattern_matches = array();
-	if ($pattern_slug != 'false') {
-		$pattern_matches = get_posts(array(
-			'post_name' => $pattern_slug,
-			'post_type' => 'wp_block',
-			'posts_per_page' => 1
-		));
-	}
-	if ($pattern_matches && count($pattern_matches) > 0 && $pattern_matches[0]->post_name == $pattern_slug) {
-		$pattern = $pattern_matches[0];
-	}
+	$pattern = util_get_pattern_object('church_archive_card_pattern');
 
 	$card_content_classes = 'card__content';
 	if ('on_top' == get_option('card_content_position')) {

@@ -3,7 +3,7 @@
 	<div class="flexible-grid" style="--number-columns: <?= $columns ?>">
 		<?php foreach ($sermons as $sermon) { ?>
 			<?= util_render_snippet('sermons/sermon-article', array(
-				'sermon' => $sermon
+				'sermon' => $sermon,
 			), false) ?>
 		<?php } ?>
 	</div>		

@@ -9,21 +9,7 @@ while (have_posts()) {
 	$post_id = $post->ID;
 	$sermon_content = util_get_actual_content($post->post_content);
 	$image = util_get_hero_src($post);
-
-	$pattern = false;
-	$pattern_slug = get_option('church_sermon_contents_pattern');
-	$pattern_matches = array();
-	if ($pattern_slug != 'false') {
-		$pattern_matches = get_posts(array(
-			'post_name' => $pattern_slug,
-			'post_type' => 'wp_block',
-			'posts_per_page' => 1
-		));
-	}
-	if ($pattern_matches && count($pattern_matches) > 0 && $pattern_matches[0]->post_name == $pattern_slug) {
-		$pattern = $pattern_matches[0];
-	}
-
+	$pattern = util_get_pattern_object('church_sermon_contents_pattern');
 	$sermon_cards = get_option('church_sermons_card_order');
 	$series_ID = get_post_meta($post_id, 'sermon_series', true);
 	$series = $series_ID ? get_post($series_ID) : false;
