@@ -12,7 +12,6 @@ register_nav_menus(array(
 ));
 
 // Theme Lib
-require_once('utilities/index.php');
 require_once('core/index.php');
 require_once('gutenberg-plugins/index.php');
 require_once('settings/index.php');
