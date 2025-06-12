@@ -40,7 +40,7 @@
     const calendarWrapper = document.querySelectorAll('[data-get-calendar]')
     
     calendarWrapper.forEach((wrapper) => {
-      fetch(`/church/wp-json/church/v1/getServerContentsCalendar`)
+      fetch(`${window.wpApiSettings.root}church/v1/getServerContentsCalendar`)
         .then((blob) => blob.text())
         .then((data) => {
           wrapper.innerHTML = data

@@ -82,7 +82,7 @@
     const eventWrappers = document.querySelectorAll('[data-get-upcoming-events]')
     
     eventWrappers.forEach((wrapper) => {
-      fetch(`/church/wp-json/church/v1/getServerContentsUpcomingEvents?numberOfEvents=${attributes.numberOfEvents}&numberOfColumns=${attributes.numberOfColumns}`)
+      fetch(`${window.wpApiSettings.root}church/v1/getServerContentsUpcomingEvents?numberOfEvents=${attributes.numberOfEvents}&numberOfColumns=${attributes.numberOfColumns}`)
         .then((blob) => blob.text())
         .then((data) => {
           wrapper.innerHTML = data

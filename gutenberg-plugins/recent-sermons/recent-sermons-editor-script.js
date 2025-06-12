@@ -79,7 +79,7 @@ const loadSermons = (attributes) => {
   const sermonWrappers = document.querySelectorAll('[data-get-latest-sermons]')
   
   sermonWrappers.forEach((wrapper) => {
-    fetch(`/church/wp-json/church/v1/getServerContentsLatestSermons?numberSermons=${attributes.numberOfSermons}&numberOfColumns=${attributes.numberOfColumns}`)
+    fetch(`${window.wpApiSettings.root}church/v1/getServerContentsLatestSermons?numberSermons=${attributes.numberOfSermons}&numberOfColumns=${attributes.numberOfColumns}`)
       .then((blob) => blob.text())
       .then((data) => {
         wrapper.innerHTML = data

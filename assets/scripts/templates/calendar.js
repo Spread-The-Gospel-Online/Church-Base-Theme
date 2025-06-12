@@ -18,7 +18,7 @@ const setupPreviousMonthListener = () => setupMonthListener(dom.previousMonth.ge
 const setupNextMonthListener = () => setupMonthListener(dom.nextMonth.getAttribute(qs.nextMonth))
 
 const setupMonthListener = (monthToFetch) => {
-	fetch(`${window.siteURL}/wp-json/church/v1/getServerContentsCalendar?date=${monthToFetch}`)
+	fetch(`${window.wpApiSettings.root}church/v1/getServerContentsCalendar?date=${monthToFetch}`)
 		.then((blob) => blob.text())
 		.then((response) => {
 			dom.previousMonth.removeEventListener('click', setupPreviousMonthListener)

@@ -124,7 +124,7 @@ const loadStaffMembers = (attributes) => {
   const staffWrappers = document.querySelectorAll(`[data-get-staff-members="${attributes.staffIDs}"]`)
   
   staffWrappers.forEach((wrapper) => {
-    fetch(`/church/wp-json/church/v1/getServerContentsStaff?staffIDs=${attributes.staffIDs}&numberOfColumns=${attributes.numberOfColumns}&staffLayout=${attributes.staffLayout}&imageTextLayout=${attributes.imageTextLayout}&imageWidth=${imageWidth}`)
+    fetch(`${window.wpApiSettings.root}church/v1/getServerContentsStaff?staffIDs=${attributes.staffIDs}&numberOfColumns=${attributes.numberOfColumns}&staffLayout=${attributes.staffLayout}&imageTextLayout=${attributes.imageTextLayout}&imageWidth=${imageWidth}`)
       .then((blob) => blob.text())
       .then((data) => {
         wrapper.innerHTML = data
