@@ -6,7 +6,7 @@ class Church_Theme_Admin_Page {
 	}
 }
 
-add_action( 'admin_init', function () {
+add_action('admin_init', function () {
 	register_setting('church-theme-settings', 'church_enabled_post_types');
 });
 
@@ -17,5 +17,5 @@ add_action('admin_menu' , function () {
 		'Theme Settings',
 		'administrator',
 		'theme-settings-page',
-		array('Church_Theme_Admin_Page', 'setup_theme_settings_page') );
+		array('Church_Theme_Admin_Page', 'setup_theme_settings_page'));
 });
