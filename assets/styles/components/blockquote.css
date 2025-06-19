@@ -1,0 +1,28 @@
+blockquote.wp-block-quote {
+	position: relative;
+	border-left: 0;
+	padding-top: 5rem;
+	padding-bottom: 2rem;
+	max-width: var(--blockquote-max-width);
+	line-height: 1.4;
+	background: var(--blockquote-background);
+}
+
+blockquote.wp-block-quote::before {
+	content: '“';
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 1.5rem;
+	text-align: center;
+	font-size: var(--blockquote-quote-font-size);
+	font-family: var(--blockquote-quote-font);
+}
+
+blockquote p + p {
+	margin-top: 1.5rem;
+}
+
+blockquote p:last-of-type {
+	color: var(--blockquote-name);
+}

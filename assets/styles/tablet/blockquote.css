@@ -1,0 +1,10 @@
+blockquote.wp-block-quote {
+	padding-top: 2rem;
+	padding-left: 5rem;
+}
+
+blockquote.wp-block-quote::before {
+	top: auto;
+	left: 0.5rem;
+	width: 4.5rem;
+}

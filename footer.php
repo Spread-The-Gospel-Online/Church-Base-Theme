@@ -1,3 +1,4 @@
+<?php ob_start(); ?>			
 			<?php do_action('church_layout_after_content'); ?>
 		</div>
 		<?php util_render_snippet('layout/global/footer', array(), false); ?>
@@ -17,3 +18,6 @@
 		</script>
 	</body>
 </html>
+
+<?php $contents = ob_get_clean(); ?>
+<?php echo preg_replace('/\s+/', ' ', $contents); ?>

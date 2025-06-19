@@ -54,6 +54,7 @@ add_action( 'customize_register', function ($customizer) {
         array(
             'label' => 'Breadcrumbs Section Colors',
             'section' => 'church_breadcrumbs_section',
+            'priority' => 300,
         )
     ));
 });

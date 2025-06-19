@@ -3,12 +3,18 @@
 }
 
 .footer-menu--desktop {
-	display: flex;
+	display: block;
 }
 
-.footer-menu {
-	flex-direction: row;
-	justify-content: space-between;
+.footer-menu__list {
+	display: grid;
+	grid-template-columns: repeat(var(--columns), 1fr);
+}
+
+.footer-menu__item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .footer-menu svg {

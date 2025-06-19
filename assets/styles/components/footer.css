@@ -1,6 +1,6 @@
 .footer {
-	padding-top: 3rem;
-	padding-bottom: 3rem;
+	padding-top: var(--footer-padding);
+	padding-bottom: var(--footer-padding);
 	background: var(--footer-background);
 	color: var(--footer-text);
 }
@@ -11,6 +11,12 @@
 
 .footer ul {
 	list-style: none;
+}
+
+.footer__menu-wrapper--with-pattern {
+	display: grid;
+	grid-template-columns: var(--footer-pattern-width) 1fr;
+	column-gap: 2rem;
 }
 
 .footer-menu {
@@ -28,4 +34,24 @@
 	text-align: center;
 	background: var(--copyright-background);
 	color: var(--copyright-text);
+}
+
+.social-links {
+	margin-bottom: var(--footer-padding);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	column-gap: 3rem;
+	font-size: 0;
+}
+
+.social-link {
+	display: inline-block;
+	height: 2rem;
+	width: auto;
+}
+
+.social-link svg {
+	height: 100%;
+	fill: currentColor;
 }

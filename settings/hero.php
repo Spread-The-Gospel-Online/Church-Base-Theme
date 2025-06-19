@@ -55,6 +55,7 @@ add_action( 'customize_register', function ($customizer) {
         array(
             'label' => 'Hero Section Colors',
             'section' => 'church_hero_section',
+            'priority' => 300,
         )
     ));
 });

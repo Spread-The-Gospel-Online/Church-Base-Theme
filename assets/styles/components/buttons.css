@@ -2,8 +2,25 @@
 	cursor: pointer;
 }
 
-.button--icon {
+.button {
+	appearance: none;
+	border: var(--button-border-width, 1px) solid var(--button-border);
+	background: var(--button-background);
+	color: var(--button-text);
+	transition: all 0.3s;
+}
+
+.button:focus,
+.button:focus-visible,
+.button:hover {
+	border-color: var(--button-border-hover);
+	background: var(--button-background-hover);
+	color: var(--button-text-hover);
+}
+
+.button.button--icon {
 	appearance: none;
 	border: none;
 	background-color: transparent;
+	color: inherit;
 }

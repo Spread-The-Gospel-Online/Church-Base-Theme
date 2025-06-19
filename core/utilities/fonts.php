@@ -1,6 +1,6 @@
 <?php
 
-function util_get_fonts() {
+function util_get_fonts () {
 	$query_string = [];
 
 	$fonts = array(get_option('font_general'));
@@ -14,4 +14,12 @@ function util_get_fonts() {
 	}
 
 	return implode('&', $query_string);
+}
+
+function get_font_var ($option_name) {
+	$font_family = get_option(get_option($option_name));
+	if (!$font_family) {
+		$font_family = get_option(get_option('font_general'));
+	}
+	return $font_family;
 }

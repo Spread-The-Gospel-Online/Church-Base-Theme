@@ -67,8 +67,24 @@ add_action( 'customize_register', function ($customizer) {
 
 	// SET DEFAULT FONTS FOR ELEMENTS
 	$font_selectors = array(
-		array( 'id' => 'font_general', 'default' => 'font_family_one_rule', 'label' => 'General'),
-		array( 'id' => 'font_headings', 'default' => 'font_family_two_rule', 'label' => 'Headings'),
+		array(
+			'id' => 'font_general',
+			'default' => 'font_family_one_rule',
+			'label' => 'General',
+			'section' => 'church_fonts_section'
+		),
+		array(
+			'id' => 'font_headings',
+			'default' => 'font_family_two_rule',
+			'label' => 'Headings',
+			'section' => 'church_fonts_section'
+		),
+		array(
+			'id' => 'font_blockquotes_quote',
+			'default' => 'font_family_two_rule',
+			'label' => 'Quotation Mark Family',
+			'section' => 'church_blockquotes_section'
+		),
 	);
 
 	foreach ($font_selectors as $font) {
@@ -83,8 +99,9 @@ add_action( 'customize_register', function ($customizer) {
 		$customizer->add_control($font_id, array(
 			'type' => 'select',
 			'choices' => $font_options,
-			'section' => 'church_fonts_section',
+			'section' => $font['section'],
 			'label' => $font['label'],
+			'priority' => 201,
 		));
 	}
 });

@@ -1,0 +1,64 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	row-gap: 2rem;
+	align-items: center;
+}
+
+.input-wrapper {
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5rem;
+	width: 30rem;
+	max-width: 100%;
+}
+
+.input-wrapper input {
+	width: 100%;
+}
+
+.input-wrapper textarea {
+	max-width: 100%;
+	height: 8rem;
+}
+
+.check-wrapper {
+	display: flex;
+	align-items: center;
+	column-gap: 0.5rem;
+}
+
+textarea,
+input {
+	border: 1px solid var(--input-border);
+	padding: 0.5rem;
+	font-size: 1rem;
+	background: var(--input-background);
+	transition: all 0.3s;
+}
+
+textarea:hover,
+input:hover {
+	background: var(--input-background-hover);
+}
+
+textarea:focus-within,
+textarea:focus-visible,
+textarea:active,
+input:focus-within,
+input:focus-visible,
+input:active {
+	background: var(--input-background-active);
+}
+
+button,
+input,
+textarea {
+	outline-offset: 0.25rem;
+	outline-width: 2px;
+}
+
+label {
+	color: var(--label-color);
+	cursor: pointer;
+}

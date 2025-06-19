@@ -2,8 +2,8 @@
 
 add_action('init', function () {
 	if (!get_option('church_sermon_contents_pattern')) {
-    	update_option('church_sermon_contents_pattern', 'false');
-    }
+		update_option('church_sermon_contents_pattern', 'false');
+	}
 });
 
 add_action( 'customize_register', function ($customizer) {
@@ -104,12 +104,12 @@ add_action( 'customize_register', function ($customizer) {
         array(
             'label' => 'Sermon Section Colors',
             'section' => 'church_sermon_styles',
+            'priority' => 300,
         )
     ));
 });
 
 
 add_action('customize_controls_enqueue_scripts', function ($customizer) {
-    church_add_script_conditional('church_archive_card_pattern', 'church_archive_card_order', 'show_on', 'false');
-    
+    church_add_script_conditional('church_sermon_contents_pattern', 'church_sermons_card_order', 'show_on', 'false');
 });

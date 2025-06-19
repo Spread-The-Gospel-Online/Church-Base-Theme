@@ -13,13 +13,28 @@
 	--grey-three: <?= get_option('css_color_grey-three'); ?>;
 	--grey-four: <?= get_option('css_color_grey-four'); ?>;
 	--black: <?= get_option('css_color_black'); ?>;
+	--transparent: transparent;
 
 	--link: <?= get_option('css_color_link'); ?>;
 	--link-on: var(<?= church_get_best_contrast_option('css_color_link', 'css_color_grey-one', 'css_color_grey-four') ?>);
 	--link-hover: <?= get_option('css_color_link-hover'); ?>;
 
-	--font-family-general: <?= get_option(get_option('font_general')) ?>;
-	--font-family-headings: <?= get_option(get_option('font_headings')) ?>;
+	--button-background: var(<?= get_option('css_button_background'); ?>);
+	--button-background-hover: var(<?= get_option('css_button_background_hover'); ?>);
+	--button-border: var(<?= get_option('css_button_border'); ?>);
+	--button-border-hover: var(<?= get_option('css_button_border_hover'); ?>);
+	--button-text: var(<?= get_option('css_button_text'); ?>);
+	--button-text-hover: var(<?= get_option('css_button_text_hover'); ?>);
+
+	--ada-outline: <?= get_option('css_color_ada-outline'); ?>;
+	--label-color: var(<?= get_option('css_label_color'); ?>);
+	--input-border: var(<?= get_option('css_input_border'); ?>);
+	--input-background: var(<?= get_option('css_input_background'); ?>);
+	--input-background-hover: var(<?= get_option('css_input_background_hover'); ?>);
+	--input-background-active: var(<?= get_option('css_input_background_active'); ?>);
+
+	--font-family-general: <?= get_font_var('font_general') ?>;
+	--font-family-headings: <?= get_font_var('font_headings') ?>;
 
 	--ccontain: <?= get_option('church_ccontain_default_size', 1252) ?>px;
 	--number-columns-mobile: 1;
@@ -46,6 +61,15 @@
 	--breadcrumbs-text: var(<?= get_option('css_breadcrumbs_text'); ?>);
 	--breadcrumbs-text-hover: var(<?= get_option('css_breadcrumbs_text_hover'); ?>);	
 
+	--blockquote-max-width: <?= get_option('church_blockquote_max_width', 800) ?>px;
+	--blockquote-quote-font: <?= get_font_var('font_blockquotes_quote') ?>;
+	--blockquote-quote-font-size: <?= get_option('font_blockquotes_quote_size', 4) ?>rem;
+	--blockquote-background: var(<?= get_option('css_blockquote_background'); ?>);
+	--blockquote-name: var(<?= get_option('css_blockquote_name') ?>);
+
+
+	--footer-padding: <?= get_option('church_footer_padding', 48) ?>px;
+	--footer-pattern-width: <?= get_option('church_footer_pattern_width', 25) ?>%;
 	--footer-background: var(<?= get_option('css_footer_background') ?>);
 	--footer-text: var(<?= get_option('css_footer_text') ?>);
 	--copyright-background: var(<?= get_option('css_copyright_background') ?>);

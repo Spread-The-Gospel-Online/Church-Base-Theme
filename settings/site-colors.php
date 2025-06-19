@@ -11,21 +11,22 @@ add_action( 'customize_register', function ($customizer) {
 
 	// ------- BASE COLORS -------
 	$colors = array(
-		array( 'slug' => 'primary', 'label' => 'Primary', 'default' => '#AF0005' ),
-		array( 'slug' => 'primary-hover', 'label' => 'Primary (Hover)', 'default' => '#A00005' ),
-		array( 'slug' => 'secondary', 'label' => 'Secondary', 'default' => '#2aaa00' ),
-		array( 'slug' => 'secondary-hover', 'label' => 'Secondary (Hover)', 'default' => '#2d8200' ),
-		array( 'slug' => 'tertiary', 'label' => 'Tertiary', 'default' => '#1815d3' ),
-		array( 'slug' => 'tertiary-hover', 'label' => 'Tertiary (Hover)', 'default' => '#0200a3' ),
-		array( 'slug' => 'white', 'label' => 'White', 'default' => '#FFFFFF' ),
-		array( 'slug' => 'off-white', 'label' => 'Off White', 'default' => '#EEEEEE' ),
-		array( 'slug' => 'grey-one', 'label' => 'Grey One', 'default' => '#D1D1D1' ),
-		array( 'slug' => 'grey-two', 'label' => 'Grey Two', 'default' => '#AAAAAA' ),
-		array( 'slug' => 'grey-three', 'label' => 'Grey Three', 'default' => '#7F7F7F' ),
-		array( 'slug' => 'grey-four', 'label' => 'Grey Four', 'default' => '#494949' ),
-		array( 'slug' => 'black', 'label' => 'Black', 'default' => '#000000' ),
-		array( 'slug' => 'link', 'label' => 'Links', 'default' => '#0000EE' ),
-		array( 'slug' => 'link-hover', 'label' => 'Links (Hover)', 'default' => '#0000CC' ),
+		array('slug' => 'primary', 'label' => 'Primary', 'default' => '#AF0005'),
+		array('slug' => 'primary-hover', 'label' => 'Primary (Hover)', 'default' => '#A00005'),
+		array('slug' => 'secondary', 'label' => 'Secondary', 'default' => '#2aaa00'),
+		array('slug' => 'secondary-hover', 'label' => 'Secondary (Hover)', 'default' => '#2d8200'),
+		array('slug' => 'tertiary', 'label' => 'Tertiary', 'default' => '#1815d3'),
+		array('slug' => 'tertiary-hover', 'label' => 'Tertiary (Hover)', 'default' => '#0200a3'),
+		array('slug' => 'white', 'label' => 'White', 'default' => '#FFFFFF'),
+		array('slug' => 'off-white', 'label' => 'Off White', 'default' => '#EEEEEE'),
+		array('slug' => 'grey-one', 'label' => 'Grey One', 'default' => '#D1D1D1'),
+		array('slug' => 'grey-two', 'label' => 'Grey Two', 'default' => '#AAAAAA'),
+		array('slug' => 'grey-three', 'label' => 'Grey Three', 'default' => '#7F7F7F'),
+		array('slug' => 'grey-four', 'label' => 'Grey Four', 'default' => '#494949'),
+		array('slug' => 'black', 'label' => 'Black', 'default' => '#000000'),
+		array('slug' => 'link', 'label' => 'Links', 'default' => '#435def'),
+		array('slug' => 'link-hover', 'label' => 'Links (Hover)', 'default' => '#0e00af'),
+		array('slug' => 'ada-outline', 'label' => 'ADA Outlines', 'default' => '#87CEEB'),
 	);
 
 	foreach ($colors as $color) {
@@ -240,7 +241,85 @@ add_action( 'customize_register', function ($customizer) {
 			'default' => '--link-hover',
 			'label' => 'Sermon Download Text Hover Color',
 			'section' => 'church_sermon_styles'
-		)
+		),
+		array(
+			'id' => 'label_color',
+			'default' => '--black',
+			'label' => 'Label Text',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'input_border',
+			'default' => '--black',
+			'label' => 'Input Border',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'input_background',
+			'default' => '--transparent',
+			'label' => 'Input Background',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'input_background_hover',
+			'default' => '--off-white',
+			'label' => 'Input Background - Hover',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'input_background_active',
+			'default' => '--transparent',
+			'label' => 'Input Background - Active',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'button_background',
+			'default' => '--white',
+			'label' => 'Button Background',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'button_background_hover',
+			'default' => '--secondary-hover',
+			'label' => 'Button Background - Hover',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'button_border',
+			'default' => '--secondary',
+			'label' => 'Button Border',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'button_border_hover',
+			'default' => '--secondary-hover',
+			'label' => 'Button Border - Hover',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'button_text',
+			'default' => '--secondary',
+			'label' => 'Button Text',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'button_text_hover',
+			'default' => '--white',
+			'label' => 'Button Text - Hover',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'blockquote_background',
+			'default' => '--off-white',
+			'label' => 'Blockquote Background',
+			'section' => 'church_blockquotes_section'
+		),
+		array(
+			'id' => 'blockquote_name',
+			'default' => '--grey-four',
+			'label' => 'Blockquote Background',
+			'section' => 'church_blockquotes_section'
+		),
 	);
 
 	/* 
@@ -257,6 +336,7 @@ add_action( 'customize_register', function ($customizer) {
 		$key = '--' . $color['slug'];
 		$color_options[$key] = $color['label'];
 	}
+	$color_options['--transparent'] = 'Transparent';
 
 	foreach ($color_selectors as $color) {
 		$color_id = 'css_' . $color['id'];
@@ -275,6 +355,7 @@ add_action( 'customize_register', function ($customizer) {
 			'choices' => $color_options,
 			'section' => $section_id,
 			'label' => $color['label'],
+			'priority' => 301,
 		));
 	}
 });

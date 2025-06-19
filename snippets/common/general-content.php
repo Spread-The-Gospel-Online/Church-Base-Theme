@@ -2,6 +2,6 @@
 
 <?php if ($post_contents && $post_contents != '') { ?>
 	<div class="gbc">
-		<?= do_blocks($content) ?>
+		<?= util_get_actual_content($content) ?>
 	</div>
 <?php } ?>

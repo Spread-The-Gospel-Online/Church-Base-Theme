@@ -38,6 +38,7 @@ add_action( 'customize_register', function ($customizer) {
         array(
             'label' => 'Events Section Colors',
             'section' => 'church_events_section',
+            'priority' => 300,
         )
     ));
 	

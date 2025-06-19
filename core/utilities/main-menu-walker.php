@@ -2,12 +2,13 @@
 
 class CHRCH_Menu_Walker extends Walker_Nav_Menu {
 
-	function start_lvl( &$output, $depth = 0, $args = array() ) {
+
+	function start_lvl (&$output, $depth = 0, $args = array()) {
 		$main_class = apply_filters('church-menu-main-class', 'main-menu');
         $output .= '<ul class="' . $main_class . '__sub-menu">';
     }
 
-	function start_el ( &$output, $item, $depth=0, $args=[], $id=0 ) {
+	function start_el (&$output, $item, $depth=0, $args=[], $id=0) {
 		$main_class = apply_filters('church-menu-main-class', 'main-menu');
 		$is_parent = $args->walker->has_children;
 		$extra_classes = $is_parent ? ' ' . $main_class . '__item--parent' : '';

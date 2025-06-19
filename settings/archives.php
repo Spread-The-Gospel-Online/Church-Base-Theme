@@ -256,6 +256,7 @@ add_action( 'customize_register', function ($customizer) {
         array(
             'label' => 'Archive Section Colors',
             'section' => 'church_archive_styles',
+            'priority' => 300,
         )
     ));
 });

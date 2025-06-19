@@ -97,6 +97,7 @@ add_action( 'customize_register', function ($customizer) {
         array(
             'label' => 'Header Section Colors',
             'section' => 'church_header_section',
+            'priority' => 300,
         )
     ));
 });

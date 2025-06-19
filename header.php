@@ -1,3 +1,5 @@
+<?php ob_start(); ?>
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> style="margin-top: 0 !important">
 	<head>
@@ -36,3 +38,6 @@
 
 		<div id="MainContent">
 			<?php do_action('church_layout_before_hero'); ?>
+
+<?php $contents = ob_get_clean(); ?>
+<?php echo preg_replace('/\s+/', ' ', $contents); ?>

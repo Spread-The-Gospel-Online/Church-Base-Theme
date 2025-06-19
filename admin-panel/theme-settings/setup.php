@@ -8,6 +8,11 @@ class Church_Theme_Admin_Page {
 
 add_action('admin_init', function () {
 	register_setting('church-theme-settings', 'church_enabled_post_types');
+	if (!get_option('church_enabled_post_types')) {
+		update_option('church_enabled_post_types', array(
+			'sermons', 'staff'
+		));
+	}
 });
 
 // add our theme settings menu page
