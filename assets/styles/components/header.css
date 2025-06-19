@@ -9,6 +9,13 @@ body:not(.body-scrolled) .header--transparent {
 	background: transparent;
 }
 
+.header--transparent:not(.header--is-fixed) {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+}
+
 .header__watcher {
 	background: var(--header-background);
 	width: 100%; 
