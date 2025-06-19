@@ -7,7 +7,7 @@ add_action('init', function () {
 	wp_enqueue_script(
 		'calendar-editor-script',
 		get_template_directory_uri() . '/gutenberg-plugins/calendar/calendar-editor-script.js',
-		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-components'),
+		array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-components'),
 		null,
 		true
 	);

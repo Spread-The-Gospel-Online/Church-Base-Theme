@@ -25,6 +25,22 @@ add_action( 'customize_register', function ($customizer) {
 		'label' => 'Fixed Header',
 	));
 
+	$customizer->add_setting('header_is_transparent', array(
+		'type' => 'option',
+		'default' => 'no',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('header_is_transparent', array(
+		'type' => 'select',
+		'choices' => array(
+			'no' => 'No, not transparent',
+			'yes' => 'Yes, is transparent'
+		),
+		'section' => 'church_header_section',
+		'label' => 'Fixed Header',
+		'description' => 'Sets header as transparent at top of page (when hero image is present)'
+	));
+
 
 	// HEADER LOGO
 	$customizer->add_setting('header_logo', array(

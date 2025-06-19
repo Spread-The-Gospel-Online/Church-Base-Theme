@@ -9,3 +9,7 @@
 .flexible-grid {
 	grid-template-columns: repeat(var(--number-columns), 1fr);
 }
+
+.flex-grid > * {
+	flex-basis: calc((100% - (var(--number-columns) - 1) * var(--sermon-archive-col-gap)) / var(--number-columns));
+}

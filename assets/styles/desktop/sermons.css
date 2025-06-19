@@ -1,3 +1,0 @@
-.sermon-archive {
-	grid-template-columns: repeat(var(--sermon-archive-grid-size), 1fr);
-}

@@ -24,6 +24,20 @@
 	row-gap: var(--sermon-archive-row-gap);
 }
 
+.flex-grid {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	column-gap: var(--sermon-archive-col-gap);
+	row-gap: var(--sermon-archive-row-gap);
+}
+
+.flex-grid > * {
+	flex-basis: calc((100% - (var(--number-columns-mobile) - 1) * var(--sermon-archive-col-gap)) / var(--number-columns-mobile));
+	flex-shrink: 0;
+}
+
 .desktop-only {
 	display: none;
 }

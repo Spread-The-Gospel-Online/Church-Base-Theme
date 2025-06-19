@@ -1,3 +1,8 @@
 .flexible-grid {
 	grid-template-columns: repeat(var(--number-columns-tablet), 1fr);
 }
+
+.flex-grid > * {
+	flex-basis: calc((100% - (var(--number-columns-tablet) - 1) * var(--sermon-archive-col-gap)) / var(--number-columns-tablet));
+	flex-shrink: 0;
+}
