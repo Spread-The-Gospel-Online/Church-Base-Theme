@@ -2,10 +2,11 @@
 
 class CHRCH_Menu_Walker extends Walker_Nav_Menu {
 
-
 	function start_lvl (&$output, $depth = 0, $args = array()) {
+		$menu_alignment = get_option('header_menu_alignment', 'middle');
 		$main_class = apply_filters('church-menu-main-class', 'main-menu');
-        $output .= '<ul class="' . $main_class . '__sub-menu">';
+        $extra_classes = 'main-menu__sub-menu--' . $menu_alignment;        
+        $output .= '<ul class="' . $main_class . '__sub-menu ' . $extra_classes . '">';
     }
 
 	function start_el (&$output, $item, $depth=0, $args=[], $id=0) {

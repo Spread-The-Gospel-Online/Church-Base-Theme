@@ -151,7 +151,6 @@
 .main-menu__sub-menu {
 	position: absolute;
 	top: 100%;
-	right: 0;
 	max-height: 0;
 	overflow: hidden;
 	background: var(--submenu-background);
@@ -159,6 +158,19 @@
 	list-style-type: none;
 	transition: max-height 0s, padding 0s, color 0.2s;
 	transition-delay: 0.25s;
+}
+
+.main-menu__sub-menu.main-menu__sub-menu--middle {
+	right: 50%;
+	transform: translateX(50%);
+}
+
+.main-menu__sub-menu.main-menu__sub-menu--left {
+	left: 0;
+}
+
+.main-menu__sub-menu.main-menu__sub-menu--right {
+	right: 0;
 }
 
 .main-menu__sub-menu a:hover {
