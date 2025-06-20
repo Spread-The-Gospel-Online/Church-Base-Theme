@@ -17,6 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (dom.searchBox.hasAttribute('is-ajax')) {
     dom.searchBox.addEventListener('submit', handleFormSubmit)
   }
+
+  window.watchState('searchOpen', (isOpen) => {
+    if (isOpen) {
+      document.body.classList.add('search-open')
+    } else {
+      document.body.classList.remove('search-open')
+    }
+  })
 })
 
 document.addEventListener('keydown', (event) => {
