@@ -66,6 +66,24 @@ add_action( 'customize_register', function ($customizer) {
 	));
 
 
+	$customizer->add_setting('church_general_font_size', array(
+		'type' => 'option',
+		'default' => 16,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_general_font_size', array(
+		'type' => 'number',
+		'section' => 'church_general_section',
+		'label' => 'Base Font Size',
+		'validate' => 'numeric',
+        'default'  => 16,
+        'input_attrs' => array(
+            'min' => 16,
+            'max' => 24,
+            'step' => 1,
+        ),
+	));
+
 	$customizer->add_setting('general_border_widths', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
 		$customizer, 'general_border_widths',

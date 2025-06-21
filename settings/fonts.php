@@ -30,9 +30,9 @@ add_action( 'customize_register', function ($customizer) {
 
 	$font_options = [];
 	$fonts = array(
-		array( 'label' => 'Font Family One', 'id' => 'font_family_one' ),
-		array( 'label' => 'Font Family Two', 'id' => 'font_family_two' ),
-		array( 'label' => 'Font Family Three', 'id' => 'font_family_three' ),
+		array('label' => 'Font Family One', 'id' => 'font_family_one'),
+		array('label' => 'Font Family Two', 'id' => 'font_family_two'),
+		array('label' => 'Font Family Three', 'id' => 'font_family_three'),
 	);
 
 	// ------- FIXED HEADER -------
@@ -65,6 +65,7 @@ add_action( 'customize_register', function ($customizer) {
 		$font_options[$key] = $font['label'];
 	}
 
+
 	// SET DEFAULT FONTS FOR ELEMENTS
 	$font_selectors = array(
 		array(
@@ -85,6 +86,12 @@ add_action( 'customize_register', function ($customizer) {
 			'label' => 'Quotation Mark Family',
 			'section' => 'church_blockquotes_section'
 		),
+		array(
+			'id' => 'font_header_menu_family',
+			'default' => 'font_family_two_rule',
+			'label' => 'Header Menu Family',
+			'section' => 'church_header_section'
+		),
 	);
 
 	foreach ($font_selectors as $font) {
@@ -104,4 +111,108 @@ add_action( 'customize_register', function ($customizer) {
 			'priority' => 201,
 		));
 	}
+
+	$customizer->add_setting('fonts_typography_header', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
+		$customizer, 'fonts_typography_header',
+        array(
+            'label' => 'Typography Styling',
+            'section' => 'church_fonts_section',
+            'priority' => 300
+        )
+    ));
+
+	$customizer->add_setting('heading_text_transform', array(
+		'type' => 'option',
+		'default' => 'none',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+
+	$customizer->add_control('heading_text_transform', array(
+		'type' => 'select',
+		'choices' => array(
+			'none' => 'None',
+			'uppercase' => 'Uppercase'
+		),
+		'section' => 'church_fonts_section',
+		'label' => 'Header Text Transform',
+		'priority' => 300
+	));
+
+	$customizer->add_setting('heading_text_letter_spacing', array(
+		'type' => 'option',
+		'default' => 0,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('heading_text_letter_spacing', array(
+		'type' => 'number',
+		'section' => 'church_fonts_section',
+		'label' => 'Heading Letter Spacing',
+		'validate' => 'numeric',
+        'default'  => 0,
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 6,
+            'step' => 0.1,
+        ),
+        'priority' => 300
+	));
+
+	$customizer->add_setting('heading_text_line_height', array(
+		'type' => 'option',
+		'default' => 1,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('heading_text_line_height', array(
+		'type' => 'number',
+		'section' => 'church_fonts_section',
+		'label' => 'Heading Letter Spacing',
+		'validate' => 'numeric',
+        'default'  => 1,
+        'input_attrs' => array(
+            'min' => 0.7,
+            'max' => 3,
+            'step' => 0.1,
+        ),
+        'priority' => 300
+	));
+
+
+	$customizer->add_setting('general_text_letter_spacing', array(
+		'type' => 'option',
+		'default' => 0,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('general_text_letter_spacing', array(
+		'type' => 'number',
+		'section' => 'church_fonts_section',
+		'label' => 'General Text Letter Spacing',
+		'validate' => 'numeric',
+        'default'  => 0,
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 6,
+            'step' => 0.1,
+        ),
+        'priority' => 300
+	));
+
+	$customizer->add_setting('general_text_line_height', array(
+		'type' => 'option',
+		'default' => 1,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('general_text_line_height', array(
+		'type' => 'number',
+		'section' => 'church_fonts_section',
+		'label' => 'General Text Line Height',
+		'validate' => 'numeric',
+        'default'  => 1,
+        'input_attrs' => array(
+            'min' => 0.7,
+            'max' => 3,
+            'step' => 0.1,
+        ),
+        'priority' => 300
+	));
 });

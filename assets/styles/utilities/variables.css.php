@@ -35,6 +35,12 @@
 
 	--font-family-general: <?= get_font_var('font_general') ?>;
 	--font-family-headings: <?= get_font_var('font_headings') ?>;
+	--font-size-general: <?= get_option('church_general_font_size', 16) ?>px;
+	--font-header-transform: <?= get_option('heading_text_transform', 'none') ?>;
+	--font-header-letter-spacing: <?= get_option('heading_text_letter_spacing', 0) ?>px;
+	--font-header-line-height: <?= get_option('heading_text_line_height') ?>;
+	--font-general-letter-spacing: <?= get_option('general_text_letter_spacing', 0) ?>px;
+	--font-general-line-height: <?= get_option('general_text_line_height') ?>;
 
 	--ccontain: <?= get_option('church_ccontain_default_size', 1252) ?>px;
 	--number-columns-mobile: 1;
@@ -47,6 +53,11 @@
 	--submenu-background: var(<?= get_option('css_submenu_background') ?>);
 	--submenu-text-color: var(<?= get_option('css_submenu_text') ?>);
 	--submenu-text-color-hover: var(<?= get_option('css_submenu_text_hover') ?>);
+	--header-text-font-family: <?= get_font_var('font_header_menu_family') ?>;
+	--header-text-transform: <?= get_option('header_menu_text_transform') ?>;
+	--header-text-letter-spacing: <?= get_option('header_menu_letter_spacing', 0) ?>px;
+	--header-text-font-size: <?= get_option('header_menu_font_size', 16) ?>px;
+	--header-text-font-weight: <?= get_option('header_menu_font_weight', 400) ?>;
 
 	--logo-height: <?= get_option('church_logo_default_size', 115) ?>px;
 	--logo-height-scrolled: <?= get_option('church_logo_scrolled_size', 90) ?>px;

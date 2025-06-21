@@ -80,6 +80,14 @@ body:not(.body-scrolled, .search-open) .header--transparent {
 	list-style-type: none;
 }
 
+.main-menu a {
+	font-family: var(--header-text-font-family);
+	text-transform: var(--header-text-transform);
+	letter-spacing: var(--header-text-letter-spacing);
+	font-size: var(--header-text-font-size);
+	font-weight: var(--header-text-font-weight);
+}
+
 .header__main-menu--right {
 	margin-left: auto;
 }

@@ -107,6 +107,91 @@ add_action( 'customize_register', function ($customizer) {
 	));
 
 
+	$customizer->add_setting('header_section_fonts', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
+		$customizer, 'header_section_fonts',
+        array(
+            'label' => 'Header Typography',
+            'section' => 'church_header_section',
+            'priority' => 200,
+        ),
+    ));
+
+    $customizer->add_setting('header_menu_font_size', array(
+		'type' => 'option',
+		'default' => 16,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('header_menu_font_size', array(
+		'type' => 'number',
+		'section' => 'church_header_section',
+		'label' => 'Header Menu Font Size',
+		'validate' => 'numeric',
+		'default'  => 16,
+		'input_attrs' => array(
+			'min' => 10,
+			'max' => 20,
+			'step' => 0.5,
+		),
+		'priority' => 202
+	));
+
+	$customizer->add_setting('header_menu_text_transform', array(
+		'type' => 'option',
+		'default' => 'none',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+
+	$customizer->add_control('header_menu_text_transform', array(
+		'type' => 'select',
+		'choices' => array(
+			'none' => 'None',
+			'uppercase' => 'Uppercase'
+		),
+		'section' => 'church_header_section',
+		'label' => 'Header Menu Text Transform',
+		'priority' => 202
+	));
+
+	$customizer->add_setting('header_menu_letter_spacing', array(
+		'type' => 'option',
+		'default' => 0,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('header_menu_letter_spacing', array(
+		'type' => 'number',
+		'section' => 'church_header_section',
+		'label' => 'Header Menu Letter Spacing',
+		'validate' => 'numeric',
+        'default'  => 0,
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 6,
+            'step' => 0.1,
+        ),
+        'priority' => 300
+	));
+
+	$customizer->add_setting('header_menu_font_weight', array(
+		'type' => 'option',
+		'default' => 400,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('header_menu_font_weight', array(
+		'type' => 'number',
+		'section' => 'church_header_section',
+		'label' => 'Header Menu Font Weight',
+		'validate' => 'numeric',
+        'default'  => 400,
+        'input_attrs' => array(
+            'min' => 100,
+            'max' => 900,
+            'step' => 100,
+        ),
+        'priority' => 300
+	));
+
+
 	$customizer->add_setting('heading_post_content', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
 		$customizer, 'heading_post_content',
