@@ -1,6 +1,11 @@
 <?php
 
-add_action( 'customize_register', function ($customizer) {
+add_action('customize_register', function ($customizer) {
+	if (!get_option('hero_default_height')) {
+		update_option('hero_default_height', 40);
+	}
+
+
 	$customizer->add_section('church_hero_section', array(
 		'title' => 'Hero Settings',
 		'priority' => 101,
