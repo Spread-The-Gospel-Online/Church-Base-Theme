@@ -37,6 +37,7 @@ while (have_posts()) {
 		'opacity' => get_post_meta($post_id, 'hero_opacity', true),
 		'background' => get_post_meta($post_id, 'hero_background', true),
 		'text_color' => get_post_meta($post_id, 'hero_text', true),
+		'hero_height' => get_post_meta($post_id, 'hero_height', true),
 	), false);
 
 	do_action('breadcrumbs_below');

@@ -48,6 +48,22 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
+	$customizer->add_setting('page_sidebar_position', array(
+		'type' => 'option',
+		'default' => 'right',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('page_sidebar_position', array(
+		'type' => 'select',
+		'choices' => array(
+			'left' => 'Left',
+			'right' => 'Right',
+		),
+		'section' => 'church_general_section',
+		'label' => 'Page Sidebar Position',
+		'description' => 'Position of any sidebar on a page on desktop'
+	));
+
 
 	$customizer->add_setting('enable_hero_parallax', array(
 		'type' => 'option',

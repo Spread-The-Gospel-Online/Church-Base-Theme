@@ -2,10 +2,12 @@
 
 function church_display_breadcrumbs ($steps, $extra_classes = '') {
 	$steps = $steps ? $steps : apply_filters('breadcrumbs_steps', array());
-	util_render_snippet('common/breadcrumbs', array(
-		'steps' => $steps,
-		'extra_classes' => $extra_classes
-	), false);
+	if (!is_front_page()) {
+		util_render_snippet('common/breadcrumbs', array(
+			'steps' => $steps,
+			'extra_classes' => $extra_classes
+		), false);
+	}
 }
 
 add_action('breadcrumbs_hero', function ($steps = false) {

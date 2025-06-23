@@ -128,4 +128,7 @@
 	--pagination-link-hover: var(<?= get_option('css_pagination_interactive_hover') ?>);
 	--pagination-link-background: var(<?= get_option('css_pagination_interactive_background') ?>);
 	--pagination-link-active: var(<?= get_option('css_pagination_current') ?>);
+
+	--page-content-sidebar-position: <?= (get_option('page_sidebar_position') == 'left') ? 1 : 2 ?>;
+	--page-content-columns: <?= (get_option('page_sidebar_position') == 'left') ? '20rem 1fr' : '1fr 20rem' ?>;
 }

@@ -1,13 +1,14 @@
 .page-content__have-children {
   display: grid;
-  grid-template-columns: 1fr 20rem;
+  grid-template-columns: var(--page-content-columns);
   grid-column-gap: 3rem;
 }
 
 .page-content__sidebar {
-  grid-column-start: 2;
+  grid-column-start: var(--page-content-sidebar-position);
 }
 
+.page-content__sidebar,
 .page-content__contents {
   grid-row-start: 1;
 }

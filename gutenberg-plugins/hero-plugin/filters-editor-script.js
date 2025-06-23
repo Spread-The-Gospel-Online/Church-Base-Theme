@@ -29,7 +29,7 @@
       if (!currentMeta) { return }
       const [bgColor, setBGColor] = wp.element.useState(currentMeta.hero_background ? currentMeta.hero_background : heroDefaults.heroBGDefault)
       const [textColor, setTextColor] = wp.element.useState(currentMeta.hero_text ? currentMeta.hero_text : heroDefaults.heroTextDefault)
-      
+
       return el(Fragment, {},
         el(PluginSidebarMoreMenuItem, {
           target: 'church-hero-sidebar'
@@ -49,6 +49,10 @@
                   const opacityInputs = document.querySelectorAll('#hero-opacity-slider input')
                   opacityInputs.forEach((input) => input.value = heroDefaults.heroOpacityDefault)
                   sendUpdate('hero_opacity', null)
+
+                  const heightInputs = document.querySelectorAll('#hero-height-slider input')
+                  heightInputs.forEach((input) => input.value = heroDefaults.heroHeightDefault)
+                  sendUpdate('hero_height', null)                  
 
                   setBGColor(heroDefaults.heroBGDefault)
                   sendUpdate('hero_background', null)
@@ -89,7 +93,21 @@
                   setTextColor(newColor)
                   sendUpdate('hero_text', newColor)
                 }
-              })
+              }),
+              el('div', { id: 'hero-height-slider', class: 'hero-components' },
+                el('div', {},
+                  el(Fields.RangeControl, {
+                    label: 'Hero Height',
+                    initialPosition: parseFloat(currentMeta.hero_height ? currentMeta.hero_height : heroDefaults.heroHeightDefault),
+                    min: 0,
+                    max: 100,
+                    step: 1,
+                    onChange: (newValue) => {
+                      sendUpdate('hero_height', `${newValue}`)
+                    }
+                  })
+                )
+              ),
             )
           )
         )

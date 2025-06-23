@@ -17,6 +17,10 @@
 	margin-bottom: 3rem;
 }
 
+.gbc .has-text-color a {
+	color: inherit;
+}
+
 .flexible-grid {
 	display: grid;
 	grid-template-columns: repeat(var(--number-columns-mobile), 1fr);

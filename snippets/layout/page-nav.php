@@ -1,7 +1,12 @@
 <?php $child_links = get_pages(array('child_of' => $parent_page)); ?>
 
-<aside class="page-content__sidebar">
+<aside class="page-content__sidebar gbc">
 	<ul class="page-content__sidebar-list">
+		<li class="summary-select__item">
+			<a href="<?= get_permalink($parent_post) ?>">
+				<?= $parent_post->post_title ?>
+			</a>
+		</li>
 		<?php foreach($child_links as $child) { ?>
 			<li>
 				<a href="<?= get_permalink($child) ?>">
@@ -20,6 +25,11 @@
 				)) ?>
 			</summary>
 			<ul class="summary-select__contents">
+				<li class="summary-select__item">
+					<a href="<?= get_permalink($parent_post) ?>">
+						<?= $parent_post->post_title ?>
+					</a>
+				</li>
 				<?php foreach($child_links as $child) { ?>
 					<li class="summary-select__item">
 						<a href="<?= get_permalink($child) ?>">

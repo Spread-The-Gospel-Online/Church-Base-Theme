@@ -27,18 +27,24 @@
 		'desktop_src' => $hero_image['src'],
 		'image_alt' => $hero_image['alt'],
 		'caption' => $post->post_title,
+		'opacity' => get_post_meta($post->ID, 'hero_opacity', true),
+		'background' => get_post_meta($post->ID, 'hero_background', true),
+		'text_color' => get_post_meta($post->ID, 'hero_text', true),
+		'hero_height' => get_post_meta($post->ID, 'hero_height', true),
 	), false);
 
 	do_action('church_layout_after_header');
 ?>
 
-<section class="page-content <?= $display_sidebar ? 'page-content__have-children' : '' ?>">
+<section class="ccontain page-content <?= $display_sidebar ? 'page-content__have-children' : '' ?>">
 	<?php if ($display_sidebar) { ?>
 		<?= util_render_snippet('layout/page-nav', array(
 			'parent_page' => $parent_page > 0 ? $parent_page : $post->ID,
+			'parent_post' => $parent_post,
 			'post' => $post
 		)) ?>
 	<?php } ?>
+
 	<div class="page-content__contents">
 		<?php while (have_posts()) {
 			the_post();

@@ -38,6 +38,9 @@
 		<?php if (isset($text_color) && $text_color != '') { ?>
 			--hero-text: <?= $text_color ?>;
 		<?php } ?>
+		<?php if (isset($hero_height) && $hero_height != '') { ?>
+			--hero-height: <?= $hero_height ?>vh;
+		<?php } ?>
 	}
 </style>
 

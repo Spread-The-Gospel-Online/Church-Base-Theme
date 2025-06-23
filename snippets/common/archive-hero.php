@@ -19,5 +19,6 @@ if ($archive_page) {
 		'opacity' => get_post_meta($page_id, 'hero_opacity', true),
 		'background' => get_post_meta($page_id, 'hero_background', true),
 		'text_color' => get_post_meta($page_id, 'hero_text', true),
+		'hero_height' => get_post_meta($page_id, 'hero_height', true),
 	), false);
 }
