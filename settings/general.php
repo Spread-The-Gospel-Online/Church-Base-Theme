@@ -21,7 +21,7 @@ add_action('customize_register', function ($customizer) {
         'default'  => 1252,
         'input_attrs' => array(
             'min' => 20,
-            'max' => 300,
+            'max' => 1600,
             'step' => 1,
         ),
 	));
