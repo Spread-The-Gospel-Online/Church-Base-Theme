@@ -1,23 +1,31 @@
 <?php if (!isset($steps)) { $steps = false; } ?>
 <?php do_action('breadcrumbs_above', $steps); ?>
 
-<figure class="hero parallax">
-	<picture>
-		<?php if ($desktop_src) { ?>
+<?php if ($desktop_src) { ?>
+	<figure class="hero parallax">
+		<picture>
 			<img src="<?= $desktop_src ?>"
 			     alt="<?= $image_alt ?>"
 			     class="hero__image"
 			     style="--parallax-position: 0%;">
-		<?php } ?>
-	</picture>
-	<figcaption class="hero__caption <?= isset($caption_classes) ? $caption_classes : '' ?>">
+		</picture>
+		<figcaption class="hero__caption <?= isset($caption_classes) ? $caption_classes : '' ?>">
+			<?php do_action('breadcrumbs_hero', $steps); ?>
+			<div class="hero__caption-overlay"></div>
+			<div class="hero__content ccontain">
+				<h1><?= $caption ?></h1>
+			</div>
+		</figcaption>
+	</figure>
+<?php } else { ?>
+	<div class="hero hero--text">
 		<?php do_action('breadcrumbs_hero', $steps); ?>
 		<div class="hero__caption-overlay"></div>
 		<div class="hero__content ccontain">
 			<h1><?= $caption ?></h1>
 		</div>
-	</figcaption>
-</figure>
+	</div>
+<?php } ?>
 
 <style type="text/css">
 	.hero {

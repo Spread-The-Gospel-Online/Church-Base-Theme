@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'customize_register', function ($customizer) {
+add_action('customize_register', function ($customizer) {
 	$customizer->add_section('church_general_section', array(
 		'title' => 'General Settings',
 		'priority' => 20,

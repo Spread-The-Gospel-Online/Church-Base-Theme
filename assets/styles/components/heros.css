@@ -16,6 +16,11 @@
 	object-fit: cover;
 }
 
+.hero.hero--text {
+	height: var(--hero-text-only-height);
+}
+
+.hero--text,
 .hero__caption {
 	display: flex;
 	align-items: center;

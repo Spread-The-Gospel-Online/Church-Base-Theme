@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'customize_register', function ($customizer) {
+add_action('customize_register', function ($customizer) {
 	$customizer->add_section('church_sermon_series_section', array(
 		'title' => 'Sermon Series Settings',
 		'priority' => 119,

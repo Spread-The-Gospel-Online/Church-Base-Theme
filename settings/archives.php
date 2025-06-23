@@ -1,7 +1,7 @@
 <?php
 
 // set our defaults for our settings.
-add_action( 'init', function () {
+add_action('init', function () {
 	$grid_size_tablet = get_option('church_archive_sermon_grid_tablet_size');
 	if (!$grid_size_tablet) {
 		update_option('church_archive_sermon_grid_tablet_size', 2);
@@ -17,7 +17,7 @@ add_action( 'init', function () {
     }
 });
 
-add_action( 'customize_register', function ($customizer) {
+add_action('customize_register', function ($customizer) {
 	$customizer->add_section('church_archive_styles', array(
 		'title' => 'Sermon Archive Styles',
 		'description' => 'Settings for archives grids',

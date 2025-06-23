@@ -16,8 +16,28 @@ add_action( 'customize_register', function ($customizer) {
 		'type' => 'number',
 		'section' => 'church_hero_section',
 		'label' => 'Hero Default Height',
+		'description' => 'Sets height of the hero, set as a percent of the height of the window',
 		'validate' => 'numeric',
         'default'  => 40,
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 100,
+            'step' => 1,
+        )
+	));
+
+	$customizer->add_setting('hero_text_only_default_height', array(
+		'type' => 'option',
+		'default' => 30,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('hero_text_only_default_height', array(
+		'type' => 'number',
+		'section' => 'church_hero_section',
+		'label' => 'Text Only Hero Height',
+		'description' => 'Sets height of the hero if there\'s no image to display in the hero',
+		'validate' => 'numeric',
+        'default'  => 30,
         'input_attrs' => array(
             'min' => 0,
             'max' => 100,

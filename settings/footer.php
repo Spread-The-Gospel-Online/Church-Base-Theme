@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'init', function () {
+add_action('init', function () {
 	if (!get_option('church_footer_display_copyright')) {
 		update_option('church_footer_display_copyright', 'true');
 	}
@@ -10,7 +10,7 @@ add_action( 'init', function () {
 	}
 });
 
-add_action( 'customize_register', function ($customizer) {
+add_action('customize_register', function ($customizer) {
 	$customizer->add_section('church_footer_section', array(
 		'title' => 'Footer Settings',
 		'priority' => 300,

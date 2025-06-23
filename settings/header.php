@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'customize_register', function ($customizer) {
+add_action('customize_register', function ($customizer) {
 	$customizer->add_section('church_header_section', array(
 		'title' => 'Header Settings',
 		'description' => 'Settings for header',
@@ -37,7 +37,7 @@ add_action( 'customize_register', function ($customizer) {
 			'yes' => 'Yes, is transparent'
 		),
 		'section' => 'church_header_section',
-		'label' => 'Fixed Header',
+		'label' => 'Transparent Fixed Header',
 		'description' => 'Sets header as transparent at top of page (when hero image is present)'
 	));
 

@@ -6,7 +6,7 @@ add_action('init', function () {
     }
 });
 
-add_action( 'customize_register', function ($customizer) {
+add_action('customize_register', function ($customizer) {
 	$customizer->add_section('church_staff_styles', array(
 		'title' => 'Staff Page',
 		'priority' => 126,

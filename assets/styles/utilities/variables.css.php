@@ -66,6 +66,7 @@
 	--hero-opacity: <?= get_option('hero_default_opacity') ?>;
 	--hero-text: var(<?= get_option('css_hero_text_color') ?>);
 	--hero-height: <?= get_option('hero_default_height', '40') ?>vh;
+	--hero-text-only-height: <?= get_option('hero_text_only_default_height', '30') ?>vh;
 
 	--breadcrumbs: var(<?= get_option('css_breadcrumbs_background'); ?>);
 	--breadcrumbs-transparent: <?= church_get_as_rgba('css_breadcrumbs_background', get_option('breadcrumbs_default_opacity')); ?>;

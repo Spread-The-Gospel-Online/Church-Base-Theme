@@ -6,7 +6,7 @@ add_action('init', function () {
 	}
 });
 
-add_action( 'customize_register', function ($customizer) {
+add_action('customize_register', function ($customizer) {
 	$customizer->add_section('church_sermon_styles', array(
 		'title' => 'Sermon Page Styles',
 		'priority' => 125,
