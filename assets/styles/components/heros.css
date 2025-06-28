@@ -35,6 +35,7 @@
 
 .hero__content {
 	position: relative;
+	text-align: center;
 	z-index: 1;
 	color: var(--hero-text);
 }

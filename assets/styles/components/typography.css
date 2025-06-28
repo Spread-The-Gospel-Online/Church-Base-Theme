@@ -16,6 +16,18 @@ h1, h2, h3, h4, h5,
 	line-height: var(--font-header-line-height);
 }
 
+h1, .h1 {
+	font-size: var(--header-one-mobile-size);
+}
+
+h2, .h2 {
+	font-size: var(--header-two-mobile-size);
+}
+
+h3, .h3 {
+	font-size: var(--header-three-mobile-size);
+}
+
 .text-large {
 
 }

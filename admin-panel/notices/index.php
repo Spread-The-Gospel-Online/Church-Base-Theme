@@ -6,7 +6,13 @@ function church_get_missing_archive_pages () {
 		if (church_missing_type_support($type)) {
 			return false;
 		}
-		$page = get_page_by_path($type);
+		$archive_type = get_queried_object()->name;
+		$archive_pages = get_posts(array(
+			'post_type' => 'page',
+			'name' => $archive_type,
+			'numberposts' => 1
+		));
+		$page = count($archive_pages) > 0 ? $archive_pages[0] : false;
 		return !$page;
 	});
 }

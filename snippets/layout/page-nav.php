@@ -3,15 +3,23 @@
 <aside class="page-content__sidebar gbc">
 	<ul class="page-content__sidebar-list">
 		<li class="summary-select__item">
-			<a href="<?= get_permalink($parent_post) ?>">
+			<?php if ($parent_post->ID != $post->ID) { ?>
+				<a href="<?= get_permalink($parent_post) ?>">
+					<?= $parent_post->post_title ?>
+				</a>
+			<?php } else { ?>
 				<?= $parent_post->post_title ?>
-			</a>
+			<?php } ?>
 		</li>
 		<?php foreach($child_links as $child) { ?>
 			<li>
-				<a href="<?= get_permalink($child) ?>">
+				<?php if ($child->ID != $post->ID) { ?>
+					<a href="<?= get_permalink($child) ?>">
+						<?= $child->post_title ?>
+					</a>
+				<?php } else { ?>
 					<?= $child->post_title ?>
-				</a>
+				<?php } ?>
 			</li>
 		<?php } ?>
 	</ul>
@@ -26,15 +34,23 @@
 			</summary>
 			<ul class="summary-select__contents">
 				<li class="summary-select__item">
-					<a href="<?= get_permalink($parent_post) ?>">
+					<?php if ($parent_post->ID != $post->ID) { ?>
+						<a href="<?= get_permalink($parent_post) ?>">
+							<?= $parent_post->post_title ?>
+						</a>
+					<?php } else { ?>
 						<?= $parent_post->post_title ?>
-					</a>
+					<?php } ?>
 				</li>
 				<?php foreach($child_links as $child) { ?>
-					<li class="summary-select__item">
-						<a href="<?= get_permalink($child) ?>">
+					<li>
+						<?php if ($child->ID != $post->ID) { ?>
+							<a href="<?= get_permalink($child) ?>">
+								<?= $child->post_title ?>
+							</a>
+						<?php } else { ?>
 							<?= $child->post_title ?>
-						</a>
+						<?php } ?>
 					</li>
 				<?php } ?>
 			</ul>

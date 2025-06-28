@@ -26,5 +26,5 @@ function church_display_lorem_ipsum ($attributes, $content) {
 	$number_paragraphs = array_key_exists('numberParagraphs', $attributes) ? $attributes['numberParagraphs'] : 2;
 	$loremText = churchFetchTextData('http://metaphorpsum.com/paragraphs/' . $number_paragraphs);
 	
-	echo '<p class="' . $attributes['className'] . '">' . str_replace("\n", '</p><p class="' . $attributes['className'] . '">', $loremText) . '</p>';
+	return '<p class="' . $attributes['className'] . '">' . str_replace("\n", '</p><p class="' . $attributes['className'] . '">', $loremText) . '</p>';
 }

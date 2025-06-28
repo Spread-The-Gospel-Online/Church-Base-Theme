@@ -36,7 +36,7 @@
 	do_action('church_layout_after_header');
 ?>
 
-<section class="ccontain page-content <?= $display_sidebar ? 'page-content__have-children' : '' ?>">
+<section class="page-content <?= $display_sidebar ? 'page-content__have-children ccontain' : '' ?>">
 	<?php if ($display_sidebar) { ?>
 		<?= util_render_snippet('layout/page-nav', array(
 			'parent_page' => $parent_page > 0 ? $parent_page : $post->ID,

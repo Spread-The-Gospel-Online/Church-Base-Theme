@@ -215,4 +215,130 @@ add_action('customize_register', function ($customizer) {
         ),
         'priority' => 300
 	));
+
+	$customizer->add_setting('fonts_typography_header_sizing', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
+		$customizer, 'fonts_typography_header_sizing',
+        array(
+            'label' => 'Heading Font Sizes',
+            'section' => 'church_fonts_section',
+            'priority' => 400
+        )
+    ));
+
+    $customizer->add_setting('header_one_desktop_size', array(
+		'type' => 'option',
+		'default' => 3.1,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('header_one_desktop_size', array(
+		'type' => 'number',
+		'section' => 'church_fonts_section',
+		'label' => 'H1 Font Size (Desktop)',
+		'validate' => 'numeric',
+        'default'  => 3.1,
+        'input_attrs' => array(
+            'min' => 1,
+            'max' => 6,
+            'step' => 0.1,
+        ),
+        'priority' => 400
+	));
+
+	$customizer->add_setting('header_one_mobile_size', array(
+		'type' => 'option',
+		'default' => 2.5,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('header_one_mobile_size', array(
+		'type' => 'number',
+		'section' => 'church_fonts_section',
+		'label' => 'H1 Font Size (Mobile)',
+		'validate' => 'numeric',
+        'default'  => 2.5,
+        'input_attrs' => array(
+            'min' => 1,
+            'max' => 6,
+            'step' => 0.1,
+        ),
+        'priority' => 400
+	));
+
+
+	$customizer->add_setting('header_two_desktop_size', array(
+		'type' => 'option',
+		'default' => 2.7,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('header_two_desktop_size', array(
+		'type' => 'number',
+		'section' => 'church_fonts_section',
+		'label' => 'H2 Font Size (Desktop)',
+		'validate' => 'numeric',
+        'default'  => 2.7,
+        'input_attrs' => array(
+            'min' => 1,
+            'max' => 6,
+            'step' => 0.1,
+        ),
+        'priority' => 400
+	));
+
+	$customizer->add_setting('header_two_mobile_size', array(
+		'type' => 'option',
+		'default' => 2.2,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('header_two_mobile_size', array(
+		'type' => 'number',
+		'section' => 'church_fonts_section',
+		'label' => 'H1 Font Size (Mobile)',
+		'validate' => 'numeric',
+        'default'  => 2.2,
+        'input_attrs' => array(
+            'min' => 1,
+            'max' => 6,
+            'step' => 0.1,
+        ),
+        'priority' => 400
+	));
+
+
+	$customizer->add_setting('header_three_desktop_size', array(
+		'type' => 'option',
+		'default' => 2.3,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('header_three_desktop_size', array(
+		'type' => 'number',
+		'section' => 'church_fonts_section',
+		'label' => 'H2 Font Size (Desktop)',
+		'validate' => 'numeric',
+        'default'  => 2.3,
+        'input_attrs' => array(
+            'min' => 1,
+            'max' => 6,
+            'step' => 0.1,
+        ),
+        'priority' => 400
+	));
+
+	$customizer->add_setting('header_three_mobile_size', array(
+		'type' => 'option',
+		'default' => 1.7,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('header_three_mobile_size', array(
+		'type' => 'number',
+		'section' => 'church_fonts_section',
+		'label' => 'H1 Font Size (Mobile)',
+		'validate' => 'numeric',
+        'default'  => 1.7,
+        'input_attrs' => array(
+            'min' => 1,
+            'max' => 6,
+            'step' => 0.1,
+        ),
+        'priority' => 400
+	));
 });

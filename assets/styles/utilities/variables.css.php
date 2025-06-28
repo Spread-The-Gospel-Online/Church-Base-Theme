@@ -42,6 +42,13 @@
 	--font-general-letter-spacing: <?= get_option('general_text_letter_spacing', 0) ?>px;
 	--font-general-line-height: <?= get_option('general_text_line_height') ?>;
 
+	--header-one-mobile-size: <?= get_option('header_one_mobile_size', 2.5) ?>rem;
+	--header-one-desktop-size: <?= get_option('header_one_desktop_size', 3.1) ?>rem;
+	--header-two-mobile-size: <?= get_option('header_two_mobile_size', 2.2) ?>rem;
+	--header-two-desktop-size: <?= get_option('header_two_desktop_size', 2.7) ?>rem;
+	--header-three-mobile-size: <?= get_option('header_three_mobile_size', 1.7) ?>rem;
+	--header-three-desktop-size: <?= get_option('header_three_desktop_size', 2.3) ?>rem;
+
 	--ccontain: <?= get_option('church_ccontain_default_size', 1252) ?>px;
 	--number-columns-mobile: 1;
 	--number-columns-tablet: 2;
