@@ -12,6 +12,10 @@
 	max-width: var(--ccontain);
 }
 
+.hidden {
+	display: none;
+}
+
 .gbc {
 	margin-top: 3rem;
 	margin-bottom: 3rem;
@@ -31,7 +35,7 @@
 .flex-grid {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
 	flex-wrap: wrap;
 	column-gap: var(--sermon-archive-col-gap);
 	row-gap: var(--sermon-archive-row-gap);

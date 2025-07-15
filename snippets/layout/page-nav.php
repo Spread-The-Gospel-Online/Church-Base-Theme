@@ -1,4 +1,7 @@
-<?php $child_links = get_pages(array('child_of' => $parent_page)); ?>
+<?php $child_links = get_pages(array(
+	'child_of' => $parent_page,
+	'sort_column' => 'menu_order'
+)); ?>
 
 <aside class="page-content__sidebar gbc">
 	<ul class="page-content__sidebar-list">

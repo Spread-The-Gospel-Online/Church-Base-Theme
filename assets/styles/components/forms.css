@@ -1,7 +1,7 @@
 .form {
 	display: flex;
 	flex-direction: column;
-	row-gap: 2rem;
+	row-gap: 1rem;
 	align-items: center;
 }
 
@@ -11,6 +11,15 @@
 	row-gap: 0.5rem;
 	width: 30rem;
 	max-width: 100%;
+	font-size: 0;
+}
+
+.input-wrapper.input-wrapper__horizontal {
+	margin-bottom: 1rem;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	column-gap: 0.75rem;
 }
 
 .input-wrapper input {
@@ -60,6 +69,7 @@ textarea {
 }
 
 label {
+	font-size: 1rem;
 	color: var(--label-color);
 	cursor: pointer;
 }

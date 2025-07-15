@@ -23,28 +23,23 @@ class CHRCH_Accordion_Menu_Walker extends Walker_Nav_Menu {
 		$output .= '<li class="' . 'accordion-menu__item' . $extra_classes . '">';
  	
 		if ($depth == 0 && $is_parent) {
-			$output .= '<details><summary>';
+			$output .= '<details class="summary-select"><summary class="summary-select__summary">';
 		}
 
-		$output .= '<span class="accordion-menu__item-label">';
 
 		if ($item->url && $item->url != '#' && ($depth > 0 || !$is_parent)) {
 			$target_attribute = wp_is_internal_link($item->url) ? '' : ' target="_blank"';
 			$output .= '<a href="' . $item->url . '"' . $target_attribute . '>';
-		} else {
-			$output .= '<span>';
 		}
 
 		$output .= $item->title;
 
 		if ($item->url && $item->url != '#') {
 			$output .= '</a>';
-		} else {
-			$output .= '</span>';
 		}
  
 		if ($depth == 0 && $is_parent) {
-			$output .= '<svg class="item-icon" style="width: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>';
+			$output .= '<svg class="item-icon summary-select__icon" style="width: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>';
 		}
 
 		$output .= '</span>';
