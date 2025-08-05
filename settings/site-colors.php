@@ -1,5 +1,24 @@
 <?php
 
+const BASE_SITE_COLOR_OPTIONS = array(
+	array('slug' => 'primary', 'name' => 'Primary', 'color' => '#AF0005'),
+	array('slug' => 'primary-hover', 'name' => 'Primary (Hover)', 'color' => '#A00005'),
+	array('slug' => 'secondary', 'name' => 'Secondary', 'color' => '#2aaa00'),
+	array('slug' => 'secondary-hover', 'name' => 'Secondary (Hover)', 'color' => '#2d8200'),
+	array('slug' => 'tertiary', 'name' => 'Tertiary', 'color' => '#1815d3'),
+	array('slug' => 'tertiary-hover', 'name' => 'Tertiary (Hover)', 'color' => '#0200a3'),
+	array('slug' => 'white', 'name' => 'White', 'color' => '#FFFFFF'),
+	array('slug' => 'off-white', 'name' => 'Off White', 'color' => '#EEEEEE'),
+	array('slug' => 'grey-one', 'name' => 'Grey One', 'color' => '#D1D1D1'),
+	array('slug' => 'grey-two', 'name' => 'Grey Two', 'color' => '#AAAAAA'),
+	array('slug' => 'grey-three', 'name' => 'Grey Three', 'color' => '#7F7F7F'),
+	array('slug' => 'grey-four', 'name' => 'Grey Four', 'color' => '#494949'),
+	array('slug' => 'black', 'name' => 'Black', 'color' => '#000000'),
+	array('slug' => 'link', 'name' => 'Links', 'color' => '#435def'),
+	array('slug' => 'link-hover', 'name' => 'Links (Hover)', 'color' => '#0e00af'),
+	array('slug' => 'ada-outline', 'name' => 'ADA Outlines', 'color' => '#87CEEB'),
+);
+
 add_action('customize_register', function ($customizer) {
 	$customizer->add_section('church_colors', array(
 		'title' => 'Site Colors',
@@ -10,35 +29,18 @@ add_action('customize_register', function ($customizer) {
 
 
 	// ------- BASE COLORS -------
-	$colors = array(
-		array('slug' => 'primary', 'label' => 'Primary', 'default' => '#AF0005'),
-		array('slug' => 'primary-hover', 'label' => 'Primary (Hover)', 'default' => '#A00005'),
-		array('slug' => 'secondary', 'label' => 'Secondary', 'default' => '#2aaa00'),
-		array('slug' => 'secondary-hover', 'label' => 'Secondary (Hover)', 'default' => '#2d8200'),
-		array('slug' => 'tertiary', 'label' => 'Tertiary', 'default' => '#1815d3'),
-		array('slug' => 'tertiary-hover', 'label' => 'Tertiary (Hover)', 'default' => '#0200a3'),
-		array('slug' => 'white', 'label' => 'White', 'default' => '#FFFFFF'),
-		array('slug' => 'off-white', 'label' => 'Off White', 'default' => '#EEEEEE'),
-		array('slug' => 'grey-one', 'label' => 'Grey One', 'default' => '#D1D1D1'),
-		array('slug' => 'grey-two', 'label' => 'Grey Two', 'default' => '#AAAAAA'),
-		array('slug' => 'grey-three', 'label' => 'Grey Three', 'default' => '#7F7F7F'),
-		array('slug' => 'grey-four', 'label' => 'Grey Four', 'default' => '#494949'),
-		array('slug' => 'black', 'label' => 'Black', 'default' => '#000000'),
-		array('slug' => 'link', 'label' => 'Links', 'default' => '#435def'),
-		array('slug' => 'link-hover', 'label' => 'Links (Hover)', 'default' => '#0e00af'),
-		array('slug' => 'ada-outline', 'label' => 'ADA Outlines', 'default' => '#87CEEB'),
-	);
+	$colors = BASE_SITE_COLOR_OPTIONS;
 
 	foreach ($colors as $color) {
 		// Set item in options if it doesn't exist
 		$option_value = get_option('css_color_' . $color['slug']);
 		if (!$option_value) {
-			update_option('css_color_' . $color['slug'], $color['default']);
+			update_option('css_color_' . $color['slug'], $color['color']);
 		}
 
 		// register option setting
 		$setting_key = 'css_color_' . $color['slug'];
-		church_register_color_setting($customizer, $setting_key, $color['label'], $color['default'], 'church_colors');
+		church_register_color_setting($customizer, $setting_key, $color['name'], $color['color'], 'church_colors');
 	}
 
 
@@ -334,7 +336,7 @@ add_action('customize_register', function ($customizer) {
 	$color_options = array();
 	foreach ($colors as $color) {
 		$key = '--' . $color['slug'];
-		$color_options[$key] = $color['label'];
+		$color_options[$key] = $color['name'];
 	}
 	$color_options['--transparent'] = 'Transparent';
 
