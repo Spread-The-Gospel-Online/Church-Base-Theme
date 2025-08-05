@@ -62,6 +62,11 @@
 	justify-content: space-between;
 }
 
+.block-padding-none {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
 .block-padding-small {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
