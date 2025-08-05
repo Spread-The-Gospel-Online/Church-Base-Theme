@@ -23,6 +23,7 @@
 			<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/assets/styles/main.css.php">
 			<style type="text/css">
 				<?php include 'assets/styles/utilities/variables.css.php'; ?>
+				<?php include 'assets/styles/utilities/gutenburg-color-classes.css.php'; ?>
 			</style>
 		<?php } else { ?>
 			<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/assets/styles/main.build.css">

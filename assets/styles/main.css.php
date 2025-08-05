@@ -22,6 +22,10 @@ echo '@media screen and (min-width: 1150px) {';
 	}	
 echo '}';
 
+if (defined('BASE_SITE_COLOR_OPTIONS')) {
+	include 'utilities/gutenburg-color-classes.css.php';
+}
+
 if (function_exists('get_option')) {
 	include 'utilities/variables.css.php';
 }

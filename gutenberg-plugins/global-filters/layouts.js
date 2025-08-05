@@ -20,6 +20,16 @@
     }
   )
 
+  // Remove extra 'has-link-color' class from blocks
+  wp.hooks.addFilter('blocks.getSaveContent.extraProps', 'vcgb/fullwidth-custom-control', (extraProps, blockType, attributes) => {
+    if (attributes.textColor && attributes.textColor != 'link') {
+      if (extraProps.className) {
+        extraProps.className = extraProps.className.replace('has-link-color', '')
+      }
+    }
+    return extraProps
+  })
+
   wp.hooks.addFilter('editor.BlockEdit', 'vcgb/fullwidth-custom-control', createHigherOrderComponent((BlockEdit) => {
     return (props) => {
       const { attributes, setAttributes, isSelected } = props;
@@ -53,7 +63,9 @@
             className: `ccontain`
           })
         }
-      }      
+      }
+
+      //console.log(attributes)
 
       const defaultClasses = (postType === 'wp_block') ? 'full-width' : 'ccontain'
       const classes = attributes.className ? attributes.className : defaultClasses
