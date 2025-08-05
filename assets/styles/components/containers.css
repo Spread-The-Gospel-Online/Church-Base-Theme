@@ -61,3 +61,18 @@
 .is-content-justification-space-between {
 	justify-content: space-between;
 }
+
+.block-padding-small {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.block-padding-medium {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.block-padding-large {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+}

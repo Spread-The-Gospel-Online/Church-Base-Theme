@@ -2,7 +2,7 @@
   const el = window.wp.element.createElement
   const { createHigherOrderComponent } = window.wp.compose;
   const { Fragment } = window.wp.element;
-  const { ToggleControl, RangeControl } = window.wp.components;
+  const { ToggleControl, RangeControl, PanelBody, TextControl, SelectControl } = window.wp.components;
   const { InspectorAdvancedControls, InspectorControls } = window.wp.blockEditor;
   
   wp.hooks.addFilter(
@@ -13,6 +13,9 @@
         settings.attributes = Object.assign(settings.attributes, {
           blockContainer: {
             type: 'boolean',
+          },
+          blockPadding: {
+            type: 'string'
           }
         });
       }
@@ -22,11 +25,16 @@
 
   // Remove extra 'has-link-color' class from blocks
   wp.hooks.addFilter('blocks.getSaveContent.extraProps', 'vcgb/fullwidth-custom-control', (extraProps, blockType, attributes) => {
-    if (attributes.textColor && attributes.textColor != 'link') {
-      if (extraProps.className) {
+    if (extraProps.className) {
+      if (attributes.textColor && attributes.textColor != 'link') {
         extraProps.className = extraProps.className.replace('has-link-color', '')
       }
+
+      if (attributes.blockPadding) {
+        extraProps.className += ` block-padding-${attributes.blockPadding}`
+      }
     }
+
     return extraProps
   })
 
@@ -65,7 +73,7 @@
         }
       }
 
-      //console.log(attributes)
+      console.log(attributes)
 
       const defaultClasses = (postType === 'wp_block') ? 'full-width' : 'ccontain'
       const classes = attributes.className ? attributes.className : defaultClasses
@@ -87,8 +95,27 @@
         })
       }
 
+      const blockPadding = attributes.blockPadding ? attributes.blockPadding : 'none'
+
       return el(Fragment, {},
         el(BlockEdit, { ...props }),
+        el(InspectorControls, {}, 
+          el(PanelBody, { title: 'Spacing' },
+            el(SelectControl, {
+              label: 'Element Padding',
+              value: blockPadding,
+              options: [
+                { label: 'Theme Default', value: 'none' },
+                { label: 'Small', value: 'small' },
+                { label: 'Medium', value: 'medium' },
+                { label: 'Large', value: 'large' }
+              ],
+              onChange: (newPaddingValue) => {
+                setAttributes({ blockPadding: newPaddingValue })
+              }
+            })
+          )
+        ),
         el(InspectorAdvancedControls, {}, 
           el(Fragment, {},
             el('div', {},
