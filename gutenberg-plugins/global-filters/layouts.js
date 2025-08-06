@@ -77,6 +77,10 @@
         setAttributes({ blockBottomMarginDesktop: defaultMarginDesktop })
       }
 
+      if (attributes.blockPadding === undefined) {
+        setAttributes({ blockPadding: 'none' })
+      }
+
       const blockPadding = attributes.blockPadding ? attributes.blockPadding : 'none'
       const isContainedWidth = attributes.blockContainer
 

@@ -1,7 +1,7 @@
 <?php
 
 church_util_register_gutenberg_server_callback('/getServerContentsStaff', array(
-	'staffIDs', 'numberOfColumns', 'staffLayout', 'imageTextLayout', 'imageWidth'
+	'staffIDs', 'numberOfColumns', 'staffLayout', 'imageTextLayout'
 ), 'church_display_staff_members');
 
 // register the block
@@ -33,10 +33,11 @@ add_action('init', function () {
 function church_display_staff_members ($attributes, $content) {
 	return util_render_snippet('staff/staff-members-list', array(
 		'staff_ids' => array_key_exists('staffIDs', $attributes) ? $attributes['staffIDs'] : '',
-		'view' => array_key_exists('staffLayout', $attributes) ? $attributes['staffLayout'] : 'expanded',
 		'columns' => array_key_exists('numberOfColumns', $attributes) ? $attributes['numberOfColumns'] : 2,
 		'classes' => array_key_exists('className', $attributes) ? $attributes['className'] : '',
-		'image_layout' => array_key_exists('imageTextLayout', $attributes) ? $attributes['imageTextLayout'] : 'horizontal',
-		'image_width' => array_key_exists('imageWidth', $attributes) ? $attributes['imageWidth'] : 40,
+		'block_container' => $attributes['blockContainer'],
+		'block_bottom_margin' => $attributes['blockBottomMargin'],
+		'block_bottom_margin_desktop' => $attributes['blockBottomMarginDesktop'],
+		'block_padding' => $attributes['blockPadding']
 	));
 }

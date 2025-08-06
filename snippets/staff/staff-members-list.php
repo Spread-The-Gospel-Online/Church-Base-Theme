@@ -1,21 +1,22 @@
 <?php
-    $staffPosts = get_posts(array(
+    global $post;
+    $original_post = $post;
+
+    $pattern = util_get_pattern_object('church_archive_card_pattern');
+    $staff_posts = get_posts(array(
         'post_type' => 'staff',
         'post__in' => explode(',', $staff_ids)
     ));
+
+    $wrapper_classes = util_get_block_wrapper_classes($block_container, $block_bottom_margin, $block_bottom_margin_desktop, $block_padding);
 ?>
 
-<div class="flex-grid <?= $classes ?>" style="--number-columns: <?= $columns ?>; --staff-image-width: <?= $image_width ?>px;">
-    <?php 
-        foreach ($staffPosts as $staff) {
-            $snippet = $view == 'compact' ? 'compact' : 'expanded';
-            $image_id = get_post_thumbnail_id($staff);
-            $image_src = $image_id ? wp_get_attachment_image_src($image_id, 'full', false)[0] : false;
-            util_render_snippet('staff/staff-member-' . $snippet, array(
-                'staff' => $staff,
-                'staff_img' => $image_src,
-                'image_layout' => $image_layout,
-            ), false);
-        }
-    ?>
+<div class="flex-grid <?= $classes ?> <?= $wrapper_classes ?>" style="--number-columns: <?= $columns ?>;">
+    <?php foreach ($staff_posts as $staff) { ?>
+        <?php $post = $staff; ?>
+        <div>
+            <?= util_get_actual_content($pattern->post_content); ?>
+        </div>
+    <?php } ?>
+    <?php $post = $original_post; ?>
 </div>

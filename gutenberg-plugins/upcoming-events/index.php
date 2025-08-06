@@ -37,6 +37,10 @@ function church_display_upcoming_events ($attributes, $content) {
 	return util_render_snippet('events/upcoming-events', array(
 		'events' => $events,
 		'columns' => $number_columns,
-		'classes' => array_key_exists('className', $attributes) ? $attributes['className'] : ''
+		'classes' => array_key_exists('className', $attributes) ? $attributes['className'] : '',
+		'block_container' => $attributes['blockContainer'],
+		'block_bottom_margin' => $attributes['blockBottomMargin'],
+		'block_bottom_margin_desktop' => $attributes['blockBottomMarginDesktop'],
+		'block_padding' => $attributes['blockPadding']
 	));
 }

@@ -69,17 +69,7 @@ window.wp.hooks.addFilter(
               onChange: function (e) {
                 props.setAttributes({ imageTextLayout: e });
               }
-            }),
-            el(Fields.RangeControl, {
-              label: 'Image Width',
-              value: props.attributes.imageWidth,
-              initialPosition: 100,
-              min: 10,
-              max: 650,
-              onChange: function (e) {
-                props.setAttributes({ imageWidth: e });
-              }
-            }),
+            })
           )
         )
       )
@@ -91,21 +81,10 @@ window.wp.hooks.addFilter(
 registerBlockType(blockNameStaff, {
   title: 'Staff Members',
   attributes: {
-    staffIDs: {
-      type: "string"
-    },
-    numberOfColumns: {
-      type: "number"
-    },
-    staffLayout: {
-      type: "string"
-    },
-    imageTextLayout: {
-      type: "string"
-    },
-    imageWidth: {
-      type: "number"
-    },
+    staffIDs: { type: "string" },
+    numberOfColumns: { type: "number" },
+    staffLayout: { type: "string" },
+    imageTextLayout: { type: "string" }
   },
   edit: function ({ attributes }) {
     setTimeout(() => loadStaffMembers(attributes), 3000)
@@ -120,11 +99,11 @@ registerBlockType(blockNameStaff, {
 
 
 const loadStaffMembers = (attributes) => {
-  console.log(attributes)
+  // console.log(attributes)
   const staffWrappers = document.querySelectorAll(`[data-get-staff-members="${attributes.staffIDs}"]`)
   
   staffWrappers.forEach((wrapper) => {
-    fetch(`${window.wpApiSettings.root}church/v1/getServerContentsStaff?staffIDs=${attributes.staffIDs}&numberOfColumns=${attributes.numberOfColumns}&staffLayout=${attributes.staffLayout}&imageTextLayout=${attributes.imageTextLayout}&imageWidth=${imageWidth}`)
+    fetch(`${window.wpApiSettings.root}church/v1/getServerContentsStaff?staffIDs=${attributes.staffIDs}&numberOfColumns=${attributes.numberOfColumns}&staffLayout=${attributes.staffLayout}&imageTextLayout=${attributes.imageTextLayout}`)
       .then((blob) => blob.text())
       .then((data) => {
         wrapper.innerHTML = data

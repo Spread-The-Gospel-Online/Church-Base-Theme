@@ -14,9 +14,10 @@
 	$offset = array_search($first_day, $days_of_week);
 
 	$recurring_events = church_get_recurring_events();
+	$wrapper_classes = util_get_block_wrapper_classes($blockContainer, $blockBottomMargin, $blockBottomMarginDesktop, $blockPadding);
 ?>
 
-<section class="ccontain" data-calendar-wrapper>
+<section class="<?= $wrapper_classes ?>" data-calendar-wrapper>
 	<div class="calendar-nav">
 		<button data-previous-month="<?= date('F Y', $previous_month) ?>" class="calendar-nav__button">
 			<?= date('F', $previous_month) ?>
