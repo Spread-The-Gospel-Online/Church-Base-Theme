@@ -13,6 +13,7 @@
 }
 
 .search-form {
+  margin-top: 3rem;
   margin-bottom: 3rem;
   display: flex;
   align-items: center;
