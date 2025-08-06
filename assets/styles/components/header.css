@@ -189,8 +189,7 @@ body:not(.body-scrolled, .search-open) .header--transparent {
 	background: var(--submenu-background);
 	color: var(--submenu-text-color);
 	list-style-type: none;
-	box-shadow: 2px 1px 7px 1px rgba(0, 0, 0, 0.5);
-	transition: max-height 0s, padding 0s, color 0.2s;
+	transition: max-height 0s, padding 0s, color 0.2s, box-shadow 0s;
 	transition-delay: 0.25s;
 }
 
@@ -223,6 +222,7 @@ body:not(.body-scrolled, .search-open) .header--transparent {
 .main-menu__item:hover .main-menu__sub-menu {
 	padding: 0.5rem 0;
 	max-height: 100vh;
+	box-shadow: 2px 1px 7px 1px rgba(0, 0, 0, 0.5);
 }
 
 .accordion-menu__item:not(.accordion-menu__item--parent) {
