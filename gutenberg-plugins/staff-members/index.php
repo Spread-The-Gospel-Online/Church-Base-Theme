@@ -1,7 +1,7 @@
 <?php
 
 church_util_register_gutenberg_server_callback('/getServerContentsStaff', array(
-	'staffIDs', 'numberOfColumns', 'staffLayout', 'imageTextLayout'
+	'staffIDs', 'numberOfColumns', 'staffPattern'
 ), 'church_display_staff_members');
 
 // register the block
@@ -25,7 +25,8 @@ add_action('init', function () {
 		'staff' => get_posts(array(
 			'numberposts' => -1,
 			'post_type' => 'staff'
-		))
+		)),
+		'patterns' => church_get_all_patterns_for_customizer()
 	));
 });
 
@@ -35,6 +36,7 @@ function church_display_staff_members ($attributes, $content) {
 		'staff_ids' => array_key_exists('staffIDs', $attributes) ? $attributes['staffIDs'] : '',
 		'columns' => array_key_exists('numberOfColumns', $attributes) ? $attributes['numberOfColumns'] : 2,
 		'classes' => array_key_exists('className', $attributes) ? $attributes['className'] : '',
+		'staff_pattern' => $attributes['staffPattern'],
 		'block_container' => $attributes['blockContainer'],
 		'block_bottom_margin' => $attributes['blockBottomMargin'],
 		'block_bottom_margin_desktop' => $attributes['blockBottomMarginDesktop'],

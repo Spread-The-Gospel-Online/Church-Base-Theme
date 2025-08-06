@@ -41,6 +41,14 @@ function util_get_pattern_object ($pattern_option_name) {
 	return $pattern;
 }
 
+function util_get_pattern_object_by_slug ($pattern_slug) {
+	if ($pattern_slug != 'false') {
+		$pattern = get_page_by_path($pattern_slug, OBJECT, 'wp_block');
+	}
+
+	return $pattern;
+}
+
 // Gets the wrapper classes for a PHP rendered Gutenberg block
 function util_get_block_wrapper_classes ($block_container, $block_bottom_margin, $block_bottom_margin_desktop, $block_padding) {
 	$container_class = 'full-width';
