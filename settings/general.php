@@ -48,12 +48,12 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
-	$customizer->add_setting('page_sidebar_position', array(
+	$customizer->add_setting('church_page_sidebar_position', array(
 		'type' => 'option',
 		'default' => 'right',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('page_sidebar_position', array(
+	$customizer->add_control('church_page_sidebar_position', array(
 		'type' => 'select',
 		'choices' => array(
 			'left' => 'Left',
@@ -65,12 +65,12 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
-	$customizer->add_setting('enable_hero_parallax', array(
+	$customizer->add_setting('church_enable_hero_parallax', array(
 		'type' => 'option',
 		'default' => 'no',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('enable_hero_parallax', array(
+	$customizer->add_control('church_enable_hero_parallax', array(
 		'type' => 'select',
 		'choices' => array(
 			'yes' => 'Enable Parallax',
@@ -100,9 +100,9 @@ add_action('customize_register', function ($customizer) {
         ),
 	));
 
-	$customizer->add_setting('general_border_widths', array());
+	$customizer->add_setting('church_general_border_widths', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
-		$customizer, 'general_border_widths',
+		$customizer, 'church_general_border_widths',
         array(
             'label' => 'Border Widths',
             'section' => 'church_general_section',

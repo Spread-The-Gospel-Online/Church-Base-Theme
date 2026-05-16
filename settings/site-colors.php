@@ -341,7 +341,7 @@ add_action('customize_register', function ($customizer) {
 	$color_options['--transparent'] = 'Transparent';
 
 	foreach ($color_selectors as $color) {
-		$color_id = 'css_' . $color['id'];
+		$color_id = 'church_css_' . $color['id'];
 		$section_id = isset($color['section']) ? $color['section'] : 'church_colors';
 
 		if (!get_option($color_id)) {

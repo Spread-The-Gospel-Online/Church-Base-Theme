@@ -4,6 +4,21 @@ class Church_Theme_Admin_Page {
 	public static function setup_theme_settings_page () {
 		require_once('templates/general-settings-page.php');
 	}
+
+	public static function check_theme_settings_form () {
+		if (current_user_can('administrator')) {
+			if (isset($_POST['church-should-export-theme-settings'])
+				&& $_POST['church-should-export-theme-settings'] === 'true') {
+				church_export_theme_settings();
+			}
+			if (isset($_FILES['church-import-theme-settings-file'])
+				&& $_FILES['church-import-theme-settings-file']['error'] === UPLOAD_ERR_OK) {
+				church_import_theme_settings(
+					file_get_contents($_FILES['church-import-theme-settings-file']['tmp_name'])
+				);
+			}
+		}
+	}
 }
 
 add_action('admin_init', function () {
@@ -13,6 +28,7 @@ add_action('admin_init', function () {
 			'sermons', 'staff'
 		));
 	}
+	Church_Theme_Admin_Page::check_theme_settings_form();
 });
 
 // add our theme settings menu page

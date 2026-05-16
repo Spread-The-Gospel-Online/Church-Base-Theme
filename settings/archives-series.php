@@ -8,11 +8,11 @@ add_action('customize_register', function ($customizer) {
 	));
 
 	// Default image for series tiles
-	$customizer->add_setting('series_default_image', array(
+	$customizer->add_setting('church_series_default_image', array(
 		'type' => 'option',
 	));
-	$customizer->add_control(new WP_Customize_Upload_Control($customizer, 'series_default_image', array(
-		'settings' => 'series_default_image',
+	$customizer->add_control(new WP_Customize_Upload_Control($customizer, 'church_series_default_image', array(
+		'settings' => 'church_series_default_image',
 		'section' => 'church_sermon_series_section',
 		'label' => 'Sermon Series Default Image',
 	)));

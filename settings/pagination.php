@@ -8,9 +8,9 @@ add_action('customize_register', function ($customizer) {
 		'capability' => 'edit_theme_options'
 	));
 
-    $customizer->add_setting('pagination_section_colors', array());
+    $customizer->add_setting('church_pagination_section_colors', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
-		$customizer, 'pagination_section_colors',
+		$customizer, 'church_pagination_section_colors',
         array(
             'label' => 'Pagination Section Colors',
             'section' => 'church_pagination_styles',

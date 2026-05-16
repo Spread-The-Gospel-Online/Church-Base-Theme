@@ -63,9 +63,9 @@ add_action('customize_register', function ($customizer) {
         ),
 	));
 	
-	$customizer->add_setting('archive_section_card_header', array());
+	$customizer->add_setting('church_archive_section_card_header', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
-		$customizer, 'archive_section_card_header',
+		$customizer, 'church_archive_section_card_header',
         array(
             'label' => 'Archive Card Settings',
             'section' => 'church_archive_styles',
@@ -102,12 +102,12 @@ add_action('customize_register', function ($customizer) {
         )
     ));
 
-    $customizer->add_setting('card_content_item_padding', array(
+    $customizer->add_setting('church_card_content_item_padding', array(
 		'type' => 'option',
 		'default' => 10,
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('card_content_item_padding', array(
+	$customizer->add_control('church_card_content_item_padding', array(
 		'type' => 'number',
 		'section' => 'church_archive_styles',
 		'label' => 'Sermon Card Content Item Padding',
@@ -121,12 +121,12 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
-	$customizer->add_setting('card_content_item_gap', array(
+	$customizer->add_setting('church_card_content_item_gap', array(
 		'type' => 'option',
 		'default' => 10,
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('card_content_item_gap', array(
+	$customizer->add_control('church_card_content_item_gap', array(
 		'type' => 'number',
 		'section' => 'church_archive_styles',
 		'label' => 'Sermon Card Content Items Gap',
@@ -141,12 +141,12 @@ add_action('customize_register', function ($customizer) {
 
 
 
-    $customizer->add_setting('card_content_position', array(
+    $customizer->add_setting('church_card_content_position', array(
 		'type' => 'option',
 		'default' => 'below',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('card_content_position', array(
+	$customizer->add_control('church_card_content_position', array(
 		'type' => 'select',
 		'choices' => array(
 			'below' => 'Below image',
@@ -156,12 +156,12 @@ add_action('customize_register', function ($customizer) {
 		'label' => 'Card Content Position',
 	));
 
-	$customizer->add_setting('card_content_text_align', array(
+	$customizer->add_setting('church_card_content_text_align', array(
 		'type' => 'option',
 		'default' => 'left',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('card_content_text_align', array(
+	$customizer->add_control('church_card_content_text_align', array(
 		'type' => 'select',
 		'choices' => array(
 			'left' => 'Left',
@@ -173,12 +173,12 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
-	$customizer->add_setting('card_background_opacity', array(
+	$customizer->add_setting('church_card_background_opacity', array(
 		'type' => 'option',
 		'default' => 0.5,
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('card_background_opacity', array(
+	$customizer->add_control('church_card_background_opacity', array(
 		'type' => 'number',
 		'section' => 'church_archive_styles',
 		'label' => 'Sermon Card Text Content Background Opacity',
@@ -193,12 +193,12 @@ add_action('customize_register', function ($customizer) {
 
 
 	// CARD STYLES
-	$customizer->add_setting('card_overlay_opacity', array(
+	$customizer->add_setting('church_card_overlay_opacity', array(
 		'type' => 'option',
 		'default'  => 0.5,
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('card_overlay_opacity', array(
+	$customizer->add_control('church_card_overlay_opacity', array(
 		'type' => 'number',
 		'section' => 'church_archive_styles',
 		'label' => 'Sermon Card Image Overlay Opacity',
@@ -211,12 +211,12 @@ add_action('customize_register', function ($customizer) {
         ),
 	));
 
-	$customizer->add_setting('card_overlay_opacity_hover', array(
+	$customizer->add_setting('church_card_overlay_opacity_hover', array(
 		'type' => 'option',
 		'default' => 0.5,
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('card_overlay_opacity_hover', array(
+	$customizer->add_control('church_card_overlay_opacity_hover', array(
 		'type' => 'number',
 		'section' => 'church_archive_styles',
 		'label' => 'Sermon Card Image Overlay Opacity (Hover)',
@@ -250,9 +250,9 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
-    $customizer->add_setting('archive_section_colors', array());
+    $customizer->add_setting('church_archive_section_colors', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
-		$customizer, 'archive_section_colors',
+		$customizer, 'church_archive_section_colors',
         array(
             'label' => 'Archive Section Colors',
             'section' => 'church_archive_styles',
@@ -265,6 +265,6 @@ add_action('customize_register', function ($customizer) {
 add_action('customize_controls_enqueue_scripts', function ($customizer) {
 	// add conditionals for if we're using a pattern for card contents or not
     church_add_script_conditional('church_archive_card_pattern', 'church_archive_card_order', 'show_on', 'false');
-    church_add_script_conditional('church_archive_card_pattern', 'card_content_text_align', 'show_on', 'false');
-    church_add_script_conditional('church_archive_card_pattern', 'card_content_item_gap', 'show_on', 'false');
+    church_add_script_conditional('church_archive_card_pattern', 'church_card_content_text_align', 'show_on', 'false');
+    church_add_script_conditional('church_archive_card_pattern', 'church_card_content_item_gap', 'show_on', 'false');
 });

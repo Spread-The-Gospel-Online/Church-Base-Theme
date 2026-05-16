@@ -1,7 +1,7 @@
 <?php
-	$logo_src = get_option('header_logo');
-	$is_fixed = get_option('header_is_fixed', 'no'); 
-	$is_transparent = get_option('header_is_transparent', 'no');
+	$logo_src = get_option('church_header_logo');
+	$is_fixed = get_option('church_header_is_fixed', 'no'); 
+	$is_transparent = get_option('church_header_is_transparent', 'no');
 	$watcher_classes = 'header__watcher';
 	$extra_watcher_styles = '';
 

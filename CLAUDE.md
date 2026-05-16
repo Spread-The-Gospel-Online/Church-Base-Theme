@@ -59,7 +59,7 @@ Site colors define the `BASE_SITE_COLOR_OPTIONS` constant, fed into Gutenberg vi
 
 ## Frontend JS
 
-Plain ES modules under `assets/scripts/` (`components/`, `templates/`, `utils/`, `web-components/`), loaded as `type="module"`. There are small custom web components (`html-for.js`, `html-if.js`). Parallax script is conditionally loaded based on the `enable_hero_parallax` option.
+Plain ES modules under `assets/scripts/` (`components/`, `templates/`, `utils/`, `web-components/`), loaded as `type="module"`. There are small custom web components (`html-for.js`, `html-if.js`). Parallax script is conditionally loaded based on the `church_enable_hero_parallax` option.
 
 ## Site setup requirements (from README)
 

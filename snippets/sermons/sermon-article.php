@@ -13,7 +13,7 @@
 	$pattern = util_get_pattern_object('church_archive_card_pattern');
 
 	$card_content_classes = 'card__content';
-	if ('on_top' == get_option('card_content_position')) {
+	if ('on_top' == get_option('church_card_content_position')) {
 		$card_content_classes .= ' card__content--on-top';
 	}
 	if ($pattern) {

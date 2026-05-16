@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Recurse -Path \"c:\\\\xampp\\\\htdocs\\\\church\\\\wp-content\\\\themes\\\\church\\\\admin-panel\\\\theme-settings\" -File)",
+      "Bash(Select-Object FullName)",
+      "Read(//c/xampp/htdocs/church/wp-content/themes/church/**)",
+      "Bash(Select-String \"Content-Disposition\" -ea SilentlyContinue)"
+    ]
+  }
+}

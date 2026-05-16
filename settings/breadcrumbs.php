@@ -7,17 +7,17 @@ add_action('customize_register', function ($customizer) {
 		'capability' => 'edit_theme_options'
 	));
 
-	if (!get_option('display_breadcrumbs')) {
-		update_option('display_breadcrumbs', 'top');
+	if (!get_option('church_display_breadcrumbs')) {
+		update_option('church_display_breadcrumbs', 'top');
 	}
 
 	// ------- BREADCRUMBS -------
-	$customizer->add_setting('display_breadcrumbs', array(
+	$customizer->add_setting('church_display_breadcrumbs', array(
 		'type' => 'option',
 		'default' => 'yes',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('display_breadcrumbs', array(
+	$customizer->add_control('church_display_breadcrumbs', array(
 		'type' => 'select',
 		'choices' => array(
 			'above' => 'Display breadcrumbs above hero banner',
@@ -30,12 +30,12 @@ add_action('customize_register', function ($customizer) {
 		'label' => 'Breadcrumbs',
 	));
 
-	$customizer->add_setting('breadcrumbs_default_opacity', array(
+	$customizer->add_setting('church_breadcrumbs_default_opacity', array(
 		'type' => 'option',
 		'default' => 0.5,
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('breadcrumbs_default_opacity', array(
+	$customizer->add_control('church_breadcrumbs_default_opacity', array(
 		'type' => 'number',
 		'section' => 'church_breadcrumbs_section',
 		'label' => 'Breadcrumbs Background Opacity',
@@ -48,9 +48,9 @@ add_action('customize_register', function ($customizer) {
         )
 	));
 	
-	$customizer->add_setting('breadcrumbs_section_colors', array());
+	$customizer->add_setting('church_breadcrumbs_section_colors', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
-		$customizer, 'breadcrumbs_section_colors',
+		$customizer, 'church_breadcrumbs_section_colors',
         array(
             'label' => 'Breadcrumbs Section Colors',
             'section' => 'church_breadcrumbs_section',

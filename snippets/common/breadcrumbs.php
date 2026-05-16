@@ -1,4 +1,4 @@
-<?php if (get_option('display_breadcrumbs') != 'no') { ?>
+<?php if (get_option('church_display_breadcrumbs') != 'no') { ?>
 	<div class="breadcrumbs <?= $extra_classes ?>">
 		<ul class="ccontain breadcrumbs__list">
 			<li class="breadcrumbs__item">

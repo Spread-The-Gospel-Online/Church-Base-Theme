@@ -9,9 +9,9 @@ add_action('customize_register', function ($customizer) {
 
 	
 
-	$customizer->add_setting('forms_section_colors', array());
+	$customizer->add_setting('church_forms_section_colors', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
-		$customizer, 'forms_section_colors',
+		$customizer, 'church_forms_section_colors',
         array(
             'label' => 'Form Colors',
             'section' => 'church_forms_section',

@@ -10,12 +10,12 @@ add_action('customize_register', function ($customizer) {
 
 
 	// ------- FIXED HEADER -------
-	$customizer->add_setting('header_is_fixed', array(
+	$customizer->add_setting('church_header_is_fixed', array(
 		'type' => 'option',
 		'default' => 'no',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('header_is_fixed', array(
+	$customizer->add_control('church_header_is_fixed', array(
 		'type' => 'select',
 		'choices' => array(
 			'no' => 'No, not fixed',
@@ -25,12 +25,12 @@ add_action('customize_register', function ($customizer) {
 		'label' => 'Fixed Header',
 	));
 
-	$customizer->add_setting('header_is_transparent', array(
+	$customizer->add_setting('church_header_is_transparent', array(
 		'type' => 'option',
 		'default' => 'no',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('header_is_transparent', array(
+	$customizer->add_control('church_header_is_transparent', array(
 		'type' => 'select',
 		'choices' => array(
 			'no' => 'No, not transparent',
@@ -43,11 +43,11 @@ add_action('customize_register', function ($customizer) {
 
 
 	// HEADER LOGO
-	$customizer->add_setting('header_logo', array(
+	$customizer->add_setting('church_header_logo', array(
 		'type' => 'option',
 	));
-	$customizer->add_control(new WP_Customize_Upload_Control($customizer, 'header_logo', array(
-		'settings' => 'header_logo',
+	$customizer->add_control(new WP_Customize_Upload_Control($customizer, 'church_header_logo', array(
+		'settings' => 'church_header_logo',
 		'section' => 'church_header_section',
 		'label' => 'Header Logo Image',
 	)));
@@ -90,12 +90,12 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
-	$customizer->add_setting('header_menu_alignment', array(
+	$customizer->add_setting('church_header_menu_alignment', array(
 		'type' => 'option',
 		'default' => 'middle',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('header_menu_alignment', array(
+	$customizer->add_control('church_header_menu_alignment', array(
 		'type' => 'select',
 		'choices' => array(
 			'left' => 'Left',
@@ -107,9 +107,9 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
-	$customizer->add_setting('header_section_fonts', array());
+	$customizer->add_setting('church_header_section_fonts', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
-		$customizer, 'header_section_fonts',
+		$customizer, 'church_header_section_fonts',
         array(
             'label' => 'Header Typography',
             'section' => 'church_header_section',
@@ -117,12 +117,12 @@ add_action('customize_register', function ($customizer) {
         ),
     ));
 
-    $customizer->add_setting('header_menu_font_size', array(
+    $customizer->add_setting('church_header_menu_font_size', array(
 		'type' => 'option',
 		'default' => 16,
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('header_menu_font_size', array(
+	$customizer->add_control('church_header_menu_font_size', array(
 		'type' => 'number',
 		'section' => 'church_header_section',
 		'label' => 'Header Menu Font Size',
@@ -136,13 +136,13 @@ add_action('customize_register', function ($customizer) {
 		'priority' => 202
 	));
 
-	$customizer->add_setting('header_menu_text_transform', array(
+	$customizer->add_setting('church_header_menu_text_transform', array(
 		'type' => 'option',
 		'default' => 'none',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
 
-	$customizer->add_control('header_menu_text_transform', array(
+	$customizer->add_control('church_header_menu_text_transform', array(
 		'type' => 'select',
 		'choices' => array(
 			'none' => 'None',
@@ -153,12 +153,12 @@ add_action('customize_register', function ($customizer) {
 		'priority' => 202
 	));
 
-	$customizer->add_setting('header_menu_letter_spacing', array(
+	$customizer->add_setting('church_header_menu_letter_spacing', array(
 		'type' => 'option',
 		'default' => 0,
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('header_menu_letter_spacing', array(
+	$customizer->add_control('church_header_menu_letter_spacing', array(
 		'type' => 'number',
 		'section' => 'church_header_section',
 		'label' => 'Header Menu Letter Spacing',
@@ -172,12 +172,12 @@ add_action('customize_register', function ($customizer) {
         'priority' => 300
 	));
 
-	$customizer->add_setting('header_menu_font_weight', array(
+	$customizer->add_setting('church_header_menu_font_weight', array(
 		'type' => 'option',
 		'default' => 400,
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('header_menu_font_weight', array(
+	$customizer->add_control('church_header_menu_font_weight', array(
 		'type' => 'number',
 		'section' => 'church_header_section',
 		'label' => 'Header Menu Font Weight',
@@ -192,9 +192,9 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
-	$customizer->add_setting('heading_post_content', array());
+	$customizer->add_setting('church_heading_post_content', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
-		$customizer, 'heading_post_content',
+		$customizer, 'church_heading_post_content',
         array(
             'label' => 'Header Section Colors',
             'section' => 'church_header_section',

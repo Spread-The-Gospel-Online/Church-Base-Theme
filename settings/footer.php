@@ -84,12 +84,12 @@ add_action('customize_register', function ($customizer) {
 		'label' => 'Display Copyright',
 	));
 
-	$customizer->add_setting('copyright_text', array(
+	$customizer->add_setting('church_copyright_text', array(
 		'type' => 'option',
 		'default' => 'Copyright @ YYYY',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('copyright_text', array(
+	$customizer->add_control('church_copyright_text', array(
 		'type' => 'text',
 		'section' => 'church_footer_section',
 		'label' => 'Copyright Text',
@@ -98,31 +98,31 @@ add_action('customize_register', function ($customizer) {
 
 	// Social settings
 
-	$customizer->add_setting('social_link_facebook', array(
+	$customizer->add_setting('church_social_link_facebook', array(
 		'type' => 'option',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('social_link_facebook', array(
+	$customizer->add_control('church_social_link_facebook', array(
 		'type' => 'text',
 		'section' => 'church_footer_section',
 		'label' => 'Facebook Profile URL'
 	));
 
-	$customizer->add_setting('social_link_twitter', array(
+	$customizer->add_setting('church_social_link_twitter', array(
 		'type' => 'option',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('social_link_twitter', array(
+	$customizer->add_control('church_social_link_twitter', array(
 		'type' => 'text',
 		'section' => 'church_footer_section',
 		'label' => 'Twitter Profile URL'
 	));
 
-	$customizer->add_setting('social_link_instagram', array(
+	$customizer->add_setting('church_social_link_instagram', array(
 		'type' => 'option',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
-	$customizer->add_control('social_link_instagram', array(
+	$customizer->add_control('church_social_link_instagram', array(
 		'type' => 'text',
 		'section' => 'church_footer_section',
 		'label' => 'Instagram Profile URL'
@@ -130,9 +130,9 @@ add_action('customize_register', function ($customizer) {
 
 	// Colors
 
-	$customizer->add_setting('footer_section_colors', array());
+	$customizer->add_setting('church_footer_section_colors', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
-		$customizer, 'footer_section_colors',
+		$customizer, 'church_footer_section_colors',
 		array(
 			'label' => 'Footer Section Colors',
 			'section' => 'church_footer_section',
@@ -143,5 +143,5 @@ add_action('customize_register', function ($customizer) {
 
 add_action('customize_controls_enqueue_scripts', function ($customizer) {
 	// add conditionals for if we're using a pattern for card contents or not
-	church_add_script_conditional('church_footer_display_copyright', 'copyright_text', 'show_on', 'true');
+	church_add_script_conditional('church_footer_display_copyright', 'church_copyright_text', 'show_on', 'true');
 });

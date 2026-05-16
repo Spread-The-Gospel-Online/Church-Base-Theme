@@ -2,7 +2,7 @@
 	$image_info = util_get_hero_src($post);
 
 	$card_content_classes = 'card__content';
-	if ('on_top' == get_option('card_content_position')) {
+	if ('on_top' == get_option('church_card_content_position')) {
 		$card_content_classes .= ' card__content--on-top';
 	}
 ?>

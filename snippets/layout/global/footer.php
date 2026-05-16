@@ -57,7 +57,7 @@
 <?php if (get_option('church_footer_display_copyright') == 'true') { ?>
 	<div class="copyright text-small">
 		<p class="ccontain">
-			<?= str_replace('YYYY', date('Y'), get_option('copyright_text', 'Copyright @ YYYY')) ?>
+			<?= str_replace('YYYY', date('Y'), get_option('church_copyright_text', 'Copyright @ YYYY')) ?>
 		</p>
 	</div>
 <?php } ?>

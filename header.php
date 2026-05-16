@@ -29,7 +29,7 @@
 			<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/assets/styles/main.build.css">
 		<?php } ?>
 
-		<?php if (get_option('enable_hero_parallax') == 'yes') { ?>
+		<?php if (get_option('church_enable_hero_parallax') == 'yes') { ?>
 			<script type="module" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/components/parallax.js"></script>
 		<?php } ?>
 	</head>

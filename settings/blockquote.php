@@ -25,9 +25,9 @@ add_action('customize_register', function ($customizer) {
 		),
 	));
 
-	$customizer->add_setting('blockquotes_section_fonts', array());
+	$customizer->add_setting('church_blockquotes_section_fonts', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
-		$customizer, 'blockquotes_section_fonts',
+		$customizer, 'church_blockquotes_section_fonts',
         array(
             'label' => 'Blockquote Fonts',
             'section' => 'church_blockquotes_section',
@@ -54,9 +54,9 @@ add_action('customize_register', function ($customizer) {
 		'priority' => 202
 	));
 
-	$customizer->add_setting('blockquotes_section_colors', array());
+	$customizer->add_setting('church_blockquotes_section_colors', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
-		$customizer, 'blockquotes_section_colors',
+		$customizer, 'church_blockquotes_section_colors',
         array(
             'label' => 'Blockquote Colors',
             'section' => 'church_blockquotes_section',

@@ -8,7 +8,7 @@
 	<?php while (have_posts()) {
 		the_post();
 		$series = get_post();
-		$tile_image = get_the_post_thumbnail_url($series) ? get_the_post_thumbnail_url($series) : get_option('series_default_image');
+		$tile_image = get_the_post_thumbnail_url($series) ? get_the_post_thumbnail_url($series) : get_option('church_series_default_image');
 		util_render_snippet('common/tile', array(
 			'url' => get_permalink($series),
 			'title' => $series->post_title,

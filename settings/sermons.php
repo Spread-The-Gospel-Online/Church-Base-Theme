@@ -98,9 +98,9 @@ add_action('customize_register', function ($customizer) {
         )
     ));
 
-    $customizer->add_setting('sermon_section_colors', array());
+    $customizer->add_setting('church_sermon_section_colors', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
-		$customizer, 'sermon_section_colors',
+		$customizer, 'church_sermon_section_colors',
         array(
             'label' => 'Sermon Section Colors',
             'section' => 'church_sermon_styles',
