@@ -8,3 +8,7 @@
 		<meta name="description" content="<?= $post->post_excerpt ?>" />
 	<?php } ?>
 <?php } ?>
+
+<?php if (is_front_page()) { ?>
+	<?= util_render_snippet('layout/ld-json') ?>
+<?php } ?>

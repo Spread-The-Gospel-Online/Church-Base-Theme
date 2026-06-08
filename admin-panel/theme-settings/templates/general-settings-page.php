@@ -36,7 +36,8 @@
 		<input type="hidden" name="church-should-export-theme-settings" value="true" />
 		<?php submit_button('Export Theme Settings'); ?>
 	</form>
-
+	<hr />
+	<br />
 	<form method="post" enctype="multipart/form-data">
 		<input type="file" name="church-import-theme-settings-file" />
 		<?php submit_button('Import Theme Settings'); ?>
