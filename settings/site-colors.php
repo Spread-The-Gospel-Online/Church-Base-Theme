@@ -1,12 +1,15 @@
 <?php
 
 const BASE_SITE_COLOR_OPTIONS = array(
-	array('slug' => 'primary', 'name' => 'Primary', 'color' => '#AF0005'),
-	array('slug' => 'primary-hover', 'name' => 'Primary (Hover)', 'color' => '#A00005'),
-	array('slug' => 'secondary', 'name' => 'Secondary', 'color' => '#2aaa00'),
-	array('slug' => 'secondary-hover', 'name' => 'Secondary (Hover)', 'color' => '#2d8200'),
-	array('slug' => 'tertiary', 'name' => 'Tertiary', 'color' => '#1815d3'),
-	array('slug' => 'tertiary-hover', 'name' => 'Tertiary (Hover)', 'color' => '#0200a3'),
+	array('slug' => 'primary-100', 'name' => 'Primary 100', 'color' => '#16271C'),
+	array('slug' => 'primary-200', 'name' => 'Primary 200', 'color' => '#1F3327'),
+	array('slug' => 'primary-300', 'name' => 'Primary 300', 'color' => '#2B4736'),
+	array('slug' => 'primary-400', 'name' => 'Primary 400', 'color' => '#4A6E55'),
+	array('slug' => 'secondary-100', 'name' => 'Secondary 100', 'color' => '#7F9B86'),
+	array('slug' => 'secondary-200', 'name' => 'Secondary 200', 'color' => '#A8BEAE'),
+	array('slug' => 'secondary-300', 'name' => 'Secondary 300', 'color' => '#CDDBD0'),
+	array('slug' => 'secondary-400', 'name' => 'Secondary 400', 'color' => '#E4ECE4'),
+	array('slug' => 'accent', 'name' => 'Accent', 'color' => '#A8854A'),
 	array('slug' => 'white', 'name' => 'White', 'color' => '#FFFFFF'),
 	array('slug' => 'off-white', 'name' => 'Off White', 'color' => '#EEEEEE'),
 	array('slug' => 'grey-one', 'name' => 'Grey One', 'color' => '#D1D1D1'),
@@ -78,7 +81,7 @@ add_action('customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'submenu_text_hover',
-			'default' => '--primary-hover',
+			'default' => '--primary-200',
 			'label' => 'Submenu Text (Hover)',
 			'section' => 'church_header_section'
 		),
@@ -204,7 +207,7 @@ add_action('customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'pagination_interactive_hover',
-			'default' => '--primary-hover',
+			'default' => '--primary-200',
 			'label' => 'Pagination Link Color (Hover)',
 			'section' => 'church_pagination_styles'
 		),
@@ -282,7 +285,7 @@ add_action('customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'button_background_hover',
-			'default' => '--secondary-hover',
+			'default' => '--secondary-200',
 			'label' => 'Button Background - Hover',
 			'section' => 'church_forms_section'
 		),
@@ -294,7 +297,7 @@ add_action('customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'button_border_hover',
-			'default' => '--secondary-hover',
+			'default' => '--secondary-200',
 			'label' => 'Button Border - Hover',
 			'section' => 'church_forms_section'
 		),

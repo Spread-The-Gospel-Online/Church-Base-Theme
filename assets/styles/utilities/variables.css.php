@@ -1,10 +1,15 @@
 :root {
-	--primary: <?= get_option('css_color_primary'); ?>;
-	--primary-hover: <?= get_option('css_color_primary-hover'); ?>;
-	--secondary: <?= get_option('css_color_secondary'); ?>;
-	--secondary-hover: <?= get_option('css_color_secondary-hover'); ?>;
-	--tertiary: <?= get_option('css_color_tertiary'); ?>;
-	--tertiary-hover: <?= get_option('css_color_tertiary-hover'); ?>;
+	--primary: <?= get_option('css_color_primary-100'); ?>;
+	--primary-100: <?= get_option('css_color_primary-100'); ?>;
+	--primary-200: <?= get_option('css_color_primary-200'); ?>;
+	--primary-300: <?= get_option('css_color_primary-300'); ?>;
+	--primary-400: <?= get_option('css_color_primary-400'); ?>;
+	--secondary: <?= get_option('css_color_secondary-100'); ?>;
+	--secondary-100: <?= get_option('css_color_secondary-100'); ?>;
+	--secondary-200: <?= get_option('css_color_secondary-200'); ?>;
+	--secondary-300: <?= get_option('css_color_secondary-300'); ?>;
+	--secondary-400: <?= get_option('css_color_secondary-400'); ?>;
+	--accent: <?= get_option('css_color_accent'); ?>;
 
 	--white: <?= get_option('css_color_white'); ?>;
 	--off-white: <?= get_option('css_color_off-white'); ?>;
