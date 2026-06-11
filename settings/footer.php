@@ -128,6 +128,16 @@ add_action('customize_register', function ($customizer) {
 		'label' => 'Instagram Profile URL'
 	));
 
+	$customizer->add_setting('church_social_link_youtube', array(
+		'type' => 'option',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_social_link_youtube', array(
+		'type' => 'text',
+		'section' => 'church_footer_section',
+		'label' => 'YouTube Profile URL'
+	));
+
 	// Colors
 
 	$customizer->add_setting('church_footer_section_colors', array());

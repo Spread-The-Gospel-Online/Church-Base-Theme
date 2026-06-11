@@ -52,11 +52,15 @@
 
   wp.hooks.addFilter('editor.BlockEdit', 'vcgb/fullwidth-custom-control', createHigherOrderComponent((BlockEdit) => {
     return (props) => {
+      if (props.name === 'core/accordion-heading' || props.name === 'core/accordion-item') {
+        return el(BlockEdit, { ...props });
+      }
+
       const { attributes, setAttributes, isSelected } = props;
       const postType = wp.data.select('core/editor').getCurrentPostType()
 
-      const defaultMarginMobile = (postType === 'wp_block') ? 10 : 30
-      const defaultMarginDesktop = (postType === 'wp_block') ? 20 : 40
+      const defaultMarginMobile = 0;
+      const defaultMarginDesktop = 0;
       
       const haveParents = wp.data.select('core/block-editor').getBlockParents(props.clientId).length > 0
       
@@ -78,7 +82,7 @@
       }
 
       if (attributes.blockPadding === undefined) {
-        setAttributes({ blockPadding: 'none' })
+        setAttributes({ blockPadding: 'default' })
       }
 
       const blockPadding = attributes.blockPadding ? attributes.blockPadding : 'none'
@@ -92,7 +96,8 @@
               label: 'Element Vertical Padding',
               value: blockPadding,
               options: [
-                { label: 'Theme Default', value: 'none' },
+                { label: 'Theme Default', value: 'default' },
+                { label: 'None', value: 'none' },
                 { label: 'Small', value: 'small' },
                 { label: 'Medium', value: 'medium' },
                 { label: 'Large', value: 'large' }

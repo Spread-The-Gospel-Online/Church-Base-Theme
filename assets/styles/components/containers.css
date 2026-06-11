@@ -62,6 +62,11 @@
 	justify-content: space-between;
 }
 
+.block-padding-default {
+	padding-top: var(--padding-default);
+	padding-bottom: var(--padding-default);
+}
+
 .block-padding-none {
 	padding-top: 0;
 	padding-bottom: 0;

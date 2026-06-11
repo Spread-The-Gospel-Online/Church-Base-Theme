@@ -1,6 +1,6 @@
 <?php
 	$logo_src = get_option('church_header_logo');
-	$is_fixed = get_option('church_header_is_fixed', 'no'); 
+	$is_fixed = get_option('church_header_is_fixed', 'no');
 	$is_transparent = get_option('church_header_is_transparent', 'no');
 	$watcher_classes = 'header__watcher';
 	$extra_watcher_styles = '';
@@ -9,6 +9,9 @@
 	$header_anchor_height = 0;
 	if ($is_fixed == 'yes') {
 		$header_classes .= 'header--is-fixed';
+	} else if ($is_fixed == 'desktop') {
+		$header_classes .= 'header--is-fixed-desktop';
+		$watcher_classes .= ' header__watcher--fixed-desktop';
 	}
 	if ($is_transparent == 'yes') {
 		$watcher_classes .= ' header__watcher--transparent';
@@ -16,7 +19,7 @@
 	}
 ?>
 
-<?php if ($is_fixed == 'yes') { ?>
+<?php if ($is_fixed == 'yes' || $is_fixed == 'desktop') { ?>
 	<script type="module" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/components/fixed-header.js"></script>
 	<div class="<?= $watcher_classes ?>" data-fixed-header-observer></div>
 <?php } ?>

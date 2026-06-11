@@ -17,8 +17,6 @@ const BASE_SITE_COLOR_OPTIONS = array(
 	array('slug' => 'grey-three', 'name' => 'Grey Three', 'color' => '#7F7F7F'),
 	array('slug' => 'grey-four', 'name' => 'Grey Four', 'color' => '#494949'),
 	array('slug' => 'black', 'name' => 'Black', 'color' => '#000000'),
-	array('slug' => 'link', 'name' => 'Links', 'color' => '#435def'),
-	array('slug' => 'link-hover', 'name' => 'Links (Hover)', 'color' => '#0e00af'),
 	array('slug' => 'ada-outline', 'name' => 'ADA Outlines', 'color' => '#87CEEB'),
 );
 
@@ -135,13 +133,13 @@ add_action('customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'card_contents_links',
-			'default' => '--link',
+			'default' => '--primary-100',
 			'label' => 'Card Content Link Color',
 			'section' => 'church_archive_styles'
 		),
 		array(
 			'id' => 'card_contents_links_hover',
-			'default' => '--link-hover',
+			'default' => '--accent',
 			'label' => 'Card Content Link Color (Hover)',
 			'section' => 'church_archive_styles'
 		),
@@ -237,13 +235,13 @@ add_action('customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'download_text',
-			'default' => '--link',
+			'default' => '--primary-100',
 			'label' => 'Sermon Download Text Color',
 			'section' => 'church_sermon_styles'
 		),
 		array(
 			'id' => 'download_text_hover',
-			'default' => '--link-hover',
+			'default' => '--accent',
 			'label' => 'Sermon Download Text Hover Color',
 			'section' => 'church_sermon_styles'
 		),
@@ -325,6 +323,48 @@ add_action('customize_register', function ($customizer) {
 			'label' => 'Blockquote Background',
 			'section' => 'church_blockquotes_section'
 		),
+		array(
+			'id' => 'links',
+			'default' => '--primary-100',
+			'label' => 'Link Color',
+			'section' => 'church_fonts_section',
+			'priority' => 501
+		),
+		array(
+			'id' => 'link_hover',
+			'default' => '--accent',
+			'label' => 'Link Color (Hover)',
+			'section' => 'church_fonts_section',
+			'priority' => 502
+		),
+		array(
+			'id' => 'general_content',
+			'default' => '--black',
+			'label' => 'General Content Color',
+			'section' => 'church_fonts_section',
+			'priority' => 503
+		),
+		array(
+			'id' => 'accordions_content',
+			'default' => '--black',
+			'label' => 'Accordion Content Color',
+			'section' => 'church_accordions_section',
+			'priority' => 301
+		),
+		array(
+			'id' => 'accordions_border',
+			'default' => '--black',
+			'label' => 'Accordion Border Color',
+			'section' => 'church_accordions_section',
+			'priority' => 302
+		),
+		array(
+			'id' => 'accordions_open_close',
+			'default' => '--primary',
+			'label' => 'Accordion Open/Close Color',
+			'section' => 'church_accordions_section',
+			'priority' => 303
+		),
 	);
 
 	/* 
@@ -360,7 +400,7 @@ add_action('customize_register', function ($customizer) {
 			'choices' => $color_options,
 			'section' => $section_id,
 			'label' => $color['label'],
-			'priority' => 301,
+			'priority' => isset($color['priority']) ? $color['priority'] : 301,
 		));
 	}
 });

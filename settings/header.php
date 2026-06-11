@@ -19,7 +19,8 @@ add_action('customize_register', function ($customizer) {
 		'type' => 'select',
 		'choices' => array(
 			'no' => 'No, not fixed',
-			'yes' => 'Yes, is fixed'
+			'yes' => 'Yes, is fixed',
+			'desktop' => 'Fixed On Desktop'
 		),
 		'section' => 'church_header_section',
 		'label' => 'Fixed Header',

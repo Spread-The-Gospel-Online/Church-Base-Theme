@@ -20,9 +20,9 @@
 	--black: <?= get_option('css_color_black'); ?>;
 	--transparent: transparent;
 
-	--link: <?= get_option('css_color_link'); ?>;
-	--link-on: var(<?= church_get_best_contrast_option('css_color_link', 'css_color_grey-one', 'css_color_grey-four') ?>);
-	--link-hover: <?= get_option('css_color_link-hover'); ?>;
+	--link: var(<?= get_option('church_css_links'); ?>);
+	--link-hover: var(<?= get_option('church_css_link_hover'); ?>);
+	--general-content: var(<?= get_option('church_css_general_content'); ?>);
 
 	--button-background: var(<?= get_option('church_css_button_background'); ?>);
 	--button-background-hover: var(<?= get_option('church_css_button_background_hover'); ?>);
@@ -73,6 +73,7 @@
 
 	--logo-height: <?= get_option('church_logo_default_size', 115) ?>px;
 	--logo-height-scrolled: <?= get_option('church_logo_scrolled_size', 90) ?>px;
+	--logo-link-min-width: <?= util_get_logo_link_min_width() ?>px;
 
 	--hero-background: var(<?= get_option('church_css_hero_background_color') ?>);
 	--hero-opacity: <?= get_option('church_hero_default_opacity') ?>;
@@ -91,6 +92,12 @@
 	--blockquote-background: var(<?= get_option('church_css_blockquote_background'); ?>);
 	--blockquote-name: var(<?= get_option('church_css_blockquote_name') ?>);
 
+	--accordion-border-width: <?= get_option('church_accordion_border_width', 'small') === 'none' ? '0px' : 'var(--border-width-' . get_option('church_accordion_border_width', 'small') . ')' ?>;
+	--accordion-title-size: <?= get_option('church_accordion_title_size', 1) ?>rem;
+	--accordion-content-color: var(<?= get_option('church_css_accordions_content', '--black') ?>);
+	--accordion-border-color: var(<?= get_option('church_css_accordions_border', '--black') ?>);
+	--accordion-open-close-color: var(<?= get_option('church_css_accordions_open_close', '--primary') ?>);
+
 
 	--footer-padding: <?= get_option('church_footer_padding', 48) ?>px;
 	--footer-pattern-width: <?= get_option('church_footer_pattern_width', 25) ?>%;
@@ -99,10 +106,14 @@
 	--copyright-background: var(<?= get_option('church_css_copyright_background') ?>);
 	--copyright-text: var(<?= get_option('church_css_copyright_text') ?>);
 
-	--border-width-small: 0px;
 	--border-width-small: <?= get_option('church_border_width_small', 1) ?>px;
 	--border-width-medium: <?= get_option('church_border_width_medium', 2) ?>px;
 	--border-width-wide: <?= get_option('church_border_width_wide', 3) ?>px;
+
+	--padding-small: <?= get_option('church_padding_scale', 2) / 2 ?>rem;
+	--padding-medium: <?= get_option('church_padding_scale', 2) ?>rem;
+	--padding-large: <?= get_option('church_padding_scale', 2) * 2 ?>rem;
+	--padding-default: var(--padding-<?= get_option('church_default_padding_size', 'medium') ?>);
 
 	--sermon-archive-grid-tablet-size: <?= get_option('church_archive_sermon_grid_tablet_size') ?>;
 	--sermon-archive-grid-size: <?= get_option('church_archive_sermon_grid_size') ?>;

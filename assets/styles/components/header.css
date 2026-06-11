@@ -28,6 +28,10 @@ body:not(.body-scrolled, .search-open) .header--transparent {
 	background-color: transparent;
 }
 
+.header__watcher--fixed-desktop {
+	display: none;
+}
+
 .header--is-fixed {
 	position: fixed;
 	top: 0;
@@ -48,12 +52,15 @@ body:not(.body-scrolled, .search-open) .header--transparent {
 }
 
 .header__logo-link {
-	display: block;
+	padding: .5rem 0rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: var(--logo-link-min-width, 0px);
 	font-size: 0;
 }
 
 .header__logo {
-	padding: .5rem 0rem;
 	max-height: var(--logo-height);
 	height: var(--logo-height);
 	transition: max-height .3s;

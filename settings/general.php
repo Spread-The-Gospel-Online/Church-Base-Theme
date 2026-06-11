@@ -17,6 +17,7 @@ add_action('customize_register', function ($customizer) {
 		'type' => 'number',
 		'section' => 'church_general_section',
 		'label' => 'Content Width',
+		'description' => 'Width is measured in pixels',
 		'validate' => 'numeric',
         'default'  => 1252,
         'input_attrs' => array(
@@ -82,6 +83,15 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
+	$customizer->add_setting('church_general_typography', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_general_typography',
+		array(
+			'label' => 'Typography',
+			'section' => 'church_general_section',
+		)
+	));
+
 	$customizer->add_setting('church_general_font_size', array(
 		'type' => 'option',
 		'default' => 16,
@@ -91,12 +101,57 @@ add_action('customize_register', function ($customizer) {
 		'type' => 'number',
 		'section' => 'church_general_section',
 		'label' => 'Base Font Size',
+		'description' => 'Font size is measured in pixels',
 		'validate' => 'numeric',
         'default'  => 16,
         'input_attrs' => array(
             'min' => 16,
             'max' => 24,
             'step' => 1,
+        ),
+	));
+
+	$customizer->add_setting('church_general_spacing', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_general_spacing',
+		array(
+			'label' => 'Theme Spacing',
+			'section' => 'church_general_section',
+		)
+	));
+
+	$customizer->add_setting('church_default_padding_size', array(
+		'type' => 'option',
+		'default' => 'medium',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_default_padding_size', array(
+		'type' => 'select',
+		'choices' => array(
+			'small' => 'Small',
+			'medium' => 'Medium',
+			'large' => 'Large',
+		),
+		'section' => 'church_general_section',
+		'label' => 'Default Padding Size',
+	));
+
+	$customizer->add_setting('church_padding_scale', array(
+		'type' => 'option',
+		'default' => 2,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_padding_scale', array(
+		'type' => 'number',
+		'section' => 'church_general_section',
+		'label' => 'Padding Scale',
+		'description' => 'Padding sizes are measured in rems',
+		'validate' => 'numeric',
+        'default'  => 2,
+        'input_attrs' => array(
+            'min' => 0.5,
+            'max' => 6,
+            'step' => 0.5,
         ),
 	));
 
@@ -118,6 +173,7 @@ add_action('customize_register', function ($customizer) {
 		'type' => 'number',
 		'section' => 'church_general_section',
 		'label' => 'Border Width - Small',
+		'description' => 'Border widths are measured in pixels',
 		'validate' => 'numeric',
         'default'  => 1,
         'input_attrs' => array(
@@ -136,6 +192,7 @@ add_action('customize_register', function ($customizer) {
 		'type' => 'number',
 		'section' => 'church_general_section',
 		'label' => 'Border Width - Medium',
+		'description' => 'Border widths are measured in pixels',
 		'validate' => 'numeric',
         'default'  => 2,
         'input_attrs' => array(
@@ -154,6 +211,7 @@ add_action('customize_register', function ($customizer) {
 		'type' => 'number',
 		'section' => 'church_general_section',
 		'label' => 'Border Width - Wide',
+		'description' => 'Border widths are measured in pixels',
 		'validate' => 'numeric',
         'default'  => 3,
         'input_attrs' => array(

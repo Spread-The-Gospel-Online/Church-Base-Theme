@@ -341,4 +341,14 @@ add_action('customize_register', function ($customizer) {
         ),
         'priority' => 400
 	));
+
+	$customizer->add_setting('church_fonts_colors_header', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_fonts_colors_header',
+		array(
+			'label' => 'Font Colors',
+			'section' => 'church_fonts_section',
+			'priority' => 500
+		)
+	));
 });
