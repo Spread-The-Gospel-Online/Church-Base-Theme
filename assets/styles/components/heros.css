@@ -7,6 +7,7 @@
 .hero,
 .hero__image {
 	height: var(--hero-height);
+	min-height: var(--hero-min-height);
 	max-width: 100%;
 }
 

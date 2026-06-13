@@ -3,7 +3,7 @@
 }
 
 .mobile-only {
-	display: none;
+	display: none !important;
 }
 
 .flexible-grid {

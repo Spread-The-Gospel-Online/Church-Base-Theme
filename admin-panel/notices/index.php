@@ -6,7 +6,7 @@ function church_get_missing_archive_pages () {
 		if (church_missing_type_support($type)) {
 			return false;
 		}
-		$archive_type = get_queried_object()->name;
+		$archive_type = $type;
 		$archive_pages = get_posts(array(
 			'post_type' => 'page',
 			'name' => $archive_type,

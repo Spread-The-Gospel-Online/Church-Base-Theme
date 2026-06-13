@@ -26,20 +26,39 @@ add_action('customize_register', function ($customizer) {
 
 	$customizer->add_setting('church_accordion_title_size', array(
 		'type' => 'option',
-		'default' => 1,
+		'default' => 'text-large',
 		'sanitize_callback' => 'sanitize_text_field',
 	));
 	$customizer->add_control('church_accordion_title_size', array(
-		'type' => 'number',
-		'section' => 'church_accordions_section',
-		'label' => 'Accordion Title Text Size',
-		'validate' => 'numeric',
-		'default' => 1,
-		'input_attrs' => array(
-			'min' => 0.5,
-			'max' => 4,
-			'step' => 0.1,
+		'type' => 'select',
+		'choices' => array(
+			'h1' => 'Heading 1',
+			'h2' => 'Heading 2',
+			'h3' => 'Heading 3',
+			'h4' => 'Heading 4',
+			'h5' => 'Heading 5',
+			'text-large' => 'Large Text',
+			'text-normal' => 'Normal Text',
+			'text-small' => 'Small Text',
 		),
+		'section' => 'church_accordions_section',
+		'label' => 'Accordion Title Style',
+	));
+
+	$customizer->add_setting('church_accordion_title_padding', array(
+		'type' => 'option',
+		'default' => 'small',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_accordion_title_padding', array(
+		'type' => 'select',
+		'choices' => array(
+			'small' => 'Small',
+			'medium' => 'Medium',
+			'large' => 'Large',
+		),
+		'section' => 'church_accordions_section',
+		'label' => 'Accordion Title Padding',
 	));
 
 	$customizer->add_setting('church_accordions_section_colors', array());

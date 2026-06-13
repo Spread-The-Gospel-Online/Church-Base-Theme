@@ -1,5 +1,7 @@
 <?php
 
+add_filter( 'show_admin_bar', '__return_false' );
+
 function church_display_layouts_section ($section_position) {
 	$layouts = get_posts([
 		'post_type' => 'layouts',

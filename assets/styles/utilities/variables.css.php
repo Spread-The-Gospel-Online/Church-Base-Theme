@@ -31,12 +31,20 @@
 	--button-text: var(<?= get_option('church_css_button_text'); ?>);
 	--button-text-hover: var(<?= get_option('church_css_button_text_hover'); ?>);
 
+	--button-secondary-background: var(<?= get_option('church_css_button_secondary_background'); ?>);
+	--button-secondary-background-hover: var(<?= get_option('church_css_button_secondary_background_hover'); ?>);
+	--button-secondary-border: var(<?= get_option('church_css_button_secondary_border'); ?>);
+	--button-secondary-border-hover: var(<?= get_option('church_css_button_secondary_border_hover'); ?>);
+	--button-secondary-text: var(<?= get_option('church_css_button_secondary_text'); ?>);
+	--button-secondary-text-hover: var(<?= get_option('church_css_button_secondary_text_hover'); ?>);
+
 	--ada-outline: <?= get_option('css_color_ada-outline'); ?>;
 	--label-color: var(<?= get_option('church_css_label_color'); ?>);
 	--input-border: var(<?= get_option('church_css_input_border'); ?>);
 	--input-background: var(<?= get_option('church_css_input_background'); ?>);
 	--input-background-hover: var(<?= get_option('church_css_input_background_hover'); ?>);
 	--input-background-active: var(<?= get_option('church_css_input_background_active'); ?>);
+	--input-focus-ring: var(--secondary-200);
 
 	--font-family-general: <?= get_font_var('font_general') ?>;
 	--font-family-headings: <?= get_font_var('font_headings') ?>;
@@ -80,6 +88,7 @@
 	--hero-text: var(<?= get_option('church_css_hero_text_color') ?>);
 	--hero-height: <?= get_option('church_hero_default_height', '40') ?>vh;
 	--hero-text-only-height: <?= get_option('church_hero_text_only_default_height', '30') ?>vh;
+	--hero-min-height: <?= get_option('church_hero_min_height', 300) ?>px;
 
 	--breadcrumbs: var(<?= get_option('church_css_breadcrumbs_background'); ?>);
 	--breadcrumbs-transparent: <?= church_get_as_rgba('church_css_breadcrumbs_background', get_option('church_breadcrumbs_default_opacity')); ?>;
@@ -93,10 +102,10 @@
 	--blockquote-name: var(<?= get_option('church_css_blockquote_name') ?>);
 
 	--accordion-border-width: <?= get_option('church_accordion_border_width', 'small') === 'none' ? '0px' : 'var(--border-width-' . get_option('church_accordion_border_width', 'small') . ')' ?>;
-	--accordion-title-size: <?= get_option('church_accordion_title_size', 1) ?>rem;
 	--accordion-content-color: var(<?= get_option('church_css_accordions_content', '--black') ?>);
 	--accordion-border-color: var(<?= get_option('church_css_accordions_border', '--black') ?>);
 	--accordion-open-close-color: var(<?= get_option('church_css_accordions_open_close', '--primary') ?>);
+	--accordion-title-padding: var(--padding-<?= get_option('church_accordion_title_padding', 'small') ?>);
 
 
 	--footer-padding: <?= get_option('church_footer_padding', 48) ?>px;

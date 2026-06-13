@@ -9,12 +9,11 @@
 }
 
 .accordion__summary {
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
+	padding-top: var(--accordion-title-padding);
+	padding-bottom: var(--accordion-title-padding);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	font-size: var(--accordion-title-size);
 	cursor: pointer;
 }
 

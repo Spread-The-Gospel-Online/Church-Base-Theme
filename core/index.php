@@ -8,6 +8,8 @@ require_once('gatekeeper.php');
 
 require_once('hooks/index.php');
 
+require_once('endpoints/index.php');
+
 require_once('customizer/index.php');
 
 require_once('theme-settings.php');

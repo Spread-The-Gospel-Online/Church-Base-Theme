@@ -7,7 +7,21 @@ add_action('customize_register', function ($customizer) {
 		'capability' => 'edit_theme_options'
 	));
 
-	
+	$customizer->add_setting('church_forms_label_position', array(
+		'type' => 'option',
+		'default' => 'above',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_forms_label_position', array(
+		'type' => 'select',
+		'choices' => array(
+			'above' => 'Above input',
+			'left' => 'To the left of input',
+		),
+		'section' => 'church_forms_section',
+		'label' => 'Form Label Position',
+		'priority' => 100,
+	));
 
 	$customizer->add_setting('church_forms_section_colors', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 

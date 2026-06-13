@@ -50,6 +50,25 @@ add_action('customize_register', function ($customizer) {
         )
 	));
 
+	$customizer->add_setting('church_hero_min_height', array(
+		'type' => 'option',
+		'default' => 300,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_hero_min_height', array(
+		'type' => 'number',
+		'section' => 'church_hero_section',
+		'label' => 'Hero Minimum Height',
+		'description' => 'Minimum height of the hero, measured in pixels',
+		'validate' => 'numeric',
+        'default'  => 300,
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 1000,
+            'step' => 10,
+        )
+	));
+
 	$church_hero_default_opacity = get_option('church_hero_default_opacity');
 	if (!$church_hero_default_opacity) {
 		update_option('church_hero_default_opacity', 0.8);

@@ -3,6 +3,9 @@
 		</div>
 		<?php util_render_snippet('layout/global/footer', array(), false); ?>
 		<script type="module" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/templates/layout.js"></script>
+		<?php if (has_block('church/block-form')) { ?>
+			<script type="module" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/forms.js"></script>
+		<?php } ?>
 		<script type="text/javascript" defer>
 			var refTagger = { settings: { bibleVersion: 'ESV' } };
 			window.siteURL = '<?= get_site_url() ?>';
@@ -16,8 +19,8 @@
 				s.parentNode.insertBefore(g, s);
 			}(document, 'script'));
 		</script>
-	</body>
-</html>
-
 <?php $contents = ob_get_clean(); ?>
 <?php echo preg_replace('/\s+/', ' ', $contents); ?>
+		<?php wp_footer(); ?>
+	</body>
+</html>

@@ -247,68 +247,104 @@ add_action('customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'label_color',
-			'default' => '--black',
+			'default' => '--primary-200',
 			'label' => 'Label Text',
 			'section' => 'church_forms_section'
 		),
 		array(
 			'id' => 'input_border',
-			'default' => '--black',
+			'default' => '--grey-one',
 			'label' => 'Input Border',
 			'section' => 'church_forms_section'
 		),
 		array(
 			'id' => 'input_background',
-			'default' => '--transparent',
+			'default' => '--white',
 			'label' => 'Input Background',
 			'section' => 'church_forms_section'
 		),
 		array(
 			'id' => 'input_background_hover',
-			'default' => '--off-white',
+			'default' => '--white',
 			'label' => 'Input Background - Hover',
 			'section' => 'church_forms_section'
 		),
 		array(
 			'id' => 'input_background_active',
-			'default' => '--transparent',
+			'default' => '--white',
 			'label' => 'Input Background - Active',
 			'section' => 'church_forms_section'
 		),
 		array(
 			'id' => 'button_background',
-			'default' => '--white',
-			'label' => 'Button Background',
+			'default' => '--primary-300',
+			'label' => 'Primary Button Background',
 			'section' => 'church_forms_section'
 		),
 		array(
 			'id' => 'button_background_hover',
-			'default' => '--secondary-200',
-			'label' => 'Button Background - Hover',
+			'default' => '--primary-200',
+			'label' => 'Primary Button Background - Hover',
 			'section' => 'church_forms_section'
 		),
 		array(
 			'id' => 'button_border',
-			'default' => '--secondary',
-			'label' => 'Button Border',
+			'default' => '--primary-300',
+			'label' => 'Primary Button Border',
 			'section' => 'church_forms_section'
 		),
 		array(
 			'id' => 'button_border_hover',
-			'default' => '--secondary-200',
-			'label' => 'Button Border - Hover',
+			'default' => '--primary-200',
+			'label' => 'Primary Button Border - Hover',
 			'section' => 'church_forms_section'
 		),
 		array(
 			'id' => 'button_text',
-			'default' => '--secondary',
-			'label' => 'Button Text',
+			'default' => '--white',
+			'label' => 'Primary Button Text',
 			'section' => 'church_forms_section'
 		),
 		array(
 			'id' => 'button_text_hover',
 			'default' => '--white',
-			'label' => 'Button Text - Hover',
+			'label' => 'Primary Button Text - Hover',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'button_secondary_background',
+			'default' => '--transparent',
+			'label' => 'Secondary Button Background',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'button_secondary_background_hover',
+			'default' => '--primary-300',
+			'label' => 'Secondary Button Background - Hover',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'button_secondary_border',
+			'default' => '--primary-300',
+			'label' => 'Secondary Button Border',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'button_secondary_border_hover',
+			'default' => '--primary-300',
+			'label' => 'Secondary Button Border - Hover',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'button_secondary_text',
+			'default' => '--primary-300',
+			'label' => 'Secondary Button Text',
+			'section' => 'church_forms_section'
+		),
+		array(
+			'id' => 'button_secondary_text_hover',
+			'default' => '--white',
+			'label' => 'Secondary Button Text - Hover',
 			'section' => 'church_forms_section'
 		),
 		array(

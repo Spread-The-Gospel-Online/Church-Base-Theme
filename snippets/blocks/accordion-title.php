@@ -11,10 +11,12 @@
 	if ($last_plus_position !== false) {
 		$clean_content = substr_replace($clean_content, '', $last_plus_position, 1);
 	}
+
+	$title_class = get_option('church_accordion_title_size', 'text-large');
 ?>
 
 <summary
-	class="accordion__summary <?= $classes ?>"
+	class="accordion__summary <?= $title_class ?> <?= $classes ?>"
 	<?= $attribute_string ?>
 >
 	<?= $clean_content ?>
