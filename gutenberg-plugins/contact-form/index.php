@@ -33,6 +33,14 @@ add_action('init', function () {
 		'title' => 'Text Input',
 		'category' => 'theme',
 		'icon' => 'edit',
+		// Mirror the JS attribute defaults so render_callback receives them even when
+		// an attribute is left at its default (WP omits default-valued attrs from markup).
+		'attributes' => array(
+			'label'       => array('type' => 'string',  'default' => 'Label'),
+			'name'        => array('type' => 'string',  'default' => ''),
+			'placeholder' => array('type' => 'string',  'default' => ''),
+			'required'    => array('type' => 'boolean', 'default' => false),
+		),
 	));
 
 	register_block_type('church/block-email', array(
@@ -40,6 +48,12 @@ add_action('init', function () {
 		'title' => 'Email',
 		'category' => 'theme',
 		'icon' => 'email',
+		'attributes' => array(
+			'label'       => array('type' => 'string',  'default' => 'Email'),
+			'name'        => array('type' => 'string',  'default' => 'email'),
+			'placeholder' => array('type' => 'string',  'default' => ''),
+			'required'    => array('type' => 'boolean', 'default' => false),
+		),
 	));
 
 	register_block_type('church/block-select', array(
@@ -47,6 +61,12 @@ add_action('init', function () {
 		'title' => 'Select',
 		'category' => 'theme',
 		'icon' => 'list-view',
+		'attributes' => array(
+			'label'    => array('type' => 'string',  'default' => 'Select'),
+			'name'     => array('type' => 'string',  'default' => ''),
+			'options'  => array('type' => 'string',  'default' => ''),
+			'required' => array('type' => 'boolean', 'default' => false),
+		),
 	));
 
 	register_block_type('church/block-checkbox', array(
@@ -54,6 +74,11 @@ add_action('init', function () {
 		'title' => 'Checkbox',
 		'category' => 'theme',
 		'icon' => 'yes',
+		'attributes' => array(
+			'label'    => array('type' => 'string',  'default' => 'Checkbox'),
+			'name'     => array('type' => 'string',  'default' => ''),
+			'required' => array('type' => 'boolean', 'default' => false),
+		),
 	));
 
 	register_block_type('church/block-submit', array(
@@ -61,6 +86,23 @@ add_action('init', function () {
 		'title' => 'Submit',
 		'category' => 'theme',
 		'icon' => 'button',
+		'attributes' => array(
+			'text'       => array('type' => 'string', 'default' => 'Submit'),
+			'buttonType' => array('type' => 'string', 'default' => 'primary'),
+		),
+	));
+
+	register_block_type('church/block-form-response', array(
+		'render_callback' => 'church_render_form_response_block',
+		'title' => 'Form Response',
+		'category' => 'theme',
+		'icon' => 'megaphone',
+		'attributes' => array(
+			'successMessage' => array('type' => 'string', 'default' => 'Thank you! Your message has been sent.'),
+			'errorMessage'   => array('type' => 'string', 'default' => 'Sorry, something went wrong. Please try again.'),
+			'borderSize'     => array('type' => 'string', 'default' => 'small'),
+			'textAlign'      => array('type' => 'string', 'default' => 'left'),
+		),
 	));
 });
 
@@ -121,4 +163,8 @@ function church_render_checkbox_block ($attributes, $content) {
 
 function church_render_submit_block ($attributes, $content) {
 	return util_render_snippet('blocks/contact-form/submit', $attributes);
+}
+
+function church_render_form_response_block ($attributes, $content) {
+	return util_render_snippet('blocks/contact-form/form-response', $attributes);
 }

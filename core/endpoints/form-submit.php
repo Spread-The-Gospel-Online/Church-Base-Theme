@@ -49,7 +49,8 @@ function church_ep_form_submit ($request) {
 	$sent = wp_mail($to, $subject, $body, $headers);
 	if (!$sent) {
 		error_log('Church form submission: wp_mail failed for ' . $to);
+		return new WP_REST_Response(array('sent' => false), 500);
 	}
 
-	return rest_ensure_response(array('sent' => (bool) $sent));
+	return new WP_REST_Response(array('sent' => true), 200);
 }

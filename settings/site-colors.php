@@ -44,12 +44,16 @@ add_action('customize_register', function ($customizer) {
 		church_register_color_setting($customizer, $setting_key, $color['name'], $color['color'], 'church_colors');
 	}
 
+	// Standalone error/alert color (used by the form response error message). Kept out of
+	// BASE_SITE_COLOR_OPTIONS so it doesn't enter the Gutenberg palette or base-color selects.
+	church_register_color_setting($customizer, 'css_color_error', 'Error', '#b3261e', 'church_colors');
+
 
 	// ------- COLOR OPTIONS USING BASE COLORS-------
 	$color_selectors = array(
 		array(
 			'id' => 'header_background',
-			'default' => '--primary',
+			'default' => '--primary-100',
 			'label' => 'Header Background', 
 			'section' => 'church_header_section'
 		),
@@ -73,7 +77,7 @@ add_action('customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'submenu_text',
-			'default' => '--primary',
+			'default' => '--primary-100',
 			'label' => 'Submenu Text',
 			'section' => 'church_header_section'
 		),
@@ -85,7 +89,7 @@ add_action('customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'breadcrumbs_background',
-			'default' => '--secondary',
+			'default' => '--secondary-100',
 			'label' => 'Breadcrumbs Background',
 			'section' => 'church_breadcrumbs_section'
 		),
@@ -145,7 +149,7 @@ add_action('customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'calendar_header_background',
-			'default' => '--secondary',
+			'default' => '--secondary-100',
 			'label' => 'Calendar Header Background',
 			'section' => 'church_events_section'
 		),
@@ -175,7 +179,7 @@ add_action('customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'footer_background',
-			'default' => '--primary',
+			'default' => '--primary-100',
 			'label' => 'Footer Background',
 			'section' => 'church_footer_section'
 		),
@@ -199,7 +203,7 @@ add_action('customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'pagination_interactive',
-			'default' => '--primary',
+			'default' => '--primary-100',
 			'label' => 'Pagination Link Color',
 			'section' => 'church_pagination_styles'
 		),
@@ -396,10 +400,22 @@ add_action('customize_register', function ($customizer) {
 		),
 		array(
 			'id' => 'accordions_open_close',
-			'default' => '--primary',
+			'default' => '--primary-100',
 			'label' => 'Accordion Open/Close Color',
 			'section' => 'church_accordions_section',
 			'priority' => 303
+		),
+		array(
+			'id' => 'notification_info',
+			'default' => '--primary-100',
+			'label' => 'Info Notification Color',
+			'section' => 'church_notifications_section'
+		),
+		array(
+			'id' => 'notification_notice',
+			'default' => '--accent',
+			'label' => 'Notice Notification Color',
+			'section' => 'church_notifications_section'
 		),
 	);
 

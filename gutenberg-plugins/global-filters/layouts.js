@@ -66,7 +66,7 @@
       
       // set if the block has a container by default
       if (attributes.blockContainer === undefined) {
-        if (postType === 'wp_block') {
+        if (postType === 'wp_block' || postType === 'notifications') {
           setAttributes({ blockContainer: false })
         } else {
           setAttributes({ blockContainer: !haveParents })
@@ -82,7 +82,10 @@
       }
 
       if (attributes.blockPadding === undefined) {
-        setAttributes({ blockPadding: 'default' })
+        const defaultPadding = postType === 'notifications'
+          ? 'small'
+          : 'default'
+        setAttributes({ blockPadding: defaultPadding })
       }
 
       const blockPadding = attributes.blockPadding ? attributes.blockPadding : 'none'

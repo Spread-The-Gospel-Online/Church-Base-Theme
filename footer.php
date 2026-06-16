@@ -4,8 +4,9 @@
 		<?php util_render_snippet('layout/global/footer', array(), false); ?>
 		<script type="module" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/templates/layout.js"></script>
 		<?php if (has_block('church/block-form')) { ?>
-			<script type="module" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/forms.js"></script>
+			<script type="module" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/components/forms.js"></script>
 		<?php } ?>
+		<?php util_render_snippet('layout/active-notifications', array(), false); ?>
 		<script type="text/javascript" defer>
 			var refTagger = { settings: { bibleVersion: 'ESV' } };
 			window.siteURL = '<?= get_site_url() ?>';

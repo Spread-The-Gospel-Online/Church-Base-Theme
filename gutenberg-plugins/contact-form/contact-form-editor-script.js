@@ -13,6 +13,7 @@
     'church/block-email',
     'church/block-checkbox',
     'church/block-submit',
+    'church/block-form-response',
     'core/paragraph',
     'core/group',
     'core/columns',
@@ -360,6 +361,81 @@
           },
           attributes.text
         )
+      )
+    },
+    save: function () {
+      return null
+    },
+  })
+
+  // FORM RESPONSE ------------------------------------------------------------
+  // Holds the success + error messages shown after submission. Server-rendered:
+  // the snippet outputs both messages hidden; forms.js reveals the matching one.
+  registerBlockType('church/block-form-response', {
+    title: 'Form Response',
+    ancestor: ['church/block-form'],
+    attributes: {
+      successMessage: { type: 'string', default: 'Thank you! Your message has been sent.' },
+      errorMessage: { type: 'string', default: 'Sorry, something went wrong. Please try again.' },
+      borderSize: { type: 'string', default: 'small' },
+      textAlign: { type: 'string', default: 'left' },
+    },
+    edit: function ({ attributes, setAttributes }) {
+      const borderWidths = {
+        none: '0',
+        small: 'var(--border-width-small)',
+        medium: 'var(--border-width-medium)',
+        large: 'var(--border-width-wide)',
+      }
+      const messageStyle = {
+        '--form-response-border-width': borderWidths[attributes.borderSize] || borderWidths.small,
+        '--form-response-text-align': attributes.textAlign,
+      }
+
+      return el(
+        'div',
+        { className: 'church-form-field' },
+        el(
+          InspectorControls,
+          {},
+          el(
+            PanelBody,
+            { title: 'Response Messages' },
+            el(TextareaControl, {
+              label: 'Success message',
+              value: attributes.successMessage,
+              onChange: (successMessage) => setAttributes({ successMessage }),
+            }),
+            el(TextareaControl, {
+              label: 'Error message',
+              value: attributes.errorMessage,
+              onChange: (errorMessage) => setAttributes({ errorMessage }),
+            }),
+            el(SelectControl, {
+              label: 'Border',
+              value: attributes.borderSize,
+              options: [
+                { label: 'None', value: 'none' },
+                { label: 'Small', value: 'small' },
+                { label: 'Medium', value: 'medium' },
+                { label: 'Large', value: 'large' },
+              ],
+              onChange: (borderSize) => setAttributes({ borderSize }),
+            }),
+            el(SelectControl, {
+              label: 'Text alignment',
+              value: attributes.textAlign,
+              options: [
+                { label: 'Left', value: 'left' },
+                { label: 'Center', value: 'center' },
+                { label: 'Right', value: 'right' },
+              ],
+              onChange: (textAlign) => setAttributes({ textAlign }),
+            })
+          )
+        ),
+        el('p', { className: 'form-response__message form-response__success', style: messageStyle }, '✓ ' + attributes.successMessage),
+        el('p', { className: 'form-response__message form-response__error', style: messageStyle }, '✕ ' + attributes.errorMessage)
       )
     },
     save: function () {

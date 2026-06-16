@@ -18,11 +18,16 @@
 	--grey-three: <?= get_option('css_color_grey-three'); ?>;
 	--grey-four: <?= get_option('css_color_grey-four'); ?>;
 	--black: <?= get_option('css_color_black'); ?>;
+	--error: <?= get_option('css_color_error', '#b3261e') ?>;
 	--transparent: transparent;
 
 	--link: var(<?= get_option('church_css_links'); ?>);
 	--link-hover: var(<?= get_option('church_css_link_hover'); ?>);
 	--general-content: var(<?= get_option('church_css_general_content'); ?>);
+
+	--notification-info: var(<?= get_option('church_css_notification_info', '--primary-100') ?>);
+	--notification-notice: var(<?= get_option('church_css_notification_notice', '--accent') ?>);
+	--notification-padding: var(--padding-<?= get_option('church_notification_padding', 'small') ?>);
 
 	--button-background: var(<?= get_option('church_css_button_background'); ?>);
 	--button-background-hover: var(<?= get_option('church_css_button_background_hover'); ?>);
@@ -118,6 +123,10 @@
 	--border-width-small: <?= get_option('church_border_width_small', 1) ?>px;
 	--border-width-medium: <?= get_option('church_border_width_medium', 2) ?>px;
 	--border-width-wide: <?= get_option('church_border_width_wide', 3) ?>px;
+
+	--border-radius-small: <?= get_option('church_border_radius_small', 4) ?>px;
+	--border-radius-medium: <?= get_option('church_border_radius_medium', 8) ?>px;
+	--border-radius-large: <?= get_option('church_border_radius_large', 16) ?>px;
 
 	--padding-small: <?= get_option('church_padding_scale', 2) / 2 ?>rem;
 	--padding-medium: <?= get_option('church_padding_scale', 2) ?>rem;

@@ -25,7 +25,16 @@ function util_get_actual_content ($post_contents) {
   	foreach($blocks as $block) {
       $contents .= render_block($block);
     }
-    return apply_filters('the_content', $contents);
+
+    // Blocks are already rendered with their own markup (paragraph blocks emit their own
+    // <p>), so wpautop has no useful work here — it only paragraph-wraps block-level output
+    // like the contact form's <form>/<div>, which the browser then turns into stray empty
+    // <p> tags. Run the_content filters without it.
+    remove_filter('the_content', 'wpautop');
+    $contents = apply_filters('the_content', $contents);
+    add_filter('the_content', 'wpautop');
+
+    return $contents;
 }
 
 // Get the object of a pattern used for a specific option

@@ -221,4 +221,70 @@ add_action('customize_register', function ($customizer) {
         ),
 	));
 
+	$customizer->add_setting('church_general_border_radii', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_general_border_radii',
+        array(
+            'label' => 'Border Radius',
+            'section' => 'church_general_section',
+        )
+    ));
+
+    $customizer->add_setting('church_border_radius_small', array(
+		'type' => 'option',
+		'default' => 4,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_border_radius_small', array(
+		'type' => 'number',
+		'section' => 'church_general_section',
+		'label' => 'Border Radius - Small',
+		'description' => 'Border radius is measured in pixels',
+		'validate' => 'numeric',
+        'default'  => 4,
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 50,
+            'step' => 1,
+        ),
+	));
+
+	$customizer->add_setting('church_border_radius_medium', array(
+		'type' => 'option',
+		'default' => 8,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_border_radius_medium', array(
+		'type' => 'number',
+		'section' => 'church_general_section',
+		'label' => 'Border Radius - Medium',
+		'description' => 'Border radius is measured in pixels',
+		'validate' => 'numeric',
+        'default'  => 8,
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 50,
+            'step' => 1,
+        ),
+	));
+
+	$customizer->add_setting('church_border_radius_large', array(
+		'type' => 'option',
+		'default' => 16,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_border_radius_large', array(
+		'type' => 'number',
+		'section' => 'church_general_section',
+		'label' => 'Border Radius - Large',
+		'description' => 'Border radius is measured in pixels',
+		'validate' => 'numeric',
+        'default'  => 16,
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 50,
+            'step' => 1,
+        ),
+	));
+
 });
