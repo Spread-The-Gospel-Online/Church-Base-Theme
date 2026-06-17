@@ -39,10 +39,20 @@ jobs:
           find "$wiki_dir" -maxdepth 1 -type f -name '*.md' -not -name '_*' -delete
 
           # Copy every markdown file from the docs folder, flattening into the wiki root.
-          # README.md becomes Home.md (the wiki landing page).
+          # README.md becomes Home.md (the wiki landing page). Other files have any
+          # leading ordering-number prefix stripped and leftover separators trimmed,
+          # so "1-getting-started.md" becomes the wiki page "Getting Started".
           while IFS= read -r -d '' f; do
             base="$(basename "$f")"
-            [ "$base" = "README.md" ] && base="Home.md"
+            if [ "$base" = "README.md" ]; then
+              base="Home.md"
+            else
+              # One sed pass: strip the leading number, then trim leftover separators.
+              name="${base%.md}"
+              name="$(printf '%s' "$name" | sed -E 's/^[0-9]+//; s/^[[:space:]_-]+//; s/[[:space:]_-]+$//')"
+              [ -z "$name" ] && name="${base%.md}"   # guard: don't produce a nameless ".md" page
+              base="${name}.md"
+            fi
             cp "$f" "$wiki_dir/$base"
           done < <(find "$DOCS_DIR" -type f -name '*.md' -print0)
 
