@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# .githooks/post-commit
+# Auto-update docs via Claude Code when a commit lands on the default branch.
+# Runs detached + in an isolated worktree, so your working tree is never touched.
+
+# Re-entry guard: documentation-sync makes its own commits; don't recurse.
+[ -n "${GITHUB_DOC_SYNC_RUNNING:-}" ] && exit 0
+
+default_branch="master"
+current_branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '')"
+[ "$current_branch" = "$default_branch" ] || exit 0
+
+# Need the Claude CLI; skip quietly (never block the commit) if missing.
+command -v claude >/dev/null 2>&1 || {
+  echo "github-doc-sync: 'claude' CLI not found on PATH; skipping doc sync." >&2
+  exit 0
+}
+
+repo_root="$(git rev-parse --show-toplevel)"
+log="$(mktemp -t doc-sync-XXXXXX)"   # no suffix: GNU mktemp needs the X's at the end
+echo "github-doc-sync: starting documentation sync in the background -> $log"
+
+# Detached background subshell with its own isolated worktree at the default branch.
+# documentation-sync creates its own docs/sync-* branch there and opens a PR.
+(
+  set -uo pipefail
+  export GITHUB_DOC_SYNC_RUNNING=1
+
+  # Single-flight: an atomic mkdir lock so concurrent commits to the default
+  # branch don't spawn duplicate syncs (and duplicate PRs). Lives in .git (untracked).
+  lock="$repo_root/.git/doc-sync.lock"
+  if ! mkdir "$lock" 2>/dev/null; then
+    echo "github-doc-sync: a sync is already running; skipping." >&2
+    exit 0
+  fi
+  worktree=""
+  cleanup() {
+    [ -n "$worktree" ] && git -C "$repo_root" worktree remove --force "$worktree" >/dev/null 2>&1
+    rmdir "$lock" 2>/dev/null || true
+  }
+  trap cleanup EXIT
+
+  worktree="$(mktemp -d -t doc-sync-wt-XXXXXX)"
+  # --detach is required: the default branch is already checked out in the main worktree.
+  if ! git -C "$repo_root" worktree add --quiet --detach "$worktree" "$default_branch"; then
+    echo "github-doc-sync: could not create worktree; aborting." >&2
+    exit 0
+  fi
+  cd "$worktree"
+  claude -p "Use the documentation-sync skill to audit this repository's documentation against the code, update or add pages as needed, then commit on a new branch and open a pull request." \
+    --permission-mode acceptEdits \
+    --allowedTools "Skill,Read,Write,Edit,Glob,Grep,Agent,Bash"
+) >>"$log" 2>&1 &
+
+disown 2>/dev/null || true
+exit 0
