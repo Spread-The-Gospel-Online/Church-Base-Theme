@@ -26,6 +26,13 @@ echo "github-doc-sync: starting documentation sync in the background -> $log"
   set -uo pipefail
   export GITHUB_DOC_SYNC_RUNNING=1
 
+  # CRITICAL: git exports GIT_DIR / GIT_INDEX_FILE / GIT_WORK_TREE / etc. into hook processes, and
+  # they are inherited by every nested `git` invoked here. That poisons `git worktree add`, which
+  # then tries to place the new worktree's index.lock at the wrong path and fails with
+  # "Unable to create '.../.git/index.lock': No such file or directory". Clear them so nested git
+  # (and the git that claude runs inside the worktree) rediscovers its context cleanly from -C/cwd.
+  unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE GIT_PREFIX GIT_COMMON_DIR GIT_OBJECT_DIRECTORY GIT_NAMESPACE GIT_QUARANTINE_PATH
+
   # Single-flight: an atomic mkdir lock so concurrent commits to the default
   # branch don't spawn duplicate syncs (and duplicate PRs). Lives in .git (untracked).
   lock="$repo_root/.git/doc-sync.lock"
@@ -36,19 +43,23 @@ echo "github-doc-sync: starting documentation sync in the background -> $log"
   worktree=""
   cleanup() {
     [ -n "$worktree" ] && git -C "$repo_root" worktree remove --force "$worktree" >/dev/null 2>&1
+    git -C "$repo_root" worktree prune >/dev/null 2>&1 || true
     rmdir "$lock" 2>/dev/null || true
   }
   trap cleanup EXIT
 
-  worktree="$(mktemp -d -t doc-sync-wt-XXXXXX)"
+  # Repo-adjacent path that git creates itself (kept out of the MSYS temp dir as well).
+  # The leading '.' is load-bearing: this dir lands inside wp-content/themes/, which WordPress scans
+  # for themes, and WP skips dot-prefixed entries (wp-includes/theme.php) so it stays invisible.
+  parent_dir="$(dirname "$repo_root")"
+  worktree="$parent_dir/.church-doc-sync-wt-$$"
   # --detach is required: the default branch is already checked out in the main worktree.
   if ! git -C "$repo_root" worktree add --detach "$worktree" "$default_branch"; then
     echo "github-doc-sync: could not create worktree; aborting." >&2
     exit 0
   fi
-  echo "created worktree - now cding and prompting claude."
   cd "$worktree"
-  claude -p "create a new file directly in my user documents directory called 'hello.txt'. once it is created then send a desktop notification to alert me the task is done." \
+  claude -p "Use the documentation-sync skill to audit this repository's documentation against the code, update or add pages as needed, then commit on a new branch and open a pull request." \
     --permission-mode acceptEdits \
     --allowedTools "Skill,Read,Write,Edit,Glob,Grep,Agent,Bash"
 ) >>"$log" 2>&1 &
