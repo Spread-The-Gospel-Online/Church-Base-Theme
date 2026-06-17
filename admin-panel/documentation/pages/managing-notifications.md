@@ -1,21 +1,25 @@
 # Managing Notifications
 
-Site notifications appear as dismissible **toasts** in the lower-right corner of the public site.
+Site notifications appear as dismissible **toasts** in the lower-right corner of the public site. Each published notification becomes one toast.
 
 ## Creating a notification
 
 1. Go to **Notifications** in the admin sidebar and click *Add New*.
 2. Set the **title** and **content** — these become the toast heading and body.
-3. Open the **Notification Details** box and set the start date, end date, and type.
+3. Open the **Notification Details** box on the side and set a **Start Date**, **End Date**, and **Type**.
 
-The **Type** can be `info`, `notice`, or `emergency`. Will default to info.
+The **Type** chooses which icon and color the toast uses:
+
+- **Info** — the default, used for general announcements.
+- **Notice** — for things you want people to pay attention to but that are not urgent.
+- **Emergency** — for the most urgent messages.
 
 ## How it behaves
 
-- An hourly job publishes a notification once its start date has passed, and deletes it once its end date has passed.
-- A notification with no start or end date is always published and is never automatically removed.
-- Visitors can dismiss a notification; it then stays hidden for the rest of their browsing session.
+- An hourly background job publishes a notification once its **Start Date** has passed, and deletes it permanently once its **End Date** has passed (after end-of-day on that date).
+- A notification missing either a Start Date or an End Date is **skipped** by the background job. It will not be published or deleted automatically — you would need to publish it (or remove it) yourself, just like a regular post. If you want a notification to come and go on its own, give it both dates.
+- The toast appears for every visitor until they dismiss it. Once a visitor clicks the close button on a toast, it stays hidden for the rest of their browsing session (it comes back if they close and reopen the browser).
 
 ## Appearance
 
-Notification appearance is configurable under **Appearance → Customize → Notifications**.
+How the toasts look — colors, spacing, and padding — is configurable under **Appearance → Customize → Notifications Settings**, and the colors used for each type come from the *Site Colors* section.
