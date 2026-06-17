@@ -19,3 +19,7 @@ Sermons can be setup to pull automatically from an RSS feed. You just need to go
 ## Customizer
 
 The theme has a number of options for customizing the appearance. These will be documented in the repository's Wiki pages
+
+## Documentation
+
+Uses Git hooks and Claude skills for updating documentation and syncing it with the repository wiki pages
