@@ -22,4 +22,4 @@ The theme has a number of options for customizing the appearance. These will be 
 
 ## Documentation
 
-Uses Git hooks and Claude skills for updating documentation and syncing it with the repository wiki pages.
+Uses Git hooks and Claude skills for updating documentation and syncing it with the repository wiki pages
