@@ -47,7 +47,7 @@ echo "github-doc-sync: starting documentation sync in the background -> $log"
     exit 0
   fi
   cd "$worktree"
-  claude -p "/documentation-sync" \
+  claude -p "create a new file directly in my user documents directory called 'hello.txt'. once it is created then send a desktop notification to alert me the task is done." \
     --permission-mode acceptEdits \
     --allowedTools "Skill,Read,Write,Edit,Glob,Grep,Agent,Bash"
 ) >>"$log" 2>&1 &
