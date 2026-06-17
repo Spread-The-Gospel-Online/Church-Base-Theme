@@ -18,6 +18,10 @@ function church_get_missing_archive_pages () {
 }
 
 add_action('admin_notices', function () {
+	if (church_is_missing_404_page()) {
+		util_render_snippet('admin/missing-404-notice', array(), false);
+	}
+
 	$missing_pages = church_get_missing_archive_pages();
 
 	foreach ($missing_pages as $missing_page) {
@@ -26,6 +30,16 @@ add_action('admin_notices', function () {
 		), false);
 	}
 });
+
+function church_is_missing_404_page () {
+	$pages = get_posts(array(
+		'post_type' => 'page',
+		'name' => '404-page',
+		'numberposts' => 1,
+		'post_status' => 'any'
+	));
+	return count($pages) === 0;
+}
 
 add_action('admin_action_wp_church_add_page', function () {
 	$type = $_POST['page-to-add'];

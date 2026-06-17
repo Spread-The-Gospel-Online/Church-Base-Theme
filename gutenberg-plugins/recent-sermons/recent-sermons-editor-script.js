@@ -8,15 +8,23 @@ window.wp.hooks.addFilter(
   'editor.BlockEdit',
   'church/block-recent-sermons',
   wp.compose.createHigherOrderComponent(function (BlockEdit) {
+
+    const patternOptions = Object.keys(window.recentSermonsData.patterns).map((key) => {
+      return {
+        label: window.recentSermonsData.patterns[key],
+        value: `${key}`
+      }
+    });
+
     return function (props) {
       if (props.name !== blockName) return el(wp.element.Fragment, {}, el(BlockEdit, props))
       return el(
-        wp.element.Fragment, 
-        {}, 
+        wp.element.Fragment,
+        {},
         el(BlockEdit, props),
         el(
           wp.editor.InspectorControls, {}, el(
-            Fields.PanelBody, {}, 
+            Fields.PanelBody, {},
               el(Fields.RangeControl, {
                 label: 'Number of sermons',
                 value: props.attributes.numberOfSermons,
@@ -46,6 +54,21 @@ window.wp.hooks.addFilter(
               }
             )
           )
+        ),
+        el(
+          wp.editor.InspectorControls, {}, el(
+            Fields.PanelBody, {}, el(
+              Fields.SelectControl,
+              {
+                label: 'Sermon Pattern',
+                value: props.attributes.sermonPattern,
+                options: patternOptions,
+                onChange: function (newPattern) {
+                  props.setAttributes({ sermonPattern: newPattern });
+                }
+              }
+            )
+          )
         )
       )
     }
@@ -61,6 +84,9 @@ registerBlockType(blockName, {
     },
     numberOfColumns: {
       type: "number"
+    },
+    sermonPattern: {
+      type: "string"
     }
   },
   edit: function ({ attributes }) {
@@ -79,7 +105,7 @@ const loadSermons = (attributes) => {
   const sermonWrappers = document.querySelectorAll('[data-get-latest-sermons]')
   
   sermonWrappers.forEach((wrapper) => {
-    fetch(`${window.wpApiSettings.root}church/v1/getServerContentsLatestSermons?numberSermons=${attributes.numberOfSermons}&numberOfColumns=${attributes.numberOfColumns}`)
+    fetch(`${window.wpApiSettings.root}church/v1/getServerContentsLatestSermons?numberSermons=${attributes.numberOfSermons}&numberOfColumns=${attributes.numberOfColumns}&sermonPattern=${attributes.sermonPattern || 'false'}`)
       .then((blob) => blob.text())
       .then((data) => {
         wrapper.innerHTML = data

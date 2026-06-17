@@ -12,22 +12,33 @@
 		<?php do_settings_sections('church-theme-settings'); ?>
 
 		<h2>Enabled Post Types</h2>
-		<div>
-			<?php foreach ($post_types as $post_type) { ?>
-				<div>
-					<label for="<?= $post_type ?>">
-						<?= $post_type ?>
-					</label>
-					<input name="church_enabled_post_types[]"
-						   id="<?= $post_type ?>"
-						   value="<?= $post_type ?>"
-						   type="checkbox"
-						   <?php if (is_array($enabled_post_types) && in_array($post_type, $enabled_post_types)) { ?>
-						   		checked="checked"
-						   <?php } ?>/>
-				</div>
-			<?php } ?>
-		</div>
+		<style>
+			.church-enabled-post-types th,
+			.church-enabled-post-types td {
+				padding-top: 2px;
+				padding-bottom: 2px;
+			}
+		</style>
+		<table class="form-table church-enabled-post-types">
+			<tbody>
+				<?php foreach ($post_types as $post_type) { ?>
+					<tr>
+						<th scope="row">
+							<label for="<?= $post_type ?>"><?= $post_type ?></label>
+						</th>
+						<td>
+							<input name="church_enabled_post_types[]"
+								   id="<?= $post_type ?>"
+								   value="<?= $post_type ?>"
+								   type="checkbox"
+								   <?php if (is_array($enabled_post_types) && in_array($post_type, $enabled_post_types)) { ?>
+								   		checked="checked"
+								   <?php } ?>/>
+						</td>
+					</tr>
+				<?php } ?>
+			</tbody>
+		</table>
 		<?php submit_button(); ?>
 	</form>
 

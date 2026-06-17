@@ -16,6 +16,13 @@
 	display: none !important;
 }
 
+.fully-centered {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 60vh;
+}
+
 .gbc {
 	margin-top: 3rem;
 	margin-bottom: 3rem;

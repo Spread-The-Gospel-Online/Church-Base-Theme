@@ -10,7 +10,16 @@
 	$alt = get_post_meta(get_post_thumbnail_id($sermon), '_wp_attachment_image_alt', true);
 
 	$sermon_card_options = get_option('church_archive_card_order');
-	$pattern = util_get_pattern_object('church_archive_card_pattern');
+
+	// A pattern set on the block (e.g. the Latest Sermons block) wins over the theme setting;
+	// otherwise fall back to the archive card pattern configured in theme settings.
+	$pattern = false;
+	if (isset($sermon_pattern) && $sermon_pattern && $sermon_pattern !== 'false') {
+		$pattern = util_get_pattern_object_by_slug($sermon_pattern);
+	}
+	if (!$pattern) {
+		$pattern = util_get_pattern_object('church_archive_card_pattern');
+	}
 
 	$card_content_classes = 'card__content';
 	if ('on_top' == get_option('church_card_content_position')) {
@@ -40,14 +49,16 @@
 ?>
 
 <article class="card card--sermon">
-	<a href="<?= $sermon_permalink ?>">
-		<?php util_render_snippet('common/image', array(
-			'wrapper_classes' => 'card__image-wrap',
-			'extra_classes' => 'card__image',
-			'src' => $image,
-			'alt' => $alt ? $alt : $sermon->post_title,
-		), false); ?>
-	</a>
+	<?php if (!$pattern) { ?>
+		<a href="<?= $sermon_permalink ?>">
+			<?php util_render_snippet('common/image', array(
+				'wrapper_classes' => 'card__image-wrap',
+				'extra_classes' => 'card__image',
+				'src' => $image,
+				'alt' => $alt ? $alt : $sermon->post_title,
+			), false); ?>
+		</a>
+	<?php } ?>
 
 	<?php if ($pattern) { ?>
 		<div class="<?= $card_content_classes ?>">

@@ -1,6 +1,6 @@
 <?php
 
-church_util_register_gutenberg_server_callback('/getServerContentsLatestSermons', array('numberSermons', 'numberOfColumns'), 'church_display_recent_sermons');
+church_util_register_gutenberg_server_callback('/getServerContentsLatestSermons', array('numberSermons', 'numberOfColumns', 'sermonPattern'), 'church_display_recent_sermons');
 
 // register the block
 add_action('init', function () {
@@ -17,6 +17,10 @@ add_action('init', function () {
 		"title" => "Latest Sermons",
 		"category" => "theme",
 		"icon" => "universal-access-alt",
+	));
+
+	wp_localize_script('recent-sermons-editor-script', 'recentSermonsData', array(
+		'patterns' => church_get_all_patterns_for_customizer()
 	));
 });
 
@@ -42,6 +46,7 @@ function church_display_recent_sermons ($attributes, $content) {
 		'sermons' => $sermons,
 		'columns' => $columns,
 		'classes' => array_key_exists('className', $attributes) ? $attributes['className'] : '',
+		'sermon_pattern' => array_key_exists('sermonPattern', $attributes) ? $attributes['sermonPattern'] : 'false',
 		'block_container' => $attributes['blockContainer'],
 		'block_bottom_margin' => $attributes['blockBottomMargin'],
 		'block_bottom_margin_desktop' => $attributes['blockBottomMarginDesktop'],

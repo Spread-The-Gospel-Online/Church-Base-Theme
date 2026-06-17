@@ -63,11 +63,12 @@ add_action('customize_register', function ($customizer) {
         ),
 	));
 	
-	$customizer->add_setting('church_archive_section_card_header', array());
-	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
-		$customizer, 'church_archive_section_card_header',
+	$customizer->add_setting('church_archive_card_pattern_header', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_archive_card_pattern_header',
         array(
-            'label' => 'Archive Card Settings',
+            'label' => 'Card Pattern',
+            'description' => 'When a pattern is selected, all styles are set in the pattern, not the settings below.',
             'section' => 'church_archive_styles',
         )
     ));
@@ -77,11 +78,21 @@ add_action('customize_register', function ($customizer) {
 		'type' => 'option',
 		'sanitize_callback' => 'sanitize_text_field'
 	));
-	$customizer->add_control('church_archive_card_pattern', array( 
+	$customizer->add_control('church_archive_card_pattern', array(
 		'type' => 'select',
 		'choices' => $patterns,
         'section' => 'church_archive_styles',
         'label' => 'Card Contents Pattern',
+    ));
+
+	$customizer->add_setting('church_archive_section_card_header', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_archive_section_card_header',
+        array(
+            'label' => 'Archive Card Settings',
+            'description' => 'These settings only apply when no Card Contents Pattern is selected.',
+            'section' => 'church_archive_styles',
+        )
     ));
 
 	$customizer->add_setting('church_archive_card_order', array(
@@ -251,10 +262,11 @@ add_action('customize_register', function ($customizer) {
 
 
     $customizer->add_setting('church_archive_section_colors', array());
-	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
 		$customizer, 'church_archive_section_colors',
         array(
             'label' => 'Archive Section Colors',
+            'description' => 'These colors only apply when no Card Contents Pattern is selected.',
             'section' => 'church_archive_styles',
             'priority' => 300,
         )

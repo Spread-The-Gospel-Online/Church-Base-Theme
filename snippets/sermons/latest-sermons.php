@@ -12,6 +12,7 @@ $wrapper_classes = util_get_block_wrapper_classes($block_container, $block_botto
 			<?php $post = $sermon; ?>
 			<?= util_render_snippet('sermons/sermon-article', array(
 				'sermon' => $sermon,
+				'sermon_pattern' => isset($sermon_pattern) ? $sermon_pattern : 'false',
 			), false) ?>
 		<?php } ?>
 		<?php $post = $original_post; ?>

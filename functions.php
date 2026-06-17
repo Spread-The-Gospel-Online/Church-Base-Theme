@@ -33,6 +33,10 @@ add_filter('template_include', function ($template) {
 		$template_to_check = __DIR__ . '/templates/search.php';
 	}
 
+	if (is_404()) {
+		$template_to_check = __DIR__ . '/templates/404.php';
+	}
+
 	// set which template we use
 	if (file_exists($template_to_check)) {
 		$template = $template_to_check;

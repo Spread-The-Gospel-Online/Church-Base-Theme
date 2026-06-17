@@ -47,6 +47,7 @@
 
 .card__content.card__content--patterned {
 	display: block;
+	padding: 0;
 }
 
 .card--search .card__content {

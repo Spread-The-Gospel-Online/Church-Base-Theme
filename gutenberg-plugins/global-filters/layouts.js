@@ -15,6 +15,7 @@
           blockPadding: { type: 'string' },
           blockBottomMargin: { type: 'number' },
           blockBottomMarginDesktop: { type: 'number' },
+          blockBorderRadius: { type: 'string' },
         });
       }
       return settings
@@ -45,6 +46,13 @@
 
     if (attributes.blockBottomMarginDesktop) {
       extraProps.className += ` lg:mb-${attributes.blockBottomMarginDesktop}`
+    }
+
+    if (attributes.blockBorderRadius && attributes.blockBorderRadius !== 'none') {
+      extraProps.style = {
+        ...extraProps.style,
+        borderRadius: `var(--border-radius-${attributes.blockBorderRadius})`,
+      }
     }
 
     return extraProps
@@ -107,6 +115,19 @@
               ],
               onChange: (newPaddingValue) => {
                 setAttributes({ blockPadding: newPaddingValue })
+              }
+            }),
+            el(SelectControl, {
+              label: 'Border Radius',
+              value: attributes.blockBorderRadius || 'none',
+              options: [
+                { label: 'None', value: 'none' },
+                { label: 'Small', value: 'small' },
+                { label: 'Medium', value: 'medium' },
+                { label: 'Large', value: 'large' }
+              ],
+              onChange: (newBorderRadius) => {
+                setAttributes({ blockBorderRadius: newBorderRadius })
               }
             }),
             el(ToggleControl, {
