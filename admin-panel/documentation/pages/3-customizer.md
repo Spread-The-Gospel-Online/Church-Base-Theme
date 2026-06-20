@@ -96,7 +96,7 @@ Controls staff member pages. Lets you pick a **Staff Contents Pattern** to repla
 
 ### Events Settings
 
-Currently controls the border width on the events calendar block.
+Controls the **Church Calendar** block: the border width around the calendar, and an *Events Section Colors* group for the calendar's colors — the header background, the outline around each day, and the two alternating background colors used to differentiate weeks.
 
 ## Components
 
