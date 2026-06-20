@@ -1,5 +1,24 @@
 <?php
 
+// Collapse whitespace across the entire built page, the same way
+// util_render_snippet() does for individual snippet output.
+function util_minify_page_html ($html) {
+	$html = preg_replace('/\s+/', ' ', $html);
+	$html = str_replace('> </', '></', $html);
+
+	return $html;
+}
+
+add_action('template_redirect', function () {
+	// Skip non-HTML responses where collapsing whitespace would corrupt output:
+	// robots.txt is line-based, feeds are XML/CDATA.
+	if (is_feed() || is_robots() || is_embed()) {
+		return;
+	}
+
+	ob_start('util_minify_page_html');
+});
+
 function util_render_snippet ($snippet, $variables = array(), $return_contents = true) {
 	$include_path = get_template_directory() . '/snippets/' . $snippet . '.php';
 	extract($variables);
@@ -8,6 +27,7 @@ function util_render_snippet ($snippet, $variables = array(), $return_contents =
 	include $include_path;
 	$contents = ob_get_clean();
 	$contents = preg_replace('/\s+/', ' ', $contents);
+	$contents = str_replace('> </', '></', $contents);
 
 	if ($return_contents) {
 		return $contents;

@@ -9,7 +9,15 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
-	// ------- FIXED HEADER -------
+	$customizer->add_setting('church_header_layout_heading', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_header_layout_heading',
+		array(
+			'label' => 'Header Layout',
+			'section' => 'church_header_section',
+		)
+	));
+
 	$customizer->add_setting('church_header_is_fixed', array(
 		'type' => 'option',
 		'default' => 'no',
@@ -42,6 +50,30 @@ add_action('customize_register', function ($customizer) {
 		'description' => 'Sets header as transparent at top of page (when hero image is present)'
 	));
 
+	$customizer->add_setting('church_header_menu_alignment', array(
+		'type' => 'option',
+		'default' => 'middle',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_header_menu_alignment', array(
+		'type' => 'select',
+		'choices' => array(
+			'left' => 'Left',
+			'middle' => 'Middle',
+			'right' => 'Right'
+		),
+		'section' => 'church_header_section',
+		'label' => 'Header Menu Align',
+	));
+
+	$customizer->add_setting('church_header_logo_heading', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_header_logo_heading',
+		array(
+			'label' => 'Logo',
+			'section' => 'church_header_section',
+		)
+	));
 
 	// HEADER LOGO
 	$customizer->add_setting('church_header_logo', array(
@@ -88,23 +120,6 @@ add_action('customize_register', function ($customizer) {
             'max' => 300,
             'step' => 1,
         ),
-	));
-
-
-	$customizer->add_setting('church_header_menu_alignment', array(
-		'type' => 'option',
-		'default' => 'middle',
-		'sanitize_callback' => 'sanitize_text_field',
-	));
-	$customizer->add_control('church_header_menu_alignment', array(
-		'type' => 'select',
-		'choices' => array(
-			'left' => 'Left',
-			'middle' => 'Middle',
-			'right' => 'Right'
-		),
-		'section' => 'church_header_section',
-		'label' => 'Header Menu Align',
 	));
 
 

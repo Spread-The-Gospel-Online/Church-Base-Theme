@@ -12,6 +12,16 @@ add_action('customize_register', function ($customizer) {
 		'capability' => 'edit_theme_options'
 	));
 
+	$customizer->add_setting('church_hero_defaults_heading', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_hero_defaults_heading',
+		array(
+			'label' => 'Hero Defaults',
+			'description' => 'These are site-wide defaults. Each page can override them individually in the Hero block.',
+			'section' => 'church_hero_section',
+		)
+	));
+
 	$customizer->add_setting('church_hero_default_height', array(
 		'type' => 'option',
 		'default' => 40,

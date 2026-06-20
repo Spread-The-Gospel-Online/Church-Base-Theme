@@ -1,7 +1,16 @@
 # Church Theme
 
+## Development Setup
 
-## Setup
+Requires a few tools for local development.
+
+* [GitHub CLI](https://cli.github.com/): used for running local hook to update docs and trigger the action to sync admin docs with Wiki pages
+* [Claude CLI & Subscription](https://code.claude.com/docs/en/quickstart#step-1-install-claude-code): used for running background job to trigger scanning the theme to rebuild documentation
+
+Few settings to update:
+
+* For the project, set local git hooks to run from the `.githooks` directory.
+* Ensure that a Claude skill named `documentation-sync` that scans the code base and updates MD files in the docs folder exists.
 
 ### Permalinks
 

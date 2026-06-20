@@ -35,7 +35,15 @@ add_action('customize_register', function ($customizer) {
 		array('label' => 'Font Family Three', 'id' => 'font_family_three'),
 	);
 
-	// ------- FIXED HEADER -------
+	$customizer->add_setting('church_fonts_families_heading', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_fonts_families_heading',
+		array(
+			'label' => 'Custom Font Families',
+			'section' => 'church_fonts_section',
+		)
+	));
+
 	foreach ($fonts as $font) {
 		$customizer->add_setting($font['id'], array(
 			'type' => 'option',
@@ -93,6 +101,16 @@ add_action('customize_register', function ($customizer) {
 			'section' => 'church_header_section'
 		),
 	);
+
+	$customizer->add_setting('church_fonts_assignments_heading', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_fonts_assignments_heading',
+		array(
+			'label' => 'Font Assignments',
+			'section' => 'church_fonts_section',
+			'priority' => 200,
+		)
+	));
 
 	foreach ($font_selectors as $font) {
 		$font_id = $font['id'];
@@ -217,10 +235,10 @@ add_action('customize_register', function ($customizer) {
 	));
 
 	$customizer->add_setting('church_fonts_typography_header_sizing', array());
-	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
 		$customizer, 'church_fonts_typography_header_sizing',
         array(
-            'label' => 'Heading Font Sizes',
+            'label' => 'Font Sizes',
             'section' => 'church_fonts_section',
             'priority' => 400
         )
@@ -337,6 +355,44 @@ add_action('customize_register', function ($customizer) {
         'input_attrs' => array(
             'min' => 1,
             'max' => 6,
+            'step' => 0.1,
+        ),
+        'priority' => 400
+	));
+
+	$customizer->add_setting('church_general_content_desktop_size', array(
+		'type' => 'option',
+		'default' => 1,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_general_content_desktop_size', array(
+		'type' => 'number',
+		'section' => 'church_fonts_section',
+		'label' => 'General Content Font Size (Desktop)',
+		'validate' => 'numeric',
+        'default'  => 1,
+        'input_attrs' => array(
+            'min' => 0.5,
+            'max' => 3,
+            'step' => 0.1,
+        ),
+        'priority' => 400
+	));
+
+	$customizer->add_setting('church_general_content_mobile_size', array(
+		'type' => 'option',
+		'default' => 1,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_general_content_mobile_size', array(
+		'type' => 'number',
+		'section' => 'church_fonts_section',
+		'label' => 'General Content Font Size (Mobile)',
+		'validate' => 'numeric',
+        'default'  => 1,
+        'input_attrs' => array(
+            'min' => 0.5,
+            'max' => 3,
             'step' => 0.1,
         ),
         'priority' => 400

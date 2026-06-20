@@ -19,6 +19,16 @@ add_action('customize_register', function ($customizer) {
 
 
 	$patterns = church_get_all_patterns_for_customizer();
+
+	$customizer->add_setting('church_footer_appearance_heading', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_footer_appearance_heading',
+		array(
+			'label' => 'Footer Appearance',
+			'section' => 'church_footer_section',
+		)
+	));
+
 	$customizer->add_setting('church_footer_pattern', array(
 		'type' => 'option',
 		'sanitize_callback' => 'sanitize_text_field'
@@ -68,7 +78,15 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
-	// Footer Copyright
+	$customizer->add_setting('church_footer_copyright_heading', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_footer_copyright_heading',
+		array(
+			'label' => 'Copyright',
+			'section' => 'church_footer_section',
+		)
+	));
+
 	$customizer->add_setting('church_footer_display_copyright', array(
 		'type' => 'option',
 		'default' => 'yes',
@@ -96,7 +114,14 @@ add_action('customize_register', function ($customizer) {
 		'description' => 'Add "YYYY" to display the current year'
 	));
 
-	// Social settings
+	$customizer->add_setting('church_footer_social_heading', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_footer_social_heading',
+		array(
+			'label' => 'Social Links',
+			'section' => 'church_footer_section',
+		)
+	));
 
 	$customizer->add_setting('church_social_link_facebook', array(
 		'type' => 'option',

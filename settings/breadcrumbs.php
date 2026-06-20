@@ -11,7 +11,15 @@ add_action('customize_register', function ($customizer) {
 		update_option('church_display_breadcrumbs', 'top');
 	}
 
-	// ------- BREADCRUMBS -------
+	$customizer->add_setting('church_breadcrumbs_display_heading', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_breadcrumbs_display_heading',
+		array(
+			'label' => 'Breadcrumbs Display',
+			'section' => 'church_breadcrumbs_section',
+		)
+	));
+
 	$customizer->add_setting('church_display_breadcrumbs', array(
 		'type' => 'option',
 		'default' => 'yes',

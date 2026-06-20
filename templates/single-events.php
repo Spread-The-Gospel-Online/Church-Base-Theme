@@ -38,7 +38,7 @@ while (have_posts()) {
 
 	the_content();
 
-	if (str_contains($event_location, 'google.com/maps/embed')) {
+	if (str_contains($event_location, 'maps')) {
 		util_render_snippet('events/google-map', array(
 			'event_location' => $event_location
 		), false);

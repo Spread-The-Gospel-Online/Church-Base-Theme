@@ -7,27 +7,6 @@ add_action('customize_register', function ($customizer) {
 		'capability' => 'edit_theme_options'
 	));
 
-	// LOGO SIZES
-	$customizer->add_setting('church_ccontain_default_size', array(
-		'type' => 'option',
-		'default' => 1252,
-		'sanitize_callback' => 'sanitize_text_field',
-	));
-	$customizer->add_control('church_ccontain_default_size', array(
-		'type' => 'number',
-		'section' => 'church_general_section',
-		'label' => 'Content Width',
-		'description' => 'Width is measured in pixels',
-		'validate' => 'numeric',
-        'default'  => 1252,
-        'input_attrs' => array(
-            'min' => 20,
-            'max' => 1600,
-            'step' => 1,
-        ),
-	));
-
-
 	$customizer->add_setting('church_bible_version', array(
 		'type' => 'option',
 		'default' => 'esv',
@@ -46,6 +25,34 @@ add_action('customize_register', function ($customizer) {
 		'section' => 'church_general_section',
 		'label' => 'Bible Version Used',
 		'description' => 'Used for the Logos Bible Reference Plugin'
+	));
+
+	$customizer->add_setting('church_general_layout_heading', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_general_layout_heading',
+		array(
+			'label' => 'Layout & Behavior',
+			'section' => 'church_general_section',
+		)
+	));
+
+	$customizer->add_setting('church_ccontain_default_size', array(
+		'type' => 'option',
+		'default' => 1252,
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_ccontain_default_size', array(
+		'type' => 'number',
+		'section' => 'church_general_section',
+		'label' => 'Content Width',
+		'description' => 'Width is measured in pixels',
+		'validate' => 'numeric',
+        'default'  => 1252,
+        'input_attrs' => array(
+            'min' => 20,
+            'max' => 1600,
+            'step' => 1,
+        ),
 	));
 
 

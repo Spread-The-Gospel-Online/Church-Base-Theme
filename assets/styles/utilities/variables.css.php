@@ -67,6 +67,9 @@
 	--header-three-mobile-size: <?= get_option('church_header_three_mobile_size', 1.7) ?>rem;
 	--header-three-desktop-size: <?= get_option('church_header_three_desktop_size', 2.3) ?>rem;
 
+	--general-content-mobile-size: <?= get_option('church_general_content_mobile_size', 1) ?>rem;
+	--general-content-desktop-size: <?= get_option('church_general_content_desktop_size', 1) ?>rem;
+
 	--ccontain: <?= get_option('church_ccontain_default_size', 1252) ?>px;
 	--number-columns-mobile: 1;
 	--number-columns-tablet: 2;

@@ -7,6 +7,15 @@ add_action('customize_register', function ($customizer) {
 		'capability' => 'edit_theme_options'
 	));
 
+	$customizer->add_setting('church_accordion_appearance_heading', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_accordion_appearance_heading',
+		array(
+			'label' => 'Accordion Appearance',
+			'section' => 'church_accordions_section',
+		)
+	));
+
 	$customizer->add_setting('church_accordion_border_width', array(
 		'type' => 'option',
 		'default' => 'small',

@@ -14,6 +14,15 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
+	$customizer->add_setting('church_sermon_content_heading', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_sermon_content_heading',
+		array(
+			'label' => 'Sermon Content',
+			'section' => 'church_sermon_styles',
+		)
+	));
+
 	$customizer->add_setting('church_sermon_default_image', array(
 		'type' => 'option',
 	));

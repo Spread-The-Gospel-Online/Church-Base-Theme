@@ -9,3 +9,19 @@ h2, .h2 {
 h3, .h3 {
 	font-size: var(--header-three-desktop-size);
 }
+
+.text-large {
+	font-size: calc(var(--general-content-desktop-size) * 1.25);
+}
+
+.text-normal {
+	font-size: var(--general-content-desktop-size);
+}
+
+.text-small {
+	font-size: calc(var(--general-content-desktop-size) * 0.8);
+}
+
+#MainContent > * {
+	font-size: var(--general-content-desktop-size);
+}

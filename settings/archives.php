@@ -26,7 +26,15 @@ add_action('customize_register', function ($customizer) {
 	));
 
 
-	// ------- Sermon Archive -------
+	$customizer->add_setting('church_archive_grid_heading', array());
+	$customizer->add_control(new Sub_Section_Heading_Custom_Control(
+		$customizer, 'church_archive_grid_heading',
+		array(
+			'label' => 'Sermon Grid',
+			'section' => 'church_archive_styles',
+		)
+	));
+
 	$customizer->add_setting('church_archive_sermon_grid_tablet_size', array(
 		'type' => 'option',
 		'default' => 2,
