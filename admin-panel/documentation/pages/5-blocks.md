@@ -41,11 +41,15 @@ A small helper for designers: drop it in and it fills itself with placeholder te
 
 Open the editor sidebar for **any** block on the page — even the built-in WordPress blocks — and you will find a **Spacing** panel added by the theme. It contains:
 
-- **Block container** — toggle between a centered, contained width (the same as your page content) and a full-width block.
-- **Bottom margin** — how much space sits below the block (and a separate value for desktop, so you can space things out more generously on larger screens).
-- **Block padding** — how much space sits inside the block, around its content.
+- **Element Vertical Padding** — how much space sits inside the block, above and below its content. Choose *Theme Default*, *None*, *Small*, *Medium*, or *Large*. Leaving it on **Theme Default** means the block follows the *Default Padding Size* set in **Appearance → Customize → General Settings**, so it changes with the rest of the site.
+- **Border Radius** — how rounded the block's corners are: *None*, *Small*, *Medium*, or *Large*. These match the **Border Radius** sizes set in *General Settings*.
+- **Is Contained Width?** — when on, the block sits in a centered column the same width as your page content. When off, it runs the full width of the screen. Useful for full-bleed images and colored bands.
+- **Mobile Margin** — how much space sits below the block on phones, from 0 to 200.
+- **Desktop Margin** — the same, for larger screens, so you can space things out more generously there.
 
-These give you a consistent vertical rhythm without having to think about pixel values.
+These give you a consistent vertical rhythm without having to think about pixel values. Because the padding and radius options point back at the Customizer rather than at fixed sizes, changing those site-wide values restyles every block that was left on the standard options.
+
+New blocks come with sensible starting points: a top-level block is contained by default, a block nested inside another is not, and blocks inside a pattern or a notification start full-width.
 
 ## Per-page hero settings
 
@@ -59,7 +63,15 @@ If you do not override any of these, the page uses the values from **Appearance 
 
 ## Member-only content
 
-The **Member Settings** panel (also in the editor sidebar) lets you mark an individual page as members-only. Use this for content that should not be public — visitors who are not logged in will not see it.
+The **Member Settings** panel (also in the editor sidebar) holds a single **Member Only?** checkbox. Tick it and anyone who is not logged in to the site is sent to your homepage instead of seeing that item.
+
+There are three things to know before you rely on it:
+
+- **It works on posts, sermons, events, staff, and ministries — but not on Pages.** The checkbox appears when you edit a Page, but it has no effect there. To restrict a Page, use WordPress's own **Password protected** or **Private** visibility options in the Publish panel instead.
+- **Any logged-in account can see it**, whatever their role. A subscriber sees the same content as an administrator. There is no separate "members" group.
+- **The title and summary still appear in lists.** A restricted item is hidden only on its own page — it can still show up in archives, the search results page, and blocks like Latest Sermons. Keep anything sensitive out of the title and excerpt.
+
+> Note: This is a convenience feature for keeping ordinary content out of the way of casual visitors — a members' meeting write-up, for instance. It is not real security, and it should not be used for anything confidential such as personal details, financial information, or safeguarding records. For genuinely private material, use a membership plugin or keep it off the website.
 
 ## The contact form
 
