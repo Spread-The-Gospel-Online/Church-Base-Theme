@@ -15,6 +15,12 @@
 		$image = get_option('church_general_default_image');
 		$image_id = false;
 	}
+	// Last resort: the same image the post type's archive hero uses (archive page, then homepage).
+	if (!$image) {
+		$hero_image = util_get_hero_src($post);
+		$image = $hero_image['src'];
+		$image_id = $hero_image['id'];
+	}
 	if (!isset($alt) || !$alt) {
 		$alt = $image_id ? get_post_meta($image_id, '_wp_attachment_image_alt', true) : '';
 	}
@@ -67,7 +73,7 @@
 					<?= esc_html($tile_title) ?>
 				</h2>
 			</a>
-			<?php if ($tile_excerpt) { ?>
+			<?php if (has_excerpt($post)) { ?>
 				<p
 					class="card__full-item"
 				>
