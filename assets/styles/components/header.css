@@ -19,7 +19,7 @@ body:not(.body-scrolled, .search-open) .header--transparent {
 .header__watcher {
 	background: var(--header-background);
 	width: 100%; 
-	height: var(--logo-height);
+	height: calc(var(--logo-height) + (2 * var(--logo-padding-mobile)));
 	z-index: -1;
 }
 
@@ -52,7 +52,7 @@ body:not(.body-scrolled, .search-open) .header--transparent {
 }
 
 .header__logo-link {
-	padding: .5rem 0rem;
+	padding: var(--logo-padding-mobile) 0rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;

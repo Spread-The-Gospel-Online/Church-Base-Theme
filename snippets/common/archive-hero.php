@@ -13,10 +13,17 @@ $steps = array(
 	array('type' => $archive_type, 'slug' => false)
 );
 
+add_filter('breadcrumbs_steps', function ($steps) {
+	return array(
+		array('type' => $archive_type, 'slug' => false),
+	);
+});
+
 if ($archive_page) {
 	$page_id = $archive_page->ID;
 	util_render_snippet('common/hero', array(
 		'desktop_src' => $image['src'],
+		'image_id' => $image['id'],
 		'img_height' => '400px',
 		'image_alt' => $image['alt'],
 		'caption' => $archive_page->post_title,

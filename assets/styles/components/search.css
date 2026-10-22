@@ -34,7 +34,7 @@
 .search-bar__overlay {
   position: fixed;
   inset: 0;
-  top: var(--logo-height);
+  top: calc(var(--logo-height) + (2 * var(--logo-padding-mobile)));
   border: 0;
   background: var(--black);
   opacity: 0.7;
@@ -46,7 +46,7 @@
 .body-scrolled .search-bar__overlay {
   position: fixed;
   inset: 0;
-  top: var(--logo-height-scrolled);
+  top: calc(var(--logo-height-scrolled) + (2 * var(--logo-padding-mobile)));
   background: var(--black);
   opacity: 0.6;
 }

@@ -43,6 +43,7 @@ Everything about the bar at the top of every page:
 - **Transparent Fixed Header** — let the hero image show through the fixed header when one is present.
 - **Header Logo Image** — upload your logo.
 - **Logo Sizes** — separate sizes for the default state and when the header is "scrolled" (pinned, smaller).
+- **Logo Vertical Padding** — space above and below the logo, set separately for mobile and desktop (default 8px each).
 - **Menu** — alignment (left / middle / right), font size, letter spacing, uppercase, and font weight.
 
 ### Footer Settings
@@ -109,6 +110,14 @@ Form-input styling, including whether labels appear above their input or to the 
 ### Notifications Settings
 
 Padding for the notification toasts that appear in the lower-right corner of the public site. The colors come from *Site Colors*. See *Managing Notifications* for how to create notifications.
+
+### Images
+
+**Blur Images During Loading** — when set to *Yes*, sermon/series/search cards and page heros first show a small, blurred version of their image. As each image scrolls into view, the full-size image loads in and the blur fades away. Images that come from a default-image setting rather than a featured image load normally without the blur.
+
+**Blur Transition Time (seconds)** — how long the blur takes to fade away once the full image has loaded, adjustable to a tenth of a second (default 0.3).
+
+**Image & Cover blocks** — each Image and Cover block has a **Blur Image** toggle in its block settings sidebar. A new block follows the theme setting above; flip the toggle to turn blur loading on or off for that one image.
 
 ### Accordion Settings
 

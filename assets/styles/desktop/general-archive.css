@@ -1,0 +1,3 @@
+.general-archive {
+	grid-template-columns: repeat(var(--general-archive-grid-size), 1fr);
+}

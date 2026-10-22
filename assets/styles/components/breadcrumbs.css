@@ -34,7 +34,8 @@
 	column-gap: 0.5rem;
 	list-style-type: none;
 	white-space: nowrap;
-	overflow: auto;
+	overflow-y: hidden;
+	overflow-x: auto;
 }
 
 .breadcrumbs__item {

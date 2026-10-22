@@ -12,3 +12,19 @@
 .header__watcher--fixed-desktop {
 	display: block;
 }
+
+.header__watcher {
+	height: calc(var(--logo-height) + (2 * var(--logo-padding-desktop)));
+}
+
+.header__logo-link {
+	padding: var(--logo-padding-desktop) 0rem;
+}
+
+.search-bar__overlay {
+	top: calc(var(--logo-height) + (2 * var(--logo-padding-desktop)));
+}
+
+.body-scrolled .search-bar__overlay {
+	top: calc(var(--logo-height-scrolled) + (2 * var(--logo-padding-desktop)));
+}

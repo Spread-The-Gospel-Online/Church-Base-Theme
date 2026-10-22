@@ -22,7 +22,7 @@
 
 .card__image {
 	transform: scale(1);
-	transition: transform .2s;
+	transition: transform .2s, filter var(--image-blur-transition);
 }
 
 .card__content {

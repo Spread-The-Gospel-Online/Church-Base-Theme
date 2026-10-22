@@ -2,7 +2,7 @@
 
 add_action('customize_register', function ($customizer) {
 	$customizer->add_section('church_fonts_section', array(
-		'title' => 'Font Settings',
+		'title' => 'Typography Settings',
 		'description' => 'Set fonts for the site',
 		'priority' => 25,
 		'capability' => 'edit_theme_options'

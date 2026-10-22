@@ -8,7 +8,6 @@ while (have_posts()) {
 	$post = get_post();
 	$post_id = $post->ID;
 	$sermon_content = util_get_actual_content($post->post_content);
-	$image = util_get_hero_src($post);
 	$pattern = util_get_pattern_object('church_sermon_contents_pattern');
 	$sermon_cards = get_option('church_sermons_card_order');
 	$series_ID = get_post_meta($post_id, 'sermon_series', true);
@@ -29,27 +28,23 @@ while (have_posts()) {
 		'audio_link' => get_post_meta($post_id, 'audio_link', true)
 	));
 
-	util_render_snippet('common/hero', array(
-		'desktop_src' => $image['src'],
-		'image_alt' => $image['alt'],
-		'caption_classes' => '',
-		'caption' => get_the_title(),
-		'steps' => $steps,
-		'opacity' => get_post_meta($post_id, 'hero_opacity', true),
-		'background' => get_post_meta($post_id, 'hero_background', true),
-		'text_color' => get_post_meta($post_id, 'hero_text', true),
-		'hero_height' => get_post_meta($post_id, 'hero_height', true),
-	), false);
+	if (get_option('church_sermon_hide_hero') !== 'true') {
+		util_render_snippet('common/single-page-hero-snippet', array(
+			'post' => $post,
+			'steps' => $steps
+		), false);
+	}
 
 	do_action('church_layout_after_header');
 } ?>
 
 
 <article class="ccontain sermon">
-	<div class="sermon__content">
-		<?php if ($pattern) { ?>
-			<?= util_get_actual_content($pattern->post_content) ?>
-		<?php } else { ?>
+	<?php if ($pattern) { ?>
+		<?= util_get_actual_content($pattern->post_content) ?>
+	<?php } else { ?>
+		<?= util_render_snippet('sermons/card-options/youtube-video') ?>
+		<div class="sermon__content">
 			<?= util_render_snippet('sermons/card-options/audio') ?>
 
 			<div class="sermon__content-cards">
@@ -62,8 +57,8 @@ while (have_posts()) {
 			</div>
 
 			<?= util_render_snippet('sermons/card-options/download') ?>
-		<?php } ?>
-	</div>
+		</div>
+	<?php } ?>
 	
 	<div class="sermon__content">
 		<?php 

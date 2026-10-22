@@ -52,4 +52,6 @@ summary::marker {
 
 img {
 	max-width: 100%;
+	filter: blur(0);
+	transition: filter var(--image-blur-transition);
 }

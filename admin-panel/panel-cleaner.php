@@ -1,8 +1,9 @@
 <?php
 
-// Remove comments page in menu
+// Remove comments page and Theme File Editor from menu
 add_action('admin_menu', function () {
     remove_menu_page('edit-comments.php');
+    remove_submenu_page('themes.php', 'theme-editor.php');
 });
 
 // Remove comments metabox from dashboard

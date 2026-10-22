@@ -17,6 +17,7 @@ $the_query = new WP_Query($args);
 
 util_render_snippet('common/hero', array(
 	'desktop_src' => $image['src'],
+	'image_id' => $image['id'],
 	'img_height' => '400px',
 	'image_alt' => $image['alt'],
 	'caption' => 'Showing ' . $the_query->found_posts . ' Results For "' . $the_query->query['s'] . '"',

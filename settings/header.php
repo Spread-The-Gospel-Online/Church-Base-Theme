@@ -122,6 +122,43 @@ add_action('customize_register', function ($customizer) {
         ),
 	));
 
+	// LOGO VERTICAL PADDING
+	$customizer->add_setting('church_logo_padding_mobile', array(
+		'type' => 'option',
+		'default' => 8,
+		'sanitize_callback' => 'absint',
+	));
+	$customizer->add_control('church_logo_padding_mobile', array(
+		'type' => 'number',
+		'section' => 'church_header_section',
+		'label' => 'Logo Vertical Padding (Mobile)',
+		'validate' => 'numeric',
+		'default'  => 8,
+		'input_attrs' => array(
+			'min' => 0,
+			'max' => 60,
+			'step' => 1,
+		),
+	));
+
+	$customizer->add_setting('church_logo_padding_desktop', array(
+		'type' => 'option',
+		'default' => 8,
+		'sanitize_callback' => 'absint',
+	));
+	$customizer->add_control('church_logo_padding_desktop', array(
+		'type' => 'number',
+		'section' => 'church_header_section',
+		'label' => 'Logo Vertical Padding (Desktop)',
+		'validate' => 'numeric',
+		'default'  => 8,
+		'input_attrs' => array(
+			'min' => 0,
+			'max' => 60,
+			'step' => 1,
+		),
+	));
+
 
 	$customizer->add_setting('church_header_section_fonts', array());
 	$customizer->add_control(new Sub_Section_Heading_Custom_Control( 

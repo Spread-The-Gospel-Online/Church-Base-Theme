@@ -23,6 +23,21 @@ add_action('customize_register', function ($customizer) {
 		)
 	));
 
+	$customizer->add_setting('church_sermon_hide_hero', array(
+		'type' => 'option',
+		'default' => 'false',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_sermon_hide_hero', array(
+		'type' => 'select',
+		'section' => 'church_sermon_styles',
+		'label' => 'Hide Sermon Hero',
+		'choices' => array(
+			'false' => 'No',
+			'true' => 'Yes',
+		),
+	));
+
 	$customizer->add_setting('church_sermon_default_image', array(
 		'type' => 'option',
 	));
@@ -102,7 +117,7 @@ add_action('customize_register', function ($customizer) {
             	array('label' => 'Date', 'value' => 'date'),
             	array('label' => 'Pastor', 'value' => 'pastor'),
             	array('label' => 'Series', 'value' => 'sermon-series'),
-            	array('label' => 'Passage', 'value' => 'passage'),
+            	array('label' => 'Passage', 'value' => 'passage')
             )
         )
     ));

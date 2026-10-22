@@ -3,6 +3,9 @@
 		</div>
 		<?php util_render_snippet('layout/global/footer', array(), false); ?>
 		<script type="module" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/templates/layout.js"></script>
+		<?php if (util_has_blur_images()) { ?>
+			<script type="module" defer src="<?php echo get_template_directory_uri(); ?>/assets/scripts/components/image-blur.js"></script>
+		<?php } ?>
 		<?php if (has_block('church/block-form')) { ?>
 			<script type="module" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/components/forms.js"></script>
 		<?php } ?>

@@ -13,6 +13,7 @@
 			'wrapper_classes' => 'card__image-wrap',
 			'extra_classes' => 'card__image',
 			'src' => $image_info['src'],
+			'image_id' => $image_info['id'],
 			'alt' => $image_info['alt']
 		), false); ?>
 	</a>

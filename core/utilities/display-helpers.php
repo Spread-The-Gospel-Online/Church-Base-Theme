@@ -10,8 +10,8 @@ function util_get_hero_src ($post) {
 	$image_id = get_post_thumbnail_id($post);
 	$image_src = $image_id ? wp_get_attachment_image_src($image_id, 'full', false)[0] : false;
 
-	// if post is a sermon, use default sermons ID
-	if ($post->post_type === 'sermons') {
+	// Sermons fall back to the configured default image only when they have no cover of their own.
+	if ($post->post_type === 'sermons' && !$image_id) {
 		$image_src = get_option('church_sermon_default_image');
 	}
 
@@ -43,6 +43,7 @@ function util_get_hero_src ($post) {
 
 	return array(
 		'src' => $image_src,
+		'id' => $image_src ? $image_id : false,
 		'alt' => $image_id ? get_post_meta($image_id, '_wp_attachment_image_alt', true) : $post->post_title
 	);
 }

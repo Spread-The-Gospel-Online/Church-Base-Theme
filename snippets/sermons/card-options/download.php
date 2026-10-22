@@ -1,4 +1,13 @@
-<?php $post = get_post(); ?>
+<?php 
+
+$post = get_post(); 
+$audio_link = get_post_meta($post->ID, 'audio_link', true);
+
+if (empty($audio_link)) {
+	return;
+}
+
+?>
 
 <div class="sermon__download-wrapper <?= isset($classes) ? $classes : '' ?>">
 	<a href="<?= get_post_meta($post->ID, 'audio_link', true) ?>" 

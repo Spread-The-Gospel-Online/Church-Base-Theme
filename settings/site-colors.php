@@ -147,6 +147,42 @@ add_action('customize_register', function ($customizer) {
 			'label' => 'Card Content Link Color (Hover)',
 			'section' => 'church_archive_styles'
 		),
+		// General archive cards. 'option_id' overrides the default church_css_ prefix.
+		array(
+			'id' => 'general_card_overlay',
+			'option_id' => 'church_general_css_card_overlay',
+			'default' => '--black',
+			'label' => 'Card Image Overlay',
+			'section' => 'church_general_archive_styles'
+		),
+		array(
+			'id' => 'general_card_contents_background',
+			'option_id' => 'church_general_css_card_contents_background',
+			'default' => '--white',
+			'label' => 'Card Content Background',
+			'section' => 'church_general_archive_styles'
+		),
+		array(
+			'id' => 'general_card_contents_text',
+			'option_id' => 'church_general_css_card_contents_text',
+			'default' => '--black',
+			'label' => 'Card Content Text Color',
+			'section' => 'church_general_archive_styles'
+		),
+		array(
+			'id' => 'general_card_contents_links',
+			'option_id' => 'church_general_css_card_contents_links',
+			'default' => '--primary-100',
+			'label' => 'Card Content Link Color',
+			'section' => 'church_general_archive_styles'
+		),
+		array(
+			'id' => 'general_card_contents_links_hover',
+			'option_id' => 'church_general_css_card_contents_links_hover',
+			'default' => '--accent',
+			'label' => 'Card Content Link Color (Hover)',
+			'section' => 'church_general_archive_styles'
+		),
 		array(
 			'id' => 'calendar_header_background',
 			'default' => '--secondary-100',
@@ -436,7 +472,7 @@ add_action('customize_register', function ($customizer) {
 	$color_options['--transparent'] = 'Transparent';
 
 	foreach ($color_selectors as $color) {
-		$color_id = 'church_css_' . $color['id'];
+		$color_id = isset($color['option_id']) ? $color['option_id'] : 'church_css_' . $color['id'];
 		$section_id = isset($color['section']) ? $color['section'] : 'church_colors';
 
 		if (!get_option($color_id)) {

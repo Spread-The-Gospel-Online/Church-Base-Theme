@@ -9,6 +9,7 @@
 
 		util_render_snippet('common/hero', array(
 			'desktop_src' => $hero_image['src'],
+			'image_id' => $hero_image['id'],
 			'image_alt' => $hero_image['alt'],
 			'caption' => $page->post_title,
 			'opacity' => get_post_meta($page->ID, 'hero_opacity', true),

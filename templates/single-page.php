@@ -4,7 +4,6 @@
 	$parent_post = get_post($parent_page);
 	$children = get_pages(array('child_of' => $post->ID));
 	$display_sidebar = $parent_page != 0 || count($children) > 0;
-	$hero_image = util_get_hero_src($post);
 
 	get_header();
 
@@ -23,14 +22,10 @@
 		return $breadcrumb_steps;
 	});
 
-	util_render_snippet('common/hero', array(
-		'desktop_src' => $hero_image['src'],
-		'image_alt' => $hero_image['alt'],
-		'caption' => $post->post_title,
-		'opacity' => get_post_meta($post->ID, 'hero_opacity', true),
-		'background' => get_post_meta($post->ID, 'hero_background', true),
-		'text_color' => get_post_meta($post->ID, 'hero_text', true),
-		'hero_height' => get_post_meta($post->ID, 'hero_height', true),
+	// steps => false lets the parent-aware 'breadcrumbs_steps' filter above drive breadcrumbs.
+	util_render_snippet('common/single-page-hero-snippet', array(
+		'post' => $post,
+		'steps' => false
 	), false);
 
 	do_action('church_layout_after_header');

@@ -8,7 +8,6 @@ while (have_posts()) {
 	$post = get_post();
 	$post_id = $post->ID;
 	$series_content = util_get_actual_content($post->post_content);
-	$image_id = get_post_thumbnail_id();
 
 	$sermon_page = get_query_var('sermon-page') ? get_query_var('sermon-page') : 1;
 	$per_page = 12;
@@ -29,15 +28,8 @@ while (have_posts()) {
 		return $breadcrumb_steps;
 	});
 
-	util_render_snippet('common/hero', array(
-		'desktop_src' => wp_get_attachment_image_src($image_id, 'full', false)[0],
-		'image_alt' => get_post_meta($image_id, '_wp_attachment_image_alt', true),
-		'caption_classes' => '',
-		'caption' => get_the_title(),
-		'opacity' => get_post_meta($post_id, 'hero_opacity', true),
-		'background' => get_post_meta($post_id, 'hero_background', true),
-		'text_color' => get_post_meta($post_id, 'hero_text', true),
-		'hero_height' => get_post_meta($post_id, 'hero_height', true),
+	util_render_snippet('common/single-page-hero-snippet', array(
+		'post' => $post
 	), false);
 
 	do_action('breadcrumbs_below');

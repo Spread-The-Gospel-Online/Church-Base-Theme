@@ -7,7 +7,8 @@
 	$series = $series_ID ? get_post($series_ID) : false;
 
 	$image = get_the_post_thumbnail_url($sermon);
-	$alt = get_post_meta(get_post_thumbnail_id($sermon), '_wp_attachment_image_alt', true);
+	$image_id = get_post_thumbnail_id($sermon);
+	$alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
 
 	$sermon_card_options = get_option('church_archive_card_order');
 
@@ -42,9 +43,11 @@
 		$series_image_src = $series_image_id ? wp_get_attachment_image_src($series_image_id, 'full', false)[0] : false;
 		if ($series_image_src) {
 			$image = $series_image_src;
+			$image_id = $series_image_id;
 		} else {
 			$image = get_option('church_sermon_default_image');
-		}	
+			$image_id = false;
+		}
 	}
 ?>
 
@@ -55,6 +58,7 @@
 				'wrapper_classes' => 'card__image-wrap',
 				'extra_classes' => 'card__image',
 				'src' => $image,
+				'image_id' => $image_id,
 				'alt' => $alt ? $alt : $sermon->post_title,
 			), false); ?>
 		</a>

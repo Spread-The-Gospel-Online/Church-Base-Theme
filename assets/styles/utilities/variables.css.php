@@ -89,7 +89,11 @@
 
 	--logo-height: <?= get_option('church_logo_default_size', 115) ?>px;
 	--logo-height-scrolled: <?= get_option('church_logo_scrolled_size', 90) ?>px;
+	--logo-padding-mobile: <?= get_option('church_logo_padding_mobile', 8) ?>px;
+	--logo-padding-desktop: <?= get_option('church_logo_padding_desktop', 8) ?>px;
 	--logo-link-min-width: <?= util_get_logo_link_min_width() ?>px;
+
+	--image-blur-transition: <?= get_option('church_blur_images_transition', 0.3) ?>s;
 
 	--hero-background: var(<?= get_option('church_css_hero_background_color') ?>);
 	--hero-opacity: <?= get_option('church_hero_default_opacity') ?>;
@@ -142,6 +146,9 @@
 	--sermon-archive-row-gap: 3rem;
 	--sermon-archive-col-gap: 2rem;
 
+	--general-archive-grid-tablet-size: <?= get_option('church_general_archive_grid_tablet_size', 2) ?>;
+	--general-archive-grid-size: <?= get_option('church_general_archive_grid_size', 2) ?>;
+
 	--card-overlay-background: var(<?= get_option('church_css_card_overlay') ?>);
 	--card-overlay-opacity: <?= get_option('church_card_overlay_opacity', 0.50) ?>;
 	--card-overlay-opacity-hover: <?= get_option('church_card_overlay_opacity_hover', 0.50) ?>;
@@ -175,4 +182,25 @@
 
 	--page-content-sidebar-position: <?= (get_option('church_page_sidebar_position') == 'left') ? 1 : 2 ?>;
 	--page-content-columns: <?= (get_option('church_page_sidebar_position') == 'left') ? '20rem 1fr' : '1fr 20rem' ?>;
+}
+<?php
+// General archive cards (common/tile) override the sermon card variables. Colors fall back to
+// the sermon card colors until the General Archive colors are saved in the Customizer.
+$general_card_color = function ($option_suffix) {
+	$general_option = 'church_general_css_' . $option_suffix;
+	return get_option($general_option) ? $general_option : 'church_css_' . $option_suffix;
+};
+?>
+.card--general {
+	--card-overlay-background: var(<?= get_option($general_card_color('card_overlay'), '--black') ?>);
+	--card-overlay-opacity: <?= get_option('church_general_card_overlay_opacity', 0.50) ?>;
+	--card-overlay-opacity-hover: <?= get_option('church_general_card_overlay_opacity_hover', 0.50) ?>;
+	--card-image-aspect-ratio: var(--tile-image-aspect-ratio, <?= get_option('church_general_archive_card_height', 50) ?>%);
+	--card-contents-padding: <?= get_option('church_general_card_content_item_padding', 10) ?>px <?= get_option('church_general_card_content_item_padding', 10) * 2 ?>px;
+	--card-contents-alignment: <?= get_option('church_general_card_content_text_align', 'left') ?>;
+	--card-contents-spacing: <?= get_option('church_general_card_content_item_gap', 10) ?>px;
+	--card-contents-background: <?= church_get_as_rgba($general_card_color('card_contents_background'), get_option('church_general_card_background_opacity', .50)); ?>;
+	--card-contents-text: var(<?= get_option($general_card_color('card_contents_text'), '--black') ?>);
+	--card-contents-links: var(<?= get_option($general_card_color('card_contents_links'), '--primary') ?>);
+	--card-contents-links-hover: var(<?= get_option($general_card_color('card_contents_links_hover'), '--primary-hover') ?>);
 }
