@@ -41,21 +41,26 @@ A small helper for designers: drop it in and it fills itself with placeholder te
 
 Open the editor sidebar for **any** block on the page — even the built-in WordPress blocks — and you will find a **Spacing** panel added by the theme. It contains:
 
-- **Block container** — toggle between a centered, contained width (the same as your page content) and a full-width block.
-- **Bottom margin** — how much space sits below the block (and a separate value for desktop, so you can space things out more generously on larger screens).
-- **Block padding** — how much space sits inside the block, around its content.
+- **Element Vertical Padding** — how much space sits inside the block, above and below its content. Choose *Theme Default*, *None*, *Small*, *Medium*, or *Large*.
+- **Border Radius** — how rounded the block's corners are. Choose *None*, *Small*, *Medium*, or *Large*.
+- **Is Contained Width?** — when on, the block sits at the centered, contained width (the same as your page content); when off, it stretches full width.
+- **Mobile Margin** — how much space sits below the block on phones and tablets.
+- **Desktop Margin** — the equivalent for larger screens, so you can space things out more generously on desktop.
 
 These give you a consistent vertical rhythm without having to think about pixel values.
 
 ## Per-page hero settings
 
-When a page has a hero (the big banner at the top), you can override the site-wide hero defaults for that one page. With nothing selected in the editor, open the editor sidebar and look for the **Hero Settings** panel. You can set:
+When a page has a hero (the big banner at the top), you can override the site-wide hero defaults for that one page. Open the editor's **three-dot menu** in the top-right and choose **Hero Settings** — a dedicated sidebar slides in. You can set:
 
-- A different **background image**.
-- A different **text color**, **background color**, and **opacity** for the overlay.
-- A different **height**.
+- **Opacity** — how dark the overlay sits over the background image.
+- **Hero Background Color** — the color shown behind the hero (visible when there is no featured image, or through the overlay).
+- **Hero Text Color** — the color of the title and breadcrumbs over the hero.
+- **Hero Height** — how tall the hero is on this page.
 
-If you do not override any of these, the page uses the values from **Appearance → Customize → Hero Settings**.
+A **Reset Hero Settings To Defaults** button at the top of the sidebar clears every override on the current page in one click.
+
+The page's **featured image** is what shows as the hero background image — set it the usual way from the document settings sidebar. Anything you do not override here uses the values from **Appearance → Customize → Hero Settings**.
 
 ## Member-only content
 
