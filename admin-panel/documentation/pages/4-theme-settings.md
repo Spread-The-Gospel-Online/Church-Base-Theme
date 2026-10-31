@@ -37,3 +37,16 @@ A few things to know:
 - Import **overwrites** your current Customizer settings. If you have not exported your current state, you may want to do that first as a backup.
 - Importing does not change any of your actual content (sermons, events, pages, posts, and so on). It only restores styling and configuration.
 - The recommended workflow is **export → keep the file → import**. Hand-editing the file is not supported.
+
+## Theme Plugins
+
+The **Theme Plugins** page (under **Settings → Theme Plugins**) lists the plugins built to work with this theme, such as the Mailchimp newsletter plugin. Only administrators can see it.
+
+- A plugin that is already on your site shows an **Installed** notice.
+- A plugin that isn't on your site shows a short description and an **Install** button. Clicking it downloads the plugin and adds it to your site.
+
+A few things to know:
+
+- Installing doesn't turn the plugin on. Go to **Plugins** and click **Activate** afterward.
+- This page installs plugins but doesn't update them.
+- If installing fails with a message about ZipArchive, ask your web host to enable PHP's ZipArchive extension.
