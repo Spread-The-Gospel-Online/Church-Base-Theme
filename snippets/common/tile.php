@@ -48,7 +48,7 @@
 				'extra_classes' => 'card__image',
 				'src' => $image,
 				'image_id' => $image_id,
-				'alt' => esc_attr($alt ? $alt : $tile_title),
+				'alt' => $alt ? $alt : $tile_title,
 			), false); ?>
 		</a>
 	<?php } ?>

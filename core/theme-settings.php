@@ -1,24 +1,8 @@
 <?php
 
-function church_import_theme_settings ($file_contents) {
-    $settings = json_decode($file_contents, true);
-    if (!is_array($settings)) {
-        return;
-    }
-    foreach ($settings as $key => $value) {
-        if (!is_string($key)) {
-            continue;
-        }
-        // Only import the theme's own namespaced settings (mirrors the export).
-        if (strpos($key, 'church_') === 0
-            || strpos($key, 'css_color_') === 0
-            || strpos($key, 'font_') === 0) {
-            update_option($key, $value);
-        }
-    }
-}
-
-function church_export_theme_settings () {
+// Every option-backed Customizer setting the theme owns, keyed by setting ID. Shared by
+// export (what to write) and import (what's allowed in, and how to sanitize it).
+function church_get_theme_customizer_settings () {
     // Boot a Customizer manager and run every theme's customize_register
     // callback (this is what all files in settings/ hook into) so we can
     // enumerate the settings they register, including dynamically-named ones.
@@ -45,20 +29,63 @@ function church_export_theme_settings () {
 
     do_action('customize_register', $wp_customize);
 
-    $data = array();
+    $theme_settings = array();
     foreach ($wp_customize->settings() as $setting) {
         // Only real persisted options — skips section-heading placeholder
         // controls (registered with no type => theme_mod).
         if ($setting->type !== 'option') {
             continue;
         }
-        // Only export the theme's own namespaced settings.
+        // Only the theme's own namespaced settings.
         if (!(strpos($setting->id, 'church_') === 0
             || strpos($setting->id, 'css_color_') === 0
             || strpos($setting->id, 'font_') === 0)) {
             continue;
         }
-        $data[$setting->id] = $setting->value();
+        $theme_settings[$setting->id] = $setting;
+    }
+
+    return $theme_settings;
+}
+
+function church_import_theme_settings ($file_contents) {
+    $imported_values = json_decode($file_contents, true);
+    if (!is_array($imported_values)) {
+        return;
+    }
+
+    // Only settings the export could have written are accepted, and each value goes through
+    // that setting's own sanitize_callback, exactly as a Customizer save would.
+    $theme_settings = church_get_theme_customizer_settings();
+    foreach ($imported_values as $key => $value) {
+        if (!is_string($key) || !isset($theme_settings[$key])) {
+            continue;
+        }
+
+        $sanitized_value = church_sanitize_imported_setting($theme_settings[$key], $value);
+        if ($sanitized_value === null || is_wp_error($sanitized_value)) {
+            continue;
+        }
+        update_option($key, $sanitized_value);
+    }
+}
+
+function church_sanitize_imported_setting ($setting, $value) {
+    if (!empty($setting->sanitize_callback)) {
+        return $setting->sanitize($value);
+    }
+
+    // Settings registered without a sanitizer only ever hold plain text.
+    if (!is_scalar($value)) {
+        return null;
+    }
+    return sanitize_text_field((string) $value);
+}
+
+function church_export_theme_settings () {
+    $data = array();
+    foreach (church_get_theme_customizer_settings() as $setting_id => $setting) {
+        $data[$setting_id] = $setting->value();
     }
 
     // keys = setting names, values = current values (falls back to each

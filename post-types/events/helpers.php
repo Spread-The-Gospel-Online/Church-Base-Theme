@@ -1,6 +1,9 @@
 <?php
 
 function church_util_get_upcoming_events ($number_events = 3) {
+	// The count comes from a block attribute; -1 or a huge number would load every event.
+	$number_events = min(max(absint($number_events), 1), 50);
+
 	return get_posts(array(
 		'meta_query' => array(
 			array(

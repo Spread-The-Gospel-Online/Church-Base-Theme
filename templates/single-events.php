@@ -22,7 +22,13 @@ while (have_posts()) {
 	do_action('church_layout_after_header');
 
 	$event_date = get_post_meta($post->ID, 'event_date', true);
-	$add_link = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' . str_replace(' ', '+', $post->post_title) . '&details=View+event:+' . get_permalink($post) . '&dates=' . str_replace('-', '', $event_date) . 'T160000';
+	$add_link = add_query_arg(array(
+		'action' => 'TEMPLATE',
+		// Titles are stored with entities (& as &amp;), so decode before URL-encoding.
+		'text' => rawurlencode(wp_specialchars_decode($post->post_title, ENT_QUOTES)),
+		'details' => rawurlencode('View event: ' . get_permalink($post)),
+		'dates' => rawurlencode(str_replace('-', '', $event_date) . 'T160000')
+	), 'https://calendar.google.com/calendar/render');
 	util_render_snippet('events/add-event-to-calendar', array(
 		'add_link' => $add_link,
 	), false);

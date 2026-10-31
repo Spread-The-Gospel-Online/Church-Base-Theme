@@ -6,9 +6,14 @@
 ?>
 
 <?php if ($pastor) { ?>
-	<div class="<?= isset($classes) ? $classes : '' ?>">
-		<a href="<?= $pastor_permalink ?>" class="<?= isset($extra_classes) ? $extra_classes : '' ?>">
-			<?= $pastor->post_title ?>
+	<div
+		class="<?= isset($classes) ? esc_attr($classes) : '' ?>"
+	>
+		<a
+			href="<?= esc_url($pastor_permalink) ?>"
+			class="<?= isset($extra_classes) ? esc_attr($extra_classes) : '' ?>"
+		>
+			<?= esc_html($pastor->post_title) ?>
 		</a>
 	</div>
 <?php } ?>

@@ -82,7 +82,10 @@
     const eventWrappers = document.querySelectorAll('[data-get-upcoming-events]')
     
     eventWrappers.forEach((wrapper) => {
-      fetch(`${window.wpApiSettings.root}church/v1/getServerContentsUpcomingEvents?numberOfEvents=${attributes.numberOfEvents}&numberOfColumns=${attributes.numberOfColumns}`)
+      // The nonce authenticates the editor's cookie session; the preview route is editor-only.
+      fetch(`${window.wpApiSettings.root}church/v1/getServerContentsUpcomingEvents?numberOfEvents=${attributes.numberOfEvents}&numberOfColumns=${attributes.numberOfColumns}`, {
+        headers: { 'X-WP-Nonce': window.wpApiSettings.nonce }
+      })
         .then((blob) => blob.text())
         .then((data) => {
           wrapper.innerHTML = data

@@ -43,14 +43,29 @@
 	</form>
 
 	<h2>Export / Import</h2>
-	<form method="post">
-		<input type="hidden" name="church-should-export-theme-settings" value="true" />
+	<form
+		method="post"
+	>
+		<input
+			type="hidden"
+			name="church-should-export-theme-settings"
+			value="true"
+		/>
+		<?php wp_nonce_field('church_export_theme_settings', 'church_export_theme_settings_nonce'); ?>
 		<?php submit_button('Export Theme Settings'); ?>
 	</form>
 	<hr />
 	<br />
-	<form method="post" enctype="multipart/form-data">
-		<input type="file" name="church-import-theme-settings-file" />
+	<form
+		method="post"
+		enctype="multipart/form-data"
+	>
+		<input
+			type="file"
+			name="church-import-theme-settings-file"
+			accept="application/json,.json"
+		/>
+		<?php wp_nonce_field('church_import_theme_settings', 'church_import_theme_settings_nonce'); ?>
 		<?php submit_button('Import Theme Settings'); ?>
 	</form>
 </div>

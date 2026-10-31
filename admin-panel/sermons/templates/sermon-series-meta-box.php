@@ -10,9 +10,10 @@ $markup = '';
 
 foreach ($all_series as $series) {
 	$checked_attribute = $selected_series == $series->ID ? 'checked="checked"' : '';
+	$series_title = esc_html($series->post_title);
 	$markup .= <<<HTML
 		<span class="related-post-checkbox">
-			<label for="series-$series->ID">$series->post_title</label>
+			<label for="series-$series->ID">$series_title</label>
 			<input id="series-$series->ID"
 				   name="series_id"
 				   type="radio"

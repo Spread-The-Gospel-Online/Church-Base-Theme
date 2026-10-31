@@ -72,7 +72,7 @@
 		<div class="<?= $card_content_classes ?>">
 			<?php foreach($sermon_card_options as $card_option) { ?>
 				<?php if ($card_option == 'nodisplay') { break; } ?>
-				<?= util_render_snippet('sermons/card-options/' . $card_option, array(
+				<?= util_render_snippet('sermons/card-options/' . sanitize_key($card_option), array(
 					'sermon_permalink' => $sermon_permalink,
 					'sermon' => $sermon,
 					'pastor_permalink' => $pastor_permalink,

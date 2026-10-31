@@ -1,6 +1,5 @@
 <?php
 	$page = get_page_by_path('404-page');
-	error_log(print_r($page,true));
 
 	get_header();
 

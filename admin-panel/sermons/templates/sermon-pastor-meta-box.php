@@ -10,9 +10,11 @@ $markup = '';
 
 foreach ($all_staff as $staff) {
 	$checked_attribute = $selected_staff == $staff->ID ? 'checked="checked"' : '';
+	// Staff posts can be created by the sermon feed import, so the title is escaped.
+	$staff_title = esc_html($staff->post_title);
 	$markup .= <<<HTML
 		<span class="related-post-checkbox">
-			<label for="sermon-pastor-$staff->ID">$staff->post_title</label>
+			<label for="sermon-pastor-$staff->ID">$staff_title</label>
 			<input id="sermon-pastor-$staff->ID" 
 				   name="pastor_id" 
 				   type="radio" 

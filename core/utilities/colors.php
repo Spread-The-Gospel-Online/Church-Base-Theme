@@ -39,6 +39,31 @@ function church_get_best_contrast_option ($background_option, $color_one_option,
 	return str_replace('css_color_', '--', $best_contrast_option);
 }
 
+// For values printed into CSS (e.g. hero colors): anything but a plain color becomes '',
+// so stored values can never close the rule or the <style> tag.
+function church_sanitize_css_color ($color) {
+	if (!is_string($color)) {
+		return '';
+	}
+	$color = trim($color);
+
+	$is_hex_color = preg_match('/^#([0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i', $color);
+	$is_color_function = preg_match('/^(rgb|rgba|hsl|hsla)\(\s*[0-9.,%\s\/]+\)$/i', $color);
+	$is_css_variable = preg_match('/^var\(--[a-z0-9_-]+\)$/i', $color);
+
+	if ($is_hex_color || $is_color_function || $is_css_variable) {
+		return $color;
+	}
+	return '';
+}
+
+function church_sanitize_css_number ($number) {
+	if (!is_numeric($number)) {
+		return '';
+	}
+	return (string) (float) $number;
+}
+
 function church_register_color_setting ($customizer, $option_id, $label, $default, $section) {
 	$default_color = get_option($option_id);
 	

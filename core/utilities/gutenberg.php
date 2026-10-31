@@ -17,7 +17,10 @@ function church_util_register_gutenberg_server_callback ($endpoint, $attributes,
 				echo $display_callback($attributesToPass, false);
 				exit();
 			},
-			'permission_callback' => '__return_true'
+			// Only the block editor uses these previews, so they're limited to people who can edit posts.
+			'permission_callback' => function () {
+				return current_user_can('edit_posts');
+			}
 		));
 	});
 }

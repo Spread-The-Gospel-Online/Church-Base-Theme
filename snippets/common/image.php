@@ -12,15 +12,17 @@
 	<?php } ?>
 	<?php if ($blur_src) { ?>
 		<img
-			src="<?= $blur_src ?>"
+			src="<?= esc_url($blur_src) ?>"
 			data-full-image-url="<?= esc_url($src) ?>"
-			alt="<?= $alt ?>"
-			class="image image--blur <?= isset($extra_classes) ? $extra_classes : '' ?>"
+			alt="<?= esc_attr($alt) ?>"
+			class="image image--blur <?= isset($extra_classes) ? esc_attr($extra_classes) : '' ?>"
 		/>
 	<?php } else { ?>
-		<img src="<?= $src ?>"
-		     alt="<?= $alt ?>"
-		     class="image <?= isset($extra_classes) ? $extra_classes : '' ?>"
-		     loading="<?= isset($loading) ? $loading : 'lazy' ?>"/>
+		<img
+			src="<?= esc_url($src) ?>"
+			alt="<?= esc_attr($alt) ?>"
+			class="image <?= isset($extra_classes) ? esc_attr($extra_classes) : '' ?>"
+			loading="<?= isset($loading) ? esc_attr($loading) : 'lazy' ?>"
+		/>
 	<?php } ?>
 </picture>

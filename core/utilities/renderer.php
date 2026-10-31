@@ -21,7 +21,8 @@ add_action('template_redirect', function () {
 
 function util_render_snippet ($snippet, $variables = array(), $return_contents = true) {
 	$include_path = get_template_directory() . '/snippets/' . $snippet . '.php';
-	extract($variables);
+	// EXTR_SKIP: callers pass raw block attributes, which must never overwrite $include_path.
+	extract($variables, EXTR_SKIP);
 
 	ob_start();
 	include $include_path;
@@ -67,12 +68,22 @@ function util_get_pattern_object ($pattern_option_name) {
 		$pattern = get_page_by_path($pattern_slug, OBJECT, 'wp_block');
 	}
 
+	if (!$pattern || $pattern->post_status !== 'publish') {
+		return false;
+	}
+
 	return $pattern;
 }
 
 function util_get_pattern_object_by_slug ($pattern_slug) {
+	$pattern = false;
 	if ($pattern_slug != 'false') {
 		$pattern = get_page_by_path($pattern_slug, OBJECT, 'wp_block');
+	}
+
+	// get_page_by_path ignores status; drafts and private patterns must never render publicly.
+	if (!$pattern || $pattern->post_status !== 'publish') {
+		return false;
 	}
 
 	return $pattern;
@@ -85,7 +96,14 @@ function util_get_block_wrapper_classes ($block_container, $block_bottom_margin,
 		$container_class = 'ccontain';
 	}
 	
-	$wrapper_classes = sprintf('%s block-padding-%s mb-%s lg:mb-%s', $container_class, $block_padding, $block_bottom_margin, $block_bottom_margin_desktop);
+	// Block attributes are author-controlled; sanitize_html_class keeps them inside the class attribute.
+	$wrapper_classes = sprintf(
+		'%s block-padding-%s mb-%s lg:mb-%s',
+		$container_class,
+		sanitize_html_class((string) $block_padding),
+		sanitize_html_class((string) $block_bottom_margin),
+		sanitize_html_class((string) $block_bottom_margin_desktop)
+	);
     
     return $wrapper_classes;
 }

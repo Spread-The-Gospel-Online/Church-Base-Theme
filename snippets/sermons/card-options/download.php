@@ -9,11 +9,15 @@ if (empty($audio_link)) {
 
 ?>
 
-<div class="sermon__download-wrapper <?= isset($classes) ? $classes : '' ?>">
-	<a href="<?= get_post_meta($post->ID, 'audio_link', true) ?>" 
-	   download="<?= $post->post_title ?>" 
-	   aria-title="Download Sermon"
-	   class="sermon__download">
+<div
+	class="sermon__download-wrapper <?= isset($classes) ? esc_attr($classes) : '' ?>"
+>
+	<a
+		href="<?= esc_url($audio_link) ?>"
+		download="<?= esc_attr($post->post_title) ?>"
+		aria-title="Download Sermon"
+		class="sermon__download"
+	>
 		<?= util_render_snippet('icons/download', array('classes' => 'sermon__download-icon')) ?>
 		Save
 	</a>

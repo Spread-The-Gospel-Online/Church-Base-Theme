@@ -123,16 +123,9 @@ function church_render_form_block ($attributes, $content) {
 	$form_action = ($submission_type === 'endpoint') ? ($attributes['endpointUrl'] ?? '') : 'email';
 	$form_id = wp_unique_id('church-form-');
 
-	// Email mode: persist the recipients + form name into a theme option keyed by the
-	// block's generated form-id, so the public endpoint reads them server-side rather than
-	// trusting addresses from the browser. Only the id is exposed to the page.
-	$form_option_id = $attributes['formId'] ?? '';
-	if ($submission_type === 'email' && !empty($form_option_id)) {
-		update_option($form_option_id, array(
-			'emails' => $attributes['emailAddresses'] ?? '',
-			'name'   => $attributes['formName'] ?? '',
-		), false);
-	}
+	// Email mode: the recipients live in a form-id option written on publish (see
+	// church_save_contact_form_options), so only the id is exposed to the page.
+	$form_option_id = church_is_valid_form_id($attributes['formId'] ?? '') ? $attributes['formId'] : '';
 
 	return util_render_snippet('blocks/contact-form/form', array(
 		'content' => $content,
@@ -143,6 +136,58 @@ function church_render_form_block ($attributes, $content) {
 		'form_action' => $form_action,
 		'form_lookup_id' => ($submission_type === 'email') ? $form_option_id : '',
 	));
+}
+
+function church_is_valid_form_id ($form_id) {
+	return is_string($form_id) && preg_match('/^form-id-[a-z0-9]+$/', $form_id) === 1;
+}
+
+// Recipients are saved only when a post is published, never during render, so a
+// Contributor's draft or preview can't write options.
+function church_save_contact_form_options ($post_id, $post) {
+	if (wp_is_post_autosave($post_id) || wp_is_post_revision($post_id)) {
+		return;
+	}
+	if ($post->post_status !== 'publish' || !has_block('church/block-form', $post)) {
+		return;
+	}
+
+	foreach (church_find_form_blocks(parse_blocks($post->post_content)) as $form_attributes) {
+		$form_id = $form_attributes['formId'] ?? '';
+		$submission_type = $form_attributes['submissionType'] ?? 'email';
+		if ($submission_type !== 'email' || !church_is_valid_form_id($form_id)) {
+			continue;
+		}
+
+		update_option($form_id, array(
+			'emails' => church_sanitize_email_list($form_attributes['emailAddresses'] ?? ''),
+			'name' => is_string($form_attributes['formName'] ?? null) ? sanitize_text_field($form_attributes['formName']) : ''
+		), false);
+	}
+}
+
+add_action('save_post', 'church_save_contact_form_options', 10, 2);
+
+// Attributes of every Form block, including ones nested inside other blocks.
+function church_find_form_blocks ($blocks) {
+	$form_blocks = array();
+	foreach ($blocks as $block) {
+		if ($block['blockName'] === 'church/block-form') {
+			$form_blocks[] = $block['attrs'];
+		}
+		if (!empty($block['innerBlocks'])) {
+			$form_blocks = array_merge($form_blocks, church_find_form_blocks($block['innerBlocks']));
+		}
+	}
+	return $form_blocks;
+}
+
+function church_sanitize_email_list ($email_addresses) {
+	if (!is_string($email_addresses)) {
+		return '';
+	}
+	$valid_emails = array_filter(array_map('sanitize_email', explode(',', $email_addresses)));
+	return implode(',', $valid_emails);
 }
 
 function church_render_text_input_block ($attributes, $content) {

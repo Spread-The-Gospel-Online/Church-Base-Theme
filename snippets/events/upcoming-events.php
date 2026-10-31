@@ -4,11 +4,14 @@ $wrapper_classes = util_get_block_wrapper_classes($block_container, $block_botto
 
 ?>
 
-<section class="<?= $wrapper_classes ?> upcoming-events flexible-grid <?= $classes ?>" style="--number-columns: <?= $columns ?>">
+<section
+	class="<?= esc_attr($wrapper_classes) ?> upcoming-events flexible-grid <?= esc_attr($classes) ?>"
+	style="--number-columns: <?= absint($columns) ?>"
+>
 	<?php foreach ($events as $event) { ?>
 		<div>
 			<h3>
-				<?= $event->post_name ?>
+				<?= esc_html($event->post_name) ?>
 			</h3>
 		</div>
 	<?php } ?>

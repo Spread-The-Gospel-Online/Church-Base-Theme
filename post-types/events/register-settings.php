@@ -20,11 +20,11 @@ add_action('save_post_events', function ($post_ID) {
 	$nonce_field_name = 'events_meta_nonce';
 
 	if (array_key_exists($nonce_field_name, $_POST)
-		&& wp_verify_nonce($_POST[$nonce_field_name], 'updating_events_meta_fields')) {
-		$event_date = $_POST['event-date'];
+		&& wp_verify_nonce(sanitize_text_field(wp_unslash($_POST[$nonce_field_name])), 'updating_events_meta_fields')) {
+		$event_date = isset($_POST['event-date']) ? sanitize_text_field(wp_unslash($_POST['event-date'])) : '';
 		$meta_values_to_handle = array(
-			'event_recurring' => $_POST['event-date-recurring'],
-			'event_location' => $_POST['event-location'],
+			'event_recurring' => isset($_POST['event-date-recurring']) ? sanitize_text_field(wp_unslash($_POST['event-date-recurring'])) : '',
+			'event_location' => isset($_POST['event-location']) ? sanitize_textarea_field(wp_unslash($_POST['event-location'])) : '',
 		);
 
 		update_post_meta($post_ID, 'event_date', $event_date);

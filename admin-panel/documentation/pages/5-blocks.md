@@ -33,10 +33,6 @@ Shows a selected group of staff members as cards. In the sidebar:
 - **Number of columns** to lay them out in.
 - A **Staff Pattern** to design the card yourself (see *Patterns*).
 
-### Lorem Ipsum
-
-A small helper for designers: drop it in and it fills itself with placeholder text. Set the number of paragraphs in the sidebar. Useful while building patterns or layouts.
-
 ## Spacing settings on every block
 
 Open the editor sidebar for **any** block on the page — even the built-in WordPress blocks — and you will find a **Spacing** panel added by the theme. It contains:
@@ -59,13 +55,16 @@ If you do not override any of these, the page uses the values from **Appearance 
 
 ## Member-only content
 
-The **Member Settings** panel (also in the editor sidebar) lets you mark an individual page as members-only. Use this for content that should not be public — visitors who are not logged in will not see it.
+The **Member Settings** panel (also in the editor sidebar) lets you mark an individual page, post, sermon, or event as members-only. Use this for content that should not be public:
+
+- Visitors who are not logged in are sent to the login page, and come back to the page once they log in.
+- Members-only content is also left out of archives, search results, the RSS feed, and the site's API for anyone not logged in.
 
 ## The contact form
 
 Drop a **Form** block onto a page and you get a form container you can fill with input blocks. The form's sidebar has a **Form Submission** panel where you choose what happens when someone submits it:
 
-- **Email** — sends the submission to one or more email addresses. Type the addresses you want notifications to go to.
+- **Email** — sends the submission to one or more email addresses. Type the addresses you want notifications to go to. New or changed addresses take effect when the page is **published** (or updated), not while it's a draft.
 - **Endpoint** — sends the submission to a URL you provide. Use this if your church has its own forms system or signup service.
 
 Give the form a **Form Name** (used in subject lines and labels) and a **Form ID** if you want to refer to it elsewhere.

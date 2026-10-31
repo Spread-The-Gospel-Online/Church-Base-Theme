@@ -105,7 +105,10 @@ const loadSermons = (attributes) => {
   const sermonWrappers = document.querySelectorAll('[data-get-latest-sermons]')
   
   sermonWrappers.forEach((wrapper) => {
-    fetch(`${window.wpApiSettings.root}church/v1/getServerContentsLatestSermons?numberSermons=${attributes.numberOfSermons}&numberOfColumns=${attributes.numberOfColumns}&sermonPattern=${attributes.sermonPattern || 'false'}`)
+    // The nonce authenticates the editor's cookie session; the preview route is editor-only.
+    fetch(`${window.wpApiSettings.root}church/v1/getServerContentsLatestSermons?numberSermons=${attributes.numberOfSermons}&numberOfColumns=${attributes.numberOfColumns}&sermonPattern=${attributes.sermonPattern || 'false'}`, {
+      headers: { 'X-WP-Nonce': window.wpApiSettings.nonce }
+    })
       .then((blob) => blob.text())
       .then((data) => {
         wrapper.innerHTML = data

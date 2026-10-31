@@ -15,7 +15,10 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo get_site_url(); ?>/wp-includes/css/dist/block-library/style.min.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?<?= util_get_fonts() ?>&display=swap" rel="stylesheet">
+		<link
+			href="<?= esc_url('https://fonts.googleapis.com/css2?' . util_get_fonts() . '&display=swap') ?>"
+			rel="stylesheet"
+		>
 
 		<?php block_header_area(); ?>
 		

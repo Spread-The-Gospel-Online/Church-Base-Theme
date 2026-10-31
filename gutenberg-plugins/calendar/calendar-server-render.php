@@ -10,8 +10,9 @@ add_action( 'rest_api_init', function () {
 
 function church_ep_get_calendar ($data) {
 	$data_to_pass = array();
-	if (isset($data['date'])) {
-		$data_to_pass['base_date'] = $data['date'];
+	// Public: the front-end calendar's month navigation calls this route.
+	if (isset($data['date']) && is_string($data['date'])) {
+		$data_to_pass['base_date'] = sanitize_text_field($data['date']);
 	}
 	echo church_display_calendar($data_to_pass, false);
 	exit();

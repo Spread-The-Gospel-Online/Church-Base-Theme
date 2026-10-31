@@ -5,9 +5,13 @@
 ?>
 
 <?php if ($series) { ?>
-	<div class="<?= isset($classes) ? $classes : '' ?>">
-		<a href="<?= get_permalink($series->ID) ?>">
-			<?= $series->post_title ?>
+	<div
+		class="<?= isset($classes) ? esc_attr($classes) : '' ?>"
+	>
+		<a
+			href="<?= esc_url(get_permalink($series->ID)) ?>"
+		>
+			<?= esc_html($series->post_title) ?>
 		</a>
 	</div>
 <?php } ?>

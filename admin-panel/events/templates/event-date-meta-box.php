@@ -5,6 +5,11 @@ $event_recurring = get_post_meta($post->ID, 'event_recurring', true);
 $event_location = get_post_meta($post->ID, 'event_location', true);
 $event_date_eval = strtotime('+' . $event_recurring);
 
+// The heredoc below interpolates these, so escape them for their HTML contexts first.
+$event_date = esc_attr($event_date);
+$event_recurring = esc_attr($event_recurring);
+$event_location = esc_textarea($event_location);
+
 $warning = '';
 if (!!$event_recurring && !$event_date_eval) {
 	$warning = <<<HTML

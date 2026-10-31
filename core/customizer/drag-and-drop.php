@@ -6,8 +6,16 @@ if (class_exists('WP_Customize_Control')) {
         //The type of control being rendered
         public $type = 'drag_and_drop';
 
+        // Values become snippet file names (sermons/card-options/{value}), so each one is
+        // reduced to a plain key — no dots or slashes that could leave that folder.
         public static function validate_drag_and_drop ($input) {
-            return $input;
+            if (is_string($input)) {
+                $input = explode(',', $input);
+            }
+            if (!is_array($input)) {
+                return array();
+            }
+            return array_values(array_filter(array_map('sanitize_key', $input)));
         }
 
         public function check_option_exists () {

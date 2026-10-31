@@ -80,8 +80,10 @@ class Church_Theme_Plugins_Page {
 		$top_folder = strtok((string) $zip->getNameIndex(0), '/');
 		$top_folder_path = WP_PLUGIN_DIR . '/' . $top_folder;
 
-		// Never unpack over an existing folder.
-		if (!$top_folder || $top_folder === '..' || file_exists($top_folder_path)) {
+		// Never unpack over an existing folder, and never let an entry land outside the top
+		// folder (a crafted archive could otherwise overwrite other plugins).
+		if (!$top_folder || $top_folder === '..' || file_exists($top_folder_path)
+			|| !self::is_zip_inside_folder($zip, $top_folder)) {
 			$zip->close();
 			return 'extract_failed';
 		}
@@ -96,6 +98,17 @@ class Church_Theme_Plugins_Page {
 			return 'rename_failed';
 		}
 
+		return true;
+	}
+
+	private static function is_zip_inside_folder ($zip, $top_folder) {
+		for ($entry_index = 0; $entry_index < $zip->numFiles; $entry_index++) {
+			$entry_name = (string) $zip->getNameIndex($entry_index);
+			$is_inside_folder = strpos($entry_name, $top_folder . '/') === 0;
+			if (!$is_inside_folder || strpos($entry_name, '..') !== false) {
+				return false;
+			}
+		}
 		return true;
 	}
 

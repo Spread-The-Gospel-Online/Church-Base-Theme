@@ -7,17 +7,19 @@
 		<picture>
 			<?php if ($blur_src) { ?>
 				<img
-					src="<?= $blur_src ?>"
+					src="<?= esc_url($blur_src) ?>"
 					data-full-image-url="<?= esc_url($desktop_src) ?>"
-					alt="<?= $image_alt ?>"
+					alt="<?= esc_attr($image_alt) ?>"
 					class="hero__image image--blur"
 					style="--parallax-position: 0%;"
 				>
 			<?php } else { ?>
-				<img src="<?= $desktop_src ?>"
-				     alt="<?= $image_alt ?>"
-				     class="hero__image"
-				     style="--parallax-position: 0%;">
+				<img
+					src="<?= esc_url($desktop_src) ?>"
+					alt="<?= esc_attr($image_alt) ?>"
+					class="hero__image"
+					style="--parallax-position: 0%;"
+				>
 			<?php } ?>
 		</picture>
 		<figcaption class="hero__caption <?= isset($caption_classes) ? $caption_classes : '' ?>">
@@ -38,19 +40,27 @@
 	</div>
 <?php } ?>
 
+<?php
+	// Re-sanitized at output so values stored before the meta sanitizers existed stay inert.
+	$hero_opacity = isset($opacity) ? church_sanitize_css_number($opacity) : '';
+	$hero_background = isset($background) ? church_sanitize_css_color($background) : '';
+	$hero_text_color = isset($text_color) ? church_sanitize_css_color($text_color) : '';
+	$hero_height_value = isset($hero_height) ? church_sanitize_css_number($hero_height) : '';
+?>
+
 <style type="text/css">
 	.hero {
-		<?php if (isset($opacity) && $opacity != '') { ?>
-			--hero-opacity: <?= $opacity ?>;
+		<?php if ($hero_opacity !== '') { ?>
+			--hero-opacity: <?= $hero_opacity ?>;
 		<?php } ?>
-		<?php if (isset($background) && $background != '') { ?>
-			--hero-background: <?= $background ?>;
+		<?php if ($hero_background !== '') { ?>
+			--hero-background: <?= $hero_background ?>;
 		<?php } ?>
-		<?php if (isset($text_color) && $text_color != '') { ?>
-			--hero-text: <?= $text_color ?>;
+		<?php if ($hero_text_color !== '') { ?>
+			--hero-text: <?= $hero_text_color ?>;
 		<?php } ?>
-		<?php if (isset($hero_height) && $hero_height != '') { ?>
-			--hero-height: <?= $hero_height ?>vh;
+		<?php if ($hero_height_value !== '') { ?>
+			--hero-height: <?= $hero_height_value ?>vh;
 		<?php } ?>
 	}
 </style>

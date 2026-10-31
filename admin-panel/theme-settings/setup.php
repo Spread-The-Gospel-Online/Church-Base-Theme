@@ -6,17 +6,23 @@ class Church_Theme_Admin_Page {
 	}
 
 	public static function check_theme_settings_form () {
-		if (current_user_can('administrator')) {
-			if (isset($_POST['church-should-export-theme-settings'])
-				&& $_POST['church-should-export-theme-settings'] === 'true') {
-				church_export_theme_settings();
-			}
-			if (isset($_FILES['church-import-theme-settings-file'])
-				&& $_FILES['church-import-theme-settings-file']['error'] === UPLOAD_ERR_OK) {
-				church_import_theme_settings(
-					file_get_contents($_FILES['church-import-theme-settings-file']['tmp_name'])
-				);
-			}
+		if (!current_user_can('administrator')) {
+			return;
+		}
+
+		if (isset($_POST['church-should-export-theme-settings'])
+			&& $_POST['church-should-export-theme-settings'] === 'true') {
+			check_admin_referer('church_export_theme_settings', 'church_export_theme_settings_nonce');
+			church_export_theme_settings();
+		}
+
+		if (isset($_FILES['church-import-theme-settings-file'])
+			&& $_FILES['church-import-theme-settings-file']['error'] === UPLOAD_ERR_OK) {
+			// The nonce stops another site from submitting a settings file through an admin's session.
+			check_admin_referer('church_import_theme_settings', 'church_import_theme_settings_nonce');
+			church_import_theme_settings(
+				file_get_contents($_FILES['church-import-theme-settings-file']['tmp_name'])
+			);
 		}
 	}
 }

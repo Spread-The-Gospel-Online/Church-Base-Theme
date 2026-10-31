@@ -7,7 +7,9 @@
 	}
 ?>
 
-<div class="sermon__audio-content <?= isset($classes) ? $classes : '' ?>">
+<div
+	class="sermon__audio-content <?= isset($classes) ? esc_attr($classes) : '' ?>"
+>
 	<audio controls>
 		<source src="<?= esc_url($audio_link) ?>">
 	</audio>

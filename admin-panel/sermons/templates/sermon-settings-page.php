@@ -24,8 +24,15 @@
 	</form>
 
 	<?php if (get_option('sermon_feed')) { ?>
-		<form method="post">
-			<input type="hidden" name="manual-fetch-sermons" value="yappa" />
+		<form
+			method="post"
+		>
+			<input
+				type="hidden"
+				name="manual-fetch-sermons"
+				value="yappa"
+			/>
+			<?php wp_nonce_field('church_manual_fetch_sermons', 'church_manual_fetch_sermons_nonce'); ?>
 			<?php submit_button('Fetch Sermons'); ?>
 		</form>
 	<?php } ?>

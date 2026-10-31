@@ -96,7 +96,10 @@ const loadStaffMembers = (attributes) => {
   const staffWrappers = document.querySelectorAll(`[data-get-staff-members="${attributes.staffIDs}"]`)
   
   staffWrappers.forEach((wrapper) => {
-    fetch(`${window.wpApiSettings.root}church/v1/getServerContentsStaff?staffIDs=${attributes.staffIDs}&numberOfColumns=${attributes.numberOfColumns}&staffPattern=${attributes.staffLayout}&imageTextLayout=${attributes.staffPattern}`)
+    // The nonce authenticates the editor's cookie session; the preview route is editor-only.
+    fetch(`${window.wpApiSettings.root}church/v1/getServerContentsStaff?staffIDs=${attributes.staffIDs}&numberOfColumns=${attributes.numberOfColumns}&staffPattern=${attributes.staffLayout}&imageTextLayout=${attributes.staffPattern}`, {
+      headers: { 'X-WP-Nonce': window.wpApiSettings.nonce }
+    })
       .then((blob) => blob.text())
       .then((data) => {
         wrapper.innerHTML = data

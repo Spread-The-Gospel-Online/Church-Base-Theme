@@ -48,14 +48,14 @@ add_action( 'save_post_sermons', function ( $post_ID ) {
 	$series_nonce_field_name = 'series_meta_nonce';
 
 	if (array_key_exists($nonce_field_name, $_POST)
-		&& wp_verify_nonce($_POST[$nonce_field_name], 'updating_sermons_meta_fields')) {
-		$pastor_ID = $_POST['pastor_id'];
+		&& wp_verify_nonce(sanitize_text_field(wp_unslash($_POST[$nonce_field_name])), 'updating_sermons_meta_fields')) {
+		$pastor_ID = isset($_POST['pastor_id']) ? absint($_POST['pastor_id']) : 0;
 		update_post_meta($post_ID, 'sermon_pastor', $pastor_ID);
 	}
 
 	if (array_key_exists($series_nonce_field_name, $_POST)
-		&& wp_verify_nonce($_POST[$series_nonce_field_name], 'updating_series_meta_fields')) {
-		$series_ID = $_POST['series_id'];
+		&& wp_verify_nonce(sanitize_text_field(wp_unslash($_POST[$series_nonce_field_name])), 'updating_series_meta_fields')) {
+		$series_ID = isset($_POST['series_id']) ? absint($_POST['series_id']) : 0;
 		update_post_meta($post_ID, 'sermon_series', $series_ID);	
 	}	
 });
