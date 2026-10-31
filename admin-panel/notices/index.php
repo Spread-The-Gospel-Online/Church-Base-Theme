@@ -48,7 +48,9 @@ add_action('admin_action_wp_church_add_page', function () {
 	if (!current_user_can('publish_pages')) {
 		wp_die('You do not have permission to add pages.');
 	}
-	check_admin_referer('wp_church_add_page');
+	if (!check_admin_referer('wp_church_add_page')) {
+		return;
+	}
 
 	$type = isset($_POST['page-to-add']) ? sanitize_key(wp_unslash($_POST['page-to-add'])) : '';
 	if (!in_array($type, church_get_missing_archive_pages(), true)) {
