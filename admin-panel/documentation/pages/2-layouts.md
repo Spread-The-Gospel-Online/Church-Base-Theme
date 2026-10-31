@@ -1,10 +1,12 @@
 # Layouts
 
-**Layouts** let you build a block of content once and show it automatically across many pages of your site — without touching any code. Create a layout, design it however you like, then choose where it should apear. The same layout can show up on your homepage, on every sermon, across a whole list of events, and more.
+**Layouts** let you build a block of content once and show it automatically across many pages of your site — without touching any code. Create a layout, design it however you like, then choose where it should appear. The same layout can show up on your homepage, on every sermon, across a whole list of events, and more.
 
 ## Building a layout
 
 Go to **Layouts** in the admin menu and choose **Add New**. A layout opens in the full WordPress block editor — the same editor you use for pages — so you can add **any content**: text, headings, images, buttons, columns, galleries, embeds, and any of the theme's blocks. Give your layout a title, design it, then publish it.
+
+The **Layouts** menu is always available — unlike sermons or events, it cannot be switched off under *Theme Settings*. A layout has no featured image and no hero of its own, so the Hero Settings sidebar does not appear while you are editing one.
 
 ## Choosing where it appears
 
@@ -32,12 +34,17 @@ You can tick more than one, so a single layout can appear in several places at o
 
 ### 3. Content types
 
-In the **Post Types** box (side panel), tick which kinds of content the layout applies to —
-for example **sermons**, **events**, **staff**, **pages**, or **posts**.
+In the **Post Types** box (side panel), tick which kinds of content the layout applies to. The
+boxes are labelled with WordPress's internal names, so you will see lowercase entries such as
+**post**, **page**, **sermons**, **events**, and **staff**.
 
 This works together with **Single** and **Archive** above. For example, ticking **Single**
 plus **sermons** shows the layout on each individual sermon. (The **Homepage** option ignores
 this box, since there is only one homepage.)
+
+> Keep at least one box ticked in each of the two boxes. Saving with every box in a group
+> unticked can fail with an error — to switch a layout off, set its **Layout Item Position**
+> to *None (will not show)* instead.
 
 ## Putting it together
 
