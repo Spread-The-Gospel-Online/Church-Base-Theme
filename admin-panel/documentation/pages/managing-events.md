@@ -30,7 +30,9 @@ For an event that repeats on a regular schedule, fill in this field with just th
 
 Write only the number and unit — not `every 2 weeks` or `bi-weekly`. The theme uses the value the same way a calendar app would.
 
-If the recurring value is set, then once the event date has passed, the date automatically rolls forward to the next occurrence. So a weekly Sunday service can be created once and the date will keep moving forward on its own.
+The recurrence box sits just under the Event Date with no label of its own, so look for the second text field in the panel. If you type something the theme cannot make sense of, a red **"There is an issue with your recurring value"** warning appears beneath it — reword it as a plain number and unit and the warning goes away.
+
+If the recurring value is set, then once the event date has passed, the date automatically rolls forward to the next occurrence. So a weekly Sunday service can be created once and the date will keep moving forward on its own. This means you will sometimes see a recurring event's date change by itself in the admin — that is expected.
 
 Leave the recurring value blank for one-off events.
 
@@ -38,19 +40,27 @@ Leave the recurring value blank for one-off events.
 
 A free-text field for where the event is. You can write a plain address, but you can also paste a **Google Maps embed URL** here and the theme will display an embedded map at the bottom of the event's page.
 
+> Note: You may spot a bold **Ministry** heading in this panel with no field underneath it. It is a leftover and does nothing — events and ministries are not linked. You can ignore it.
+
 ## What appears on an event's page
 
 The built-in event layout shows the title, featured image, the date and location, the description from the main editor, and (when the location is a Google Maps embed URL) an embedded map.
+
+## The events list page
+
+The events archive — the page at the `events` address on your site — is **the calendar**, not a grid of event cards. It shows the banner image from your `events` Page, then a full month-by-month calendar of everything you have published.
+
+That means you do not need to build a separate calendar page: enabling events and creating the `events` Page gives you one. You can still drop the calendar onto any other page with the block below if you want it somewhere specific.
 
 ## Showing events elsewhere on the site
 
 Two blocks make it easy to surface events from any page:
 
-- **Calendar** — a full interactive calendar with every published event on it. Drop it on a page (for example a dedicated *Calendar* page) and the calendar fills itself in.
-- **Upcoming Events** — a small grid of the next few events, ordered by date. Use it on the homepage or in a sidebar layout to highlight what is coming up.
+- **Church Calendar** — a full interactive calendar with every published event on it. Drop it on a page and the calendar fills itself in.
+- **Upcoming Events** — a simple list of the next few events, ordered by date, laid out in the number of columns you choose. It shows event names only — no images, dates, or descriptions — so it works best as a short "what's coming up" prompt that links visitors on to the calendar.
 
 See the *Blocks* page for what each block offers.
 
 ## Styling the calendar
 
-The look of the events calendar block is configured in **Appearance → Customize → Events Settings**.
+The look of the events calendar is configured in **Appearance → Customize → Events Settings** — the border width plus the calendar's colors: the header background and text, the outline, and the two alternating day backgrounds.

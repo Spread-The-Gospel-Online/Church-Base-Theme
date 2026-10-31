@@ -1,6 +1,6 @@
 # Layouts
 
-**Layouts** let you build a block of content once and show it automatically across many pages of your site — without touching any code. Create a layout, design it however you like, then choose where it should apear. The same layout can show up on your homepage, on every sermon, across a whole list of events, and more.
+**Layouts** let you build a block of content once and show it automatically across many pages of your site — without touching any code. Create a layout, design it however you like, then choose where it should appear. The same layout can show up on your homepage, on every sermon, across a whole list of events, and more.
 
 ## Building a layout
 
@@ -8,12 +8,11 @@ Go to **Layouts** in the admin menu and choose **Add New**. A layout opens in th
 
 ## Choosing where it appears
 
-Every layout has a few simple settings that decide where it shows up. A layout only appears
-on a page when **all** of its settings match that page.
+Every layout has a few simple settings that decide where it shows up.
 
 ### 1. Position on the page
 
-In the editor's right sidebar, open **Layout Settings** and pick a **Layout Item Position**:
+Open the **⋮** menu in the top-right corner of the editor, choose **Layout Settings**, and pick a **Layout Item Position**:
 
 - **None (will not show)** — the layout is hidden everywhere. Use this to switch a layout off without deleting it.
 - **Before Hero** — at the very top, above the large header/hero image.
@@ -33,20 +32,32 @@ You can tick more than one, so a single layout can appear in several places at o
 ### 3. Content types
 
 In the **Post Types** box (side panel), tick which kinds of content the layout applies to —
-for example **sermons**, **events**, **staff**, **pages**, or **posts**.
+for example **sermons**, **events**, **staff**, **page**, or **post**.
 
 This works together with **Single** and **Archive** above. For example, ticking **Single**
 plus **sermons** shows the layout on each individual sermon. (The **Homepage** option ignores
 this box, since there is only one homepage.)
 
+The list is generated from everything on your site, so it uses the short internal names and
+includes a couple you will never want, such as **attachment**. Stick to the content types you
+recognise.
+
 ## Putting it together
 
-A layout appears on a page when its **Position** is set (not "None") and the page matches your
+A layout appears when its **Position** is set (not "None") and the page matches your
 **Template Types** and **Post Types** choices. A few examples:
 
 - **Homepage welcome banner** — Position: Before Content; Template Types: Homepage. Shows on the front page only.
 - **Sermon call-to-action** — Position: After Content; Template Types: Single; Post Types: sermons. Shows at the bottom of every individual sermon.
 - **Events intro** — Position: Before Content; Template Types: Archive; Post Types: events. Shows at the top of the events list.
+
+## One thing that will surprise you
+
+The **Template Types** and **Post Types** boxes only filter three kinds of page: your homepage, individual items (sermons, events, staff members, posts), and archive listings.
+
+On **regular Pages**, the **search results page**, and the **404 page**, those two boxes are ignored — any layout with a position set appears there, whatever you have ticked.
+
+So if a layout is turning up on pages you did not expect, it is almost certainly on your regular Pages. The reliable way to keep a layout off them is to set its **Layout Item Position** to **None (will not show)** when you are not using it, rather than relying on the tick boxes.
 
 > Tip: Because one layout can target several page types and content types at once, you can
 > reuse the same content in many places — update it once and every spot stays in sync.

@@ -22,4 +22,14 @@ The **Type** chooses which icon and color the toast uses:
 
 ## Appearance
 
-How the toasts look — colors, spacing, and padding — is configurable under **Appearance → Customize → Notifications Settings**, and the colors used for each type come from the *Site Colors* section.
+The space inside each toast is set by **Notification Content Padding** under **Appearance → Customize → Notifications Settings**, and the **Info Notification Color** and **Notice Notification Color** are chosen there too.
+
+There is no setting for the **Emergency** type — it always uses the **Error** color from the *Site Colors* section, so change it there if you need to.
+
+An Emergency toast is also announced to screen readers as soon as it appears, which is why it is worth reserving for genuinely urgent messages.
+
+## A couple of things to watch
+
+- **Notifications have no page of their own.** They exist only as toasts, so there is nothing to preview — publish one and look at the public site to see it.
+- **The End Date deletes the notification permanently.** When the background job clears an expired notification it removes it outright rather than moving it to the trash, so if you want to reuse the wording later, copy it somewhere first.
+- Notifications cannot be switched off in *Theme Settings* — the menu is always there, whether or not you use it.
