@@ -21,14 +21,16 @@ A single date picker for when the event happens. This is what the site uses to s
 
 ### Recurring value (optional)
 
-For an event that repeats on a regular schedule, fill in this field with just the **number and unit** of how often it repeats. For example:
+Directly beneath the date is a text field with no label of its own — just the explanatory text *"Enter recurring value just as the number and the unit of measurement"*. That is the recurring field.
+
+For an event that repeats on a regular schedule, fill it in with just the **number and unit** of how often it repeats. For example:
 
 - `1 week` — every week.
 - `2 weeks` — every other week.
 - `1 month` — once a month.
 - `3 days` — every three days.
 
-Write only the number and unit — not `every 2 weeks` or `bi-weekly`. The theme uses the value the same way a calendar app would.
+Write only the number and unit — not `every 2 weeks` or `bi-weekly`. If the theme cannot make sense of what you typed, a red warning appears in the box reading *"There is an issue with your recurring value"* — correct the wording and save again.
 
 If the recurring value is set, then once the event date has passed, the date automatically rolls forward to the next occurrence. So a weekly Sunday service can be created once and the date will keep moving forward on its own.
 
@@ -37,6 +39,8 @@ Leave the recurring value blank for one-off events.
 ### Location
 
 A free-text field for where the event is. You can write a plain address, but you can also paste a **Google Maps embed URL** here and the theme will display an embedded map at the bottom of the event's page.
+
+> Note: between the recurring field and Location you will see a bold **Ministry** heading with nothing underneath it. That is a placeholder for a feature that has not been built — there is no ministry to choose, and nothing is lost by ignoring it.
 
 ## What appears on an event's page
 
@@ -53,4 +57,4 @@ See the *Blocks* page for what each block offers.
 
 ## Styling the calendar
 
-The look of the events calendar block is configured in **Appearance → Customize → Events Settings**.
+The look of the events calendar block is configured in **Appearance → Customize → Events Settings**: the **Events Calendar Border Width**, and the colors for the calendar's header background and text, its grid outline, and the two alternating day backgrounds.

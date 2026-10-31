@@ -22,4 +22,4 @@ The **Type** chooses which icon and color the toast uses:
 
 ## Appearance
 
-How the toasts look — colors, spacing, and padding — is configurable under **Appearance → Customize → Notifications Settings**, and the colors used for each type come from the *Site Colors* section.
+How the toasts look is configurable under **Appearance → Customize → Notifications**. That section has the **Notification Content Padding** (small, medium, or large) and the colors used for **Info** and **Notice** notifications. *Emergency* notifications do not have a color setting of their own.
