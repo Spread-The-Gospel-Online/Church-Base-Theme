@@ -17,17 +17,22 @@ Several settings let you pick a pattern from a dropdown. Each dropdown lists the
 
 ## Adding dynamic content to a pattern
 
-A pattern would not be very useful if it showed the same fixed text everywhere. To solve this, the theme gives you special blocks that fill themselves in with live information. While editing a pattern you can add blocks such as:
+A pattern would not be very useful if it showed the same fixed text everywhere. To solve this, the theme gives you four special blocks that fill themselves in with live information:
 
 - **Sermon Audio** — the audio player for the sermon
-- **Sermon Pastor** — the pastor who gave the sermon
-- **Sermon Download** — a download button for the sermon
+- **Sermon Pastor** — the pastor who gave the sermon, linked to their page
+- **Sermon Download** — a download button for the sermon's audio
 - **Series Link** — a link to the sermon's series
-- **Post Title** — the item's title
-- **Post Excerpt** — a short summary of the item
-- **Post Date** — the date the item was published
 
-Drop these into your pattern and you do not have to fill them in by hand — they show the correct details automatically for whichever item is being displayed.
+These four appear in the inserter **only while you are editing a pattern**. Open a page or a post and they are not there, which is deliberate — they have no meaning outside a pattern.
+
+Alongside them, use WordPress's own dynamic blocks for the basics — **Post Title**, **Post Excerpt**, **Post Date**, and **Featured Image**. These come with WordPress rather than the theme, so you will find them in the inserter's **Theme** group under their own names.
+
+Drop any of these into your pattern and you do not have to fill them in by hand — they show the correct details automatically for whichever item is being displayed.
+
+Each of the theme's four blocks shows a small placeholder label while you are designing (for example "Sermon Pastor"), so you can see where it sits. The real content appears on the live site.
+
+If a sermon has nothing to show for one of them — no audio file, or no series — that block simply outputs nothing rather than leaving a gap or an error.
 
 When a pattern takes over a tile, the theme no longer adds the featured image for you, so include it inside the pattern using a **Cover** block with its **Use featured image** option turned on. The Cover block pulls in each item's image automatically, and because you can place other blocks — such as the title or excerpt — on top of it, it is the easiest way to show content over the image.
 
@@ -37,14 +42,22 @@ Some areas show a grid of items — for example every sermon in a sermon list, o
 
 ## Settings that use patterns
 
-You will find these in the Customizer (**Appearance → Customize**):
+Most of these are in the Customizer (**Appearance → Customize**):
 
 - **Footer Pattern** — in *Footer Settings*. Uses your pattern as the site footer.
 - **Sermon Contents Pattern** — in *Sermon Page Styles*. Uses your pattern for the body of each sermon page.
 - **Card Contents Pattern** — in *Sermon Archive Styles*. Uses your pattern as the tile for each sermon in a sermon list, with each sermon's content injected in.
+- **Card Contents Pattern** — in *General Archive*. The same idea, for listing pages that do not have a section of their own — ministries, blog posts, and anything else.
 - **Staff Contents Pattern** — in *Staff Page*. Uses your pattern for each staff member's page.
 
-> Tip: Switch any setting back to **No Pattern** to return to the theme's built-in design and its standard options.
+Two blocks also take a pattern, chosen in the block's own sidebar rather than the Customizer:
+
+- **Sermon Pattern** — on the *Latest Sermons* block, to design each sermon card in that grid.
+- **Staff Pattern** — on the *Staff Members* block, to design each person's card. This one is not optional: the Staff Members block shows nothing until a pattern is chosen.
+
+See the *Blocks* page for both.
+
+> Tip: Switch any Customizer setting back to **No Pattern** to return to the theme's built-in design and its standard options.
 
 ## Learn more
 
