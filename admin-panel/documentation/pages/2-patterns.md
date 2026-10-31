@@ -17,17 +17,18 @@ Several settings let you pick a pattern from a dropdown. Each dropdown lists the
 
 ## Adding dynamic content to a pattern
 
-A pattern would not be very useful if it showed the same fixed text everywhere. To solve this, the theme gives you special blocks that fill themselves in with live information. While editing a pattern you can add blocks such as:
+A pattern would not be very useful if it showed the same fixed text everywhere. To solve this, the theme gives you four special blocks that fill themselves in with live information:
 
 - **Sermon Audio** — the audio player for the sermon
-- **Sermon Pastor** — the pastor who gave the sermon
-- **Sermon Download** — a download button for the sermon
-- **Series Link** — a link to the sermon's series
-- **Post Title** — the item's title
-- **Post Excerpt** — a short summary of the item
-- **Post Date** — the date the item was published
+- **Sermon Download** — a "Save" download button for the sermon's audio
+- **Sermon Pastor** — the pastor who gave the sermon, as a link to their page
+- **Sermon Series Link** — a link to the series the sermon belongs to
 
-Drop these into your pattern and you do not have to fill them in by hand — they show the correct details automatically for whichever item is being displayed.
+These only appear in the inserter while you are editing a pattern, so you will not find them when writing an ordinary page. Each one shows nothing at all when the detail is missing — a sermon with no audio file simply has no player and no download button, rather than an empty box.
+
+Alongside those, WordPress's own **Post Title**, **Post Excerpt**, and **Post Date** blocks work the same way inside a pattern, filling in from whichever item is being displayed.
+
+Drop these into your pattern and you do not have to fill them in by hand — they show the correct details automatically for each item.
 
 When a pattern takes over a tile, the theme no longer adds the featured image for you, so include it inside the pattern using a **Cover** block with its **Use featured image** option turned on. The Cover block pulls in each item's image automatically, and because you can place other blocks — such as the title or excerpt — on top of it, it is the easiest way to show content over the image.
 
@@ -37,12 +38,18 @@ Some areas show a grid of items — for example every sermon in a sermon list, o
 
 ## Settings that use patterns
 
-You will find these in the Customizer (**Appearance → Customize**):
+Most of these are in the Customizer (**Appearance → Customize**):
 
-- **Footer Pattern** — in *Footer Settings*. Uses your pattern as the site footer.
+- **Footer Pattern** — in *Footer Settings*. Adds your pattern to the site footer. Note this one is added *alongside* the social icons and footer menu rather than replacing the whole footer.
 - **Sermon Contents Pattern** — in *Sermon Page Styles*. Uses your pattern for the body of each sermon page.
 - **Card Contents Pattern** — in *Sermon Archive Styles*. Uses your pattern as the tile for each sermon in a sermon list, with each sermon's content injected in.
-- **Staff Contents Pattern** — in *Staff Page*. Uses your pattern for each staff member's page.
+- **Card Contents Pattern** — in *General Archive*. The same thing for the cards on your blog posts list, ministries, and any other listing without its own section.
+- **Staff Contents Pattern** — in *Staff Page*. Supplies the body of each staff member's page. Staff pages show nothing but the banner and their sermons without one, so this is the only way to give a staff member a bio.
+
+Two of the theme's blocks take a pattern in the block editor rather than the Customizer:
+
+- **Sermon Pattern** — on the *Latest Sermons* block, for the cards it shows.
+- **Staff Pattern** — on the *Staff Members* block, for the cards it shows.
 
 > Tip: Switch any setting back to **No Pattern** to return to the theme's built-in design and its standard options.
 
