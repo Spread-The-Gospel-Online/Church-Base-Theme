@@ -1,6 +1,6 @@
 # Layouts
 
-**Layouts** let you build a block of content once and show it automatically across many pages of your site — without touching any code. Create a layout, design it however you like, then choose where it should apear. The same layout can show up on your homepage, on every sermon, across a whole list of events, and more.
+**Layouts** let you build a block of content once and show it automatically across many pages of your site — without touching any code. Create a layout, design it however you like, then choose where it should appear. The same layout can show up on your homepage, on every sermon, across a whole list of events, and more.
 
 ## Building a layout
 
@@ -13,7 +13,7 @@ on a page when **all** of its settings match that page.
 
 ### 1. Position on the page
 
-In the editor's right sidebar, open **Layout Settings** and pick a **Layout Item Position**:
+Open the **Options** menu (the three dots in the top-right corner), choose **Layout Settings**, and pick a **Layout Item Position**:
 
 - **None (will not show)** — the layout is hidden everywhere. Use this to switch a layout off without deleting it.
 - **Before Hero** — at the very top, above the large header/hero image.
@@ -33,7 +33,9 @@ You can tick more than one, so a single layout can appear in several places at o
 ### 3. Content types
 
 In the **Post Types** box (side panel), tick which kinds of content the layout applies to —
-for example **sermons**, **events**, **staff**, **pages**, or **posts**.
+for example **sermons**, **events**, **staff**, **page**, or **post**. The labels here are the
+short internal names of each content type rather than their tidy menu titles, so expect
+`sermon-series` rather than "Sermon Series".
 
 This works together with **Single** and **Archive** above. For example, ticking **Single**
 plus **sermons** shows the layout on each individual sermon. (The **Homepage** option ignores
@@ -50,3 +52,15 @@ A layout appears on a page when its **Position** is set (not "None") and the pag
 
 > Tip: Because one layout can target several page types and content types at once, you can
 > reuse the same content in many places — update it once and every spot stays in sync.
+
+## When two layouts land in the same spot
+
+Nothing stops you pointing two or more layouts at the same position on the same page — they will all show, one after another.
+
+The order they appear in is **newest first**: the most recently created layout comes out on top. There is no way to re-order them. If the order matters, either combine the content into a single layout, or delete and recreate the one you want to appear last.
+
+## Switching a layout off
+
+Set **Layout Item Position** to **None (will not show)**. The layout stays in your list with all its content intact, but appears nowhere on the site. This is safer than deleting it if you expect to want it back — for a seasonal banner, for example.
+
+Layouts also only show while **published**. Switching one to a draft takes it off the site just as effectively.
