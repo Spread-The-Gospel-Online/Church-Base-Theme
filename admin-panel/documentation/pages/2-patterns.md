@@ -17,17 +17,22 @@ Several settings let you pick a pattern from a dropdown. Each dropdown lists the
 
 ## Adding dynamic content to a pattern
 
-A pattern would not be very useful if it showed the same fixed text everywhere. To solve this, the theme gives you special blocks that fill themselves in with live information. While editing a pattern you can add blocks such as:
+A pattern would not be very useful if it showed the same fixed text everywhere. To solve this, the theme gives you four special blocks that fill themselves in with live information:
 
 - **Sermon Audio** — the audio player for the sermon
 - **Sermon Pastor** — the pastor who gave the sermon
 - **Sermon Download** — a download button for the sermon
 - **Series Link** — a link to the sermon's series
+
+These four appear in the block inserter **only while you are editing a pattern**, since they have nothing to show anywhere else. None of them have any settings — drop them in and they display the right details for whichever item is being shown.
+
+Alongside them you can use WordPress's own dynamic blocks, which behave the same way inside a pattern:
+
 - **Post Title** — the item's title
 - **Post Excerpt** — a short summary of the item
 - **Post Date** — the date the item was published
 
-Drop these into your pattern and you do not have to fill them in by hand — they show the correct details automatically for whichever item is being displayed.
+> Note: there is no pattern block for the embedded sermon video. If you give a sermon page a *Sermon Contents Pattern*, any video on that sermon will no longer be shown.
 
 When a pattern takes over a tile, the theme no longer adds the featured image for you, so include it inside the pattern using a **Cover** block with its **Use featured image** option turned on. The Cover block pulls in each item's image automatically, and because you can place other blocks — such as the title or excerpt — on top of it, it is the easiest way to show content over the image.
 
@@ -42,7 +47,10 @@ You will find these in the Customizer (**Appearance → Customize**):
 - **Footer Pattern** — in *Footer Settings*. Uses your pattern as the site footer.
 - **Sermon Contents Pattern** — in *Sermon Page Styles*. Uses your pattern for the body of each sermon page.
 - **Card Contents Pattern** — in *Sermon Archive Styles*. Uses your pattern as the tile for each sermon in a sermon list, with each sermon's content injected in.
+- **Card Contents Pattern** — in *General Archive*. The same, but for every other listing page on the site: your blog posts, ministries, and any content type without a list page of its own.
 - **Staff Contents Pattern** — in *Staff Page*. Uses your pattern for each staff member's page.
+
+Two blocks also let you choose a pattern for just one spot rather than site-wide: the **Latest Sermons** block has a *Sermon Pattern* setting, and the **Staff Members** block has a *Staff Pattern* setting. See the *Blocks* page.
 
 > Tip: Switch any setting back to **No Pattern** to return to the theme's built-in design and its standard options.
 
