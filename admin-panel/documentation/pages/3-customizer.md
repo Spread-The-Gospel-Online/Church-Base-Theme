@@ -41,10 +41,11 @@ Everything about the bar at the top of every page:
 
 - **Fixed Header** — keep the header pinned to the top as the visitor scrolls, on every screen size, on desktop only, or not at all.
 - **Transparent Fixed Header** — let the hero image show through the fixed header when one is present.
+- **Logo Position** — **Left** (the default) puts the logo on the left, followed by the menu. **Center** places the menu on the left, the logo in the middle, and the search icon on the right. With a centered logo the menu is always left-aligned, so the menu alignment option is hidden.
 - **Header Logo Image** — upload your logo.
 - **Logo Sizes** — separate sizes for the default state and when the header is "scrolled" (pinned, smaller).
 - **Logo Vertical Padding** — space above and below the logo, set separately for mobile and desktop (default 8px each).
-- **Menu** — alignment (left / middle / right), font size, letter spacing, uppercase, and font weight.
+- **Menu** — alignment (left / middle / right, only when the logo is on the left), font size, letter spacing, uppercase, and font weight.
 
 ### Footer Settings
 

@@ -5,6 +5,25 @@ function util_render_date ($date) {
 	return date('F j, Y', strtotime($date));
 }
 
+// Centering the logo forces the menu to the left, so the saved menu alignment only applies to a left logo.
+function church_get_header_layout () {
+	// get_option's default only applies when the option is missing, not when it's empty.
+	$logo_position = get_option('church_header_logo_position');
+	if (!$logo_position) {
+		$logo_position = 'left';
+	}
+
+	$menu_alignment = get_option('church_header_menu_alignment', 'middle');
+	if ($logo_position === 'center') {
+		$menu_alignment = 'left';
+	}
+
+	return array(
+		'logo_position' => $logo_position,
+		'menu_alignment' => $menu_alignment
+	);
+}
+
 function util_get_hero_src ($post) {
 	$post_id = $post->ID;
 	$image_id = get_post_thumbnail_id($post);

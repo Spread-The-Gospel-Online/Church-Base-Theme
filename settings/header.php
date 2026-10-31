@@ -50,6 +50,22 @@ add_action('customize_register', function ($customizer) {
 		'description' => 'Sets header as transparent at top of page (when hero image is present)'
 	));
 
+	$customizer->add_setting('church_header_logo_position', array(
+		'type' => 'option',
+		'default' => 'left',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$customizer->add_control('church_header_logo_position', array(
+		'type' => 'select',
+		'choices' => array(
+			'left' => 'Left',
+			'center' => 'Center'
+		),
+		'section' => 'church_header_section',
+		'label' => 'Logo Position',
+		'description' => 'When the logo is centered, the menu is always left-aligned and the Header Menu Align setting is hidden.'
+	));
+
 	$customizer->add_setting('church_header_menu_alignment', array(
 		'type' => 'option',
 		'default' => 'middle',
@@ -254,4 +270,9 @@ add_action('customize_register', function ($customizer) {
             'priority' => 300,
         )
     ));
+});
+
+add_action('customize_controls_enqueue_scripts', function ($customizer) {
+	// a centered logo always left-aligns the menu, so the menu alignment only applies to a left logo
+	church_add_script_conditional('church_header_logo_position', 'church_header_menu_alignment', 'show_on', 'left');
 });

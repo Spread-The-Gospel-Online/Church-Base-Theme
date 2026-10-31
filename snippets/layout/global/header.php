@@ -2,6 +2,8 @@
 	$logo_src = get_option('church_header_logo');
 	$is_fixed = get_option('church_header_is_fixed', 'no');
 	$is_transparent = get_option('church_header_is_transparent', 'no');
+	$header_layout = church_get_header_layout();
+	$is_logo_centered = $header_layout['logo_position'] === 'center';
 	$watcher_classes = 'header__watcher';
 	$extra_watcher_styles = '';
 
@@ -15,7 +17,10 @@
 	}
 	if ($is_transparent == 'yes') {
 		$watcher_classes .= ' header__watcher--transparent';
-		$header_classes .= ' header--transparent';	
+		$header_classes .= ' header--transparent';
+	}
+	if ($is_logo_centered) {
+		$header_classes .= ' header--logo-center';
 	}
 ?>
 
@@ -26,15 +31,35 @@
 
 <header class="header <?= $header_classes; ?>">
 	<div class="header__contents ccontain">
-		<a class="header__logo-link" href="<?= get_site_url() ?>" aria-label="go to site homepage">
-			<img class="header__logo"
-				 src="<?php echo $logo_src; ?>"
-				 alt="Site logo" />
+		<?php
+			if ($is_logo_centered) {
+				util_render_snippet('/layout/global/main-menu', array(), false);
+			}
+		?>
+
+		<a
+			class="header__logo-link"
+			href="<?= get_site_url() ?>"
+			aria-label="go to site homepage"
+		>
+			<img
+				class="header__logo"
+				src="<?= $logo_src ?>"
+				alt="Site logo"
+			/>
 		</a>
-		<?php util_render_snippet('/layout/global/main-menu', array(), false); ?>
-		<button aria-label="Open Search Form"
-				class="header__search-trigger"
-				onclick="window.setState('searchOpen', !window.getState('searchOpen'))">
+
+		<?php
+			if (!$is_logo_centered) {
+				util_render_snippet('/layout/global/main-menu', array(), false);
+			}
+		?>
+
+		<button
+			aria-label="Open Search Form"
+			class="header__search-trigger"
+			onclick="window.setState('searchOpen', !window.getState('searchOpen'))"
+		>
 			<?= util_render_snippet('icons/search', array(
 				'classes' => 'header__search-trigger-icon'
 			)) ?>

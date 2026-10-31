@@ -103,6 +103,22 @@ body:not(.body-scrolled, .search-open) .header--transparent {
 	margin-right: auto;
 }
 
+/* Equal side columns keep the logo centered whatever the menu and search widths are. */
+.header--logo-center .header__contents {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: stretch;
+}
+
+.header--logo-center .header__main-menu,
+.header--logo-center [data-open-mobile-menu] {
+	justify-self: start;
+}
+
+.header--logo-center .header__search-trigger {
+	justify-self: end;
+}
+
 .header__mobile-wrapper {
 	position: fixed;
 	top: 0;

@@ -1,5 +1,5 @@
 <?php
-	$menu_alignment = get_option('church_header_menu_alignment', 'middle');
+	$menu_alignment = church_get_header_layout()['menu_alignment'];
 	$menu_extra_classes = 'header__main-menu--' . $menu_alignment;
 	
 	wp_nav_menu([
